@@ -624,6 +624,11 @@ function start_page(info) {
             if (src){$(".new-qr-img").attr("src", src);}
             $(".qr-div-div").removeClass("hide");
         }, "qr-div");
+        // 动态创建manifest
+        let manifest = document.createElement("link");
+        manifest.setAttribute("rel","manifest");
+        manifest.setAttribute("href",cdn_page_file+"manifest-purehome.json");
+        document.head.appendChild(manifest);
     }
 
     // 木鱼

@@ -88,7 +88,7 @@ function set_app_lang(lang){
     $(".app-lang_mac_install_title").html(app_lang[lang]["mac_install_title"]);
     $(".app-lang_mac_install_txt").html(app_lang[lang]["mac_install_txt"]);
     // img
-    let img_dir = cdn_page_file + "static/app/"+lang+"/";
+    let img_dir = cdn_page_file + "static/app/purehyperos/"+lang+"/";
     let img = $(".img-show");
     for (let i=0; i<img.length; i++){
         let the_img = img.eq(i);

@@ -68,21 +68,21 @@ const pages = [
     }, //
     // 结束-必要路由
 
-    { // 页面模块
-        "route"     : "app",
-        "file_path" : "pages/app/app.view",
-        "title"     :  "App详情介绍",
-        "file"      : [
-            {
-                "js": [
-                    "pages/app/app.js",
-                ],
-                "css": [
-                    "pages/app/app.css",
-                ],
-            },
-        ],
-    }, //
+    // { // 页面模块
+    //     "route"     : "app",
+    //     "file_path" : "pages/app/app.view",
+    //     "title"     :  "App详情介绍",
+    //     "file"      : [
+    //         {
+    //             "js": [
+    //                 "pages/app/app.js",
+    //             ],
+    //             "css": [
+    //                 "pages/app/app.css",
+    //             ],
+    //         },
+    //     ],
+    // }, //
     { // 页面模块
         "route"     : "info",
         "file_path" : "pages/info/info.view",
@@ -140,6 +140,36 @@ const pages = [
                 ],
                 "css": [
                     "pages/docs/docs.css",
+                ],
+            },
+        ],
+    }, //
+    { // 页面模块
+        "route"     : "purehome",
+        "file_path" : "pages/app/purehome/purehome.view",
+        "title"     :  "PureHome详情介绍",
+        "file"      : [
+            {
+                "js": [
+                    "pages/app/purehome/purehome.js",
+                ],
+                "css": [
+                    "pages/app/purehome/purehome.css",
+                ],
+            },
+        ],
+    }, //
+    { // 页面模块
+        "route"     : "purehyperos",
+        "file_path" : "pages/app/purehyperos/purehyperos.view",
+        "title"     :  "PureHyperOS详情介绍",
+        "file"      : [
+            {
+                "js": [
+                    "pages/app/purehyperos/purehyperos.js",
+                ],
+                "css": [
+                    "pages/app/purehyperos/purehyperos.css",
                 ],
             },
         ],
