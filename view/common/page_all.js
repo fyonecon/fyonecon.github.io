@@ -19,6 +19,10 @@ const search_data_default = [
         "engine": "google", // 引擎名称
     },
     {
+        "name": "Yahoo!",
+        "engine": "yahoo",
+    },
+    {
         "name": "DuckDuckGo",
         "engine": "duckduckgo",
     },
@@ -27,13 +31,9 @@ const search_data_default = [
         "engine": "yandex",
     },
     {
-        "name": "Yahoo!",
-        "engine": "yahoo",
+        "name": "Github",
+        "engine": "github",
     },
-    // {
-    //     "name": "Github",
-    //     "engine": "github",
-    // },
     // {
     //     "name": "X",
     //     "engine": "x",
