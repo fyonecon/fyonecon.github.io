@@ -255,9 +255,9 @@ adb shell pm uninstall --user 0 com.miui.greenguard	   #家人守护
 <br/>
 adb shell pm uninstall --user 0 com.miui.cloudbackup	#小米云备份
 <br/>
-adb shell pm uninstall --user 0 com.miui.cloudservice	#小米云服务（查找设备<仅能中国大陆ID>、同步“相册、蓝牙、笔记、录音”，可以用GooglePhoto、GoogleKeep、OneDrive代替）
+#adb shell pm uninstall --user 0 com.miui.cloudservice	#小米云服务（查找设备<仅能中国大陆ID>、同步“相册、蓝牙、笔记、录音”，可以用GooglePhoto、GoogleKeep、OneDrive代替）
 <br/>
-adb shell pm uninstall --user 0 com.miui.micloudsync	#小米云同步（仅同步“联系人、通话、短信、安全服务、Wi-Fi”，可以用Google服务代替。）
+#adb shell pm uninstall --user 0 com.miui.micloudsync	#小米云同步（仅同步“联系人、通话、短信、安全服务、Wi-Fi”，可以用Google服务代替。）
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.account	#小米账号（绑定任意国家ID：防止手机刷机，启用小爱同学，启用小米运动）
 <br/>
@@ -279,7 +279,7 @@ adb shell pm uninstall --user 0 com.xiaomi.xmsf		#小米服务框架（MiPush、
 <br/>
 adb shell pm uninstall --user 0 com.xiaomi.market
 <br/>
-22. 可选：登录小米账号。
+22. 一定要登录小米账号。
 <br/>
 设置-更多设置-语言与输入法-密码和帐号-首选服务-选择小米账号或者Google或Edge浏览器或Auth认证App（这是密码自动填充服务）
 <br/>
@@ -292,6 +292,8 @@ adb shell pm uninstall --user 0 com.xiaomi.market
 23. 登录微信（需要下载小程序扩展）；Firefox添加ad扩展，打开Firefox的“添加桌面快捷方式”权限。<br/>
 
 24. Firefox添加vivo H5应用商店（ <a href="https://h5.appstore.vivo.com.cn" class="blue" target="_self">https://h5.appstore.vivo.com.cn</a> ）到桌面快捷方式。
+<br/>
+25. 最后，千万不要关闭“开发者模式”。面对垃圾广告、超范围隐私收集、计划报废，垃圾的东西总会浪费人的很多精力和时间，特别是对那些用不起好手机人。如果玩机玩累了，请转到其他家的手机。
 <br/>
 <br/>
 ==============
