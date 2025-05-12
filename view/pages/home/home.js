@@ -627,7 +627,7 @@ function start_page(info) {
         // 动态创建manifest
         let manifest = document.createElement("link");
         manifest.setAttribute("rel","manifest");
-        manifest.setAttribute("href",cdn_page_file+"manifest-purehome.json");
+        manifest.setAttribute("href",cdn_page_file+"manifest-purehome.json?"+page_time);
         document.head.appendChild(manifest);
     }
 
