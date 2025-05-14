@@ -176,4 +176,25 @@ function frame_loaded(e, route){
         view.set_data(app_class+"search_del_fake_news", "");
     }
 
+    // 设置文件缓存（提前加载一些文件，如果已加载，也不会浪费流量）
+    let pre_cache_timeout = 6*(60*60); // s, h
+    let pre_cache_time_key = app_class+"pre_cache_time";
+    view.data_timeout_state(pre_cache_time_key, pre_cache_timeout, [true, false],function (state){
+        if (state){ // 已过期
+            // view.fetch_file(cdn_page_file + "pages/search/search.css?cache=" + files_version).then(array=>{
+            //     let state = array[0], response=array[1], url=array[2], msg=array[3];
+            //     view.log([state, response, url, msg]);
+            // });
+            // view.fetch_file(cdn_page_file + "pages/search/search.js?cache=" + files_version).then(array=>{
+            //     let state = array[0], response=array[1], url=array[2], msg=array[3];
+            //     view.log([state, response, url, msg]);
+            // });
+            view.fetch_file(cdn_page_file + "pages/search/search.view?cache=" + files_version).then(array=>{
+                let state = array[0], response=array[1], url=array[2], msg=array[3];
+                view.log([state, response, url, msg]);
+            });
+        }else{
+            //
+        }
+    });
 }

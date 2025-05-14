@@ -165,20 +165,20 @@ function show_info(){
     infos.forEach((info, index)=>{
         $(".div-box").append('<div class="div-line"><div class="div-title '+info.title_class+'">'+info.title+'</div><div class="div-value '+info.value_class+'">'+info.value+'</div><div class="clear"></div></div>');
     });
-    test_fetch(window.location.href).then(array1 => {
-        test_fetch(cdn_page_file+"pages/home/home.css?cache="+files_version).then(array2 => {
-            // console.log(array2);
-        });
-    });
+
+    //
+    test_fetch(window.location.href);
+    test_fetch(cdn_page_file + "pages/home/home.css?cache=" + files_version);
+
 }
 
 //
-function test_fetch(api){
-    $(".div-box").append('<hr/>');
-    async function getData(api) {
-        // const api = cdn_page_file+"pages/info/info.view?cache="+files_version;
-        try {
-            const response = await fetch(api);
+function test_fetch(file_url){
+    view.fetch_file(file_url).then(array=>{
+       let state = array[0], response=array[1], url=array[2], msg=array[3];
+        view.log([state, response, url, msg]);
+        $(".div-box").append('<hr/>');
+        if (state){
             $(".div-box").append('' +
                 '<div class="div-line">' +
                 '   <div class="div-title font-text">Fetch URL</div>' +
@@ -206,19 +206,16 @@ function test_fetch(api){
                     '</div>' +
                     '');
             });
-            return [1, response];
-        } catch (error) {
+        }else{
             $(".div-box").append('' +
                 '<div class="div-line">' +
                 '   <div class="div-title font-text">Fetch Error</div>' +
-                '   <div class="div-value font-text">'+error.message+'</div>' +
+                '   <div class="div-value font-text">'+response.message+'</div>' +
                 '   <div class="clear"></div>' +
                 '</div>' +
                 '');
-            return [0, error.message];
         }
-    }
-    return getData(api);
+    });
 }
 
 function start_page(info) {

@@ -19,7 +19,7 @@ function s_update_history(input_value){
                     if (i<len){
                         new_data_string = the_history + array_key;
                         let new_data = input_value + array_key + data_string;
-                        view.set_data(data_key, new_data)
+                        view.set_data(data_key, new_data);
                     }
                 }
             }
@@ -34,32 +34,20 @@ function s_update_history(input_value){
         // 自动处理历史记录，规则：start_history - new_history > 60 day，即表示无法在”长时间连续使用“的情况下，以前的历史即为fake历。
         let len_day = 6*30; // 默认存6个月
         let input_history_start_time_key = app_class + "input_history_start_time";
-        let input_history_new_time_key = app_class + "input_history_new_time";
-        let input_history_start_time = view.get_data(input_history_start_time_key)*1;
-        let input_history_new_time = view.get_data(input_history_new_time_key)*1;
         let input_history_len_time = len_day * 24 * 60 * 60; // 间隔时间，s
-        // 初始值
-        if (!input_history_start_time || input_history_start_time<0){
-            input_history_start_time = view.time_s()*1;
-        }
-        if (!input_history_new_time || input_history_new_time<0){
-            input_history_new_time = view.time_s()*1;
-        }
-        // 判断连续时间
-        if (input_history_new_time - input_history_start_time >= input_history_len_time){ // 不连续，重新计算时间
-            s_clear_history();
-        }else{ // 连续，更新最新的时间，即连续使用时，数据都为有效数据。
-            view.set_data(input_history_start_time_key, input_history_new_time);
-        }
+        view.data_timeout_state(input_history_start_time_key, input_history_len_time, [true, true],function (state, log){
+            view.log([state, log]);
+            if (state){ // 已过期，证明不经常用
+                s_clear_history();
+            }else{ // 未过期，自动更新时间，证明经常用。
+                // auto update
+            }
+        });
     }catch (e) {}
 }
 
 // 清除历史记录
 function s_clear_history(){
-    let input_history_start_time_key = app_class + "input_history_start_time";
-    let input_history_new_time = view.time_s()*1;
-    view.set_data(input_history_start_time_key, input_history_new_time);
-
     let data_key = app_class + "input_history";
     return view.del_data(data_key);
 }

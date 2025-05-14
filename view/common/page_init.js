@@ -31,17 +31,15 @@ function page_init(e, route){
         ){ // 不需要登录
             start_page(e);
         } else { // 需要登录。不是login的话就直接检查是否已经登录
-            // console.log(window.location.href);
             // 处理是否过期
-            let login_time = view.get_data(app_class+"login_time")*1;
-            let now_time = view.time_s();
-            if (!login_time){view.set_data(app_class+"login_time", now_time);}
-            let timeout = now_time - login_time;
-            if (timeout<login_timeout){ // 未过期
-                user_login(route);
-            }else {
-                must_login();
-            }
+            let login_key = app_class+"login_time";
+            view.data_timeout_state(login_key, login_timeout, [false, false],function (state){
+                if (state){ // 已过期
+                    must_login();
+                }else{
+                    user_login(route);
+                }
+            });
         }
     }else {
         view.alert_txt("Browser Be Fake！", "long", "clear");

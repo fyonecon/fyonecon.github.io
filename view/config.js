@@ -42,7 +42,7 @@ const app_version = "5.5.1"; // 格式 1.0.0
 const app_email = "";
 
 // 登录用户使用的验证参数
-let login_timeout = 30*24*60*60*1000; // 30天过期
+let login_timeout = 30*24*60*60; // s, 30天过期
 let login_token = "";
 let login_id = "";
 let login_pwd = "";

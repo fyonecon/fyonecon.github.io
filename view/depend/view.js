@@ -286,6 +286,21 @@ const view = {
             }
         }
     },
+    fetch_file: function (file_url){ // 获取文件内容，也可用于txt、html文件自动缓存于浏览器。仅支持js、css、html、txt等文本文件，禁止用于图片、视频、PDF、Office、压缩包等文件
+        // view.fetch_file(cdn_page_file + "pages/search/search.css?cache=" + files_version).then(array=>{
+        //     let state = array[0], response=array[1], url=array[2], msg=array[3];
+        //     view.log([state, response, url, msg]);
+        // });
+        async function getData(api) {
+            try {
+                const response = await fetch(api);
+                return [1, response, file_url, "成功"];
+            } catch (error) {
+                return [0, error, file_url, error.message];
+            }
+        }
+        return getData(file_url);
+    },
     get_url_param: function (url, key) { // 获取url中的参数
         // 兼容模式url地址，例如：poop.html?page=3&ok=222#p=2#name=kd
         let url_str = "";
@@ -482,7 +497,31 @@ const view = {
     clear_data: function () { // 全部清空
         return localStorage.clear();
     },
-    cache_file: function (cache_key, file_url, del_old_state, call_func){ // 缓存css，js文件到本地localstorage
+    data_timeout_state: function (key, timeout_s, [yes_timeout_update_state, no_timeout_update_state], call_func){ // s，某个键是否已经过期，模仿cookie过期。
+        // view.data_timeout_state(key, 有效时常s, [是否立即更新“已过期”时间, 是否立即更新“未过期”时间],function (state){
+        //             if (state){ // 已过期，证明不经常用
+        //                 //
+        //             }else{ // 未过期，自动更新时间，证明经常用。
+        //                 // auto update
+        //             }
+        //         });
+        let timer_key = key+"_data_time";
+        let before_time = view.get_data(timer_key)*1;
+        let now_time = view.time_s();
+        if (((now_time - before_time) <= timeout_s*1) || before_time===0 ) { // 未过期
+            if (no_timeout_update_state){ // 更新日期
+                view.set_data(timer_key, now_time);
+            }
+            call_func(0, [key, timeout_s, now_time - before_time, now_time, before_time]);
+        }else{ // 已过期
+            // 是否更新新值
+            if (yes_timeout_update_state){ // 更新日期
+                view.set_data(timer_key, now_time);
+            }
+            call_func(1, [key, timeout_s, now_time - before_time, now_time, before_time]);
+        }
+    },
+    cache_file: function (cache_key, file_url, del_old_state, call_func){ // 缓存css，js，view文件到本地localstorage
         let that = this;
         file_url = file_url + "?" + that.time_date("YmdHis");
         let cache_js = "";
