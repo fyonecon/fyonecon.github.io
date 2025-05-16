@@ -1,19 +1,27 @@
 <div class="blue">《小米手机系统优化对照表及说明》</div>
 <br/>
-（2025-05-11更新）
+（2025-05-16更新）
 <br/>
-1️⃣ 一切后果自负！！！
+<br/>
+============================
+<br/>
+<br/>
+1️⃣ 使用前备份好手机资料；卡米时可清除手机全部数据重新开始：“关机（可长按 音量上+开关键 10s中关机），音量上+开关键 长按（大概10s），Logo出来立即只松开开关键，就可以进入清除模式。”；
 <br/>
 2️⃣ 下面系统优化的操作旨在“提高系统隐私（如广告SDK、反诈、大数据统计）、删除系统广告、精简系统”，不会注重省电和延长手机使用时间；
 <br/>
 3️⃣ 可以在“澎湃1、澎湃2”中使用，操作前请备份手机数据到“云盘”或“手机以外的硬盘”，因为小米手机卡米变砖数据会彻底丢失；
 <br/>
-4️⃣下面两个App卸载掉会卡米，不要卸载：
+<div class="red">
+4️⃣如下情况会卡米，不要操作：
 <br/>
-#com.android.htmlviewer HTML查看器
+#com.android.htmlviewer HTML查看器不要卸载；
 <br/>
-#com.miui.packageinstaller 应用包管理器
+#com.miui.packageinstaller 应用包管理器不要卸载；
 <br/>
+不要打开深色模式设置的“自动切换深色模式”，会无限重启（直接关闭“自动切换深色模式”，或者设为“自定义时间段”）。
+<br/>
+</div>
 5️⃣ 尽量使用Win、Mac的ADB环境（下载Win或Mac的ADB工具：https://developer.android.google.cn/tools/releases/platform-tools?hl=zh-cn ），不要使用手机端ADB软件；
 <br/>
 6️⃣ 澎湃2比澎湃1好用，推荐澎湃2；
@@ -23,10 +31,10 @@
 8️⃣ 本人在使用的可装裤兜便携充电宝（67.9元 10000mAh 自带线 22.5W）。
 <br/>
 <br/>
-===============
+============================
 <br/>
 <br/>
-0. 断网，不插卡，不开Wi-Fi，不开蓝牙，设置-锁屏-自动锁屏时间设置为5min
+0. 断网，不插卡，不开Wi-Fi，不开蓝牙，设置-锁屏-自动锁屏时间设置为5min。不要打开深色模式设置的“自动切换深色模式”，会无限重启（直接关闭“自动切换深色模式”，或者设为“自定义时间段”）。
 <br/>
 1. 设置-应用-卸载所有预装应用（除了运动、录音、日历）
 <br/>
@@ -157,11 +165,11 @@ adb shell pm uninstall --user 0 com.xiaomi.joyose   #小米性能云控
 <br/>
 adb shell pm uninstall --user 0 com.xiaomi.mtb  #鲁班MTB（系统性能调节）
 <br/>
-adb shell pm uninstall --user 0 com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活相关）
-<br/>
 adb shell pm uninstall --user 0 com.mobiletools.systemhelper	#智能系统优化（含有百度地图SDK）
 <br/>
 adb shell pm uninstall --user 0 com.miui.daemon		#系统质量服务（匿名数据收集）
+<br/>
+adb shell pm uninstall --user 0 com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活相关）
 <br/>
 // 小米服务
 <br/>
@@ -175,15 +183,13 @@ adb shell pm uninstall --user 0 com.xiaomi.ab  #小米售后支持
 <br/>
 adb shell pm uninstall --user 0 com.miui.phrase  #常用语（无卵用）
 <br/>
-adb shell pm uninstall --user 0 com.mediatek.duraspeed		#快霸（只在联发科CPU手机里有，应用相互启动白名单）
-<br/>
-#adb shell pm uninstall --user 0 com.miui.contentcatcher		#应用扩展服务（也与广告有关）
+#adb shell pm uninstall --user 0 com.miui.contentcatcher	#应用扩展服务（也与广告有关）
 <br/>
 adb shell pm uninstall --user 0 com.xiaomi.metoknlp	#网络位置（含有高德SDK）
 <br/>
-#adb shell pm uninstall --user 0 com.xiaomi.location.fused	#融合位置服务（含有高德SDK，删除后有些软件到定位位置更新会变慢）
+###adb shell pm uninstall --user 0 com.xiaomi.location.fused	#融合位置服务（含有高德SDK，删除后有些软件到定位位置更新会变慢）
 <br/>
-adb shell pm uninstall --user 0 com.xiaomi.payment	#米币支付（含有银联SDK）
+#adb shell pm uninstall --user 0 com.xiaomi.payment	#米币支付（含有银联SDK）
 <br/>
 adb shell pm uninstall --user 0 com.unionpay.tsmservice.mi	#银联统计
 <br/>
@@ -217,31 +223,29 @@ adb shell pm uninstall --user 0 com.miui.mediaviewer	#媒体查看器(MXPlayer�
 <br/>
 #adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi 	#搜狗输入法（微信输入法、GBoard输入法代替）
 <br/>
-#adb shell pm uninstall --user 0 com.miui.securitymanager	#手机管家（只是卸载了一个界面大纲，里面功能还在，基本功能仍在手机设置或权限设置里面）
+###adb shell pm uninstall --user 0 com.miui.securitycenter	#安全服务（无界面，管理应用权限、应电池、应用列表、隐藏应用、应用联网）
 <br/>
-#adb shell pm uninstall --user 0 com.miui.securitycenter	#安全服务（无界面，管理应用权限、应电池、应用列表、隐藏应用、应用联网）
+###adb shell pm uninstall --user 0 com.android.mms    #短信（谷歌短信App代替）
 <br/>
-#adb shell pm uninstall --user 0 com.android.mms    #短信（谷歌短信App代替）
-<br/>
-#adb shell pm uninstall --user 0 com.android.contacts    #电话、通讯录、营业厅（谷歌电话App、联系人App代替）
+###adb shell pm uninstall --user 0 com.android.contacts    #电话、通讯录、营业厅（谷歌电话App、联系人App代替）
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.market  	#小米应用商店（别的商店代替，推荐vivo H5应用商店 （<a href="https://h5.appstore.vivo.com.cn" class="blue" target="_self">https://h5.appstore.vivo.com.cn</a> ）、Google Play）
 <br/>
 #adb shell pm uninstall --user 0 com.google.android.webview 	#Webview(可能含有网址访问认证，Google Play里面下别的版本的webview代替)
 <br/>
-#adb shell pm uninstall --user 0 com.android.thememanager	#系统主题(设置)（主题、图标、壁纸设置好了以后再删除此App）
+###adb shell pm uninstall --user 0 com.android.thememanager	#系统主题(设置)（主题、图标、壁纸设置好了以后再删除此App）
 <br/>
 #adb shell pm uninstall --user 0 com.android.providers.downloads  #下载器（下载主题、下载系统、自动下载和安装App。如果需要更新系统，恢复软件即可。）
 <br/>
 adb shell pm uninstall --user 0 com.android.quicksearchbox 	#桌面搜索
 <br/>
-#adb shell pm uninstall --user 0 com.miui.personalassistant 	#桌面负一屏（小部件、智能助理）
+###adb shell pm uninstall --user 0 com.miui.personalassistant 	#桌面负一屏（小部件、智能助理）
 <br/>
 // 小爱同学（人工智障，按需卸载）
 <br/>
-#adb shell pm uninstall --user 0 com.miui.voicetrigger  	#语音唤醒小爱，设置里面关闭小爱后再操作
+###adb shell pm uninstall --user 0 com.miui.voicetrigger  	#语音唤醒小爱，设置里面关闭小爱后再操作
 <br/>
-#adb shell pm uninstall --user 0 com.miui.voiceassist  	#小爱同学
+###adb shell pm uninstall --user 0 com.miui.voiceassist  	#小爱同学
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.aicr  	#MiAI引擎、澎湃AI引擎
 <br/>
@@ -269,7 +273,7 @@ adb shell pm uninstall --user 0 com.miui.greenguard	   #家人守护
 <br/>
 adb shell pm uninstall --user 0 com.android.updater	#小米系统更新
 <br/>
-#adb shell pm uninstall --user 0 com.miui.securitycore	#系统功能服务组件（应用双开、手机分身、边缘触控）
+###adb shell pm uninstall --user 0 com.miui.securitycore	#系统功能服务组件（应用双开、手机分身、边缘触控）
 <br/>
 <br/>
 ===手动重启手机===
@@ -300,7 +304,7 @@ adb shell pm uninstall --user 0 com.xiaomi.market
 25. 最后，千万不要关闭“开发者模式”。面对垃圾广告、超范围隐私收集、计划报废，垃圾的东西总会浪费人的很多精力和时间，特别是对那些用不起好手机人。如果玩机玩累了，请转到其他家的手机。
 <br/>
 <br/>
-==============
+============================
 <br/>
 <br/>
 1️⃣ 恢复已删除的预装应用举例：
@@ -360,6 +364,61 @@ adb push ../android_backup/Files/APK.zip /sdcard/Documents/
 adb push ../android_backup/OS/RedmiNote14Pro-CN-malachite-ota_full-OS2.0.10.0.VOOCNXM-user-15.0-13718ddde6.zip /sdcard/Documents/
 <br/>
 <br/>
-==============
+============================
+<br/>
+<br/>
+一次执行多条adb shell指令（全部复制进入终端即可）:
+<br/>
+<br/>
+adb push ../android_backup/Files/铃声.zip /sdcard/Documents/;<br/>
+adb push ../android_backup/Files/APK.zip /sdcard/Documents/;<br/>
+adb push ../android_backup/OS/RedmiNote14Pro-CN-malachite-ota_full-OS2.0.10.0.VOOCNXM-user-15.0-13718ddde6.zip /sdcard/Documents/;<br/>
+<br/>
+adb shell pm uninstall --user 0 com.android.browser;<br/>
+adb shell pm uninstall --user 0 com.miui.yellowpage;<br/>
+adb shell pm uninstall --user 0 com.miui.hybrid;<br/>
+adb shell pm uninstall --user 0 com.miui.analytics;<br/>
+adb shell pm uninstall --user 0 com.miui.systemAdSolution;<br/>
+adb shell pm uninstall --user 0 com.miui.guardprovider;<br/>
+adb shell pm uninstall --user 0 com.miui.bugreport;<br/>
+adb shell pm uninstall --user 0 com.miui.securityadd;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.gamecenter.sdk.service;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.gamecenter;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.macro;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.joyose;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.mtb;<br/>
+adb shell pm uninstall --user 0 com.mobiletools.systemhelper;<br/>
+adb shell pm uninstall --user 0 com.miui.daemon;<br/>
+adb shell pm uninstall --user 0 com.miui.powerkeeper;<br/>
+adb shell pm uninstall --user 0 com.miui.miservice;<br/>
+adb shell pm uninstall --user 0 com.milink.service;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.mi_connect_service;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.ab;<br/>
+adb shell pm uninstall --user 0 com.miui.phrase;<br/>
+adb shell pm uninstall --user 0 com.miui.contentcatcher;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.metoknlp;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.payment;<br/>
+adb shell pm uninstall --user 0 com.unionpay.tsmservice.mi;<br/>
+adb shell pm uninstall --user 0 com.wapi.wapicertmanager;<br/>
+adb shell pm uninstall --user 0 com.miui.thirdappassistant;<br/>
+adb shell pm uninstall --user 0 com.android.adservices.api;<br/>
+adb shell pm uninstall --user 0 com.miui.mishare.connectivity;<br/>
+adb shell pm uninstall --user 0 com.miui.nextpay;<br/>
+adb shell pm uninstall --user 0 com.android.healthconnect.controller;<br/>
+adb shell pm uninstall --user 0 com.google.android.configupdater;<br/>
+adb shell pm uninstall --user 0 com.miui.mediaviewer;<br/>
+adb shell pm uninstall --user 0 com.android.updater;<br/>
+adb shell pm uninstall --user 0 com.android.quicksearchbox;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.aicr;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.aireco;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.aiasst.vision;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.scanner;<br/>
+adb shell pm uninstall --user 0 com.xiaomi.aiasst.service;<br/>
+adb shell pm uninstall --user 0 com.miui.cloudbackup;<br/>
+adb shell pm uninstall --user 0 com.miui.cloudservice;<br/>
+adb shell pm uninstall --user 0 com.miui.micloudsync;<br/>
+adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi;<br/>
+<br/>
+============================
 <br/>
 <br/>
