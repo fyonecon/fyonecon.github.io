@@ -97,7 +97,13 @@ Edge浏览器< http://www.jxdown.com/soft/20238.html >）、
 ）
 <br/>
 <br/>
-17. 用devcheck（下载：https://www.ddooo.com/softdown/224201.htm）设置“com.android.htmlviewer HTML查看器”权限，关闭通讯录权限；用devcheck设置“com.miui.packageinstaller 应用包管理器”权限，关闭通讯录权限。
+17. 用devcheck（下载：https://www.ddooo.com/softdown/224201.htm）设置：
+<br/>
+“com.android.htmlviewer HTML查看器”权限，关闭通讯录权限；
+<br/>
+“com.miui.packageinstaller 应用包管理器”权限，关闭通讯录权限；
+<br/>
+“com.android.providers.downloads 下载器”权限，关闭通讯录权限。
 <br/>
 18. 设置-指纹与密码-锁屏密码、录入指纹
 <br/>
@@ -151,7 +157,7 @@ adb shell pm uninstall --user 0 com.xiaomi.joyose   #小米性能云控
 <br/>
 adb shell pm uninstall --user 0 com.xiaomi.mtb  #鲁班MTB（系统性能调节）
 <br/>
-#adb shell pm uninstall --user 0 com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活相关）
+adb shell pm uninstall --user 0 com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活相关）
 <br/>
 adb shell pm uninstall --user 0 com.mobiletools.systemhelper	#智能系统优化（含有百度地图SDK）
 <br/>
@@ -171,7 +177,7 @@ adb shell pm uninstall --user 0 com.miui.phrase  #常用语（无卵用）
 <br/>
 adb shell pm uninstall --user 0 com.mediatek.duraspeed		#快霸（只在联发科CPU手机里有，应用相互启动白名单）
 <br/>
-adb shell pm uninstall --user 0 com.miui.contentcatcher		#应用扩展服务（也与广告有关）
+#adb shell pm uninstall --user 0 com.miui.contentcatcher		#应用扩展服务（也与广告有关）
 <br/>
 adb shell pm uninstall --user 0 com.xiaomi.metoknlp	#网络位置（含有高德SDK）
 <br/>
@@ -191,17 +197,15 @@ adb shell pm uninstall --user 0 com.miui.mishare.connectivity	#小米分享（�
 <br/>
 adb shell pm uninstall --user 0 com.miui.nextpay	#卡包网页组件
 <br/>
-adb shell pm uninstall --user 0 com.miui.carlink	#小米CarWith
-<br/>
 adb shell pm uninstall --user 0 com.android.healthconnect.controller	#健康数据共享
 <br/>
 adb shell pm uninstall --user 0 com.google.android.configupdater	#（可能与小米系统权限恢复有关）
 <br/>
-adb shell pm uninstall --user 0 com.miui.touchassistant  #悬浮球
+#adb shell pm uninstall --user 0 com.miui.touchassistant  #悬浮球
 <br/>
-adb shell pm uninstall --user 0 com.miui.contentextension  #传送门（识屏）
+#adb shell pm uninstall --user 0 com.miui.contentextension  #传送门（识屏）
 <br/>
-adb shell pm uninstall --user 0 com.miui.accessibility  #小米闻声
+#adb shell pm uninstall --user 0 com.miui.accessibility  #小米闻声
 <br/>
 adb shell pm uninstall --user 0 com.miui.mediaviewer	#媒体查看器(MXPlayer代替)
 <br/>
@@ -217,13 +221,13 @@ adb shell pm uninstall --user 0 com.miui.mediaviewer	#媒体查看器(MXPlayer�
 <br/>
 #adb shell pm uninstall --user 0 com.miui.securitycenter	#安全服务（无界面，管理应用权限、应电池、应用列表、隐藏应用、应用联网）
 <br/>
-adb shell pm uninstall --user 0 com.android.mms    #短信（谷歌短信App代替）
+#adb shell pm uninstall --user 0 com.android.mms    #短信（谷歌短信App代替）
 <br/>
-adb shell pm uninstall --user 0 com.android.contacts    #电话、通讯录、营业厅（谷歌电话App、联系人App代替）
+#adb shell pm uninstall --user 0 com.android.contacts    #电话、通讯录、营业厅（谷歌电话App、联系人App代替）
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.market  	#小米应用商店（别的商店代替，推荐vivo H5应用商店 （<a href="https://h5.appstore.vivo.com.cn" class="blue" target="_self">https://h5.appstore.vivo.com.cn</a> ）、Google Play）
 <br/>
-adb shell pm uninstall --user 0 com.google.android.webview 	#Webview(可能含有网址访问认证，Google Play里面下别的版本的webview代替)
+#adb shell pm uninstall --user 0 com.google.android.webview 	#Webview(可能含有网址访问认证，Google Play里面下别的版本的webview代替)
 <br/>
 #adb shell pm uninstall --user 0 com.android.thememanager	#系统主题(设置)（主题、图标、壁纸设置好了以后再删除此App）
 <br/>
@@ -239,21 +243,21 @@ adb shell pm uninstall --user 0 com.android.quicksearchbox 	#桌面搜索
 <br/>
 #adb shell pm uninstall --user 0 com.miui.voiceassist  	#小爱同学
 <br/>
-adb shell pm uninstall --user 0 com.xiaomi.aicr  	#MiAI引擎、澎湃AI引擎
+#adb shell pm uninstall --user 0 com.xiaomi.aicr  	#MiAI引擎、澎湃AI引擎
 <br/>
-adb shell pm uninstall --user 0 com.xiaomi.aireco  #小爱建议
+#adb shell pm uninstall --user 0 com.xiaomi.aireco  #小爱建议
 <br/>
-adb shell pm uninstall --user 0 com.xiaomi.aiasst.vision	#小爱翻译
+#adb shell pm uninstall --user 0 com.xiaomi.aiasst.vision	#小爱翻译
 <br/>
-#adb shell pm uninstall --user 0 com.xiaomi.scanner	#小爱视觉
+#adb shell pm uninstall --user 0 com.xiaomi.scanner	#小爱视觉（还需要在小爱视觉设置-关于-关闭“上传图片图片识别优化”）
 <br/>
-adb shell pm uninstall --user 0 com.xiaomi.aiasst.service	#小爱通话
+#adb shell pm uninstall --user 0 com.xiaomi.aiasst.service	#小爱通话
 <br/>
 // 小米账号与云服务（谨慎卸载）
 <br/>
 adb shell pm uninstall --user 0 com.miui.greenguard	   #家人守护
 <br/>
-adb shell pm uninstall --user 0 com.miui.cloudbackup	#小米云备份
+#adb shell pm uninstall --user 0 com.miui.cloudbackup	#小米云备份
 <br/>
 #adb shell pm uninstall --user 0 com.miui.cloudservice	#小米云服务（查找设备<仅能中国大陆ID>、同步“相册、蓝牙、笔记、录音”，可以用GooglePhoto、GoogleKeep、OneDrive代替）
 <br/>
@@ -261,9 +265,9 @@ adb shell pm uninstall --user 0 com.miui.cloudbackup	#小米云备份
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.account	#小米账号（绑定任意国家ID：防止手机刷机，启用小爱同学，启用小米运动）
 <br/>
-adb shell pm uninstall --user 0 com.xiaomi.xmsf		#小米服务框架（MiPush、设备统计相关、用户大数据分析等）
+#adb shell pm uninstall --user 0 com.xiaomi.xmsf		#小米服务框架（MiPush、设备统计相关、用户大数据分析等）
 <br/>
-#adb shell pm uninstall --user 0 com.android.updater	#小米系统更新
+adb shell pm uninstall --user 0 com.android.updater	#小米系统更新
 <br/>
 #adb shell pm uninstall --user 0 com.miui.securitycore	#系统功能服务组件（应用双开、手机分身、边缘触控）
 <br/>
@@ -350,6 +354,10 @@ adb push ../android_backup/Files/铃声.zip /sdcard/Documents/
 给手机导入APK：
 <br/>
 adb push ../android_backup/Files/APK.zip /sdcard/Documents/
+<br/>
+给手机导入卡刷包：
+<br/>
+adb push ../android_backup/OS/RedmiNote14Pro-CN-malachite-ota_full-OS2.0.10.0.VOOCNXM-user-15.0-13718ddde6.zip /sdcard/Documents/
 <br/>
 <br/>
 ==============

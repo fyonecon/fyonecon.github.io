@@ -53,7 +53,7 @@ function s_clear_history(){
 }
 
 // 最终跳转
-function jump_url_location(engine, word, url) {
+function jump_url_location(engine, word, url) { // 增补关键词
     try {word = decodeURIComponent(word);}catch (e) {}
     const search_url= "http://"+window.location.host+assets_html_dir_name+assets_html_index_name;
 
@@ -162,8 +162,6 @@ function jump_url_location(engine, word, url) {
             });
         }else{
             view.title(" 😂··· ");
-            // $(".match-kw-span-msg").html("提示🔔：");
-            // $(".match-kw-span-txt").html("不支持此口令。");
             window.location.replace(app_url.jump_url+"&error=不支持口令");
         }
     }
@@ -189,6 +187,9 @@ function jump_url_location(engine, word, url) {
     else if (word === "kw@png" || word === "kw@icon" || word === "@png" || word === "@icon"){
         url = "https://www.flaticon.com/";
         window.location.replace(url);
+    }
+    else if (word === "kw@hyperos" || word === "@hyperos"){
+        window.location.replace("./?route=docs&name=0.HyperOS新手机设置.tud");
     }
 
     // 3-匹配搜索引擎
@@ -347,55 +348,15 @@ function jump_search_engine(state) {
         s_update_history(word); // 更新历史
     }
 
-    if (!engine){
-        let search_eq = view.get_data("search__eq");
-        search_eq = 1*search_eq;
-
-        if (search_eq === 0){
-            engine = "bing";
-        }
-        else if (search_eq === 1){
-            engine = "baidu";
-        }
-        else if (search_eq === 2){
-            engine = "toutiao";
-        }
-        else if (search_eq === 3){
-            engine = "google";
-        }
-        else if (search_eq === 4){
-            engine = "duckduckgo";
-        }
-        else {
-            engine = "bing";
-        }
-
-        view.log([word, engine, search_eq]);
-    }else {
-        view.log([engine]);
-    }
+    if (!engine){engine = "bing";}
     jump_url_location(engine, word, url);
 }
 
-
-// 复制文字
-// let clipboard = new Clipboard('.copy-txt-btn');
-// clipboard.on('success', function(e) {
-//     view.info('Action:', e.action);
-//     view.info('Text:', e.text);
-//     view.info('Trigger:', e.trigger);
-//     view.notice_txt("已复制");
-//     e.clearSelection();
-// });
-// clipboard.on('error', function(e) {
-//     view.error('Action:', e.action);
-//     view.error('Trigger:', e.trigger);
-//     view.notice_txt("复制失败！");
-//     try {call_func();}catch (e){}
-// });
-
-
 function start_page(e) {
     view.log(e);
+    jump_search_engine();
+}
+
+function show_page(){
     jump_search_engine();
 }

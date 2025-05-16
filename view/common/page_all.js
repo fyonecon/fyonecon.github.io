@@ -109,26 +109,7 @@ function jump_to_url_location(engine, word) {
 }
 // 开始搜索
 function jump_to_search_engine(engine, word) {
-    if (!engine){ // 初始值
-        let search_eq = view.get_data(app_class+"search_index");
-        search_eq = 1*search_eq;
-        if (search_eq === 0){
-            engine = "bing";
-        }
-        else if (search_eq === 1){
-            engine = "baidu";
-        }
-        else if (search_eq === 2){
-            engine = "google";
-        }
-        else if (search_eq === 3){
-            engine = "duckduckgo";
-        }
-        else {
-            engine = "bing";
-        }
-    }
-    view.log([word, engine]);
+    if (!engine){engine = "bing";}
     jump_to_url_location(engine, word).then(r => {});
 }
 
