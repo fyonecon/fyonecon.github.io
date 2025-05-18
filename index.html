@@ -53,7 +53,8 @@
                         link.setAttribute("href", depend_css_array[i] + clear_cache);
                         link.setAttribute("rel", "stylesheet");
                         head.appendChild(link);
-                        link.onload = function () {
+                        link.onload = function (e) {
+                            that.CacheDoc(depend_css_array[i], "depend-css-"+i, e.currentTarget.document);
                             resolve(i);
                         };
                     });
@@ -81,7 +82,8 @@
                         }else {
                             script.setAttribute("src", file + clear_cache);
                             head.appendChild(script);
-                            script.onload = function () {
+                            script.onload = function (e) {
+                                that.CacheDoc(file, cache_key, e.currentTarget.document);
                                 resolve(j);
                             };
                         }
@@ -100,7 +102,8 @@
                     }else {
                         script.setAttribute("src", file + clear_cache);
                         head.appendChild(script);
-                        script.onload = function () { // Loaded Depend
+                        script.onload = function (e) { // Loaded Depend
+                            that.CacheDoc(file, cache_key, e.currentTarget.document);
                             document.getElementById("loading-div").classList.add("hide");
                             document.getElementById("loading-div").classList.remove("click-refresh");
                         };
@@ -110,6 +113,10 @@
                 });
             },
             GetData: function (key){ // 获取本地localstorage
+                return localStorage.getItem(key);
+            },
+            SetData: function (key, value){ // 新增或更新数据
+                localStorage.setItem(key,value);
                 return localStorage.getItem(key);
             },
             DelData: function (key){ // 删除本地localstorage
@@ -156,6 +163,21 @@
                 let that = this;
                 if (!href){href=window.location.href}
                 return href.replace("https", "http");
+            },
+            CacheDoc: function (file, key, doc){ // 将文档缓存在local
+                let that = this;
+                // 判断是否需要更新
+                // let timeout = 24*60*60; // s
+                // let now_time = Math.floor((new Date()).getTime()/1000);
+                // let cache_doc_timeout_key = app_class+"cache_doc_timeout";
+                // let cache_doc_timeout = that.GetData(cache_doc_timeout_key)*1;
+                // if (now_time-cache_doc_timeout>timeout){ // 过期
+                //     //console.log("更新", [file, key, cache_doc_timeout, now_time, timeout]);
+                //     // that.SetData(cache_doc_timeout_key, now_time);
+                //     // that.SetData(key, doc);
+                // }else{
+                //     //console.log("不更新", [file, key, cache_doc_timeout, now_time, timeout]);
+                // }
             },
         };
     </script>

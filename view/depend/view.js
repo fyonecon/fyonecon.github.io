@@ -221,7 +221,10 @@ const view = {
                     // script.setAttribute("type", "module");
                     try {
                         head.appendChild(script);
-                        script.onload = function () {resolve(i); };
+                        script.onload = function (e) {
+                            // index_func.CacheDoc(js_src_array[i], that.md5(js_src_array[i]), e.currentTarget.document);
+                            resolve(i);
+                        };
                     }catch (e){
                         console.log("js文件拉取错误：", e);
                         resolve(i);
@@ -274,6 +277,9 @@ const view = {
                 link.setAttribute("href",css_src_array[i] + "?" + page_time);
                 link.setAttribute("rel", "stylesheet");
                 head.appendChild(link);
+                link.onload = function (e){
+                    // index_func.CacheDoc(css_src_array[i], that.md5(css_src_array[i]), e.currentTarget.document);
+                };
             }
             //
             had_onload++;
@@ -498,6 +504,7 @@ const view = {
         return localStorage.clear();
     },
     data_timeout_state: function (key, timeout_s, [yes_timeout_update_state, no_timeout_update_state], call_func){ // s，某个键是否已经过期，模仿cookie过期。
+        let that = this;
         // view.data_timeout_state(key, 有效时常s, [是否立即更新“已过期”时间, 是否立即更新“未过期”时间],function (state){
         //             if (state){ // 已过期，证明不经常用
         //                 //
@@ -506,17 +513,17 @@ const view = {
         //             }
         //         });
         let timer_key = key+"_data_time";
-        let before_time = view.get_data(timer_key)*1;
-        let now_time = view.time_s();
+        let before_time = that.get_data(timer_key)*1;
+        let now_time = that.time_s();
         if (((now_time - before_time) <= timeout_s*1) || before_time===0 ) { // 未过期
             if (no_timeout_update_state){ // 更新日期
-                view.set_data(timer_key, now_time);
+                that.set_data(timer_key, now_time);
             }
             call_func(0, [key, timeout_s, now_time - before_time, now_time, before_time]);
         }else{ // 已过期
             // 是否更新新值
             if (yes_timeout_update_state){ // 更新日期
-                view.set_data(timer_key, now_time);
+                that.set_data(timer_key, now_time);
             }
             call_func(1, [key, timeout_s, now_time - before_time, now_time, before_time]);
         }

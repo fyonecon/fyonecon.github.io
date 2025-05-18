@@ -137,6 +137,9 @@ function depend_pages(){
                 link.setAttribute("href", cdn_page_file + page_public_file.css[i] + "?" + page_time);
                 link.setAttribute("rel", "stylesheet");
                 head.appendChild(link);
+                link.onload = function (e){
+                    // index_func.CacheDoc(css_src_array[i], "public-css-"+i, e.currentTarget.document);
+                };
             }
 
             // route公共js
@@ -155,7 +158,10 @@ function depend_pages(){
                     }else {
                         script.setAttribute("src", cdn_page_file + page_public_file.js[i] + "?" + page_time);
                         head.appendChild(script);
-                        script.onload = function () {resolve(i); };
+                        script.onload = function (e) {
+                            // index_func.CacheDoc(file, cache_key, e.currentTarget.document);
+                            resolve(i);
+                        };
                     }
                 });
                 route_js_all.push(the_p);
@@ -173,6 +179,9 @@ function depend_pages(){
                 link.setAttribute("href", cdn_page_file + page_file.css[i] +"?"+ page_time);
                 link.setAttribute("rel", "stylesheet");
                 head.appendChild(link);
+                link.onload = function (e){
+                    // index_func.CacheDoc(css_src_array[i], "page-css-"+i, e.currentTarget.document);
+                };
             }
 
             // page html
@@ -237,7 +246,8 @@ function depend_pages(){
                     }else {
                         script.setAttribute("src", cdn_page_file + page_file.js[i] + "?" + page_time);
                         head.appendChild(script);
-                        script.onload = function () {
+                        script.onload = function (e) {
+                            // index_func.CacheDoc(file, cache_key, e.currentTarget.document);
                             resolve(i);
                         };
                     }
@@ -320,7 +330,10 @@ function depend_pages(){
                 }else{
                     script.setAttribute("src", cdn_page_file + depend_load_file.js[i]+"?" + page_time);
                     head.appendChild(script);
-                    script.onload = function () {resolve(i); };
+                    script.onload = function (e) {
+                        // index_func.CacheDoc(file, cache_key, e.currentTarget.document);
+                        resolve(i);
+                    };
                 }
             });
             js_all.push(the_p);
@@ -373,7 +386,7 @@ function depend_pages(){
     //
     if (block_wechat && !view.is_local_ipv4() && (view.is_weixin() || view.is_qq() || view.is_dingding())){
         view.title("😅");
-        view.alert_txt("本网站禁止在 微信、QQ、钉钉 中打开。<br/>请使用外部浏览器。", "long");
+        view.alert_txt("本网站禁止在「微信、QQ、钉钉」中打开。<br/>请使用外部浏览器。", "long");
     }else {
         if (!window.localStorage || !window.indexedDB || navigator.webdriver){
             view.title("😅");
