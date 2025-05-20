@@ -307,15 +307,15 @@ function jump_url_location(engine, word, url) { // 增补关键词
             url = url+ word;
             name = "icon图标";
         }
-        else if (engine === "zh_en"){
-            url = "https://fanyi.baidu.com/translate#zh/en/";
+        else if (engine === "android_cn"){
+            url = "https://h5.appstore.vivo.com.cn/#/result?keyfrom=2&keyword=";
             url = url + word ;
-            name = "中英翻译";
+            name = "中国安卓应用";
         }
-        else if (engine === "en_zh"){
-            url = "https://fanyi.baidu.com/translate#en/zh/";
+        else if (engine === "android_gl"){
+            url = "https://www.apk20.com/search/";
             url = url + word ;
-            name = "英中翻译";
+            name = "国际安卓应用";
         }
 
         //

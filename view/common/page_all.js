@@ -51,6 +51,14 @@ const search_data_default = [
     //     "engine": "douyin",
     // },
     {
+        "name": "中国安卓应用",
+        "engine": "android_cn",
+    },
+    // {
+    //     "name": "国际安卓应用",
+    //     "engine": "android_gl",
+    // },
+    {
         "name": "Icon Images",
         "engine": "icons",
     },
