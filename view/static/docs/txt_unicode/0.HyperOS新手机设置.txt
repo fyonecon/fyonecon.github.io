@@ -169,7 +169,7 @@ adb shell pm uninstall --user 0 com.mobiletools.systemhelper	#智能系统优化
 <br/>
 adb shell pm uninstall --user 0 com.miui.daemon		#系统质量服务（匿名数据收集）
 <br/>
-adb shell pm uninstall --user 0 com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活相关）
+###adb shell pm uninstall --user 0 com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活相关）
 <br/>
 // 小米服务
 <br/>
@@ -338,7 +338,7 @@ adb shell cmd package install-existing com.xiaomi.xmsf	#小米服务
 <br/>
 adb shell cmd package install-existing com.android.updater	#小米系统更新
 <br/>
-#adb shell cmd package install-existing com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活相关）
+adb shell cmd package install-existing com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活相关）
 <br/>
 adb shell cmd package install-existing com.miui.securitycenter     #安全服务（无界面，管理应用权限、应电池、应用列表、隐藏应用、应用联网）
 <br/>
@@ -369,57 +369,94 @@ adb push ../android_backup/OS/RedmiNote14Pro-CN-malachite-ota_full-OS2.0.10.0.VO
 ============================
 <br/>
 <br/>
-一次执行多条adb shell指令（全部复制进入终端即可）:
+1️⃣一次执行多条adb shell指令（全部复制进入终端即可）:
 <br/>
 <br/>
-adb push ../android_backup/Files/铃声.zip /sdcard/Documents/;<br/>
-adb push ../android_backup/Files/APK.zip /sdcard/Documents/;<br/>
-adb push ../android_backup/OS/RedmiNote14Pro-CN-malachite-ota_full-OS2.0.10.0.VOOCNXM-user-15.0-13718ddde6.zip /sdcard/Documents/;<br/>
+adb shell pm uninstall --user 0 com.android.browser;
+adb shell pm uninstall --user 0 com.miui.yellowpage;
+adb shell pm uninstall --user 0 com.miui.hybrid;
+adb shell pm uninstall --user 0 com.miui.analytics;
+adb shell pm uninstall --user 0 com.miui.systemAdSolution;
+adb shell pm uninstall --user 0 com.miui.guardprovider;
+adb shell pm uninstall --user 0 com.miui.bugreport;
+adb shell pm uninstall --user 0 com.miui.securityadd;
+adb shell pm uninstall --user 0 com.xiaomi.gamecenter.sdk.service;
+adb shell pm uninstall --user 0 com.xiaomi.gamecenter;
+adb shell pm uninstall --user 0 com.xiaomi.macro;
+
+adb shell pm uninstall --user 0 com.xiaomi.joyose;
+adb shell pm uninstall --user 0 com.xiaomi.mtb;
+adb shell pm uninstall --user 0 com.mobiletools.systemhelper;
+adb shell pm uninstall --user 0 com.miui.daemon;
+
+adb shell pm uninstall --user 0 com.miui.miservice;
+adb shell pm uninstall --user 0 com.milink.service;
+adb shell pm uninstall --user 0 com.xiaomi.mi_connect_service;
+adb shell pm uninstall --user 0 com.xiaomi.ab;
+adb shell pm uninstall --user 0 com.miui.phrase;
+adb shell pm uninstall --user 0 com.miui.contentcatcher;
+adb shell pm uninstall --user 0 com.xiaomi.metoknlp;
+adb shell pm uninstall --user 0 com.xiaomi.location.fused;
+adb shell pm uninstall --user 0 com.xiaomi.payment;
+adb shell pm uninstall --user 0 com.unionpay.tsmservice.mi;
+adb shell pm uninstall --user 0 com.wapi.wapicertmanager;
+adb shell pm uninstall --user 0 com.miui.thirdappassistant;
+adb shell pm uninstall --user 0 com.android.adservices.api;
+adb shell pm uninstall --user 0 com.miui.mishare.connectivity;
+adb shell pm uninstall --user 0 com.miui.nextpay;
+adb shell pm uninstall --user 0 com.android.healthconnect.controller;
+adb shell pm uninstall --user 0 com.google.android.configupdater;
+adb shell pm uninstall --user 0 com.miui.touchassistant;
+adb shell pm uninstall --user 0 com.miui.contentextension;
+adb shell pm uninstall --user 0 com.miui.accessibility;
+adb shell pm uninstall --user 0 com.miui.mediaviewer;
+
+adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi;
+adb shell pm uninstall --user 0 com.miui.securitycenter.securitycenter_phone_overlay.config.overlay;
+adb shell pm uninstall --user 0 com.google.android.webview;
+adb shell pm uninstall --user 0 com.google.android.webview;
+adb shell pm uninstall --user 0 com.android.quicksearchbox;
+
+adb shell pm uninstall --user 0 com.xiaomi.aicr;
+adb shell pm uninstall --user 0 com.xiaomi.aireco;
+adb shell pm uninstall --user 0 com.xiaomi.aiasst.vision;
+adb shell pm uninstall --user 0 com.xiaomi.scanner;
+adb shell pm uninstall --user 0 com.xiaomi.aiasst.service;
+
+adb shell pm uninstall --user 0 com.miui.greenguard;
+adb shell pm uninstall --user 0 com.miui.cloudbackup;
+adb shell pm uninstall --user 0 com.miui.cloudservice;
+adb shell pm uninstall --user 0 com.miui.micloudsync;
+adb shell pm uninstall --user 0 com.xiaomi.account;
+adb shell pm uninstall --user 0 com.xiaomi.xmsf;
+adb shell pm uninstall --user 0 com.android.updater;
+
+adb push ../android_backup/Files/铃声.zip /sdcard/Documents/;
+adb push ../android_backup/Files/APK.zip /sdcard/Documents/;
+
+adb shell pm uninstall --user 0 com.miui.settings.rro.device.hide.statusbar.overlay;
+adb shell pm uninstall --user 0 com.miui.settings.rro.device.systemui.overlay;
+adb shell pm uninstall --user 0 com.miui.settings.rro.device.type.overlay;
+adb shell pm uninstall --user 0 com.android.internal.systemui.navbar.threebutton;
+adb shell pm uninstall --user 0 com.miui.qr;
+adb shell pm uninstall --user 0 com.android.traceur;
+
+adb reboot;
+
 <br/>
-adb shell pm uninstall --user 0 com.android.browser;<br/>
-adb shell pm uninstall --user 0 com.miui.yellowpage;<br/>
-adb shell pm uninstall --user 0 com.miui.hybrid;<br/>
-adb shell pm uninstall --user 0 com.miui.analytics;<br/>
-adb shell pm uninstall --user 0 com.miui.systemAdSolution;<br/>
-adb shell pm uninstall --user 0 com.miui.guardprovider;<br/>
-adb shell pm uninstall --user 0 com.miui.bugreport;<br/>
-adb shell pm uninstall --user 0 com.miui.securityadd;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.gamecenter.sdk.service;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.gamecenter;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.macro;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.joyose;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.mtb;<br/>
-adb shell pm uninstall --user 0 com.mobiletools.systemhelper;<br/>
-adb shell pm uninstall --user 0 com.miui.daemon;<br/>
-adb shell pm uninstall --user 0 com.miui.powerkeeper;<br/>
-adb shell pm uninstall --user 0 com.miui.miservice;<br/>
-adb shell pm uninstall --user 0 com.milink.service;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.mi_connect_service;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.ab;<br/>
-adb shell pm uninstall --user 0 com.miui.phrase;<br/>
-adb shell pm uninstall --user 0 com.miui.contentcatcher;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.metoknlp;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.payment;<br/>
-adb shell pm uninstall --user 0 com.unionpay.tsmservice.mi;<br/>
-adb shell pm uninstall --user 0 com.wapi.wapicertmanager;<br/>
-adb shell pm uninstall --user 0 com.miui.thirdappassistant;<br/>
-adb shell pm uninstall --user 0 com.android.adservices.api;<br/>
-adb shell pm uninstall --user 0 com.miui.mishare.connectivity;<br/>
-adb shell pm uninstall --user 0 com.miui.nextpay;<br/>
-adb shell pm uninstall --user 0 com.android.healthconnect.controller;<br/>
-adb shell pm uninstall --user 0 com.google.android.configupdater;<br/>
-adb shell pm uninstall --user 0 com.miui.mediaviewer;<br/>
-adb shell pm uninstall --user 0 com.android.updater;<br/>
-adb shell pm uninstall --user 0 com.android.quicksearchbox;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.aicr;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.aireco;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.aiasst.vision;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.scanner;<br/>
-adb shell pm uninstall --user 0 com.xiaomi.aiasst.service;<br/>
-adb shell pm uninstall --user 0 com.miui.cloudbackup;<br/>
-adb shell pm uninstall --user 0 com.miui.cloudservice;<br/>
-adb shell pm uninstall --user 0 com.miui.micloudsync;<br/>
-adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi;<br/>
+<br/>
+2️⃣设置完成后、Google Play安装后，将最后的垃圾应用卸载掉：
+<br/>
+
+adb shell pm uninstall --user 0 com.android.contacts;
+adb shell pm uninstall --user 0 com.android.mms;
+adb shell pm uninstall --user 0 com.android.thememanager;
+adb shell pm uninstall --user 0 com.xiaomi.market;
+adb shell pm uninstall --user 0 com.android.providers.downloads;
+
+adb reboot;
+
+<br/>
 <br/>
 ============================
 <br/>
