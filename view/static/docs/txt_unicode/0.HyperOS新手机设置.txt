@@ -1,6 +1,6 @@
 <div class="blue">《小米手机系统优化对照表及说明》</div>
 <br/>
-（2025-05-16更新）
+（2025-05-20更新）
 <br/>
 <br/>
 ============================
@@ -15,20 +15,18 @@
 <div class="red">
 4️⃣如下情况会卡米，不要操作：
 <br/>
-#com.android.htmlviewer HTML查看器不要卸载；
+com.android.htmlviewer HTML查看器不要卸载；
 <br/>
-#com.miui.packageinstaller 应用包管理器不要卸载；
+com.miui.packageinstaller 应用包管理器不要卸载；
 <br/>
-不要打开深色模式设置的“自动切换深色模式”，会无限重启（直接关闭“自动切换深色模式”，或者设为“自定义时间段”）。
+不要打开深色模式设置的“自动切换深色模式”，会无限重启（直接关闭“自动切换深色模式”<“自动”必挂机>，或者设为“自定义时间段”）。
 <br/>
 </div>
 5️⃣ 尽量使用Win、Mac的ADB环境（下载Win或Mac的ADB工具：https://developer.android.google.cn/tools/releases/platform-tools?hl=zh-cn ），不要使用手机端ADB软件；
 <br/>
 6️⃣ 澎湃2比澎湃1好用，推荐澎湃2；
 <br/>
-7️⃣ 虚拟内存可以关闭或只设置为扩展4G，因为使用感知不强；
-<br/>
-8️⃣ 本人在使用的可装裤兜便携充电宝（67.9元 10000mAh 自带线 22.5W）。
+7️⃣ 虚拟内存可以关闭或只设置为扩展4G，因为使用感知不强。
 <br/>
 <br/>
 ============================
@@ -86,26 +84,28 @@ adb push ../android_backup/Files/APK.zip /sdcard/Documents/
 （到文件里面解压 铃声.zip 到 铃声目录 ，APK.zip到本级目录；
 设置铃声<电话铃声、通知铃声、关闭锁屏声>，设置触感大小，
 安装apk（<br/>
-LibCheck< https://www.downkuai.com/android/147630.html >、
+LibCheck< <a class="blue" href="https://www.downkuai.com/android/147630.html" target="_blank">https://www.downkuai.com/android/147630.html</a> >、
 <br/>
-Devcheck< https://www.ddooo.com/softdown/224201.htm >、
+Devcheck< <a class="blue" href="https://www.ddooo.com/softdown/224201.htm" target="_blank">https://www.ddooo.com/softdown/224201.htm</a> >、
 <br/>
-APKExport< https://leftshine.gitlab.io/apkexport/ >）、
+APKExport< <a class="blue" href="https://leftshine.gitlab.io/apkexport/" target="_blank">https://leftshine.gitlab.io/apkexport/</a> >、
 <br/>
-Gboard输入法< http://www.jxdown.com/soft/42906.html >）、
+Gboard输入法< <a class="blue" href="http://www.jxdown.com/soft/42906.html" target="_blank">http://www.jxdown.com/soft/42906.html</a> >、
 <br/>
-Edge浏览器< http://www.jxdown.com/soft/20238.html >）、
+Edge浏览器< <a class="blue" href="http://www.jxdown.com/soft/20238.html" target="_blank">http://www.jxdown.com/soft/20238.html</a> >、
 <br/>
-微信输入法< https://z.weixin.qq.com/ >）、
+微信输入法< <a class="blue" href="https://z.weixin.qq.com/" target="_blank">https://z.weixin.qq.com/</a> >、
 <br/>
-微信< https://weixin.qq.com/ >）、
+微信< <a class="blue" href="https://weixin.qq.com/" target="_blank">https://weixin.qq.com/</a> >
+<br/>
+）
 <br/>
 < 顺便关闭“com.miui.packageinstaller 应用包管理器”到广告和安全检测功能 >
 <br/>
 ）
 <br/>
 <br/>
-17. 用devcheck（下载：https://www.ddooo.com/softdown/224201.htm）设置：
+17. 用devcheck（下载：<a class="blue" href="https://www.ddooo.com/softdown/224201.htm" target="_blank">https://www.ddooo.com/softdown/224201.htm</a>）设置：
 <br/>
 “com.android.htmlviewer HTML查看器”权限，关闭通讯录权限；
 <br/>
@@ -225,6 +225,8 @@ adb shell pm uninstall --user 0 com.miui.mediaviewer	#媒体查看器(MXPlayer�
 <br/>
 ###adb shell pm uninstall --user 0 com.miui.securitycenter	#安全服务（无界面，管理应用权限、应电池、应用列表、隐藏应用、应用联网）
 <br/>
+adb shell pm uninstall --user 0 com.miui.securitycenter.securitycenter_phone_overlay.config.overlay  #(不知道)
+<br/>
 ###adb shell pm uninstall --user 0 com.android.mms    #短信（谷歌短信App代替）
 <br/>
 ###adb shell pm uninstall --user 0 com.android.contacts    #电话、通讯录、营业厅（谷歌电话App、联系人App代替）
@@ -267,7 +269,7 @@ adb shell pm uninstall --user 0 com.miui.greenguard	   #家人守护
 <br/>
 #adb shell pm uninstall --user 0 com.miui.micloudsync	#小米云同步（仅同步“联系人、通话、短信、安全服务、Wi-Fi”，可以用Google服务代替。）
 <br/>
-#adb shell pm uninstall --user 0 com.xiaomi.account	#小米账号（绑定任意国家ID：防止手机刷机，启用小爱同学，启用小米运动）
+###adb shell pm uninstall --user 0 com.xiaomi.account	#小米账号（绑定任意国家ID：防止手机刷机，启用小爱同学，启用小米运动）
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.xmsf		#小米服务框架（MiPush、设备统计相关、用户大数据分析等）
 <br/>
