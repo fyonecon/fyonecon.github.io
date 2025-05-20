@@ -22,10 +22,10 @@ const search_data_default = [
         "name": "Yahoo!",
         "engine": "yahoo",
     },
-    {
-        "name": "DuckDuckGo",
-        "engine": "duckduckgo",
-    },
+    // {
+    //     "name": "DuckDuckGo",
+    //     "engine": "duckduckgo",
+    // },
     {
         "name": "Yandex",
         "engine": "yandex",
@@ -66,10 +66,10 @@ const search_data_default = [
         "name": "IP & Domain",
         "engine": "ipdomain",
     },
-    {
-        "name": "Whois",
-        "engine": "whois",
-    },
+    // {
+    //     "name": "Whois",
+    //     "engine": "whois",
+    // },
 
 ];
 
