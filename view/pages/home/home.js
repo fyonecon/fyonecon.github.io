@@ -621,10 +621,10 @@ function start_page(info) {
             $(".qr-div-div").removeClass("hide");
         }, "qr-div");
         // 动态创建manifest
-        let manifest = document.createElement("link");
-        manifest.setAttribute("rel","manifest");
-        manifest.setAttribute("href",cdn_page_file+"manifest-purehome.json?"+page_time);
-        document.head.appendChild(manifest);
+        // let manifest = document.createElement("link");
+        // manifest.setAttribute("rel","manifest");
+        // manifest.setAttribute("href",cdn_page_file+"manifest-purehome.json?"+page_time);
+        // document.head.appendChild(manifest);
     }
 
     // 木鱼
