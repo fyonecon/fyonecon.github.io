@@ -57,6 +57,14 @@ function jump_url_location(engine, word, url) { // 增补关键词
     try {word = decodeURIComponent(word);}catch (e) {}
     const search_url= "http://"+window.location.host+assets_html_dir_name+assets_html_index_name;
 
+    // 校验时间戳
+    let url_timeout_state = view.url_timeout_decode("search", view.get_url_param("", "url_timeout"));
+    // if (url_timeout_state){
+    //     //
+    // }else{
+    //     window.location.replace("./?error=原始链接已过期");
+    // }
+
     // 是链接就直接打开, http/https开头
     if (view.is_url(word)){
         view.hide_loading();
@@ -66,44 +74,70 @@ function jump_url_location(engine, word, url) { // 增补关键词
 
     // 匹配展示本网站文字
     else if (word === "kw@bing" || word === "@bing" || word === "@必应"){
-        view.hide_loading();
-        view.title("请查看 kw 对应的内容");
-
-        let show_txt = search_url + "?route=search&engine=bing&history=yes&word=%s";
-        $(".match-kw-span-msg").html("自定义 PH-必应 搜索引擎");
-        $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
+        if (url_timeout_state){
+            view.hide_loading();
+            view.title("请查看 kw 对应的内容");
+            let show_txt = search_url + "?route=search&engine=bing&history=yes&word=%s";
+            $(".match-kw-span-msg").html("自定义 PH-必应 搜索引擎");
+            $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
+        }else{
+            window.location.replace("./?error=原始链接已过期");
+        }
     }
     else if (word === "kw@baidu" || word === "@baidu" || word === "@百度"){
-        view.hide_loading();
-        view.title("请查看 kw 对应的内容");
-
-        let show_txt = search_url + "?route=search&engine=baidu&history=no&word=%s";
-        $(".match-kw-span-msg").html("自定义 PH-百度 搜索引擎：");
-        $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
+        if (url_timeout_state){
+            view.hide_loading();
+            view.title("请查看 kw 对应的内容");
+            let show_txt = search_url + "?route=search&engine=baidu&history=no&word=%s";
+            $(".match-kw-span-msg").html("自定义 PH-百度 搜索引擎：");
+            $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
+        }else{
+            window.location.replace("./?error=原始链接已过期");
+        }
     }
     else if (word === "kw@sogou" || word === "kw@sougou" || word === "@sogou" || word === "@sougou" || word === "@搜狗"){
-        view.hide_loading();
-        view.title("请查看 kw 对应的内容");
-
-        let show_txt = search_url + "?route=search&engine=sogou&history=no&word=%s";
-        $(".match-kw-span-msg").html("自定义 PH-搜狗 搜索引擎：");
-        $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
+        if (url_timeout_state){
+            view.hide_loading();
+            view.title("请查看 kw 对应的内容");
+            let show_txt = search_url + "?route=search&engine=sogou&history=no&word=%s";
+            $(".match-kw-span-msg").html("自定义 PH-搜狗 搜索引擎：");
+            $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
+        }else{
+            window.location.replace("./?error=原始链接已过期");
+        }
     }
     else if (word === "kw@yandex" || word === "@yandex"){
-        view.hide_loading();
-        view.title("请查看 kw 对应的内容");
-
-        let show_txt = search_url + "?route=search&engine=yandex&history=yes&word=%s";
-        $(".match-kw-span-msg").html("自定义 PH-Yandex 搜索引擎：");
-        $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
+        if (url_timeout_state){
+            view.hide_loading();
+            view.title("请查看 kw 对应的内容");
+            let show_txt = search_url + "?route=search&engine=yandex&history=yes&word=%s";
+            $(".match-kw-span-msg").html("自定义 PH-Yandex 搜索引擎：");
+            $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
+        }else{
+            window.location.replace("./?error=原始链接已过期");
+        }
+    }
+    else if (word === "kw@yahoo" || word === "@yahoo"){
+        if (url_timeout_state){
+            view.hide_loading();
+            view.title("请查看 kw 对应的内容");
+            let show_txt = search_url + "?route=search&engine=yahoo&history=yes&word=%s";
+            $(".match-kw-span-msg").html("自定义 PH-Yahoo 搜索引擎：");
+            $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
+        }else{
+            window.location.replace("./?error=原始链接已过期");
+        }
     }
     else if (word === "kw@google" || word === "@google" || word === "@谷歌"){
-        view.hide_loading();
-        view.title("请查看 kw 对应的内容");
-
-        let show_txt = search_url + "?route=search&engine=google&history=yes&word=%s";
-        $(".match-kw-span-msg").html("自定义 PH-Google 搜索引擎：");
-        $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
+        if (url_timeout_state){
+            view.hide_loading();
+            view.title("请查看 kw 对应的内容");
+            let show_txt = search_url + "?route=search&engine=google&history=yes&word=%s";
+            $(".match-kw-span-msg").html("自定义 PH-Google 搜索引擎：");
+            $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
+        }else{
+            window.location.replace("./?error=原始链接已过期");
+        }
     }
 
     //
@@ -146,23 +180,27 @@ function jump_url_location(engine, word, url) { // 增补关键词
 
     // 触发
     else if (word === "kw@xdy" || word === "kw@jyp" || word === "@xdy" || word === "@jyp"){
-        view.hide_loading();
-        let white_data = view.get_data(app_class+"kw@key=kws.js.0"); // 格式 @key=test@value=123
-        if ((view.is_mobile_screen() && view.is_user_screen()) || (view.is_user_screen() && view.is_pc_pwa()) || (view.is_mobile_screen() && view.is_mobile_pwa()) || white_data === "OK"){
-            view.title(" 😂教育片 ");
-            $(".match-kw-span-msg").html("正在加载...");
-            view.write_js([cdn_page_file + ".cache/kws.js?cache="+view.time_date("YmdHi")], function (state){
-                if (state){
-                    $(".match-kw-span-msg").html(kws_title);
-                    $(".match-kw-span-txt").html(kws_dom);
-                }else{
-                    $(".match-kw-span-msg").html("Error：");
-                    $(".match-kw-span-txt").html("kw.js文件未正确加载，详情请看log。");
-                }
-            });
+        if (url_timeout_state){
+            view.hide_loading();
+            let white_data = view.get_data(app_class+"kw@key=kws.js.0"); // 格式 @key=test@value=123
+            if ((view.is_mobile_screen() && view.is_user_screen()) || (view.is_user_screen() && view.is_pc_pwa()) || (view.is_mobile_screen() && view.is_mobile_pwa()) || white_data === "OK"){
+                view.title(" 😂教育片 ");
+                $(".match-kw-span-msg").html("正在加载...");
+                view.write_js([cdn_page_file + ".cache/kws.js?cache="+view.time_date("YmdHi")], function (state){
+                    if (state){
+                        $(".match-kw-span-msg").html(kws_title);
+                        $(".match-kw-span-txt").html(kws_dom);
+                    }else{
+                        $(".match-kw-span-msg").html("Error：");
+                        $(".match-kw-span-txt").html("kw.js文件未正确加载，详情请看log。");
+                    }
+                });
+            }else{
+                view.title(" 😂··· ");
+                window.location.replace(app_url.jump_url+"&error=不支持口令");
+            }
         }else{
-            view.title(" 😂··· ");
-            window.location.replace(app_url.jump_url+"&error=不支持口令");
+            window.location.replace("./?error=原始链接已过期");
         }
     }
 
