@@ -229,6 +229,9 @@ function jump_url_location(engine, word, url) { // 增补关键词
     else if (word === "kw@hyperos" || word === "@hyperos"){
         window.location.replace("./?route=docs&name=0.HyperOS新手机设置.tud");
     }
+    else if (word === "kw@dumogu" || word === "@dumogu" || word === "@dumegu" || word === "@毒蘑菇" || word === "@毒蘑菇测试"){
+        window.location.replace("./dumogutest.html");
+    }
 
     // 3-匹配搜索引擎
     else {
