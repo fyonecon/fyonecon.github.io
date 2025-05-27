@@ -1,6 +1,6 @@
 <div class="blue">《小米手机系统优化对照表及说明》</div>
 <br/>
-（2025-05-20更新）
+（2025-05-27更新）
 <br/>
 <br/>
 ============================
@@ -19,7 +19,7 @@ com.android.htmlviewer HTML查看器不要卸载；
 <br/>
 com.miui.packageinstaller 应用包管理器不要卸载；
 <br/>
-不要打开深色模式设置的“自动切换深色模式”，会无限重启（直接关闭“自动切换深色模式”<“自动”必挂机>，或者设为“自定义时间段”）。
+com.xiaomi.metoknlp	网络位置不要卸载;
 <br/>
 </div>
 5️⃣ 尽量使用Win、Mac的ADB环境（下载Win或Mac的ADB工具：https://developer.android.google.cn/tools/releases/platform-tools?hl=zh-cn ），不要使用手机端ADB软件；
@@ -113,6 +113,8 @@ Edge浏览器< <a class="blue" href="http://www.jxdown.com/soft/20238.html" targ
 <br/>
 “com.android.providers.downloads 下载器”权限，关闭通讯录权限。
 <br/>
+“com.xiaomi.metoknlp 网络位置”权限，关闭通讯录权限。
+<br/>
 18. 设置-指纹与密码-锁屏密码、录入指纹
 <br/>
 18.1 设置-应用-应用锁-将“系统更新”加入到应用锁
@@ -169,7 +171,7 @@ adb shell pm uninstall --user 0 com.mobiletools.systemhelper	#智能系统优化
 <br/>
 adb shell pm uninstall --user 0 com.miui.daemon		#系统质量服务（匿名数据收集）
 <br/>
-###adb shell pm uninstall --user 0 com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活相关）
+###adb shell pm uninstall --user 0 com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活，后台保活设置）
 <br/>
 // 小米服务
 <br/>
@@ -183,11 +185,11 @@ adb shell pm uninstall --user 0 com.xiaomi.ab  #小米售后支持
 <br/>
 adb shell pm uninstall --user 0 com.miui.phrase  #常用语（无卵用）
 <br/>
-#adb shell pm uninstall --user 0 com.miui.contentcatcher	#应用扩展服务（也与广告有关）
+adb shell pm uninstall --user 0 com.miui.contentcatcher	#应用扩展服务（也与广告有关）
 <br/>
-adb shell pm uninstall --user 0 com.xiaomi.metoknlp	#网络位置（含有高德SDK）
+######adb shell pm uninstall --user 0 com.xiaomi.metoknlp	#网络位置（含有高德SDK，与深色模式的自动切换有关，卸载后如果深色模式选择“日出日落模式”则会卡米）
 <br/>
-###adb shell pm uninstall --user 0 com.xiaomi.location.fused	#融合位置服务（含有高德SDK，删除后有些软件到定位位置更新会变慢）
+######adb shell pm uninstall --user 0 com.xiaomi.location.fused	#融合位置服务（含有高德SDK，删除后有些软件到定位位置更新会变慢）
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.payment	#米币支付（含有银联SDK）
 <br/>
@@ -223,7 +225,7 @@ adb shell pm uninstall --user 0 com.miui.mediaviewer	#媒体查看器(MXPlayer�
 <br/>
 #adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi 	#搜狗输入法（微信输入法、GBoard输入法代替）
 <br/>
-###adb shell pm uninstall --user 0 com.miui.securitycenter	#安全服务（无界面，管理应用权限、应电池、应用列表、隐藏应用、应用联网）
+###adb shell pm uninstall --user 0 com.miui.securitycenter	#安全服务（无界面，管理应用权限与隐私、电池管理、应用列表、隐藏应用、应用联网）
 <br/>
 adb shell pm uninstall --user 0 com.miui.securitycenter.securitycenter_phone_overlay.config.overlay  #(不知道)
 <br/>
@@ -245,7 +247,7 @@ adb shell pm uninstall --user 0 com.android.quicksearchbox 	#桌面搜索
 <br/>
 // 小爱同学（人工智障，按需卸载）
 <br/>
-###adb shell pm uninstall --user 0 com.miui.voicetrigger  	#语音唤醒小爱，设置里面关闭小爱后再操作
+###adb shell pm uninstall --user 0 com.miui.voicetrigger  	#语音唤醒小爱
 <br/>
 ###adb shell pm uninstall --user 0 com.miui.voiceassist  	#小爱同学
 <br/>
@@ -269,9 +271,9 @@ adb shell pm uninstall --user 0 com.miui.greenguard	   #家人守护
 <br/>
 #adb shell pm uninstall --user 0 com.miui.micloudsync	#小米云同步（仅同步“联系人、通话、短信、安全服务、Wi-Fi”，可以用Google服务代替。）
 <br/>
-###adb shell pm uninstall --user 0 com.xiaomi.account	#小米账号（绑定任意国家ID：防止手机刷机，启用小爱同学，启用小米运动）
+###adb shell pm uninstall --user 0 com.xiaomi.account	#小米账号（绑定任意国家ID：防止手机刷机，启用小爱同学，启用小米运动，退出小米账号后可以删除）
 <br/>
-#adb shell pm uninstall --user 0 com.xiaomi.xmsf		#小米服务框架（MiPush、设备统计相关、用户大数据分析等）
+###adb shell pm uninstall --user 0 com.xiaomi.xmsf		#小米服务框架（微信消息、MiPush、设备统计相关、用户大数据分析等）
 <br/>
 adb shell pm uninstall --user 0 com.android.updater	#小米系统更新
 <br/>
@@ -326,7 +328,7 @@ adb shell cmd package install-existing com.android.contacts    #电话和通讯�
 <br/>
 adb shell cmd package install-existing com.miui.personalassistant  #桌面负一屏(小部件、智能助理)
 <br/>
-adb shell cmd package install-existing com.miui.securitycore  #应用双开、手机分身、边缘触控
+adb shell cmd package install-existing com.miui.securitycore  #系统功能服务组件（应用双开、手机分身、边缘触控）
 <br/>
 adb shell cmd package install-existing com.miui.cloudservice  #小米云服务
 <br/>
@@ -334,13 +336,15 @@ adb shell cmd package install-existing com.xiaomi.account	#小米账号
 <br/>
 adb shell cmd package install-existing com.miui.micloudsync  #小米云同步
 <br/>
-adb shell cmd package install-existing com.xiaomi.xmsf	#小米服务
+adb shell cmd package install-existing com.xiaomi.xmsf	#小米服务（微信消息、Mipush）
 <br/>
 adb shell cmd package install-existing com.android.updater	#小米系统更新
 <br/>
 adb shell cmd package install-existing com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活相关）
 <br/>
 adb shell cmd package install-existing com.miui.securitycenter     #安全服务（无界面，管理应用权限、应电池、应用列表、隐藏应用、应用联网）
+<br/>
+adb shell cmd package install-existing com.android.camera    #小米相机
 <br/>
 <br/>
 2️⃣ 给手机导入导出文件：
@@ -395,8 +399,6 @@ adb shell pm uninstall --user 0 com.xiaomi.mi_connect_service;
 adb shell pm uninstall --user 0 com.xiaomi.ab;
 adb shell pm uninstall --user 0 com.miui.phrase;
 adb shell pm uninstall --user 0 com.miui.contentcatcher;
-adb shell pm uninstall --user 0 com.xiaomi.metoknlp;
-adb shell pm uninstall --user 0 com.xiaomi.location.fused;
 adb shell pm uninstall --user 0 com.xiaomi.payment;
 adb shell pm uninstall --user 0 com.unionpay.tsmservice.mi;
 adb shell pm uninstall --user 0 com.wapi.wapicertmanager;
@@ -428,7 +430,6 @@ adb shell pm uninstall --user 0 com.miui.cloudbackup;
 adb shell pm uninstall --user 0 com.miui.cloudservice;
 adb shell pm uninstall --user 0 com.miui.micloudsync;
 adb shell pm uninstall --user 0 com.xiaomi.account;
-adb shell pm uninstall --user 0 com.xiaomi.xmsf;
 adb shell pm uninstall --user 0 com.android.updater;
 
 adb push ../android_backup/Files/铃声.zip /sdcard/Documents/;
