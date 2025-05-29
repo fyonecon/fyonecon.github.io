@@ -115,6 +115,10 @@ Edge浏览器< <a class="blue" href="http://www.jxdown.com/soft/20238.html" targ
 <br/>
 “com.xiaomi.metoknlp 网络位置”权限，关闭通讯录权限。
 <br/>
+“com.xiaomi.account 小米账号”权限，关闭通讯录、电话权限。
+<br/>
+“com.miui.home 系统桌面”权限，关闭通讯录、电话权限。
+<br/>
 18. 设置-指纹与密码-锁屏密码、录入指纹
 <br/>
 18.1 设置-应用-应用锁-将“系统更新”加入到应用锁
