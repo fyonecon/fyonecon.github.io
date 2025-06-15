@@ -32,7 +32,7 @@ com.xiaomi.metoknlp	网络位置不要卸载;
 ============================
 <br/>
 <br/>
-0. 断网，不插卡，不开Wi-Fi，不开蓝牙，设置-锁屏-自动锁屏时间设置为5min。不要打开深色模式设置的“自动切换深色模式”，会无限重启（直接关闭“自动切换深色模式”，或者设为“自定义时间段”）。
+0. 断网，不插卡，不开Wi-Fi，不开蓝牙，设置-锁屏-自动锁屏时间设置为5min。
 <br/>
 1. 设置-应用-卸载所有预装应用（除了运动、录音、日历）
 <br/>
@@ -227,9 +227,12 @@ adb shell pm uninstall --user 0 com.miui.mediaviewer	#媒体查看器(MXPlayer�
 <br/>
 // 手机基本功能（按需卸载）
 <br/>
-#adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi 	#搜狗输入法（微信输入法、GBoard输入法代替）
+###adb shell pm uninstall --user 0 com.miui.securitycenter	#安全服务（无界面、电池管理、应用列表、隐藏应用、应用联网）
+###adb shell pm uninstall --user 0 com.lbe.security.miui #MIUI权限管理（可用安卓自带权限管理代替）
 <br/>
-###adb shell pm uninstall --user 0 com.miui.securitycenter	#安全服务（无界面，管理应用权限与隐私、电池管理、应用列表、隐藏应用、应用联网）
+#adb shell pm uninstall --user 0 com.miui.core #MIUI SDK（提供一些系统级的API调用）
+<br/>
+#adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi 	#搜狗输入法（微信输入法、GBoard输入法代替）
 <br/>
 adb shell pm uninstall --user 0 com.miui.securitycenter.securitycenter_phone_overlay.config.overlay  #(不知道)
 <br/>
@@ -248,6 +251,8 @@ adb shell pm uninstall --user 0 com.miui.securitycenter.securitycenter_phone_ove
 adb shell pm uninstall --user 0 com.android.quicksearchbox 	#桌面搜索
 <br/>
 ###adb shell pm uninstall --user 0 com.miui.personalassistant 	#桌面负一屏（小部件、智能助理）
+<br/>
+#######adb shell pm uninstall --user 0 com.miui.home    #小米桌面（可以用第三方桌面替代，比如GooglePlay里面的“迷你桌面”。但是 最近任务、导航栏 消失）
 <br/>
 // 小爱同学（人工智障，按需卸载）
 <br/>
@@ -346,9 +351,15 @@ adb shell cmd package install-existing com.android.updater	#小米系统更新
 <br/>
 adb shell cmd package install-existing com.miui.powerkeeper 	#电量和性能（智能杀后台应用，后台保活相关）
 <br/>
-adb shell cmd package install-existing com.miui.securitycenter     #安全服务（无界面，管理应用权限、应电池、应用列表、隐藏应用、应用联网）
+adb shell cmd package install-existing com.miui.securitycenter     #安全服务（无界面、应电池、应用列表、隐藏应用、应用联网、手机名+Wi-Fi名+蓝牙名更改校验）
 <br/>
 adb shell cmd package install-existing com.android.camera    #小米相机
+<br/>
+adb shell cmd package install-existing com.miui.core #（系统SDK API）
+<br/>
+adb shell cmd package install-existing com.lbe.security.miui   #MIUI权限管理（可用安卓自带权限管理代替）
+<br/>
+adb shell cmd package install-existing com.miui.home   #小米桌面
 <br/>
 <br/>
 2️⃣ 给手机导入导出文件：
@@ -433,7 +444,6 @@ adb shell pm uninstall --user 0 com.miui.greenguard;
 adb shell pm uninstall --user 0 com.miui.cloudbackup;
 adb shell pm uninstall --user 0 com.miui.cloudservice;
 adb shell pm uninstall --user 0 com.miui.micloudsync;
-adb shell pm uninstall --user 0 com.xiaomi.account;
 adb shell pm uninstall --user 0 com.android.updater;
 
 adb push ../android_backup/Files/铃声.zip /sdcard/Documents/;
@@ -445,6 +455,10 @@ adb shell pm uninstall --user 0 com.miui.settings.rro.device.type.overlay;
 adb shell pm uninstall --user 0 com.android.internal.systemui.navbar.threebutton;
 adb shell pm uninstall --user 0 com.miui.qr;
 adb shell pm uninstall --user 0 com.android.traceur;
+adb shell pm uninstall --user 0 com.miui.carlink;
+adb shell pm uninstall --user 0 com.miui.systemui.overlay.devices.android;
+adb shell pm uninstall --user 0 com.miui.systemui.devices.overlay;
+adb shell pm uninstall --user 0 com.miui.core;
 
 adb reboot;
 
