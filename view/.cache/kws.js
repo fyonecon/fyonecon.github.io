@@ -14,8 +14,8 @@ function kws_show_list(){
         //2
         {
             show_lang: "all",
-            encode_title: "57,49,49,21507,29916,32593",
-            encode_href: "104,116,116,112,58,47,47,119,119,119,46,104,108,106,99,103,48,56,46,99,111,109"
+            encode_title: "57,49,49,29190,26009,32593",
+            encode_href: "104,116,116,112,115,58,47,47,57,49,49,98,108,48,51,46,99,111,109"
         },
         //3
         {
@@ -99,13 +99,13 @@ function kws_show_list(){
         },
         //16
         {
-            show_lang: "all",
+            show_lang: "en",
             encode_title: "12304,30005,25253,25628,32676,12305,20013,25991,25628,32034",
             encode_href: "104,116,116,112,115,58,47,47,116,46,109,101,47,115,111,117,115,117,111,51,51"
         },
         //17
         {
-            show_lang: "all",
+            show_lang: "en",
             encode_title: "12304,30005,25253,32676,12305,77,97,115,107,80,97,114,107,26641,27934",
             encode_href: "104,116,116,112,115,58,47,47,116,46,109,101,47,109,97,115,107,112,97,114,107,48,49"
         },
@@ -159,6 +159,6 @@ $(document).on("click", ".kws-a", function (){
     }, 200);
 });
 
-let kws_title = "<div style='width: calc(100% - 20px);'><div style='margin-bottom: 10px;'><span style='font-weight: 700;'>教育片 <i style='color: orangered;'>@jyp</i></span><br>内容仅供教育学习。<br>谨防网络赌博诈骗。</div><hr/><div style='margin-bottom: 10px;'>推荐 联通、电信 等网络。<br>推荐 Safari、Chrome、Edge 等浏览器。</div><hr/><div style='margin-bottom: 10px;'><span style='font-weight: 700;'>[ "+view.time_date("Y/m/d H:i")+" ]</span></div></div>";
+let kws_title = "<div style='width: calc(100% - 20px);'><div style='margin-bottom: 10px;'><span style='font-weight: 700;'>教育片 <i style='color: orangered;'>@jyp</i></span><br>内容仅供教育学习。<br>谨防网络赌博诈骗。</div><hr/><div style='margin-bottom: 10px;'>推荐 联通、电信 等网络。<br>推荐 Safari、Chrome、Edge、火狐 等浏览器。</div><hr/><div style='margin-bottom: 10px;'><span style='font-weight: 700;'>[ "+view.time_date("Y/m/d H:i")+" ]</span></div></div>";
 let kws_dom = `<hr/><div class="kws-show-btn select-none click font-blue font-text">展示列表</div><div class="clear"></div><hr/><div class="kws-show-list font-text hide"></div>
 <div class="clear"></div><br/><br/><br/>`;
