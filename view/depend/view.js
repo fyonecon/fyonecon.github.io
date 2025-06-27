@@ -2394,6 +2394,7 @@ const view = {
                 return false;
             }
         }catch (e) {
+            console.error(e);
             return false;
         }
     },

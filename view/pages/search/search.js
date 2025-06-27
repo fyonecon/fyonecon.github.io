@@ -62,7 +62,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
     // if (url_timeout_state){
     //     //
     // }else{
-    //     window.location.replace("./?route=home&error=原始链接已过期");
+    //     // 已过期
     // }
 
     // 是链接就直接打开, http/https开头
@@ -81,7 +81,11 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-必应 搜索引擎");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            window.location.replace("./?route=home&error=原始链接已过期");
+            view.alert_txt("原始链接已过期："+window.location.href, 10000);
+            console.log([url_timeout_state, window.location.href])
+            setTimeout(function (){
+                window.location.replace("./?route=home&error=原始链接已过期");
+            }, 10000);
         }
     }
     else if (word === "kw@baidu" || word === "@baidu" || word === "@百度"){
@@ -92,7 +96,10 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-百度 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            window.location.replace("./?route=home&error=原始链接已过期");
+            view.alert_txt("原始链接已过期："+window.location.href, 5000);
+            setTimeout(function (){
+                window.location.replace("./?route=home&error=原始链接已过期");
+            }, 3000);
         }
     }
     else if (word === "kw@sogou" || word === "kw@sougou" || word === "@sogou" || word === "@sougou" || word === "@搜狗"){
@@ -103,7 +110,10 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-搜狗 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            window.location.replace("./?route=home&error=原始链接已过期");
+            view.alert_txt("原始链接已过期："+window.location.href, 5000);
+            setTimeout(function (){
+                window.location.replace("./?route=home&error=原始链接已过期");
+            }, 3000);
         }
     }
     else if (word === "kw@yandex" || word === "@yandex"){
@@ -114,7 +124,10 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-Yandex 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            window.location.replace("./?route=home&error=原始链接已过期");
+            view.alert_txt("原始链接已过期："+window.location.href, 5000);
+            setTimeout(function (){
+                window.location.replace("./?route=home&error=原始链接已过期");
+            }, 3000);
         }
     }
     else if (word === "kw@yahoo" || word === "@yahoo"){
@@ -125,7 +138,10 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-Yahoo 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            window.location.replace("./?route=home&error=原始链接已过期");
+            view.alert_txt("原始链接已过期："+window.location.href, 5000);
+            setTimeout(function (){
+                window.location.replace("./?route=home&error=原始链接已过期");
+            }, 3000);
         }
     }
     else if (word === "kw@google" || word === "@google" || word === "@谷歌"){
@@ -136,7 +152,10 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-Google 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            window.location.replace("./?route=home&error=原始链接已过期");
+            view.alert_txt("原始链接已过期："+window.location.href, 5000);
+            setTimeout(function (){
+                window.location.replace("./?route=home&error=原始链接已过期");
+            }, 3000);
         }
     }
 
@@ -200,7 +219,10 @@ function jump_url_location(engine, word, url) { // 增补关键词
                 window.location.replace(app_url.jump_url+"&error=不支持口令");
             }
         }else{
-            window.location.replace("./?route=home&error=原始链接已过期");
+            view.alert_txt("原始链接已过期："+window.location.href, 5000);
+            setTimeout(function (){
+                window.location.replace("./?route=home&error=原始链接已过期");
+            }, 3000);
         }
     }
     // 触发2
@@ -226,7 +248,10 @@ function jump_url_location(engine, word, url) { // 增补关键词
                 window.location.replace(app_url.jump_url+"&error=不支持口令");
             }
         }else{
-            window.location.replace("./?route=home&error=原始链接已过期");
+            view.alert_txt("原始链接已过期："+window.location.href, 5000);
+            setTimeout(function (){
+                window.location.replace("./?route=home&error=原始链接已过期");
+            }, 3000);
         }
     }
 
