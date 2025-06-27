@@ -112,7 +112,7 @@ function jump_to_url_location(engine, word) {
         //     window.location.replace(search_url);
         //     return;
         // }
-        view.window_open(search_url, target);
+        setTimeout(function (){view.window_open(search_url, target);}, 50);
     });
 }
 // 开始搜索
