@@ -2389,12 +2389,11 @@ const view = {
             let mark_md5 = array[3];
             let mark = array[0]+"#@"+array[1]+"#@"+array[2];
             if (route === _route && mark_md5 === that.md5(mark)){
-                return len < timeout && len > 0;
+                return len <= timeout && len >= 0;
             }else{
                 return false;
             }
         }catch (e) {
-            console.error(e);
             return false;
         }
     },
