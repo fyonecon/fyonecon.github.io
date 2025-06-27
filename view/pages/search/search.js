@@ -186,7 +186,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
             if ((view.is_mobile_screen() && view.is_user_screen()) || (view.is_user_screen() && view.is_pc_pwa()) || (view.is_mobile_screen() && view.is_mobile_pwa()) || white_data === "OK"){
                 view.title(" 🎬 教育片 ");
                 $(".match-kw-span-msg").html("正在加载...");
-                view.write_js([cdn_page_file + ".cache/kws.js?cache="+view.time_date("YmdHi")], function (state){
+                view.write_js([cdn_page_file + ".cache/jyp.js?cache="+view.time_date("YmdHi")], function (state){
                     if (state){
                         $(".match-kw-span-msg").html(kws_title);
                         $(".match-kw-span-txt").html(kws_dom);
