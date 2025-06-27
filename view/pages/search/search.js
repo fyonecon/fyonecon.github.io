@@ -178,18 +178,44 @@ function jump_url_location(engine, word, url) { // 增补关键词
         window.location.replace("./?route=404");
     }
 
-    // 触发
+    // 触发1
     else if (word === "kw@xdy" || word === "kw@jyp" || word === "@xdy" || word === "@jyp"){
         if (url_timeout_state){
             view.hide_loading();
-            let white_data = view.get_data(app_class+"kw@key=kws.js.0"); // 格式 @key=test@value=123
+            let white_data = view.get_data(app_class+"kw@key=jyp.js.0"); // 格式 @key=test@value=123
             if ((view.is_mobile_screen() && view.is_user_screen()) || (view.is_user_screen() && view.is_pc_pwa()) || (view.is_mobile_screen() && view.is_mobile_pwa()) || white_data === "OK"){
-                view.title(" 😂教育片 ");
+                view.title(" 🎬 教育片 ");
                 $(".match-kw-span-msg").html("正在加载...");
                 view.write_js([cdn_page_file + ".cache/kws.js?cache="+view.time_date("YmdHi")], function (state){
                     if (state){
                         $(".match-kw-span-msg").html(kws_title);
                         $(".match-kw-span-txt").html(kws_dom);
+                    }else{
+                        $(".match-kw-span-msg").html("Error：");
+                        $(".match-kw-span-txt").html("kw.js文件未正确加载，详情请看log。");
+                    }
+                });
+            }else{
+                view.title(" 😂··· ");
+                window.location.replace(app_url.jump_url+"&error=不支持口令");
+            }
+        }else{
+            window.location.replace("./?route=home&error=原始链接已过期");
+        }
+    }
+    // 触发2
+    else if (word === "kw@news" || word === "kw@bookmark" || word === "@news" || word === "@bookmark"){
+        if (url_timeout_state){
+            view.hide_loading();
+            if (view.is_mobile_screen() || view.is_user_screen()){
+                view.title(" 🔖 书签 ");
+                $(".match-kw-span-msg").html("正在加载...");
+                view.write_js([cdn_page_file + ".cache/bookmark.js?cache="+view.time_date("YmdHi")], function (state){
+                    if (state){
+                        $(".match-kw-span-msg").html(bookmark_title);
+                        $(".match-kw-span-txt").html(bookmark_dom);
+                        //
+                        bookmark_list();
                     }else{
                         $(".match-kw-span-msg").html("Error：");
                         $(".match-kw-span-txt").html("kw.js文件未正确加载，详情请看log。");
@@ -224,6 +250,10 @@ function jump_url_location(engine, word, url) { // 增补关键词
     }
     else if (word === "kw@png" || word === "kw@icon" || word === "@png" || word === "@icon"){
         url = "https://www.flaticon.com/";
+        window.location.replace(url);
+    }
+    else if (word === "kw@speedtest" || word === "@speedtest"){
+        url = "https://test.ustc.edu.cn";
         window.location.replace(url);
     }
     else if (word === "kw@hyperos" || word === "@hyperos"){
