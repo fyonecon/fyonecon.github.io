@@ -11,7 +11,7 @@ function start_page(info) {
     let error_msg = view.get_url_param("", "error_msg");
     //
     if (error_url){
-        $(".show-error_msg").text("页面404，请检查链接、内容或参数是否有效。");
+        $(".show-error_msg").text("页面404，请检查链接、内容或参数是否有效");
         $(".show-error_url").text(error_url?error_url:"-");
     }
     if (error_msg){

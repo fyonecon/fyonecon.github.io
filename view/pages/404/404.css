@@ -3,6 +3,10 @@
     局部模块css
 */
 
+.div-404{
+    padding: 10px 10px;
+    width: calc(100% - 20px);
+}
 .img-404{
     height: 200px;
     margin-top: 20px;

@@ -1,10 +1,10 @@
 <div class="page-content" style="position: relative;">
 
-    <div class="center" style="--wails-draggable:drag">
+    <div class="center div-404" style="--wails-draggable:drag">
         <img class="img-404" src="" data-src="404.png" />
-        <h2 class="font-class show-error_msg"></h2>
+        <h2 class="font-class break show-error_msg"></h2>
         <br>
-        <h2 class="font-title show-error_url"></h2>
+        <h2 class="font-title break show-error_url"></h2>
         <br>
         <br>
         <div>
