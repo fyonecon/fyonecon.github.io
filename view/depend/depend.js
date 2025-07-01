@@ -384,9 +384,9 @@ function depend_pages(){
     // 设置html语言
     view.set_html_lang();
     //
-    if (block_wechat && !view.is_local_ipv4() && (view.is_weixin() || view.is_qq() || view.is_dingding())){
+    if (!view.is_local_ipv4() && (view.is_weixin() || view.is_qq() || view.is_dingding() || view.is_work_weixin() || view.is_feishu()) ){
         view.title("😅");
-        view.alert_txt("本网站禁止在「微信、QQ、钉钉」中打开。<br/>请使用外部浏览器。", "long");
+        view.alert_txt("本网站禁止在「微信、QQ、钉钉、企业微信、飞书」中打开。<br/>请使用外部浏览器。", "long");
     }else {
         if (!window.localStorage || !window.indexedDB || navigator.webdriver){
             view.title("😅");

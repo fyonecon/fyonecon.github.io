@@ -1127,15 +1127,23 @@ const view = {
     },
     is_weixin: function (){
         let ua = window.navigator.userAgent.toLowerCase();
-        return ua.match(/MicroMessenger/i) == 'micromessenger';
+        return ua.match(/micromessenger/i) == 'micromessenger';
     },
     is_qq: function (){
         let ua = window.navigator.userAgent.toLowerCase();
-        return ua.match(/QQ/i) == 'qq';
+        return ((ua.indexOf("qq")!=-1) && !(ua.indexOf("qqbrowser")!=-1));
     },
     is_dingding: function (){
         let ua = window.navigator.userAgent.toLowerCase();
         return ua.indexOf("dingtalk")!=-1;
+    },
+    is_work_weixin: function (){
+        let ua = window.navigator.userAgent.toLowerCase();
+        return ua.indexOf("wxwork")!=-1;
+    },
+    is_feishu: function (){
+        let ua = window.navigator.userAgent.toLowerCase();
+        return ua.indexOf("lark")!=-1;
     },
     is_white_ua: function (ua){ // 检测ua是否在正常范围
         let white_ua = [

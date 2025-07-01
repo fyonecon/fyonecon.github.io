@@ -5,6 +5,9 @@ function s_update_history(input_value){
 
     try {
         if (input_value){
+            if (input_value.indexOf("kw@")===0 || input_value.indexOf("@")===0){ // kws口令不计入历史
+                return;
+            }
             let data_string = view.get_data(data_key)
             // 去重历史记录
             if (view.string_include_string(data_string, input_value+"@=") !== -1){
@@ -52,6 +55,12 @@ function s_clear_history(){
     return view.del_data(data_key);
 }
 
+//
+function s_alert_url_timeout_state(word, state){
+    view.alert_txt("原始链接过期或参数错误", 10000);
+    window.location.replace(app_url.jump_url+"&error_url="+encodeURIComponent(window.location.href)+"&error_msg=原始链接过期或参数错误");
+}
+
 // 最终跳转
 function jump_url_location(engine, word, url) { // 增补关键词
     try {word = decodeURIComponent(word);}catch (e) {}
@@ -81,10 +90,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-必应 搜索引擎");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            view.alert_txt("原始链接参数错误："+window.location.href, 5000);
-            setTimeout(function (){
-                window.location.replace("./?route=home&error=原始链接参数错误");
-            }, 3000);
+            s_alert_url_timeout_state(word, url_timeout_state)
         }
     }
     else if (word === "kw@baidu" || word === "@baidu" || word === "@百度"){
@@ -95,10 +101,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-百度 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            view.alert_txt("原始链接参数错误："+window.location.href, 5000);
-            setTimeout(function (){
-                window.location.replace("./?route=home&error=原始链接参数错误");
-            }, 3000);
+            s_alert_url_timeout_state(word, url_timeout_state)
         }
     }
     else if (word === "kw@sogou" || word === "kw@sougou" || word === "@sogou" || word === "@sougou" || word === "@搜狗"){
@@ -109,10 +112,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-搜狗 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            view.alert_txt("原始链接参数错误："+window.location.href, 5000);
-            setTimeout(function (){
-                window.location.replace("./?route=home&error=原始链接参数错误");
-            }, 3000);
+            s_alert_url_timeout_state(word, url_timeout_state)
         }
     }
     else if (word === "kw@yandex" || word === "@yandex"){
@@ -123,10 +123,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-Yandex 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            view.alert_txt("原始链接参数错误："+window.location.href, 5000);
-            setTimeout(function (){
-                window.location.replace("./?route=home&error=原始链接参数错误");
-            }, 3000);
+            s_alert_url_timeout_state(word, url_timeout_state)
         }
     }
     else if (word === "kw@yahoo" || word === "@yahoo"){
@@ -137,10 +134,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-Yahoo 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            view.alert_txt("原始链接参数错误："+window.location.href, 5000);
-            setTimeout(function (){
-                window.location.replace("./?route=home&error=原始链接参数错误");
-            }, 3000);
+            s_alert_url_timeout_state(word, url_timeout_state)
         }
     }
     else if (word === "kw@google" || word === "@google" || word === "@谷歌"){
@@ -151,10 +145,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
             $(".match-kw-span-msg").html("自定义 PH-Google 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            view.alert_txt("原始链接参数错误："+window.location.href, 5000);
-            setTimeout(function (){
-                window.location.replace("./?route=home&error=原始链接参数错误");
-            }, 3000);
+            s_alert_url_timeout_state(word, url_timeout_state)
         }
     }
 
@@ -215,13 +206,10 @@ function jump_url_location(engine, word, url) { // 增补关键词
                 });
             }else{
                 view.title(" 😂··· ");
-                window.location.replace(app_url.jump_url+"&error=不支持口令");
+                window.location.replace(app_url.jump_url+"&error_msg=不支持口令");
             }
         }else{
-            view.alert_txt("原始链接参数错误："+window.location.href, 5000);
-            setTimeout(function (){
-                window.location.replace("./?route=home&error=原始链接参数错误");
-            }, 3000);
+            s_alert_url_timeout_state(word, url_timeout_state)
         }
     }
     // 触发2
@@ -244,13 +232,10 @@ function jump_url_location(engine, word, url) { // 增补关键词
                 });
             }else{
                 view.title(" 😂··· ");
-                window.location.replace(app_url.jump_url+"&error=不支持口令");
+                window.location.replace(app_url.jump_url+"&error_msg=不支持口令");
             }
         }else{
-            view.alert_txt("原始链接参数错误："+window.location.href, 5000);
-            setTimeout(function (){
-                window.location.replace("./?route=home&error=原始链接参数错误");
-            }, 3000);
+            s_alert_url_timeout_state(word, url_timeout_state)
         }
     }
 
