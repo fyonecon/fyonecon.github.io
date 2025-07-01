@@ -84,7 +84,7 @@ function jump_to_url_location(engine, word) {
     // 重定向到search页进行
     let search_host= "";
     let param_data = "";
-    let history = "no";
+    // let history = "no";
     let target = "_blank";
     return new Promise(resolve => { // param
         if (!view.is_wails()){ // web
@@ -103,7 +103,7 @@ function jump_to_url_location(engine, word) {
         }
     }).then(host=>{ // open
         search_host= "http://"+host+assets_html_dir_name+assets_html_index_name;
-        param_data = "?route=search&engine="+engine+"&history="+history+"&word="+word+del_fake_news+"&url_timeout="+view.url_timeout_encode("search", 6*60*60)+"&ap=mix";
+        param_data = "?route=search&engine="+engine+"&word="+word+del_fake_news+"&url_timeout="+view.url_timeout_encode("search", 6*60*60)+"&ap=mix";
         let search_url = search_host+param_data;
         //
         // if (!view.is_user_screen() || !view.is_mobile_pwa() || !view.is_pc_pwa()){ // 拦截调试

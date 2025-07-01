@@ -68,11 +68,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
 
     // 校验时间戳
     let url_timeout_state = view.url_timeout_decode("search", view.get_url_param("", "url_timeout"));
-    // if (url_timeout_state){
-    //     //
-    // }else{
-    //     // 已过期
-    // }
+    let url_history_state = view.get_url_param("", "history"); url_history_state = url_history_state === "yes";
 
     // 是链接就直接打开, http/https开头
     if (view.is_url(word)){
@@ -83,69 +79,69 @@ function jump_url_location(engine, word, url) { // 增补关键词
 
     // 匹配展示本网站文字
     else if (word === "kw@bing" || word === "@bing" || word === "@必应"){
-        if (url_timeout_state){
+        if (url_timeout_state || url_history_state){
             view.hide_loading();
             view.title("请查看 kw 对应的内容");
             let show_txt = search_url + "?route=search&engine=bing&history=yes&word=%s";
             $(".match-kw-span-msg").html("自定义 PH-必应 搜索引擎");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            s_alert_url_timeout_state(word, url_timeout_state)
+            s_alert_url_timeout_state(word, url_timeout_state, url_history_state)
         }
     }
     else if (word === "kw@baidu" || word === "@baidu" || word === "@百度"){
-        if (url_timeout_state){
+        if (url_timeout_state || url_history_state){
             view.hide_loading();
             view.title("请查看 kw 对应的内容");
             let show_txt = search_url + "?route=search&engine=baidu&history=no&word=%s";
             $(".match-kw-span-msg").html("自定义 PH-百度 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            s_alert_url_timeout_state(word, url_timeout_state)
+            s_alert_url_timeout_state(word, url_timeout_state, url_history_state)
         }
     }
     else if (word === "kw@sogou" || word === "kw@sougou" || word === "@sogou" || word === "@sougou" || word === "@搜狗"){
-        if (url_timeout_state){
+        if (url_timeout_state || url_history_state){
             view.hide_loading();
             view.title("请查看 kw 对应的内容");
             let show_txt = search_url + "?route=search&engine=sogou&history=no&word=%s";
             $(".match-kw-span-msg").html("自定义 PH-搜狗 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            s_alert_url_timeout_state(word, url_timeout_state)
+            s_alert_url_timeout_state(word, url_timeout_state, url_history_state)
         }
     }
     else if (word === "kw@yandex" || word === "@yandex"){
-        if (url_timeout_state){
+        if (url_timeout_state || url_history_state){
             view.hide_loading();
             view.title("请查看 kw 对应的内容");
             let show_txt = search_url + "?route=search&engine=yandex&history=yes&word=%s";
             $(".match-kw-span-msg").html("自定义 PH-Yandex 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            s_alert_url_timeout_state(word, url_timeout_state)
+            s_alert_url_timeout_state(word, url_timeout_state, url_history_state)
         }
     }
     else if (word === "kw@yahoo" || word === "@yahoo"){
-        if (url_timeout_state){
+        if (url_timeout_state || url_history_state){
             view.hide_loading();
             view.title("请查看 kw 对应的内容");
             let show_txt = search_url + "?route=search&engine=yahoo&history=yes&word=%s";
             $(".match-kw-span-msg").html("自定义 PH-Yahoo 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            s_alert_url_timeout_state(word, url_timeout_state)
+            s_alert_url_timeout_state(word, url_timeout_state, url_history_state)
         }
     }
     else if (word === "kw@google" || word === "@google" || word === "@谷歌"){
-        if (url_timeout_state){
+        if (url_timeout_state || url_history_state){
             view.hide_loading();
             view.title("请查看 kw 对应的内容");
             let show_txt = search_url + "?route=search&engine=google&history=yes&word=%s";
             $(".match-kw-span-msg").html("自定义 PH-Google 搜索引擎：");
             $(".match-kw-span-txt").html(show_txt).attr("data-clipboard-text", show_txt);
         }else{
-            s_alert_url_timeout_state(word, url_timeout_state)
+            s_alert_url_timeout_state(word, url_timeout_state, url_history_state)
         }
     }
 
@@ -189,7 +185,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
 
     // 触发1
     else if (word === "kw@xdy" || word === "kw@jyp" || word === "@xdy" || word === "@jyp"){
-        if (url_timeout_state){
+        if (url_timeout_state || url_history_state){
             view.hide_loading();
             let white_data = view.get_data(app_class+"kw@key=jyp.js.0"); // 格式 @key=test@value=123
             if ((view.is_mobile_screen() && view.is_user_screen()) || (view.is_user_screen() && view.is_pc_pwa()) || (view.is_mobile_screen() && view.is_mobile_pwa()) || white_data === "OK"){
@@ -209,12 +205,12 @@ function jump_url_location(engine, word, url) { // 增补关键词
                 window.location.replace(app_url.jump_url+"&error_msg=不支持口令");
             }
         }else{
-            s_alert_url_timeout_state(word, url_timeout_state)
+            s_alert_url_timeout_state(word, url_timeout_state, url_history_state)
         }
     }
     // 触发2
     else if (word === "kw@news" || word === "kw@bookmark" || word === "@news" || word === "@bookmark"){
-        if (url_timeout_state){
+        if (url_timeout_state || url_history_state){
             view.hide_loading();
             if (view.is_mobile_screen() || view.is_user_screen()){
                 view.title(" 🔖 书签 ");
@@ -235,7 +231,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
                 window.location.replace(app_url.jump_url+"&error_msg=不支持口令");
             }
         }else{
-            s_alert_url_timeout_state(word, url_timeout_state)
+            s_alert_url_timeout_state(word, url_timeout_state, url_history_state)
         }
     }
 
