@@ -159,6 +159,28 @@ function show_info(){
             "value_class": "font-text",
         },
         //
+        {
+            "title": "安卓浏览器下载",
+            "title_class": "font-text",
+            "value": '<div class="a-click click select-none blue break" data-href="https://www.downkuai.com/android/114447.html" data-target="_self" style="margin-bottom: 10px;">Firefox(全球安卓推荐使用：强屏蔽广告< 需🪜下插件 >、支持PWA、多端同步、可自定义搜索引擎)</div>' +
+                '<div class="a-click click select-none blue break" data-href="https://www.downkuai.com/android/158257.html" data-target="_self" style="margin-bottom: 10px;">Brave(大陆安卓推荐使用：弱屏蔽广告、支持PWA、弱多端同步、可自定义搜索引擎)</div>' +
+                '<div class="a-click click select-none blue break" data-href="https://www.downkuai.com/android/113104.html" data-target="_self" style="margin-bottom: 10px;">OperaMini(老安卓机子推荐使用：无屏蔽广告、弱支持PWA、弱多端同步、不可自定义搜索引擎)</div>' +
+                '<div class="a-click click select-none blue break" data-href="https://www.downkuai.com/android/158257.html" data-target="_self" style="margin-bottom: 10px;">Edge(大陆安卓推荐使用：弱屏蔽广告、支持PWA、多端同步、不可自定义搜索引擎)</div>',
+            "value_class": "font-text",
+        },
+        {
+            "title": "iOS和iPadOS浏览器名单",
+            "title_class": "font-text",
+            "value": '<div class="click" style="margin-bottom: 10px;">Safari</div><div class="click" style="margin-bottom: 10px;">Brave</div><div class="click" style="margin-bottom: 10px;">Firefox</div><div class="click" style="margin-bottom: 10px;">Edge</div>',
+            "value_class": "font-text",
+        },
+        {
+            "title": "Mac和Windows浏览器名单",
+            "title_class": "font-text",
+            "value": '<div class="click" style="margin-bottom: 10px;">Safari(仅Mac)</div><div class="click" style="margin-bottom: 10px;">Chrome</div><div class="click" style="margin-bottom: 10px;">Edge</div><div class="click" style="margin-bottom: 10px;">Brave</div><div class="click" style="margin-bottom: 10px;">Firefox</div>',
+            "value_class": "font-text",
+        },
+        //
     ];
 
     // 展示数据
