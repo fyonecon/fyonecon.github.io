@@ -241,6 +241,12 @@ function test_fetch(file_url){
 }
 
 function start_page(info) {
+    if (view.is_wails()){
+        $(".div-back").removeClass("hide");
+    }else{
+        $(".div-back").addClass("hide");
+    }
+
     $(".div-box").html("");
     show_info();
     // setInterval(function (){show_info();}, 8000);

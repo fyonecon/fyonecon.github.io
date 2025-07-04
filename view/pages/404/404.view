@@ -1,17 +1,17 @@
 <div class="page-content" style="position: relative;">
-
     <div class="center div-404" style="--wails-draggable:drag">
         <img class="img-404" src="" data-src="404.png" />
         <h2 class="font-class break show-error_msg"></h2>
         <br>
-        <h2 class="font-title break show-error_url"></h2>
+        <h2 class="font-text break show-error_url"></h2>
         <br>
         <br>
-        <div>
+        <div class="div-back hide">
             <a class="a-click click select-none" data-href="./?from=404" data-target="_self"><span class="font-title font-light_blue click"><i class="fas fa-angle-left "></i> <<&nbsp;返回首页 </span></a>
         </div>
         <br>
         <br>
     </div>
-
+    <br>
+    <br>
 </div>
