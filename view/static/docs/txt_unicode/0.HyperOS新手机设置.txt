@@ -133,6 +133,8 @@ Edge浏览器< <a class="blue" href="http://www.jxdown.com/soft/20238.html" targ
 <br/>
 18.6 设置-小米账号-关于小米账号-系统广告-关闭广告
 <br/>
+18.7 设置-开发者模式-“App缓存优化”-打开。（这是小米官方替代“Google墓碑机制”国产App手段功能）
+<br/>
 <br/>
 19. 用ADB删除系统应用（“#”为暂时不要删除的应用）：
 <br/>

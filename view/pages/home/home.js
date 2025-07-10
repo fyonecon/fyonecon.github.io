@@ -307,9 +307,14 @@ function update_history(input_value){
 
     try {
         if (input_value){
-            if (input_value.indexOf("kw@")===0 || input_value.indexOf("@")===0){ // kws口令不计入历史
-                return;
+            if (view.is_wails()){
+                //
+            }else{
+                if (input_value.indexOf("kw@")===0 || input_value.indexOf("@")===0){ // kws口令不计入历史
+                    return;
+                }
             }
+
             let data_string = view.get_data(data_key)
             // 去重历史记录
             if (view.string_include_string(data_string, input_value+"@=") !== -1){

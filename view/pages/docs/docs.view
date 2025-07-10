@@ -1,5 +1,5 @@
 <div class="div-back">
-    <a class="a-click click select-none" data-href="./?from=404" data-target="_self"><span class="font-class font-light_blue click"><i class="fas fa-angle-left "></i>&nbsp;&nbsp;< 返回首页 </span></a>
+    <a class="a-click click select-none" data-href="./?from=docs" data-target="_self"><span class="font-class font-light_blue click"><i class="fas fa-angle-left "></i>&nbsp;&nbsp;< 返回首页 </span></a>
 </div>
 <div class="docs-preview-box font-text">
     <div class="docs-name break font-class"">-</div>
