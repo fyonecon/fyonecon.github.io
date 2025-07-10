@@ -244,7 +244,9 @@ function start_page(info) {
     if (view.is_wails()){
         $(".div-back").removeClass("hide");
     }else{
-        $(".div-back").addClass("hide");
+        $(".div-back").removeClass("hide");
+        $(".fa-chevron-left").addClass("hide");
+        $(".i-back-txt").html("&nbsp;⬅️");
     }
 
     $(".div-box").html("");

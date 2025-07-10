@@ -1,4 +1,4 @@
 <div class="div-back hide">
-    <a class="a-click click select-none" data-href="./?from=info" data-target="_self"><span class="font-class font-light_blue click"><i class="fas fa-angle-left "></i>&nbsp;&nbsp;< 返回首页 </span></a>
+    <div class="back-div-btn click a-click font-text font-blue" data-href="./?from=info" title="Back" data-target="_self"><i class="fa-solid fa-chevron-left"></i><i class="i-back-txt"></i></div>
 </div>
 <div class="div-box break">-</div>

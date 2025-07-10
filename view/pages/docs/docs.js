@@ -27,6 +27,14 @@ function docs_preview_txt(doc_url, doc_name){
 }
 
 function start_page(info) {
+    if (view.is_wails()){
+        $(".div-back").removeClass("hide");
+    }else{
+        $(".div-back").removeClass("hide");
+        $(".fa-chevron-left").addClass("hide");
+        $(".i-back-txt").html("&nbsp;⬅️");
+    }
+
     let doc_name = view.get_url_param("", "name");
     if (doc_name.length>=3 && doc_name.length<=1200){
         docs_preview_txt(cdn_page_file+"static/docs/txt_unicode/"+doc_name, doc_name);

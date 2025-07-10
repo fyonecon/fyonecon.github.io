@@ -8,6 +8,8 @@ function start_page(info) {
         $(".div-back").removeClass("hide");
     }else{
         $(".div-back").removeClass("hide");
+        $(".fa-chevron-left").addClass("hide");
+        $(".i-back-txt").html("&nbsp;⬅️");
     }
 
     view.log(info);
