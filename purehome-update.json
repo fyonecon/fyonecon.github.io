@@ -1,6 +1,6 @@
 {
+  "app_class": "PureHome_",
   "new_version": "5.5.2",
-  "mini_version": "5.5.0",
   "alert_method": "notice",
   "alert_msg": "Discovered a new version! <br/>发现新版本！",
   "show_times": 2,
