@@ -3,7 +3,7 @@
   "new_version": "5.5.3",
   "alert_method": "notice",
   "alert_msg": "Discovered a new version! <br/>发现新版本！",
-  "show_times": 2,
+  "show_times": 5,
   "show_timeout": 10000,
   "download_website": "http://fyonecon.github.io/purehome.html"
 }
