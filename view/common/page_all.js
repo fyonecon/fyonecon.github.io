@@ -22,13 +22,13 @@ const search_data_default = [
         "name": "Yahoo!",
         "engine": "yahoo",
     },
-    // {
-    //     "name": "DuckDuckGo",
-    //     "engine": "duckduckgo",
-    // },
     {
         "name": "Yandex",
         "engine": "yandex",
+    },
+    {
+        "name": "DuckDuckGo",
+        "engine": "duckduckgo",
     },
     {
         "name": "Github",
