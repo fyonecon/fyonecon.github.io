@@ -80,7 +80,7 @@ h3, h4, h5, p{
     overflow-x: hidden;
 }
 .scroll-y-style::-webkit-scrollbar{
-    width: 7px;
+    width: 10px;
     background-color: rgba(115,115,115,0);
 }
 .scroll-y-style::-webkit-scrollbar-thumb{
@@ -740,6 +740,10 @@ img{
     border-radius: 5px;
     margin-right: 20px;
     float: left;
+}
+
+.font-lan{
+    /*color: darkorange;*/
 }
 
 .div-center{

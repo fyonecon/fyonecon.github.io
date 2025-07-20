@@ -763,6 +763,42 @@ const view = {
         });
 
     },
+    notice_share: function (msg, timer_items_dom, call_func, clear){ // 弹出分享菜单 timer_items_dom='<div><span>10min</span></div>'
+        let that = this;
+        // 只显示一个
+        if (clear === "clear") {
+            $(".div-notice_img").remove();
+        }
+        // alert_txt层级形态显示
+        let notice_img_index = that.get_cache("notice_img_index")*1;
+        if (!notice_img_index){
+            notice_img_index = 20230330;
+        }else {
+            notice_img_index =notice_img_index + 10;
+        }
+        that.set_cache("notice_img_index", notice_img_index);
+
+        //that.log(["alert_txt", txt, timeout, clear, alert_txt_index]);
+        let class_name = "notice_img_" + notice_img_index;
+        let class_no = "alert_txt-btn-no_" + notice_img_index;
+
+        let div = '<div class="'+class_name+' div-notice_img confirm-div select-none" style="z-index:'+notice_img_index+';">' +
+            '   <div class="div-notice_img-msg font-title" style="margin-top: 10px;">'+ msg +'</div>' +
+            '   <div class="div-notice_img-img font-text" style="margin-top: 0;">'+timer_items_dom+'</div>' +
+            '   <div class="div-notice_img-btn"><span class="'+class_no+' div-notice_img-btn-no click font-blue font-text">OK</span><div class="clear"></div></div>' +
+            '   <div class="clear"></div>' +
+            '</div>';
+        $("#depend").append(div);
+        that.show_bg("long");
+        // 取消
+        $(document).on("click", "."+class_no, function (){
+            $("." + class_name).remove();
+            that.del_bg();
+            try {
+                call_func(true);
+            }catch (e) {}
+        });
+    },
     alert_txt: function (txt, timeout, clear) { // 文字提醒弹窗，会遮挡页面操作。(文字，超时时间，清除所有提示<仅限不为long时>)
         let that = this;
 
@@ -909,7 +945,7 @@ const view = {
             try { // mp3的参数
                 mp3_info_timer = setInterval(function (){
                     mp3_info(audio);
-                }, 200);
+                }, 20);
             }catch (e){}
         });
         audio.addEventListener("ended", function () { // 播放结束
@@ -1049,8 +1085,8 @@ const view = {
         let reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)+([A-Za-z0-9-~\/])/;
         return reg.test(url);
     },
-    make_qr: function (id, txt){ // 生成二维码
-        let qrcode = new QRCode(id, {
+    make_qr: function (show_id, txt){ // 生成二维码，show_id为要显示在那个div当中
+        let qrcode = new QRCode(show_id, {
             text: txt,
             width: 200,
             height: 200,
@@ -1390,83 +1426,83 @@ const view = {
         const list = [
             {
                 "black": "<script",
-                "white": "< scrip_t"
+                "white": "< Script "
             },
             {
                 "black": "</script>",
-                "white": "< / scrip_t>"
+                "white": "< / Script >"
             },
             {
                 "black": "<SCRIPT",
-                "white": "< SCRIP_T"
+                "white": "< Script"
             },
             {
                 "black": "</SCRIPT>",
-                "white": "< / SCRIP_T>"
+                "white": "< / Script >"
             },
             {
                 "black": "javascript",
-                "white": "javascrip_t"
+                "white": "Javascript"
             },
             {
                 "black": "JAVASCRIPT",
-                "white": "JAVASCRIP_T"
+                "white": "Javascript"
             },
             {
                 "black": "localstorage",
-                "white": "localstorag_e"
+                "white": "Localstorage"
             },
             {
                 "black": "onload",
-                "white": "onloa_d"
+                "white": "Onload"
             },
             {
                 "black": "onclick",
-                "white": "onclic_k"
+                "white": "Onclick"
             },
             {
                 "black": "onerror",
-                "white": "onerro_r"
+                "white": "Onerror"
             },
             {
                 "black": "function",
-                "white": "functio_n"
+                "white": "Function"
             },
             {
                 "black": "FUNCTION",
-                "white": "FUNCTIO_N"
+                "white": "Function"
             },
-            // {
-            //     "black": "request",
-            //     "white": "reques_t"
-            // },
-            // {
-            //     "black": "window",
-            //     "white": "windo_w"
-            // },
-            // {
-            //     "black": "WINDOW",
-            //     "white": "WINDO_W"
-            // },
+            {
+                "black": "request",
+                "white": "Request"
+            },
+            {
+                "black": "window",
+                "white": "Window"
+            },
+            {
+                "black": "WINDOW",
+                "white": "Window"
+            },
             {
                 "black": "target",
-                "white": "targe_t"
+                "white": "Target"
             },
             {
                 "black": "console",
-                "white": "consol_e"
+                "white": "Console"
             },
             {
                 "black": "alert",
-                "white": "aler_t"
+                "white": "Alert"
             },
             {
                 "black": "object",
-                "white": "objec_t"
+                "white": "Object"
             },
             {
                 "black": "document",
-                "white": "documen_t"
+                "white": "Document"
             },
             // {
             //     "black": "replace",
@@ -1474,15 +1510,15 @@ const view = {
             // },
             {
                 "black": "eval",
-                "white": "eva_l"
+                "white": "Eval"
             },
             {
                 "black": "EVAL",
-                "white": "EVA_L"
+                "white": "Eval"
             },
             {
                 "black": "exec",
-                "white": "exe_c"
+                "white": "Exec"
             },
             // {
             //     "black": "src",
@@ -1506,74 +1542,73 @@ const view = {
             },
             {
                 "black": "navigator",
-                "white": "navigatoR"
+                "white": "Navigator"
             },
-            {
-                "black": "display",
-                "white": "displaY"
-            },
-            {
-                "black": "opacity",
-                "white": "opacitY"
-            },
-            {
-                "black": "position",
-                "white": "positioN"
-            },
-            {
-                "black": "iframe",
-                "white": "iframE"
-            },
-            {
-                "black": "location",
-                "white": "locatioN"
-            },
+            // {
+            //     "black": "display",
+            //     "white": "Display"
+            // },
+            // {
+            //     "black": "opacity",
+            //     "white": "Opacity"
+            // },
+            // {
+            //     "black": "position",
+            //     "white": "Position"
+            // },
+            // {
+            //     "black": "iframe",
+            //     "white": "Iframe"
+            // },
+            // {
+            //     "black": "location",
+            //     "white": "Location"
+            // },
             {
                 "black": "class=",
                 "white": "Class="
             },
             {
                 "black": "id=",
-                "white": "Id="
+                "white": encodeURIComponent("id="),
             },
             {
                 "black": "data-",
-                "white": "dat_a-"
+                "white": "Data-"
             },
             {
                 "black": "v-",
-                "white": "_v-"
+                "white": "V-"
             },
             {
                 "black": "title=",
-                "white": "titl_e="
+                "white": encodeURIComponent("title="),
             },
             {
                 "black": "overflow",
-                "white": "overfloW"
+                "white": "Overflow"
             },
             {
                 "black": "className",
-                "white": "CLassname"
+                "white": "Classname"
             },
             {
                 "black": ".js",
-                "white": "-Js"
+                "white": encodeURIComponent(".js"),
             },
             {
                 "black": ".json",
-                "white": "-json"
+                "white": encodeURIComponent(".json"),
             },
             {
                 "black": "this.",
-                "white": "this-"
+                "white": encodeURIComponent("this."),
             },
             {
                 "black": "that.",
-                "white": "that-"
+                "white": encodeURIComponent("that."),
             },
         ];
-        // html = html.toLowerCase();
         list.forEach((ele, index)=>{
            html = html.replaceAll(ele.black, ele.white);
         })
@@ -2233,6 +2268,7 @@ const view = {
                 setup: { // 播放器参数
                     volume: 1,
                     autoplay: false, // true时需要浏览器开启自动播放，否则error或需手动播放
+                    loop: false,
                     settings: ['quality', 'speed'],
                     speed: {selected: 1, options: [0.5, 0.75, 1, 1.5, 1.75, 2]},
                     quality: { default: 720, options: [4320, 2160, 1080, 720, 480] },
@@ -2254,6 +2290,7 @@ const view = {
             settings: params.setup.settings,
         });
         player.source = params.source;
+        player.loop = params.setup.loop;
         player.on("play", function (){
             try {
                 play_func();

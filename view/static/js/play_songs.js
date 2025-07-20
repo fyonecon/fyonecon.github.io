@@ -12,7 +12,7 @@
 // host: "172.20.10.3:34100"
 // song_name: "Alan walker-Play（KF remix）.mp3"
 // song_path: "/Users/xxx/Music/网易云音乐/Alan walker-Play（KF remix）.mp3"
-// song_src: "http://172.20.10.3:34100/share_file?route=share_file&show_path=%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%2FAlan%20walker-Play%EF%BC%88KF…"
+// song_src: "http://172.20.10.3:34100/share_file?route=read_file&show_path=%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%2FAlan%20walker-Play%EF%BC%88KF…"
 //
 // Object Prototype
 const play_songs_dom_id = "play-songs";
@@ -195,6 +195,29 @@ const play_songs_func = {
                         // 处理播放地址
                         that.check_song_src_ip(now_src_info.song_src).then(new_song_src=>{
                             $(".div-play-songs-info").html(now_src_info.song_name).attr("title", now_src_info.song_name).attr("data-src", now_src_info.song_src).attr("data-name", now_src_info.song_name);
+                            // if (view.is_wails()){
+                            //     js_call_go.PlayWebMP3(new_song_src, 0.8, "OFF").then(state=>{
+                            //         if (state === "Ended"){
+                            //             that.song_play_next(song_class);
+                            //         }
+                            //         else if (state === "Failed"){
+                            //             that.song_play_next(song_class);
+                            //         }
+                            //         else if (state === "Stopped"){
+                            //             // that.song_stop(song_class);
+                            //             view.notice_txt("Stopped");
+                            //         }
+                            //         else{
+                            //             view.log("Play Error：", state);
+                            //             view.notice_txt("Play Error");
+                            //             //
+                            //             view.set_data(play_state_key, "OFF");
+                            //             that.song_stop("item-name");
+                            //             // console.log("超范围的值:", end_state);
+                            //         }
+                            //     });
+                            //      return;
+                            // }
                             // init
                             play_mp3_num = 1;
                             play_song_name = now_src_info.song_name;
@@ -235,15 +258,15 @@ const play_songs_func = {
                                     audio.currentTime = 0;
                                 }
                                 audio.play();
-                            }, function (audio){ // 周期200ms
+                            }, function (audio){ // 周期20ms
                                 let duration = audio.duration; // s
                                 let current = audio.currentTime; // s
                                 that.set_song_time(current); // update
                                 //
                                 play_song_name_show_state++;
-                                if (play_song_name_show_state <= 10){ // 2s=500=4
+                                if (play_song_name_show_state <= 200){ // 2s=500=4
                                     $(".div-play-songs-info").html(play_song_name);
-                                }else if (play_song_name_show_state <= 30){ // 4s=500=12
+                                }else if (play_song_name_show_state <= 500){ // 4s=500=12
                                     $(".div-play-songs-info").html(view.seconds_to_minutes(Math.floor(current), "m:i")+"/"+view.seconds_to_minutes(Math.floor(duration), "m:i"));
                                 }else{
                                     play_song_name_show_state = 0; // init
@@ -277,6 +300,13 @@ const play_songs_func = {
         //
         view.set_data(play_state_key, "OFF");
         view.stop_mp3(play_songs_dom_id);
+        // if (view.is_wails()){
+        //     js_call_go.PlayStop().then(state=>{
+        //         //
+        //     });
+        // }else{
+        //     view.stop_mp3(play_songs_dom_id);
+        // }
     },
     song_play_new: function (that_song_info){ // 直接播放某一首歌
         let that = this;

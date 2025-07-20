@@ -6,6 +6,9 @@
     color: rgba(220,220,220,1) !important;
     background-color: rgba(115,115,115,0.2) !important;
 }
+.res-url_timeout{
+    background-color: rgba(115,115,115,0.2) !important;
+}
 .tools-left-content{
     color: rgba(220,220,220,1) !important;
     background-color: rgba(115,115,115,0.2) !important;
@@ -84,3 +87,36 @@
     100% {background-color: rgba(115,115,115,0.3);color: rgba(220,220,220,1)}
 }
 /**/
+
+
+.liquidGlass-tint {
+    background: rgba(220,220,220, 0.2) !important;
+}
+.liquidGlass-shine {
+    box-shadow: inset 2px 2px 1px 0 rgba(220,220,220, 0.01), inset -1px -1px 1px 1px rgba(220,220,220, 0.01) !important;
+}
+
+
+/**/
+.w-e-bar-divider{
+    background-color: rgba(115,115,115,0.2) !important;
+}
+.w-e-toolbar{
+    color: rgba(220,220,220,1);
+    background-color: rgba(115,115,115,0.2) !important;
+}
+.w-e-scroll{
+    color: rgba(220,220,220,1);
+    background-color: rgba(115,115,115,0.2) !important;
+}
+.w-e-text-container [data-slate-editor] code{
+    background-color: rgba(30,30,30,0.5) !important;
+    border: none!important;
+}
+.w-e-text-container [data-slate-editor] blockquote{
+    background-color: rgba(30,30,30,0.5) !important;
+    border: none!important;
+}
+.w-e-text-container [data-slate-editor] pre>code{
+    border: none!important;
+}
