@@ -2352,7 +2352,7 @@ const view = {
 
         return isInnerIPFn(ipv4);
     },
-    compare_version: function (your_version, mini_version){ // 你的version比标准version的大小。格式1.21.3、0.0.20。值-1小，0等，1大
+    compare_version: function (your_version, mini_version){ // 你的version比标准version的大小。格式1.21.3、0.0.20。值-1小，0等，>=1大
         let array_your_version = your_version.split(".");
         let array_mini_version = mini_version.split(".");
         // 由左向右对比
@@ -2366,10 +2366,10 @@ const view = {
             return 1;
         } else{
             if (array_your_version[1]*1 > array_mini_version[1]*1){
-                return 1;
+                return 2;
             }else{
                 if (array_your_version[2]*1 > array_mini_version[2]*1){
-                    return 1;
+                    return 3;
                 }else{
                     if (array_your_version[2]*1 === array_mini_version[2]*1){
                         return 0;
@@ -2442,6 +2442,26 @@ const view = {
             return false;
         }
     },
+    htmlToPlainText: function (html) { // string类型的html转换成text
+        let that = this;
+        html = that.htmlReplaceMediaTags(html);
+        //
+        let temp = document.createElement('div');
+        temp.innerHTML = html;
+        return temp.innerText || temp.textContent;
+    },
+    htmlReplaceMediaTags: function (str, fallback = { // string类型的html里面的全部媒体标签替换成文字
+        img: '[🏞️]',
+        audio: '[🎵]',
+        video: '[🎬]'
+    }) {
+        return str
+        .replace(/<img[^>]*alt="([^"]*)"[^>]*>/gi, (match, alt) => "[🏞️ "+alt+"]" || fallback.img)
+        .replace(/<audio[^>]*title="([^"]*)"[^>]*>.*?<\/audio>/gi, (match, title) => "[🎵 "+title+"]" || fallback.audio)
+        .replace(/<video[^>]*title="([^"]*)"[^>]*>.*?<\/video>/gi, (match, title) => "[🎬 "+title+"]" || fallback.video);
+    },
+
+
 
 };
 

@@ -3,10 +3,10 @@
 // 国际化
 const app_lang = {
     "zh": {
-        "about": "替代浏览器主页 & 局域网跨设备分享文件。",
+        "about": "局域网分享文件和笔记。",
         "dl": "（下载）",
-        "home": "多种搜索引擎，还有你收藏的网址标签",
-        "lan": "局域网跨设备“文件/文件夹/粘贴板”共享",
+        "home": "局域网跨设备“粘贴板/笔记”共享",
+        "lan": "局域网跨设备“文件/文件夹”共享",
         "setting": "内置了一些“个性化项、使用帮助、安全选项”等",
         'mac_install_title': 'Mac平台软件安装帮助，安装软件过程中如果遇到“软件已损坏”，请参考如下：',
         'mac_install_txt': '1.1 在Mac的终端输入命令行：<span class="yellow">sudo spctl --master-disable</span><br/>' +
@@ -18,10 +18,10 @@ const app_lang = {
             '4. OK了。',
     },
     "en":{
-        "about": "Replace Browser Homepage & Sharing Files Across Devices In Your LAN Network.",
+        "about": "Share files and notes in your LAN network.",
         "dl": " (Download)",
-        "home": "Multiple search engines, as well as your favorite URL tags",
-        "lan": 'Sharing of "Files/Folders/Pasteboard" across devices in a local network',
+        "home": "LAN cross device \"clipboard/note sharing\"",
+        "lan": 'LAN cross device file/folder sharing',
         "setting": 'Built in some" personalization items, usage help, security options ", etc.',
         'mac_install_title': 'Mac platform software installation help. If you encounter "software damage" during the software installation process, please refer to the following:',
         'mac_install_txt': '1.1 On the Mac terminal, enter the command line:<span class="yellow">sudo spctl --master-disable</span><br/>' +
@@ -33,10 +33,10 @@ const app_lang = {
             '4. OK.',
     },
     "jp":{
-        "about": "ブラウザホーム&ローカルエリアネットワークを代替してデバイス間でファイルを共有する。",
+        "about": "ファイルとノートを共有するLAN。",
         "dl": " （ダウンロード）",
-        "home": "複数の検索エンジン、そしてあなたが所蔵するURLラベル",
-        "lan": 'LANクロスデバイス「ファイル/フォルダ/ペーストボード」共有',
+        "home": "LANクロスデバイス「Paste Board/Note」共有",
+        "lan": 'LANクロスデバイス「ファイル/フォルダ」共有',
         "setting": '個人化されたアイテム、ヘルプの使用、セキュリティオプションなどが組み込まれている',
         'mac_install_title': 'Macプラットフォームソフトウェアのインストールヘルプ。ソフトウェアのインストール中に「ソフトウェアが破損している」場合は、次のように参照してください：',
         'mac_install_txt': '1.1 Macの端末にコマンドラインを入力する：<span class="yellow">sudo spctl --master-disable</span><br/>' +
