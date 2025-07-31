@@ -2420,9 +2420,9 @@ const view = {
     url_timeout_encode: function (route, timeout){ // 生成url的时间戳标记， timeout=s
         let that = this;
         let mark = route+"#@"+that.time_s()+"#@"+timeout;
-        return encodeURIComponent(that.string_to_unicode(mark+"#@"+that.md5(mark)+"#@"+that.js_rand(1000000, 9999999999)));
+        return encodeURIComponent(that.string_to_unicode(mark+"#@"+that.md5(mark)+"#@"+that.js_rand(10000000, 9999999999)));
     },
-    url_timeout_decode: function (route, url_timeout){
+    url_timeout_decode: function (route, url_timeout){ // true未过期，false过期
         let that = this;
         let now_time = that.time_s();
         let param = decodeURIComponent(that.unicode_to_string(url_timeout));
@@ -2451,14 +2451,14 @@ const view = {
         return temp.innerText || temp.textContent;
     },
     htmlReplaceMediaTags: function (str, fallback = { // string类型的html里面的全部媒体标签替换成文字
-        img: '[🏞️]',
-        audio: '[🎵]',
-        video: '[🎬]'
+        img: ' [🏞️] ',
+        audio: ' [🎵] ',
+        video: ' [🎬] '
     }) {
         return str
-        .replace(/<img[^>]*alt="([^"]*)"[^>]*>/gi, (match, alt) => "[🏞️ "+alt+"]" || fallback.img)
-        .replace(/<audio[^>]*title="([^"]*)"[^>]*>.*?<\/audio>/gi, (match, title) => "[🎵 "+title+"]" || fallback.audio)
-        .replace(/<video[^>]*title="([^"]*)"[^>]*>.*?<\/video>/gi, (match, title) => "[🎬 "+title+"]" || fallback.video);
+        .replace(/<img[^>]*alt="([^"]*)"[^>]*>/gi, (match, alt) => " [🏞️ "+alt+"] " || fallback.img)
+        .replace(/<audio[^>]*title="([^"]*)"[^>]*>.*?<\/audio>/gi, (match, title) => " [🎵 "+title+"] " || fallback.audio)
+        .replace(/<video[^>]*title="([^"]*)"[^>]*>.*?<\/video>/gi, (match, title) => " [🎬 "+title+"] " || fallback.video);
     },
 
 

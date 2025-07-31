@@ -591,21 +591,22 @@ function read_list_data(){
 }
 
 function start_page(info) {
+    // 显示用户信息
     let user_info = "(?)";
     if (login_id){
-        user_info = "["+view.string_star(login_id, 2, 3).replaceAll("**", "*").replaceAll("**", "*").replaceAll("**", "*")+"]";
+        user_info = "["+view.string_star(login_id, 2, 2).replaceAll("**", "*").replaceAll("**", "*").replaceAll("**", "*").replaceAll("**", "*")+"]";
     }
     $(".user-center").append(user_info);
 
     let from = view.get_url_param("", "from");
-
     if (view.is_wails()){
-        // if (!from || from==="home" || from==="tab"){
-        //     view.window_open("./?route=notes&from=", "_self");
-        //     return;
-        // }
-        view.window_open("./?route=notes&from=", "_self");
-        return;
+        // 不从默认页进
+        if (from === "notes" || from === "lan" || from === "sub_app"){ // 白名单
+            //
+        }else{
+            view.window_open("./?route=notes&from=", "_self");
+            return;
+        }
         //
         os_hide_item();
         //

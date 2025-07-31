@@ -84,7 +84,7 @@ h3, h4, h5, p{
     background-color: rgba(115,115,115,0);
 }
 .scroll-y-style::-webkit-scrollbar-thumb{
-    border-radius: 5px;
+    border-radius: 10px;
     height: 44px;
     background-color: rgba(115,115,115,0.5);
     cursor: pointer;
@@ -111,7 +111,7 @@ h3, h4, h5, p{
 
 /**/
 .radius-btn{
-    border-radius: 5px;
+    border-radius: 10px;
 }
 .radius-block{
     border-radius: 10px;
@@ -267,7 +267,7 @@ img{
 .qr_img{
     display: block;
     margin: 0 auto;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 200px;
 }
 
@@ -301,7 +301,7 @@ img{
     margin-bottom: 10px;
     margin-top: 10px;
     background: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 .direct-list-div{
     font-size: 16px;
@@ -350,7 +350,7 @@ img{
     color: rgba(220,220,220,1);
     padding: 5px 10px;
     margin-right: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     float: left;
     margin-bottom: 10px;
 }
@@ -367,7 +367,7 @@ img{
     /*border-top-right-radius: 5px;*/
     /*border-bottom-right-radius: 5px;*/
     padding: 4px 4px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 .phb-1{
     color: rgba(220,220,220,1);
@@ -452,14 +452,17 @@ img{
 .tools-left-content{
     width: calc(220px - 1px);
     border-right: 1px solid rgba(220,220,220,0);
-    height: calc(100% - 44px - 40px - 40px - 15px);
-    padding-bottom: 40px;
+    min-height: 200px;
+    /*height: calc(100% - 44px - 40px - 40px - 15px);*/
+    height: calc(100% - 44px - 60px - 10px);
+    /*padding-bottom: 40px;*/
+    padding-bottom: 60px;
     overflow-y: auto;
     overflow-x: hidden;
     position: absolute;
     top: calc(44px + 1px);
     left: 0;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 .tools-right-content{
     width: calc(100% - 220px - 1px);
@@ -484,7 +487,9 @@ img{
     bottom: 0;
     left: 0;
     background-color: rgba(115,115,115,0.2);
-    border-radius: 5px;
+    border-radius: 10px;
+    /**/
+    display: none;
 }
 .left-btm-edit-txt{
     padding-top: 10px;
@@ -503,7 +508,7 @@ img{
 .tools-left-item-active{
     background-color: rgba(69,141,247, 1);
     color: rgba(220,220,220, 1);;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .tools-right-content-null{
@@ -519,7 +524,7 @@ img{
     min-height: 220px;
     padding: 10px 10px;
     line-height: 24px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: rgba(115,115,115, 0.2);
     color: rgba(220,220,220,1);
     overflow-x: hidden;
@@ -544,7 +549,7 @@ img{
     line-height: 19px;
     overflow: hidden;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: rgba(200,200,200,1);
     margin-right: 20px;
     margin-bottom: 20px;
@@ -587,13 +592,13 @@ img{
 .switch-radio-item{
     padding: 5px 10px;
     line-height: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(30,30,30,0.1);
     color: black;
     background-color: rgba(200,200,200,1);
     float: left;
     margin-bottom: 10px;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 .switch-radio-item-active{
     color: rgba(230,230,230,1);
@@ -616,8 +621,8 @@ img{
     float: left;
 }
 .back-div-do{
-    width: 170px;
-    padding: 0 5px;
+    width: 175px;
+    padding: 0 0 0 5px;
     float: left;
 }
 .back-div-part{
@@ -630,7 +635,7 @@ img{
     padding: 5px 0;
     width: 34px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 .back-div-btn:hover{
     background-color: rgba(115,155,115,0.2);
@@ -659,7 +664,7 @@ img{
 .muyu-img{
     width: 50px;
     max-height: 50px;
-    border-radius: 5px;
+    border-radius: 10px;
     position: absolute;
     left: 0;
     right: 0;
@@ -719,7 +724,7 @@ img{
 
 .icon-img{
     width: 42px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .tools-left-item-height{
@@ -727,7 +732,7 @@ img{
 }
 .tools-left-item-height-bottom{
     border-bottom: 2px solid rgba(115,115,115,0.3);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .br{
@@ -737,7 +742,7 @@ img{
 .switch-radio-item-test, .switch-radio-item-test-path{
     padding: 5px 10px;
     line-height: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-right: 20px;
     float: left;
 }
@@ -749,4 +754,8 @@ img{
 .div-center{
     margin-left: auto;
     margin-right: auto;
+}
+
+.div-switch-tip{
+    padding: 10px 0;
 }

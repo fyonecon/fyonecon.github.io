@@ -31,7 +31,7 @@
 .div-alert_txt-bg{
     background-color: rgba(30,30,30, 1) !important;
 }
-.div-alert_confirm, .div-input_confirm, .back-do-content, .home-do-content, .upload-files-box, .note-content-box, .div-notice_img{
+.div-alert_confirm, .div-input_confirm, .back-do-content, .home-do-content, .upload-files-box, .note-content-box, .div-notice_img, .div-play-songs-list-card{
     background-color: rgba(30,30,30,1) !important;
     color: rgba(220,220,220,1) !important;
     box-shadow: 0 0 20px rgba(30,30,30,1) !important;
@@ -73,22 +73,23 @@
     border-radius: 34px;
     margin-top: 0;
     overflow: hidden;
-    width: 164px;
     height: 30px;
 }
 .div-play-songs-animation{
     animation: play_songs_animation 10s infinite ease-in-out;
 }
 @keyframes play_songs_animation {
-    0%   {background-color: rgba(115,115,115,0.3);color: rgba(220,220,220,1)}
+    0%   {background-color: rgba(115,115,115,0.8);color: rgba(220,220,220,1)}
     20%  {background-color: rgba(85,85,85,1);color: rgba(230,230,230,1)}
-    50%  {background-color: rgba(26,114,254, 0.4);color: rgba(240,240,240,1)}
+    50%  {background-color: rgba(26,114,254, 0.8);color: rgba(240,240,240,1)}
     80%  {background-color: rgba(85,85,85,1);color: rgba(230,230,230,1)}
-    100% {background-color: rgba(115,115,115,0.3);color: rgba(220,220,220,1)}
+    100% {background-color: rgba(115,115,115,0.8);color: rgba(220,220,220,1)}
 }
 /**/
 
-
+.liquidGlass-wrapper{
+    box-shadow: 0 0 20px rgba(20,20,20, 0.2);
+}
 .liquidGlass-tint {
     background: rgba(220,220,220, 0.2) !important;
 }
@@ -119,4 +120,15 @@
 }
 .w-e-text-container [data-slate-editor] pre>code{
     border: none!important;
+}
+.w-e-select-list{
+    color: rgba(220,220,220,1);
+    background-color: rgba(115,115,115,0.2) !important;
+}
+.w-e-select-list ul .selected{
+    background-color: rgba(115,115,115,0.5) !important;
+}
+.w-e-drop-panel{
+    color: rgba(220,220,220,1);
+    background-color: rgba(115,115,115,0.2) !important;
 }

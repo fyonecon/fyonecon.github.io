@@ -7,8 +7,15 @@
     margin-left: auto;
     margin-right: auto;
 }
-.footer-span{
-    padding: 5px 10px;
-    border-radius: 5px;
+.footer-app{
+    padding: 5px 5px;
+    border-radius: 10px;
     float: left;
+    opacity: 0.7;
+}
+.footer-host{
+    padding: 5px 5px;
+    border-radius: 10px;
+    float: right;
+    opacity: 0.7;
 }
