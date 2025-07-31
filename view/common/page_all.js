@@ -446,3 +446,13 @@ $(document).on("click", ".search-lan-btn", function (){
 
 //===============================
 
+//
+$(document).on("click", ".app-logo-click", function (){
+    let that = $(this);
+    if (view.is_wails()){
+        view.window_open("./", "_self");
+    }else{
+        view.window_open(web_url+"purehome.html", "_blank");
+    }
+});
+
