@@ -7,7 +7,10 @@
 // 2. 注册全局组件
 const page_public_file = {
     "js": [
-        // "static/js/play_songs.js",
+        "common/frame_loaded.js", // 解析完路由后的操作
+        "common/page_all.js", // 全局共用函数
+        "common/page_init.js", // 解析完路由后的操作
+        "common/page_login.js", // 用户全局安全校验
         "static/js/input_enter.js",
     ],
     "css": [
@@ -16,164 +19,153 @@ const page_public_file = {
     ],
 };
 
+const default_route = "direct"; // 默认路由名称，home
 
 // pages模块页面白名单配置
 const pages = [
     // 开始-必要路由
     { // 页面模块
         "route"     : "",
+        "route_alias": "direct",
         "file_path" : "pages/direct/direct.view",
         "title"     :  "请选择需要进入的页面",
-        "file"      : [
-            {
-                "js": [
-                    "pages/direct/direct.js",
-                ],
-                "css": [
-                    "pages/direct/direct.css",
-                ],
-            },
-        ],
+        "file"      : {
+            "js": [
+                "pages/direct/direct.js",
+            ],
+            "css": [
+                "pages/direct/direct.css",
+            ],
+        },
     }, //
     // 开始-必要路由
     { // 页面模块-404
         "route"     : "404",  // url中#route=xxx，便于定位页面
+        "route_alias": "404",
         "file_path" : "pages/404/404.view", // 实际文件路径+文件名，为了方便起见，文件后缀统一用“htm”
         "title"     : "页面404 - 页面没找到路由地址",  // 页面title
-        "file"      : [  // 本页面需要引入的局部资源文件
-            {
-                "js": [
-                    "pages/404/404.js",  // 模块页面js，模块中有效
-                ],
-                "css": [
-                    "pages/404/404.css?",  // 模块页面css，模块中有效
-                ],
-            },
-        ],
+        "file"      : {
+            "js": [
+                "pages/404/404.js",  // 模块页面js，模块中有效
+            ],
+            "css": [
+                "pages/404/404.css?",  // 模块页面css，模块中有效
+            ],
+        },
     },
-    { // 页面模块
-        "route"     : "login",
-        "file_path" : "pages/login/login.view",
-        "title"     : "请登录...",
-        "file"      : [
-            {
-                "js": [
-                    "pages/login/login.js",
-                ],
-                "css": [
-                    "pages/login/login.css",
-                ],
-            },
-        ],
-    }, //
+    // { // 页面模块
+    //     "route"     : "login",
+    //     "route_alias": "login",
+    //     "file_path" : "pages/login/login.view",
+    //     "title"     : "请登录...",
+    //     "file"      : {
+    //         "js": [
+    //             "pages/login/login.js",
+    //         ],
+    //         "css": [
+    //             "pages/login/login.css",
+    //         ],
+    //     },
+    // }, //
     // 结束-必要路由
 
     // { // 页面模块
     //     "route"     : "app",
     //     "file_path" : "pages/app/app.view",
     //     "title"     :  "App详情介绍",
-    //     "file"      : [
-    //         {
-    //             "js": [
-    //                 "pages/app/app.js",
-    //             ],
-    //             "css": [
-    //                 "pages/app/app.css",
-    //             ],
-    //         },
-    //     ],
+    //     "file"      : {
+    //     //             "js": [
+    //     //                 "pages/app/app.js",
+    //     //             ],
+    //     //             "css": [
+    //     //                 "pages/app/app.css",
+    //     //             ],
+    //     //         },
     // }, //
     { // 页面模块
         "route"     : "info",
+        "route_alias": "info",
         "file_path" : "pages/info/info.view",
         "title"     :  "App与浏览器参数",
-        "file"      : [
-            {
-                "js": [
-                    "pages/info/info.js",
-                ],
-                "css": [
-                    "pages/info/info.css",
-                ],
-            },
-        ],
+        "file"      : {
+            "js": [
+                "pages/info/info.js",
+            ],
+            "css": [
+                "pages/info/info.css",
+            ],
+        },
     }, //
     { // 页面模块
         "route"     : "home",
+        "route_alias": "home",
         "file_path" : "pages/home/home.view",
         "title"     : "主页",
-        "file"      : [
-            {
-                "js": [
-                    "pages/home/home_kw.js",
-                    "pages/home/home.js",
-                ],
-                "css": [
-                    "pages/home/home.css",
-                ],
-            },
-        ],
+        "file"      : {
+            "js": [
+                "pages/home/home_kw.js",
+                "pages/home/home.js",
+            ],
+            "css": [
+                "pages/home/home.css",
+            ],
+        },
     }, //
     { // 页面模块-搜索辅助跳转
         "route"     : "search",
+        "route_alias": "search",
         "file_path" : "pages/search/search.view",
         "title"     : "搜索 ",
-        "file"      : [
-            {
-                "js": [
-                    "pages/search/search.js",
-                ],
-                "css": [
-                    "pages/search/search.css",
-                ],
-            },
-        ],
+        "file"      : {
+            "js": [
+                "pages/search/search.js",
+            ],
+            "css": [
+                "pages/search/search.css",
+            ],
+        },
     }, //
     { // 页面模块-文档预览
         "route"     : "docs",
+        "route_alias": "docs",
         "file_path" : "pages/docs/docs.view",
         "title"     : "文档预览 ",
-        "file"      : [
-            {
-                "js": [
-                    "pages/docs/docs.js",
-                ],
-                "css": [
-                    "pages/docs/docs.css",
-                ],
-            },
-        ],
+        "file"      : {
+            "js": [
+                "pages/docs/docs.js",
+            ],
+            "css": [
+                "pages/docs/docs.css",
+            ],
+        },
     }, //
     { // 页面模块
         "route"     : "purehome",
+        "route_alias": "purehome",
         "file_path" : "pages/app/purehome/purehome.view",
         "title"     :  "PureHome详情介绍",
-        "file"      : [
-            {
-                "js": [
-                    "pages/app/purehome/purehome.js",
-                ],
-                "css": [
-                    "pages/app/purehome/purehome.css",
-                ],
-            },
-        ],
+        "file"      : {
+            "js": [
+                "pages/app/purehome/purehome.js",
+            ],
+            "css": [
+                "pages/app/purehome/purehome.css",
+            ],
+        },
     }, //
-    { // 页面模块
-        "route"     : "purehyperos",
-        "file_path" : "pages/app/purehyperos/purehyperos.view",
-        "title"     :  "PureHyperOS详情介绍",
-        "file"      : [
-            {
-                "js": [
-                    "pages/app/purehyperos/purehyperos.js",
-                ],
-                "css": [
-                    "pages/app/purehyperos/purehyperos.css",
-                ],
-            },
-        ],
-    }, //
+    // { // 页面模块
+    //     "route"     : "purehyperos",
+    //     "file_path" : "pages/app/purehyperos/purehyperos.view",
+    //     "title"     :  "PureHyperOS详情介绍",
+    //     "file"      : //         {
+    //     //             "js": [
+    //     //                 "pages/app/purehyperos/purehyperos.js",
+    //     //             ],
+    //     //             "css": [
+    //     //                 "pages/app/purehyperos/purehyperos.css",
+    //     //             ],
+    //     //         },
+    // }, //
 
     //
 ];

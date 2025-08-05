@@ -240,7 +240,7 @@ function test_fetch(file_url){
     });
 }
 
-function start_page(info) {
+function page_for_info(info) {
     if (view.is_wails()){
         $(".div-back").removeClass("hide");
     }else{

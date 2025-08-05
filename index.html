@@ -21,7 +21,7 @@
         const time_start = Math.floor((new Date()).getTime()); // ms。开始载入文件的时间戳
         let time_loaded = 0; // ms。框架载入完成的时间戳
         let time_error = 0; // ms。框架出错的时间戳
-        const files_version = "3.7"; // 清除文件缓存
+        const files_version = "4.0"; // 清除文件缓存
         const index_prefix = "app_"; // index文件中的参数前缀
         const cdn_page_file = "./view/"; // 自定义pages CDN地址，./
         const cdn_depend_file = "./view/"; // 自定义核心依赖CDN地址，./
@@ -33,6 +33,7 @@
         const depend_js_array = [
             cdn_page_file + "config.js", // 配置文件，./
             cdn_page_file + "route.js", // 路由文件，./
+            cdn_depend_file + "depend/depend.js",
             cdn_depend_file + "depend/plugins.js",
             cdn_depend_file + "depend/view.js",
             cdn_page_file + "common/lang.js",
@@ -92,23 +93,7 @@
                     js_all.push(the_q);
                 }
                 Promise.all(js_all).then((result) => {
-                    let file =  cdn_depend_file + "depend/depend.js";
-                    let cache_key = index_prefix+"js_depend";
-                    let cache_js = that.GetData(cache_key);
-                    let script = document.createElement("script");
-                    script.setAttribute("class", "depend-js");
-                    if (cache_js){ // 存在缓存
-                        script.innerHTML = cache_js;
-                        head.appendChild(script);
-                    }else {
-                        script.setAttribute("src", file + clear_cache);
-                        head.appendChild(script);
-                        script.onload = function (e) { // Loaded Depend
-                            that.CacheDoc(file, cache_key, e.currentTarget.document);
-                            document.getElementById("loading-div").classList.add("hide");
-                            document.getElementById("loading-div").classList.remove("click-refresh");
-                        };
-                    }
+                    depend_init();
                 }).catch((error) => {
                     console.error(error);
                 });
@@ -188,7 +173,7 @@
 <body class="body div_theme" data-view="" data-desc="" style="background-color: rgba(30,30,30,1);color: rgba(220,220,220,1);">
 <div class="depend" id="depend"><!-- inject-div --></div>
 <div class="s-e_o-a hide" id="s-e_o-a"><!-- seo-div -->
-    <p><a href="./?route=home" target="_blank" title="PureHome PWA">PureHome PWA</a></p>
+    <p><a href="./#route=home" target="_blank" title="PureHome PWA">PureHome PWA</a></p>
     <p><a href="./purehome.html" target="_blank" title="PureHome Description">PureHome Description</a></p>
     <p>不收集任何隐私！ Do not collect any privacy! プライバシーは一切収集しない！</p>
 </div>

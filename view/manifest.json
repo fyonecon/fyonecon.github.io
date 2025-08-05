@@ -1,7 +1,7 @@
 {
   "name": "PureHome",
   "short_name": "PureHome",
-  "start_url": "./?route=home&from=&utm_source=pwa",
+  "start_url": "./#route=home&from=&utm_source=pwa",
   "display": "standalone",
   "background_color": "#fefefe",
   "description": "",

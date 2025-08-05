@@ -89,6 +89,7 @@ function frame_loaded(e, route){
 
     // 监听系统切换主题色
     let scheme = window.matchMedia('(prefers-color-scheme: light)');
+    view.init_theme(theme_value, view.scheme_model());
     scheme.addEventListener('change', (event) => { // if (event.matches){}。// 监听主题色，切换浏览器主题色时会触发此函数
         view.log("自动切换到主题色：", view.scheme_model());
         if (theme_value === "theme_0"){

@@ -26,7 +26,7 @@ function docs_preview_txt(doc_url, doc_name){
     });
 }
 
-function start_page(info) {
+function page_for_docs(info) {
     if (view.is_wails()){
         $(".div-back").removeClass("hide");
     }else{

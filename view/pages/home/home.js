@@ -92,7 +92,7 @@ function create_input(pre, swiper_dom) { // 渲染模板
         //--
         swiper_dom +
         //--
-        '       <div class="swiper-slide more-btn"><div class="edit-website_mark click font-text font-blue select-none a-click break" data-href="./?route=setting&from=&right_parts_name=website_mark-item" data-target="_self"><i class="fa-light fa-pen-to-square"></i> '+view.language_txt("setting_website_mark")+'</div></div>' +
+        '       <div class="swiper-slide more-btn"><div class="edit-website_mark click font-text font-blue select-none a-click break" data-href="./#route=setting&from=&right_parts_name=website_mark-item" data-target="_self"><i class="fa-light fa-pen-to-square"></i> '+view.language_txt("setting_website_mark")+'</div></div>' +
 
         //--
         '    </div>' +
@@ -483,7 +483,7 @@ $(document).on("click", ".qr-div", function (){
 
 $(document).on("click", ".open_lang-span", function (){
     let that = $(this);
-    let url = "./?route=setting&from=&right_parts_name=language-item";
+    let url = "./#route=setting&from=&right_parts_name=language-item";
     view.window_open(url, "_self");
 });
 
@@ -590,7 +590,8 @@ function read_list_data(){
     });
 }
 
-function start_page(info) {
+//
+function page_for_home(info) {
     // 显示用户信息
     let user_info = "(?)";
     if (login_id){
@@ -604,7 +605,7 @@ function start_page(info) {
         if (from === "notes" || from === "lan" || from === "sub_app"){ // 白名单
             //
         }else{
-            view.window_open("./?route=notes&from=", "_self");
+            view.window_open("./#route=notes&from=", "_self");
             return;
         }
         //

@@ -103,7 +103,7 @@ function jump_to_url_location(engine, word) {
         }
     }).then(host=>{ // open
         search_host= "http://"+host+assets_html_dir_name+assets_html_index_name;
-        param_data = "?route=search&engine="+engine+"&word="+word+del_fake_news+"&url_timeout="+view.url_timeout_encode("search", 6*60*60)+"&ap=mix";
+        param_data = "#route=search&engine="+engine+"&word="+word+del_fake_news+"&url_timeout="+view.url_timeout_encode("search", 6*60*60)+"&ap=mix";
         let search_url = search_host+param_data;
         //
         // if (!view.is_user_screen() || !view.is_mobile_pwa() || !view.is_pc_pwa()){ // 拦截调试
@@ -410,9 +410,9 @@ $(document).on("click", ".a-write_page", function () {
     that.addClass("tools-left-item-active");
     let name = that.attr("data-name");
     let from = that.attr("data-from");
-    // let href = "/?route="+name+"&from="+from
+    // let href = "/#route="+name+"&from="+from
     // view.window_open(href, "_self");
-    let href = "http://127.0.0.1:"+api_port+assets_html_dir_name+assets_html_index_name+"?route="+name+"&from="+from;
+    let href = "http://127.0.0.1:"+api_port+assets_html_dir_name+assets_html_index_name+"#route="+name+"&from="+from;
     $(".run-tools-content").attr("id", "run-tools-content");
     view.xss_iframe("run-tools-content", href + "&iframe=yes", function (){
 

@@ -13,53 +13,53 @@ function check_input_kw(_word){
         state = true;
     }
     else if (word === "kw@login" || word === "@login"){
-        url = "./?route=login";
+        url = "./#route=login";
         view.window_open(url, "_self");
         state = true;
     }
     else if (word === "kw@404" || word === "@404"){
-        url = "./?route=404";
+        url = "./#route=404";
         view.window_open(url, "_self");
         state = true;
     }
     // 其他
     else if (word === "kw@notes" || word === "kw@paste" || word === "@notes" || word === "@paste"){
-        url = "./?route=notes&cache="+view.time_date("YmdHis");
+        url = "./#route=notes&cache="+view.time_date("YmdHis");
         view.window_open(url, "_self");
         state = true;
     }
     else if (word === "kw@coding" || word === "@coding"){
-        url = "./?route=coding";
+        url = "./#route=coding";
         view.window_open(url, "_self");
         state = true;
     }
     else if (word === "kw@lan" || word === "@lan"){
-        url = "./?route=lan";
+        url = "./#route=lan";
         view.window_open(url, "_self");
         state = true;
     }
     else if (word === "kw@setting" || word === "kw@settings" || word === "@setting" || word === "@settings"){
-        url = "./?route=setting";
+        url = "./#route=setting";
         view.window_open(url, "_self");
         state = true;
     }
     else if (word === "kw@sub_app" || word === "kw@sub_apps" || word === "@sub_app" || word === "@sub_apps"){
-        url = "./?route=sub_app";
+        url = "./#route=sub_app";
         view.window_open(url, "_self");
         state = true;
     }
     else if (word === "kw@app" || word === "kw@download" || word === "kw@software" || word === "@app" || word === "@download" || word === "@software"){
-        url = "./?route=app";
+        url = "./#route=app";
         view.window_open(url, "_self");
         state = true;
     }
     else if (word === "kw@help" || word === "@help"){
-        url = "./?route=help";
+        url = "./#route=help";
         view.window_open(url, "_self");
         state = true;
     }
     else if (word === "kw@info" || word === "@info"){
-        url = "./?route=info";
+        url = "./#route=info";
         view.window_open(url, "_self");
         state = true;
     }

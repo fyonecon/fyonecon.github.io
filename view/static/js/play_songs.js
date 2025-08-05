@@ -12,7 +12,7 @@
 // host: "172.20.10.3:34100"
 // song_name: "Alan walker-Play（KF remix）.mp3"
 // song_path: "/Users/xxx/Music/网易云音乐/Alan walker-Play（KF remix）.mp3"
-// song_src: "http://172.20.10.3:34100/share_file?route=read_file&show_path=%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%2FAlan%20walker-Play%EF%BC%88KF…"
+// song_src: "http://172.20.10.3:34100/share_file#route=read_file&show_path=%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%2FAlan%20walker-Play%EF%BC%88KF…"
 //
 // Object Prototype
 const play_songs_dom_id = "play-songs";
