@@ -677,11 +677,11 @@ function page_for_home(info) {
 
 }
 
-function hide_page(){
-    view.log("后台状态，清除定时器");
-}
-
-function show_page(){
-    view.log("前台状态，重新开启定时器");
-    show_history();
-}
+// function hide_page(){
+//     view.log("后台状态，清除定时器");
+// }
+//
+// function show_page(){
+//     view.log("前台状态，重新开启定时器");
+//     show_history();
+// }

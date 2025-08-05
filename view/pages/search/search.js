@@ -283,7 +283,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
             name = "Baidu";
         }
         else if (engine === "bing"){
-            url = "https://www.bing.com/?ensearch=1";
+            url = "https://www.bing.com/?ensearch=0";
             url = url + "&q=" + word;
             name = "Bing";
         }
@@ -437,6 +437,6 @@ function page_for_search(e) {
     jump_search_engine();
 }
 
-function show_page(){
-    jump_search_engine();
-}
+// function show_page(){
+//     jump_search_engine();
+// }

@@ -99,7 +99,7 @@ function set_app_lang(lang){
     }
 }
 
-function start_page(info) {
+function page_for_purehome(info) {
 
     // 默认语言
     let lang = "zh";
