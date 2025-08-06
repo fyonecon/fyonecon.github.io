@@ -248,6 +248,16 @@ const depend_func = {
 
 // init-1/2
 function depend_init(){
+    // 设置主题色
+    view.set_theme();
+    // 设置页面缩放
+    view.set_page_zoom();
+    // 设置国际化语言
+    let lang_key = app_class + "lang_eq";
+    view.set_lang_eq(view.get_data(lang_key)!==""?view.get_data(lang_key)*1:"");
+    // 设置html语言
+    view.set_html_lang();
+    //
     view.show_loading("long");
     return new Promise(resolve => {
         // 移除老css和html

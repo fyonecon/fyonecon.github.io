@@ -19,170 +19,155 @@
     <meta name="description" content="" />
     <link rel="manifest" href="./manifest.json" />
     <script id="depend-js" data-view="" data-desc="">
-        const time_start = Math.floor((new Date()).getTime()); // ms。开始载入文件的时间戳
-        let time_loaded = 0; // ms。框架载入完成的时间戳
-        let time_error = 0; // ms。框架出错的时间戳
-        const files_version = "0.0"; // 清除文件缓存
-        const index_prefix = "work_"; // index文件中的参数前缀
-        const cdn_page_file = "./"; // 自定义pages CDN地址，./
-        const cdn_depend_file = "./"; // 自定义核心依赖CDN地址，./
-        //
-        const depend_css_array = [
-            cdn_depend_file + "depend/depend.css",
-            cdn_depend_file + "depend/plugins.css",
-        ];
-        const depend_js_array = [
-            "./config.js", // 配置文件 ./
-            "./route.js", // 路由文件 ./
-            cdn_depend_file + "depend/plugins.js",
-            cdn_depend_file + "depend/view.js",
-            cdn_page_file + "common/lang.js",
-        ];
-        //
-        const index_func = {
-            AppRun: function  () { // 核心解析依赖
-                let that = this;
-                let clear_cache = "?cache=" + files_version;
-                let head = document.head || document.getElementsByTagName("head")[0];
-                document.getElementsByTagName("title")[0].innerText = "···";
-                document.getElementById("loading-div").classList.remove("hide");
-                // css
-                let css_all = [];
-                for (let i=0; i<depend_css_array.length; i++){
-                    let the_p = new Promise((resolve, reject) => {
-                        let link = document.createElement("link");
-                        link.setAttribute("class", "depend-css");
-                        link.setAttribute("href", depend_css_array[i] + clear_cache);
-                        link.setAttribute("rel", "stylesheet");
-                        head.appendChild(link);
-                        link.onload = function (e) {
-                            that.CacheDoc(depend_css_array[i], "depend-css-"+i, e.currentTarget.document);
-                            resolve(i);
-                        };
-                    });
-                    css_all.push(the_p);
-                }
-                Promise.all(css_all).then((result) => {
-                    //
-                }).catch((error) => {
-                    console.error(error);
-                });
-                // js
-                let js_all = [];
-                for (let j=0; j<depend_js_array.length; j++){
-                    let the_q = new Promise((resolve, reject) => {
-                        let file = depend_js_array[j];
-                        let cache_key = index_prefix+"js_depend_"+j;
-                        let cache_js = that.GetData(cache_key);
-                        let script = document.createElement("script");
-                        script.setAttribute("class", "depend-js");
-                        // console.log(cache_key, cache_js);
-                        if (cache_js){ // 存在缓存
-                            script.innerHTML = cache_js;
-                            head.appendChild(script);
-                            resolve(j);
-                        }else {
-                            script.setAttribute("src", file + clear_cache);
-                            head.appendChild(script);
-                            script.onload = function (e) {
-                                that.CacheDoc(file, cache_key, e.currentTarget.document);
-                                resolve(j);
+            const time_start = Math.floor((new Date()).getTime()); // ms。开始载入文件的时间戳
+            let time_loaded = 0; // ms。框架载入完成的时间戳
+            let time_error = 0; // ms。框架出错的时间戳
+            const files_version = "4.0"; // 清除文件缓存
+            const index_prefix = "app_"; // index文件中的参数前缀
+            const cdn_page_file = "./view/"; // 自定义pages CDN地址，./
+            const cdn_depend_file = "./view/"; // 自定义核心依赖CDN地址，./
+            //
+            const depend_css_array = [
+                cdn_depend_file + "depend/depend.css",
+                cdn_depend_file + "depend/plugins.css",
+            ];
+            const depend_js_array = [
+                cdn_page_file + "config.js", // 配置文件，./
+                cdn_page_file + "route.js", // 路由文件，./
+                cdn_depend_file + "depend/depend.js",
+                cdn_depend_file + "depend/plugins.js",
+                cdn_depend_file + "depend/view.js",
+                cdn_page_file + "common/lang.js",
+            ];
+            //
+            const index_func = {
+                AppRun: function  () { // 核心解析依赖
+                    let that = this;
+                    let clear_cache = "?cache=" + files_version;
+                    let head = document.head || document.getElementsByTagName("head")[0];
+                    document.getElementsByTagName("title")[0].innerText = "···";
+                    document.getElementById("loading-div").classList.remove("hide");
+                    // css
+                    let css_all = [];
+                    for (let i=0; i<depend_css_array.length; i++){
+                        let the_p = new Promise((resolve, reject) => {
+                            let link = document.createElement("link");
+                            link.setAttribute("class", "depend-css");
+                            link.setAttribute("href", depend_css_array[i] + clear_cache);
+                            link.setAttribute("rel", "stylesheet");
+                            head.appendChild(link);
+                            link.onload = function (e) {
+                                that.CacheDoc(depend_css_array[i], "depend-css-"+i, e.currentTarget.document);
+                                resolve(i);
                             };
-                        }
-                    });
-                    js_all.push(the_q);
-                }
-                Promise.all(js_all).then((result) => {
-                    let file =  cdn_depend_file + "depend/depend.js";
-                    let cache_key = index_prefix+"js_depend";
-                    let cache_js = that.GetData(cache_key);
-                    let script = document.createElement("script");
-                    script.setAttribute("class", "depend-js");
-                    if (cache_js){ // 存在缓存
-                        script.innerHTML = cache_js;
-                        head.appendChild(script);
-                    }else {
-                        script.setAttribute("src", file + clear_cache);
-                        head.appendChild(script);
-                        script.onload = function (e) { // Loaded Depend
-                            that.CacheDoc(file, cache_key, e.currentTarget.document);
-                            document.getElementById("loading-div").classList.add("hide");
-                            document.getElementById("loading-div").classList.remove("click-refresh");
-                        };
+                        });
+                        css_all.push(the_p);
                     }
-                }).catch((error) => {
-                    console.error(error);
-                });
-            },
-            GetData: function (key){ // 获取本地localstorage
-                return localStorage.getItem(key);
-            },
-            SetData: function (key, value){ // 新增或更新数据
-                localStorage.setItem(key,value);
-                return localStorage.getItem(key);
-            },
-            DelData: function (key){ // 删除本地localstorage
-                return localStorage.removeItem(key);
-            },
-            ClearData: function () {
-                return localStorage.clear();
-            },
-            TimeDate: function (date_time){ // YmdHisW，日期周
-                let t = new Date();
-                let seconds = t.getSeconds(); if (seconds<10){seconds = "0"+seconds;}
-                let minutes = t.getMinutes(); if (minutes<10){minutes = "0"+minutes;}
-                let hour = t.getHours(); if (hour<10){hour = "0"+hour;}
-                let day = t.getDate(); if (day<10){day = "0"+day;}
-                let month = t.getMonth() + 1; if (month<10){month = "0"+month;}
-                let year = t.getFullYear();
-                let week = ["Seven", "One", "Two", "Three", "Four", "Five", "Six"][t.getDay()]; // 周
-                date_time = date_time.replaceAll("Y", year);
-                date_time = date_time.replaceAll("m", month);
-                date_time = date_time.replaceAll("d", day);
-                date_time = date_time.replaceAll("H", hour);
-                date_time = date_time.replaceAll("i", minutes);
-                date_time = date_time.replaceAll("s", seconds);
-                date_time = date_time.replaceAll("W", week);
-                return date_time;
-            },
-            IsWails: function (){
-                let url = window.location.host;
-                return url === "wails.localhost" || url === "wails";
-            },
-            IsHttps: function (href){
-                if (!href){href=window.location.href}
-                let url = new URL(href);
-                let proto = url.protocol;
-                if (proto === "https:" || proto === "https"){
-                    return 2;
-                }else if(proto === "http:" || proto === "http"){
-                    return 1;
-                }else{
-                    return 0;
-                }
-            },
-            HttpsToHttp: function (href){
-                let that = this;
-                if (!href){href=window.location.href}
-                return href.replace("https", "http");
-            },
-            CacheDoc: function (file, key, doc){ // 将文档缓存在local
-                let that = this;
-                // 判断是否需要更新
-                // let timeout = 24*60*60; // s
-                // let now_time = Math.floor((new Date()).getTime()/1000);
-                // let cache_doc_timeout_key = app_class+"cache_doc_timeout";
-                // let cache_doc_timeout = that.GetData(cache_doc_timeout_key)*1;
-                // if (now_time-cache_doc_timeout>timeout){ // 过期
-                //     //console.log("更新", [file, key, cache_doc_timeout, now_time, timeout]);
-                //     // that.SetData(cache_doc_timeout_key, now_time);
-                //     // that.SetData(key, doc);
-                // }else{
-                //     //console.log("不更新", [file, key, cache_doc_timeout, now_time, timeout]);
-                // }
-            },
-        };
-    </script>
+                    Promise.all(css_all).then((result) => {
+                        //
+                    }).catch((error) => {
+                        console.error(error);
+                    });
+                    // js
+                    let js_all = [];
+                    for (let j=0; j<depend_js_array.length; j++){
+                        let the_q = new Promise((resolve, reject) => {
+                            let file = depend_js_array[j];
+                            let cache_key = index_prefix+"js_depend_"+j;
+                            let cache_js = that.GetData(cache_key);
+                            let script = document.createElement("script");
+                            script.setAttribute("class", "depend-js");
+                            // console.log(cache_key, cache_js);
+                            if (cache_js){ // 存在缓存
+                                script.innerHTML = cache_js;
+                                head.appendChild(script);
+                                resolve(j);
+                            }else {
+                                script.setAttribute("src", file + clear_cache);
+                                head.appendChild(script);
+                                script.onload = function (e) {
+                                    that.CacheDoc(file, cache_key, e.currentTarget.document);
+                                    resolve(j);
+                                };
+                            }
+                        });
+                        js_all.push(the_q);
+                    }
+                    Promise.all(js_all).then((result) => {
+                        depend_init();
+                    }).catch((error) => {
+                        console.error(error);
+                    });
+                },
+                GetData: function (key){ // 获取本地localstorage
+                    return localStorage.getItem(key);
+                },
+                SetData: function (key, value){ // 新增或更新数据
+                    localStorage.setItem(key,value);
+                    return localStorage.getItem(key);
+                },
+                DelData: function (key){ // 删除本地localstorage
+                    return localStorage.removeItem(key);
+                },
+                ClearData: function () {
+                    return localStorage.clear();
+                },
+                TimeDate: function (date_time){ // YmdHisW，日期周
+                    let t = new Date();
+                    let seconds = t.getSeconds(); if (seconds<10){seconds = "0"+seconds;}
+                    let minutes = t.getMinutes(); if (minutes<10){minutes = "0"+minutes;}
+                    let hour = t.getHours(); if (hour<10){hour = "0"+hour;}
+                    let day = t.getDate(); if (day<10){day = "0"+day;}
+                    let month = t.getMonth() + 1; if (month<10){month = "0"+month;}
+                    let year = t.getFullYear();
+                    let week = ["Seven", "One", "Two", "Three", "Four", "Five", "Six"][t.getDay()]; // 周
+                    date_time = date_time.replaceAll("Y", year);
+                    date_time = date_time.replaceAll("m", month);
+                    date_time = date_time.replaceAll("d", day);
+                    date_time = date_time.replaceAll("H", hour);
+                    date_time = date_time.replaceAll("i", minutes);
+                    date_time = date_time.replaceAll("s", seconds);
+                    date_time = date_time.replaceAll("W", week);
+                    return date_time;
+                },
+                IsWails: function (){
+                    let url = window.location.host;
+                    return url === "wails.localhost" || url === "wails";
+                },
+                IsHttps: function (href){
+                    if (!href){href=window.location.href}
+                    let url = new URL(href);
+                    let proto = url.protocol;
+                    if (proto === "https:" || proto === "https"){
+                        return 2;
+                    }else if(proto === "http:" || proto === "http"){
+                        return 1;
+                    }else{
+                        return 0;
+                    }
+                },
+                HttpsToHttp: function (href){
+                    let that = this;
+                    if (!href){href=window.location.href}
+                    return href.replace("https", "http");
+                },
+                CacheDoc: function (file, key, doc){ // 将文档缓存在local
+                    let that = this;
+                    // 判断是否需要更新
+                    // let timeout = 24*60*60; // s
+                    // let now_time = Math.floor((new Date()).getTime()/1000);
+                    // let cache_doc_timeout_key = app_class+"cache_doc_timeout";
+                    // let cache_doc_timeout = that.GetData(cache_doc_timeout_key)*1;
+                    // if (now_time-cache_doc_timeout>timeout){ // 过期
+                    //     //console.log("更新", [file, key, cache_doc_timeout, now_time, timeout]);
+                    //     // that.SetData(cache_doc_timeout_key, now_time);
+                    //     // that.SetData(key, doc);
+                    // }else{
+                    //     //console.log("不更新", [file, key, cache_doc_timeout, now_time, timeout]);
+                    // }
+                },
+            };
+        </script>
     <style>.hide{display: none;}.loading-div{position:fixed;z-index:20990100;top:0;left:0;bottom:0;right:0;margin:auto;background:rgba(115,115,115,0.2);}
     .loading-img{position:fixed;z-index:20211020;width:40px;height: 40px;top:-15%;left:0;bottom:0;right:0;margin:auto;}.select-none{-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;}</style>
 </head>
