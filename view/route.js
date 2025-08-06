@@ -19,7 +19,7 @@ const page_public_file = {
     ],
 };
 
-const default_route = "direct"; // 默认路由名称，home
+const default_route = "direct"; // 默认路由名称，home、direct
 
 // pages模块页面白名单配置
 const pages = [
