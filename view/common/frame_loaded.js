@@ -1,7 +1,7 @@
 // 初始化页面所有路由文件后，负责框架事件。早于start_page()一步。
 function frame_loaded(e, route){
-    // 页面载入完成，隐藏加载动画
-    view.hide_loading();
+    // 页面加载完成运行一次即可
+    page_init(e, route);
 
     // 获取手动设置的主题色值
     let theme_key = app_class + "switch_radio_theme";
@@ -28,22 +28,6 @@ function frame_loaded(e, route){
     console.info("当前显示主题：" + theme_value, view.scheme_model());
     console.info("框架解析用时：" + (time_loaded - time_start) + " ms");
     view.log("框架报错时间：" + time_error);
-
-    // 动态设置网站标题
-    function set_lang_title(){
-        // view.title("");
-        if (!route){route = "home";}
-        for(let key in lang_txt_data["route"]){
-            try {
-                let _route = lang_txt_data["route"][key];
-                if (key === route){
-                    view.title(_route[lang_eq]);
-                    break;
-                }
-            }catch (e){break;}
-        }
-    }
-    set_lang_title();
 
     // 监听页面尺寸改变
     window.onresize = function (){
@@ -100,24 +84,6 @@ function frame_loaded(e, route){
         }
     });
 
-    // 设置全局登录信息
-    let user_email_key = app_class+"login_email";
-    login_id = view.unicode_to_string(view.get_data(user_email_key));
-    let user_pwd_key = app_class+"login_pwd";
-    login_pwd = view.get_data(user_pwd_key);
-
-    // 歌曲播放
-    // function run_play_songs(route){
-    //     // 加载HTML
-    //     view.write_css([cdn_page_file + "parts/player/player.css"], function (){});
-    //     view.write_html(cdn_page_file + "parts/player/player.html", "route-page",function (){
-    //         view.write_js([cdn_page_file + "parts/player/player.js"], function (){
-    //             run_parts_play_songs(route);
-    //         });
-    //     }, "depend");
-    // }
-    // run_play_songs(route);
-
     // 监听Enter按键
     watch_input_enter( function (enter_state, the_input_id){
         if (enter_state === 1){ // 条件满足
@@ -159,23 +125,6 @@ function frame_loaded(e, route){
         }
     });
 
-    // footer
-    // if ((route === "preview_file") && $("#footer-dom")){
-    //     let footer_file = "./parts/footer/";
-    //     view.write_css([footer_file+"footer.css"], function (){});
-    //     view.write_js([footer_file+"footer.js"], function (){
-    //         start_footer(footer_file);
-    //     });
-    // }
-
-    // 屏蔽词（默认值）
-    let search_del_fake_news =  view.get_data(app_class+"search_del_fake_news");
-    if (!search_del_fake_news){
-        // view.set_data(app_class+"search_del_fake_news", "-zhihu.com");
-    }else{
-        view.set_data(app_class+"search_del_fake_news", "");
-    }
-
     // 设置文件缓存（提前加载一些文件，如果已加载，也不会浪费流量）
     let pre_cache_timeout = 6*(60*60); // s, h
     let pre_cache_time_key = app_class+"pre_cache_time";
@@ -197,4 +146,5 @@ function frame_loaded(e, route){
             //
         }
     });
+
 }

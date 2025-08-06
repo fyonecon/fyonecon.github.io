@@ -29,7 +29,7 @@ function page_init(e, route){
             || route === "coding" || route === "direct" || route === "info" || route === "docs"
             || route === "app" || route === "purehome" || route === "purehyperos"
         ){ // 不需要登录
-            start_page(e);
+            user_login(route, "white_route");
         } else { // 需要登录。不是login的话就直接检查是否已经登录
             // 处理是否过期
             let login_key = app_class+"login_time";
@@ -44,5 +44,36 @@ function page_init(e, route){
     }else {
         view.alert_txt("Browser Be Fake！", "long", "clear");
     }
+
+    // 动态设置网站标题
+    function set_lang_title(){
+        // view.title("");
+        if (!route){route = "home";}
+        for(let key in lang_txt_data["route"]){
+            try {
+                let _route = lang_txt_data["route"][key];
+                if (key === route){
+                    view.title(_route[lang_eq]);
+                    break;
+                }
+            }catch (e){break;}
+        }
+    }
+    set_lang_title();
+
+    // 设置全局登录信息
+    let user_email_key = app_class+"login_email";
+    login_id = view.unicode_to_string(view.get_data(user_email_key));
+    let user_pwd_key = app_class+"login_pwd";
+    login_pwd = view.get_data(user_pwd_key);
+
+    // 屏蔽词（默认值）
+    let search_del_fake_news =  view.get_data(app_class+"search_del_fake_news");
+    if (!search_del_fake_news){
+        // view.set_data(app_class+"search_del_fake_news", "-zhihu.com");
+    }else{
+        view.set_data(app_class+"search_del_fake_news", "");
+    }
+
 
 }

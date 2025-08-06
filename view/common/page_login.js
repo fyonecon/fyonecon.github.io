@@ -1,13 +1,13 @@
 "use strict";
 
 // 用户登录
-function user_login(route){
+function user_login(route, white_route){
     // 设置用户邮箱
     let user_email_key = app_class+"login_email";
     let user_pwd_key = app_class+"login_pwd";
     let _login_email = view.get_data(user_email_key);
     let _login_pwd = view.get_data(user_pwd_key);
-    if (!_login_email || !_login_pwd){
+    if ((!_login_email || !_login_pwd) && white_route !== "white_route" ){
         view.login_confirm("💡"+view.language_txt("login_confirm_alert"), "", "", function (state, class_name, new_email, new_pwd){
             if (state){
                 if (view.is_email(new_email) && new_email.length >= 6){
@@ -34,7 +34,11 @@ function user_login(route){
         login_id = view.unicode_to_string(_login_email);
         login_pwd = _login_pwd;
         //
-        start_page(route);
+        try {
+            eval('page_for_'+route+'("'+route+'")');
+        }catch (e){
+            console.log("页面函数不存在（每个子页面的起始函数都不一样，格式：'page_for_'route_name'(route){} ）", ['page_for_'+route+'("'+route+'")', e]);
+        }
     }
 }
 

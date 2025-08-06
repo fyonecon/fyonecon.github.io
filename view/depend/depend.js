@@ -36,11 +36,11 @@ const depend_func = {
             }, 10000);
         }else{
             // 调用页面函数
-            try {
-                eval('page_for_'+route+'("'+route+'")');
-            }catch (e){
-                console.log("页面函数不存在（每个子页面的起始函数都不一样，格式：'page_for_'route_name'(route){} ）", ['page_for_'+route+'("'+route+'")', e]);
-            }
+            // try {
+            //     eval('page_for_'+route+'("'+route+'")');
+            // }catch (e){
+            //     console.log("页面函数不存在（每个子页面的起始函数都不一样，格式：'page_for_'route_name'(route){} ）", ['page_for_'+route+'("'+route+'")', e]);
+            // }
         }
     },
     write_js: function (js_array) {
@@ -261,11 +261,13 @@ const depend_func = {
         // 移除老css和html
         $(".write-css-load-route-files").remove();
         $("#depend").html("");
+        console.log("刷新路由：", now_route);
         //
         depend_func.check_host(app_url.check_way, app_url.white_url).then(function (state){
             if (state){
                 // 加载当前路由文件
                 depend_func.load_route_files(now_route).then(function (){
+                    try {page_init([], now_route);}catch (e){console.error("page_init: ", e);} // 路由切换就执行一次
                     depend_func.run_app(now_route);
                 });
             }else{
@@ -308,13 +310,7 @@ function depend_init(){
             if (state){
                 Promise.all([p1, p2]).then(function (){
                     time_loaded = depend_func.time_ms(); // ms
-                    // 调用页面函数（只允许一次）
-                    try {
-                        frame_loaded([], now_route);
-                    }catch (e){}
-                    try {
-                        page_init([], now_route);
-                    }catch (e){}
+                    try {frame_loaded([], now_route);}catch (e){console.error("frame_loaded: ", e);} // 只执行一次
                     //
                     depend_func.run_app(now_route);
                     resolve(true);
