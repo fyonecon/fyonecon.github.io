@@ -7,7 +7,7 @@
         <br>
         <br>
         <div class="div-back hide">
-           <div class="back-div-btn click a-click font-text font-blue div-center" data-href="./?from=404" title="Back" data-target="_self"><i class="fa-solid fa-chevron-left"></i><i class="i-back-txt"></i></div>
+           <div class="back-div-btn click a-click font-text font-blue div-center" data-href="./#from=404" title="Back" data-target="_self"><i class="fa-solid fa-chevron-left"></i><i class="i-back-txt"></i></div>
         </div>
         <br>
         <br>

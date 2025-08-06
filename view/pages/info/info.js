@@ -131,7 +131,7 @@ function show_info(){
         {
             "title": "Files Version",
             "title_class": "font-text",
-            "value": files_version,
+            "value": view_version,
             "value_class": "font-text",
         },
         {
@@ -190,7 +190,7 @@ function show_info(){
 
     //
     test_fetch(window.location.href);
-    // test_fetch(cdn_page_file + "pages/home/home.css?cache=" + files_version);
+    // test_fetch(cdn_page_file + "pages/home/home.css?cache=" + view_version);
 
 }
 

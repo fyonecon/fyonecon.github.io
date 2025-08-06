@@ -21,7 +21,7 @@
         const time_start = Math.floor((new Date()).getTime()); // ms。开始载入文件的时间戳
         let time_loaded = 0; // ms。框架载入完成的时间戳
         let time_error = 0; // ms。框架出错的时间戳
-        const files_version = "4.0"; // 清除文件缓存
+        const view_version = "4.0"; // view框架version
         const index_prefix = "app_"; // index文件中的参数前缀
         const cdn_page_file = "./view/"; // 自定义pages CDN地址，./
         const cdn_depend_file = "./view/"; // 自定义核心依赖CDN地址，./
@@ -42,7 +42,7 @@
         const index_func = {
             AppRun: function  () { // 核心解析依赖
                 let that = this;
-                let clear_cache = "?cache=" + files_version;
+                let clear_cache = "?cache=" + view_version;
                 let head = document.head || document.getElementsByTagName("head")[0];
                 document.getElementsByTagName("title")[0].innerText = "···";
                 document.getElementById("loading-div").classList.remove("hide");

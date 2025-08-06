@@ -52,7 +52,7 @@ const depend_func = {
                 let the_p = new Promise(resolve => {
                     let script = document.createElement("script");
                     script.setAttribute("class", "write-js");
-                    script.setAttribute("src", cdn_page_file + js_array[i] + "?cache=" + files_version);
+                    script.setAttribute("src", cdn_page_file + js_array[i] + "?cache=" + view_version);
                     head.appendChild(script);
                     script.onload = function (e) {
                         resolve(i);
@@ -80,7 +80,7 @@ const depend_func = {
                     let link = document.createElement('link');
                     link.setAttribute("class", "write-css-"+class_name);
                     // link.setAttribute("class", "write-css");
-                    link.setAttribute("href", cdn_page_file + css_array[i] + "?cache=" + files_version);
+                    link.setAttribute("href", cdn_page_file + css_array[i] + "?cache=" + view_version);
                     link.setAttribute("rel", "stylesheet");
                     head.appendChild(link);
                     link.onload = function (e){
@@ -104,7 +104,7 @@ const depend_func = {
         let view_cache = that.time_ms();
         return new Promise(resolveHTML => {
             $.ajax({ // 利用ajax的get请求获取文本内容
-                url: cdn_page_file + html_src+"?cache="+files_version,
+                url: cdn_page_file + html_src+"?cache="+view_version,
                 async: true,
                 success: function (data) {
                     let div = document.createElement("div");
@@ -203,7 +203,7 @@ const depend_func = {
             });
         });
     },
-    check_host: function (check_way){ // 检查白名单host
+    check_host: function (check_way, white_url_array){ // 检查白名单host
         let that = this;
         let host = "";
         if (check_way === "refer"){
@@ -220,14 +220,13 @@ const depend_func = {
         }
         //
         return new Promise(resolve => {
-            let white_url = app_url.white_url;
-            for (let i=0; i<white_url.length; i++){
-                let the_url = white_url[i];
-                if (view.string_include_string(host, the_url)){
+            for (let i=0; i<white_url_array.length; i++){
+                let the_url = white_url_array[i];
+                if (view.string_include_string(host, the_url) !== -1){
                     resolve(true);
                     break;
                 }
-                if (i === white_url.length-1){ // 都无匹配
+                if (i === white_url_array.length-1){ // 都无匹配
                     resolve(false);
                 }
             }
@@ -262,7 +261,8 @@ const depend_func = {
         // 移除老css和html
         $(".write-css-load-route-files").remove();
         $("#depend").html("");
-        depend_func.check_host().then(function (state){
+        //
+        depend_func.check_host(app_url.check_way, app_url.white_url).then(function (state){
             if (state){
                 // 加载当前路由文件
                 depend_func.load_route_files(now_route).then(function (){
@@ -303,7 +303,8 @@ function depend_init(){
         let p2 = new Promise(resolve => { // 加载当前路由文件
             depend_func.load_route_files(now_route).then(resolve);
         });
-        depend_func.check_host().then(function (state){
+        //
+        depend_func.check_host(app_url.check_way, app_url.white_url).then(function (state){
             if (state){
                 Promise.all([p1, p2]).then(function (){
                     time_loaded = depend_func.time_ms(); // ms

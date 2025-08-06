@@ -10,12 +10,13 @@ const debug = false; // 调试模式，统一打印日志，true & false
 
 // 框架渲染的必要参数
 const route_404       = "#route=404";   // 404
-const page_time       = "cache=" + files_version;
+const page_time       = "cache=" + view_version;
 
 // API
 const api_url         = "http://"+window.location.host+"/";  // api主地址
-const log_url         = "";  // log主地址
-let api_port = ""; // 端口
+const web_url         = "http://"+window.location.host+"/";  // web网站主地址，/结尾
+const log_url         = "http://"+window.location.host+"/log/";  // log主地址， /结尾
+const update_url      = "https://fyonecon.github.io/";  // 更新专用，/结尾
 const assets_file_dir_name = window.location.host==="fyonecon.github.io"?"/":"/"; // 中间路由文件路径，/
 const assets_html_dir_name = window.location.host==="fyonecon.github.io"?"/":"/"; // 中间路由文件路径，/
 const assets_html_index_name = "index.html"; // 索引文件。默认：""或"index.html"
@@ -23,9 +24,10 @@ const white_local_key = "";
 
 // 白名单host或refer域名
 const app_url = {
-    'check_way': "host", // 是否开启白名单url检测，"refer"开启refer检测，"host"开启host检测，"any"不检测
-    'jump_url': './#route=404', // 遇到黑名单refer/host的落地地址
-    'white_url': [ // 仅检测N级域名开头，不包括http/ws协议和url路径。
+    check_way: "host", // 是否开启白名单url检测，"refer"开启refer检测，"host"开启host检测，"any"不检测
+    jump_url: './#route=404', // 遇到黑名单refer/host的落地地址
+    white_url: [ // 仅检测N级域名开头，不包括http/ws协议和url路径。
+        'localhost',
         '127.0.0.1', '0.0.0.0', '192.168.', // C
         '172.16.', '172.17.','172.18.','172.19.','172.20.','172.21.','172.22.','172.23.','172.24.','172.25.','172.26.','172.27.','172.28.','172.29.','172.30.','172.31.', // B
         '10.', // A
@@ -49,3 +51,5 @@ let login_name = "";
 let login_level = 0;
 let login_level_name = "（未知等级）";
 let login_nickname = "（未登录）";
+let api_port          = ""; // 获取实时lan_api的端口
+let web_host = ""; // 实时web访问的“主IP+端口”、"域名"，格式：127.0.0.1:9550、xxx.com

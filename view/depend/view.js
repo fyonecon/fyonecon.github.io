@@ -293,7 +293,7 @@ const view = {
         }
     },
     fetch_file: function (file_url){ // 获取文件内容，也可用于txt、html文件自动缓存于浏览器。仅支持js、css、html、txt等文本文件，禁止用于图片、视频、PDF、Office、压缩包等文件
-        // view.fetch_file(cdn_page_file + "pages/search/search.css?cache=" + files_version).then(array=>{
+        // view.fetch_file(cdn_page_file + "pages/search/search.css?cache=" + view_version).then(array=>{
         //     let state = array[0], response=array[1], url=array[2], msg=array[3];
         //     view.log([state, response, url, msg]);
         // });
