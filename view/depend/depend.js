@@ -191,13 +191,14 @@ const depend_func = {
                     break;
                 }else{
                     if (i === pages.length - 1 ){ // 404路由
-                        window.location.replace(assets_html_index_name+"#route=404");
+                        let from = encodeURIComponent(window.location.referrer);
+                        window.location.replace("./#route=404&from="+from+"&msg=error_route");
                     }
                 }
             }
             // 完成加载
             Promise.all(route_css_load).then(r => {
-                console.log("载入当前route的css和html文件：", route_name);
+                // console.log("载入当前route的css和html文件：", route_name);
                 resolveRoute();
             });
         });

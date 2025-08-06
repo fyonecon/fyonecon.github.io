@@ -33,6 +33,6 @@ function page_for_404(info) {
     }
     //
     setTimeout(function (){
-        window.location.replace("./?from=404&msg=autoload");
+        window.location.replace("./#route=&from=404&msg=autoload");
     }, 2*60*1000); // 默认2min自动跳转
 }
