@@ -33,16 +33,8 @@ const depend_func = {
             console.error("参数未定义：%s，框架产生了异步时差，需要决解框架Bug。5s秒后将重试网页。", [cdn_page_file, cdn_page_file]);
             setTimeout(function () {
                 window.location.reload();
-            }, 5000);
+            }, 10000);
         }else{
-            time_loaded = that.time_ms(); // ms
-            // 调用页面函数
-            try {
-                frame_loaded([], route);
-            }catch (e){}
-            try {
-                page_init([], route);
-            }catch (e){}
             // 调用页面函数
             try {
                 eval('page_for_'+route+'("'+route+'")');
@@ -210,7 +202,7 @@ const depend_func = {
             });
         });
     },
-    app_run: function (route){
+    run_app: function (route){ // 每次路由改变都会调用此函数
         let that = this;
         if (!view.is_local_ipv4() && (view.is_weixin() || view.is_qq() || view.is_dingding() || view.is_work_weixin() || view.is_feishu()) ){
             view.title("😅");
@@ -231,23 +223,24 @@ const depend_func = {
 // 刷新整个页面：index.html ? route=xxx ；只刷新一次整个页面：index.html # route=xxx
 (function () {
     window.onhashchange = function () {
+        view.show_loading("long");
+        //
         const now_url = window.location.href;
         let now_route = depend_func.get_url_param(now_url, "route");
         if (!now_route){now_route=default_route;}
-        //
-        view.show_loading("long");
         // 移除老css和html
         $(".write-css-load-route-files").remove();
         $("#depend").html("");
         // 加载路由文件
         depend_func.load_route_files(now_route).then(function (){
-            depend_func.app_run(now_route);
+            depend_func.run_app(now_route);
         });
     };
 })();
 
 // init-1/2
 function depend_init(){
+    view.show_loading("long");
     // 设置主题色
     view.set_theme();
     // 设置页面缩放
@@ -258,7 +251,6 @@ function depend_init(){
     // 设置html语言
     view.set_html_lang();
     //
-    view.show_loading("long");
     return new Promise(resolve => {
         // 移除老css和html
         $(".write-css-load-route-files").remove();
@@ -274,7 +266,16 @@ function depend_init(){
             depend_func.load_route_files(now_route).then(resolve);
         });
         Promise.all([p1, p2]).then(function (){
-            depend_func.app_run(now_route);
+            time_loaded = depend_func.time_ms(); // ms
+            // 调用页面函数（只允许一次）
+            try {
+                frame_loaded([], now_route);
+            }catch (e){}
+            try {
+                page_init([], now_route);
+            }catch (e){}
+            //
+            depend_func.run_app(now_route);
             resolve(true);
         });
     });
