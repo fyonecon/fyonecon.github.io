@@ -181,7 +181,7 @@ const depend_func = {
                     });
                     route_css_load.push(the_css_write);
                     // html
-                    let the_html_write = the_route.file_path;
+                    let the_html_write = the_route.html;
                     let route_html_load = new Promise(resolve => {
                         that.write_html(the_html_write, "load-route-files").then(resolve);
                     });
@@ -192,7 +192,7 @@ const depend_func = {
                 }else{
                     if (i === pages.length - 1 ){ // 404路由
                         let from = encodeURIComponent(document.referrer);
-                        window.location.replace("./#route=404&from="+from+"&msg=error_route");
+                        window.location.replace("./"+route_404+"&from="+from+"&msg=error_route");
                     }
                 }
             }

@@ -166,7 +166,7 @@ function jump_url_location(engine, word, url) { // 增补关键词
         view.hide_loading();
         view.title("请查看 kw 对应的内容");
 
-        window.location.replace("./#route=app");
+        window.location.replace("./#route=purehome");
     }
     else if (word === "kw@info" || word === "@info"){
         view.hide_loading();

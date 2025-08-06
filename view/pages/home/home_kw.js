@@ -49,7 +49,7 @@ function check_input_kw(_word){
         state = true;
     }
     else if (word === "kw@app" || word === "kw@download" || word === "kw@software" || word === "@app" || word === "@download" || word === "@software"){
-        url = "./#route=app";
+        url = "./#route=purehome";
         view.window_open(url, "_self");
         state = true;
     }

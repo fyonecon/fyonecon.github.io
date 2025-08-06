@@ -9,8 +9,8 @@
 const debug = false; // 调试模式，统一打印日志，true & false
 
 // 框架渲染的必要参数
-const route_404       = "#route=404";   // 404
-const page_time       = "cache=" + view_version;
+const route_404       = "#route=404";   // 404路由时的默认路由地址
+const page_time       = "cache=" + view_version; // 清除链接缓存专用后缀
 
 // API
 const api_url         = "http://"+window.location.host+"/";  // api主地址
@@ -39,7 +39,7 @@ const app_url = {
 // App验证参数
 const app_class = "PureHome_"; // 必须为string，且必须唯一，推荐使用英文
 const app_name = "PureHome"; // 推荐使用英文
-const app_version = "5.6.11"; // 格式 1.0.0
+const app_version = "5.7.0"; // 格式 1.0.0
 const app_email = "";
 
 // 登录用户使用的验证参数
