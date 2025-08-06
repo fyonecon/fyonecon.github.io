@@ -102,16 +102,11 @@ function jump_to_url_location(engine, word) {
             js_call_go.WebServerHost().then(_host=>{resolve(_host);});
         }
     }).then(host=>{ // open
-        search_host= "http://"+host+assets_html_dir_name+assets_html_index_name;
-        param_data = "#route=search&engine="+engine+"&word="+word+del_fake_news+"&url_timeout="+view.url_timeout_encode("search", 6*60*60)+"&ap=mix";
-        let search_url = search_host+param_data;
+        // search_host= "http://"+host+assets_html_dir_name+assets_html_index_name;
+        // param_data = "#route=search&engine="+engine+"&word="+word+del_fake_news+"&url_timeout="+view.url_timeout_encode("search", 6*60*60)+"&ap=mix";
+        // let search_url = search_host+param_data;
+        let search_url = "./"+assets_html_index_name+"#route=search&engine="+engine+"&word="+word+del_fake_news+"&url_timeout="+view.url_timeout_encode("search", 6*60*60)+"&ap=mix";
         //
-        // if (!view.is_user_screen() || !view.is_mobile_pwa() || !view.is_pc_pwa()){ // 拦截调试
-        //     target = "_self";
-        //     search_url = app_url.jump_url+"&error=不支持功能";
-        //     window.location.replace(search_url);
-        //     return;
-        // }
         view.window_open(search_url, target);
     });
 }
