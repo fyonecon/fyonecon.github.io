@@ -191,7 +191,7 @@ const depend_func = {
                     break;
                 }else{
                     if (i === pages.length - 1 ){ // 404路由
-                        let from = encodeURIComponent(window.location.referrer);
+                        let from = encodeURIComponent(document.referrer);
                         window.location.replace("./#route=404&from="+from+"&msg=error_route");
                     }
                 }
@@ -201,6 +201,36 @@ const depend_func = {
                 // console.log("载入当前route的css和html文件：", route_name);
                 resolveRoute();
             });
+        });
+    },
+    check_host: function (check_way){ // 检查白名单host
+        let that = this;
+        let host = "";
+        if (check_way === "refer"){
+            host = document.referrer;
+        }
+        else if (check_way === "host"){
+            host = window.location.host;
+        }
+        else if (check_way === "any"){
+            return true;
+        }else{
+            console.log("check_way参数错误：", check_way);
+            return false;
+        }
+        //
+        return new Promise(resolve => {
+            let white_url = app_url.white_url;
+            for (let i=0; i<white_url.length; i++){
+                let the_url = white_url[i];
+                if (view.string_include_string(host, the_url)){
+                    resolve(true);
+                    break;
+                }
+                if (i === white_url.length-1){ // 都无匹配
+                    resolve(false);
+                }
+            }
         });
     },
     run_app: function (route){ // 每次路由改变都会调用此函数
@@ -232,9 +262,16 @@ const depend_func = {
         // 移除老css和html
         $(".write-css-load-route-files").remove();
         $("#depend").html("");
-        // 加载路由文件
-        depend_func.load_route_files(now_route).then(function (){
-            depend_func.run_app(now_route);
+        depend_func.check_host().then(function (state){
+            if (state){
+                // 加载当前路由文件
+                depend_func.load_route_files(now_route).then(function (){
+                    depend_func.run_app(now_route);
+                });
+            }else{
+                view.title("😅");
+                view.alert_txt("本网站禁止在「"+window.location.host+"」中打开", "long");
+            }
         });
     };
 })();
@@ -263,21 +300,28 @@ function depend_init(){
         let p1 = new Promise(resolve => { // 加载全局文件
             depend_func.load_all_files().then(resolve);
         });
-        let p2 = new Promise(resolve => { // 加载路由文件
+        let p2 = new Promise(resolve => { // 加载当前路由文件
             depend_func.load_route_files(now_route).then(resolve);
         });
-        Promise.all([p1, p2]).then(function (){
-            time_loaded = depend_func.time_ms(); // ms
-            // 调用页面函数（只允许一次）
-            try {
-                frame_loaded([], now_route);
-            }catch (e){}
-            try {
-                page_init([], now_route);
-            }catch (e){}
-            //
-            depend_func.run_app(now_route);
-            resolve(true);
+        depend_func.check_host().then(function (state){
+            if (state){
+                Promise.all([p1, p2]).then(function (){
+                    time_loaded = depend_func.time_ms(); // ms
+                    // 调用页面函数（只允许一次）
+                    try {
+                        frame_loaded([], now_route);
+                    }catch (e){}
+                    try {
+                        page_init([], now_route);
+                    }catch (e){}
+                    //
+                    depend_func.run_app(now_route);
+                    resolve(true);
+                });
+            }else{
+                view.title("😅");
+                view.alert_txt("本网站禁止在「"+window.location.host+"」中打开", "long");
+            }
         });
     });
 }
