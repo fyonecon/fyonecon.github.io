@@ -35,10 +35,11 @@ const depend_func = {
                 window.location.reload();
             }, 10000);
         }else{
-            // 调用页面函数
+            // 调用页面函数：已调用 frame_loaded()和page_init()处理登录信息验证，此处由于不处理登录信息而不再需要。
             // try {
             //     eval('page_for_'+route+'("'+route+'")');
             // }catch (e){
+            //     view.alert_txt("此路由没有可调用的“page_for_xxx(route)”函数", "long", "clear");
             //     console.log("页面函数不存在（每个子页面的起始函数都不一样，格式：'page_for_'route_name'(route){} ）", ['page_for_'+route+'("'+route+'")', e]);
             // }
         }
@@ -234,15 +235,15 @@ const depend_func = {
     },
     run_app: function (route){ // 每次路由改变都会调用此函数
         let that = this;
+        view.hide_loading();
         if (!view.is_local_ipv4() && (view.is_weixin() || view.is_qq() || view.is_dingding() || view.is_work_weixin() || view.is_feishu()) ){
             view.title("😅");
-            view.alert_txt("本网站禁止在「微信、QQ、钉钉、企业微信、飞书」中打开。<br/>请使用外部浏览器。", "long");
+            view.alert_txt("本网站禁止在「 微信、QQ、钉钉、飞书、企业微信 」中打开。<br/>请使用外部浏览器打开。", "long");
         }else {
             if (!window.localStorage || !window.indexedDB || navigator.webdriver){
                 view.title("😅");
                 view.log("浏览器特性支持不完整：", ["localStorage", "indexedDB", "webdriver"]);
             }else{
-                view.hide_loading();
                 that.run_page(route);
             }
         }
@@ -250,7 +251,7 @@ const depend_func = {
 };
 
 // init-2/2 监听url是否发生变化，启动目标page_for_‘route’()函数
-// 刷新整个页面：index.html ? route=xxx ；只刷新一次整个页面：index.html # route=xxx
+// 刷新整个页面：index.html?route=xxx ；只刷新一次整个页面：index.html#route=xxx
 (function () {
     window.onhashchange = function () {
         view.show_loading("long");
@@ -261,7 +262,7 @@ const depend_func = {
         // 移除老css和html
         $(".write-css-load-route-files").remove();
         $("#depend").html("");
-        console.log("刷新路由：", now_route);
+        view.log("刷新路由：", now_route);
         //
         depend_func.check_host(app_url.check_way, app_url.white_url).then(function (state){
             if (state){
@@ -271,8 +272,9 @@ const depend_func = {
                     depend_func.run_app(now_route);
                 });
             }else{
+                view.hide_loading();
                 view.title("😅");
-                view.alert_txt("本网站禁止在「"+window.location.host+"」中打开", "long");
+                view.alert_txt("本网站禁止在「 "+window.location.host+" 」中打开", "long");
             }
         });
     };
@@ -316,8 +318,9 @@ function depend_init(){
                     resolve(true);
                 });
             }else{
+                view.hide_loading();
                 view.title("😅");
-                view.alert_txt("本网站禁止在「"+window.location.host+"」中打开", "long");
+                view.alert_txt("本网站禁止在「 "+window.location.host+" 」中打开", "long");
             }
         });
     });

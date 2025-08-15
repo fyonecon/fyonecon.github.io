@@ -37,7 +37,7 @@ function page_init(e, route){
                 if (state){ // 已过期
                     must_login();
                 }else{
-                    user_login(route);
+                    user_login(route, "must_login");
                 }
             });
         }

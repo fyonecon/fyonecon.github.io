@@ -33,10 +33,11 @@ function user_login(route, white_route){
         view.log("用户 邮箱+密码 已经绑定");
         login_id = view.unicode_to_string(_login_email);
         login_pwd = _login_pwd;
-        //
+        // 调用页面函数
         try {
             eval('page_for_'+route+'("'+route+'")');
         }catch (e){
+            view.alert_txt("此路由没有可调用的“page_for_xxx(route)”函数", "long", "clear");
             console.log("页面函数不存在（每个子页面的起始函数都不一样，格式：'page_for_'route_name'(route){} ）", ['page_for_'+route+'("'+route+'")', e]);
         }
     }
