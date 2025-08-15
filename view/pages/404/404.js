@@ -26,7 +26,7 @@ function page_for_404(info) {
         $(".show-error_url").text(error_url?error_url:"-");
     }else if (error_url && error_msg){
         $(".show-error_msg").text(error_msg);
-        $(".show-error_url").text(error_url?error_url.substring(2, 150)+"...":"-");
+        $(".show-error_url").text(error_url?".."+error_url.substring(2, 180)+"..":"&nbsp;");
     }else {
         $(".show-error_msg").text("404页面（要传递的参数不全）。");
         $(".show-error_url").text(view.time_date("Y-m-d H:i:s"));
@@ -34,5 +34,5 @@ function page_for_404(info) {
     //
     setTimeout(function (){
         window.location.replace("./#route=&from=404&msg=autoload");
-    }, 2*60*1000); // 默认2min自动跳转
+    }, 5*60*1000); // 默认2min自动跳转
 }

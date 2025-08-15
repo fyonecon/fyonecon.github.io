@@ -30,7 +30,7 @@ const depend_func = {
             typeof cdn_page_file === "undefined" ||
             typeof cdn_page_file === "undefined"
         ){
-            console.error("参数未定义：%s，框架产生了异步时差，需要决解框架Bug。5s秒后将重试网页。", [cdn_page_file, cdn_page_file]);
+            console.error("参数未定义：%s，框架产生了异步时差，需要决解框架Bug。10s秒后将重试网页。", [cdn_page_file, cdn_page_file]);
             setTimeout(function () {
                 window.location.reload();
             }, 10000);
