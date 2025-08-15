@@ -18,7 +18,7 @@ const depend_func = {
     time_ms: function(){
         return Math.floor((new Date()).getTime()); // ms
     }, // 毫秒时间戳，ms
-    run_page: function (route){ // 启动页面函数
+    run_page: function (route, where){ // 启动页面函数
         let that = this;
         // 路由和默认路由
         if (!route){
@@ -35,6 +35,7 @@ const depend_func = {
                 window.location.reload();
             }, 10000);
         }else{
+            view.hide_loading();
             // 调用页面函数：已调用 frame_loaded()和page_init()处理登录信息验证，此处由于不处理登录信息而不再需要。
             // try {
             //     eval('page_for_'+route+'("'+route+'")');
@@ -42,6 +43,14 @@ const depend_func = {
             //     view.alert_txt("此路由没有可调用的“page_for_xxx(route)”函数", "long", "clear");
             //     console.log("页面函数不存在（每个子页面的起始函数都不一样，格式：'page_for_'route_name'(route){} ）", ['page_for_'+route+'("'+route+'")', e]);
             // }
+            // 如何启动页面函数
+            if (where === 1){
+                try {frame_loaded([], route);}catch (e){console.error("frame_loaded: ", e);} // 只执行一次
+            } else if (where === 2){
+                try {page_init([], route);}catch (e){console.error("page_init: ", e);} // 路由切换就执行一次
+            }else{
+                view.alert_txt("Error Where", "long", "clear");
+            }
         }
     },
     write_js: function (js_array) {
@@ -233,18 +242,21 @@ const depend_func = {
             }
         });
     },
-    run_app: function (route){ // 每次路由改变都会调用此函数
+    check_browser: function (){ // 拦截浏览器
         let that = this;
-        view.hide_loading();
         if (!view.is_local_ipv4() && (view.is_weixin() || view.is_qq() || view.is_dingding() || view.is_work_weixin() || view.is_feishu()) ){
+            view.hide_loading();
             view.title("😅");
             view.alert_txt("本网站禁止在「 微信、QQ、钉钉、飞书、企业微信 」中打开。<br/>请使用外部浏览器打开。", "long");
+            return false;
         }else {
             if (!window.localStorage || !window.indexedDB || navigator.webdriver){
+                // view.hide_loading();
                 view.title("😅");
                 view.log("浏览器特性支持不完整：", ["localStorage", "indexedDB", "webdriver"]);
+                return false;
             }else{
-                that.run_page(route);
+                return true;
             }
         }
     },
@@ -265,12 +277,17 @@ const depend_func = {
         view.log("刷新路由：", now_route);
         //
         depend_func.check_host(app_url.check_way, app_url.white_url).then(function (state){
+            let where = 2;
             if (state){
-                // 加载当前路由文件
-                depend_func.load_route_files(now_route).then(function (){
-                    try {page_init([], now_route);}catch (e){console.error("page_init: ", e);} // 路由切换就执行一次
-                    depend_func.run_app(now_route);
-                });
+                let browser_state = depend_func.check_browser();
+                if (browser_state){
+                    // 加载当前路由文件
+                    depend_func.load_route_files(now_route).then(function (){
+                        depend_func.run_page(now_route, where);
+                    });
+                }else{
+                    view.log("浏览器特性错误");
+                }
             }else{
                 view.hide_loading();
                 view.title("😅");
@@ -301,22 +318,25 @@ function depend_init(){
         let now_route = depend_func.get_url_param("", "route");
         if (!now_route){now_route=default_route;}
         //
-        let p1 = new Promise(resolve => { // 加载全局文件
-            depend_func.load_all_files().then(resolve);
-        });
-        let p2 = new Promise(resolve => { // 加载当前路由文件
-            depend_func.load_route_files(now_route).then(resolve);
-        });
-        //
         depend_func.check_host(app_url.check_way, app_url.white_url).then(function (state){
+            let where = 1;
             if (state){
-                Promise.all([p1, p2]).then(function (){
-                    time_loaded = depend_func.time_ms(); // ms
-                    try {frame_loaded([], now_route);}catch (e){console.error("frame_loaded: ", e);} // 只执行一次
-                    //
-                    depend_func.run_app(now_route);
-                    resolve(true);
-                });
+                let browser_state = depend_func.check_browser();
+                if (browser_state){
+                    let p1 = new Promise(resolve => { // 加载全局文件
+                        depend_func.load_all_files().then(resolve);
+                    });
+                    let p2 = new Promise(resolve => { // 加载当前路由文件
+                        depend_func.load_route_files(now_route).then(resolve);
+                    });
+                    Promise.all([p1, p2]).then(function (){
+                        time_loaded = depend_func.time_ms(); // ms
+                        depend_func.run_page(now_route, where);
+                        resolve(true);
+                    });
+                }else{
+                    view.log("浏览器特性错误");
+                }
             }else{
                 view.hide_loading();
                 view.title("😅");
