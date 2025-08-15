@@ -3,7 +3,7 @@
         <img class="img-404" src="" data-src="404.png" />
         <h2 class="font-class break show-error_msg"></h2>
         <br>
-        <h2 class="font-text break show-error_url"></h2>
+        <h2 class="font-text break show-error_url" title=""></h2>
         <br>
         <br>
         <div class="div-back hide">

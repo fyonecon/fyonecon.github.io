@@ -202,7 +202,7 @@ const depend_func = {
                 }else{
                     if (i === pages.length - 1 ){ // 404路由
                         let error_url = encodeURIComponent(window.location.href);
-                        window.location.replace("./"+route_404+"&error_url="+error_url+"&error_msg=404 (Error Route)");
+                        window.location.replace("./"+route_404+"&from=&error_url="+error_url+"&error_msg=404 (Error Route)");
                     }
                 }
             }
