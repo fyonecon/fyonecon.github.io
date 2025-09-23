@@ -26,14 +26,14 @@ const search_data_default = [
         "name": "Yandex",
         "engine": "yandex",
     },
-    {
-        "name": "DuckDuckGo",
-        "engine": "duckduckgo",
-    },
-    {
-        "name": "Github",
-        "engine": "github",
-    },
+    // {
+    //     "name": "DuckDuckGo",
+    //     "engine": "duckduckgo",
+    // },
+    // {
+    //     "name": "Github",
+    //     "engine": "github",
+    // },
     // {
     //     "name": "X",
     //     "engine": "x",

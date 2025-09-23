@@ -230,6 +230,7 @@ adb shell pm uninstall --user 0 com.miui.mediaviewer	#媒体查看器(MXPlayer�
 // 手机基本功能（按需卸载）
 <br/>
 ###adb shell pm uninstall --user 0 com.miui.securitycenter	#安全服务（无界面、电池管理、应用列表、隐藏应用、应用联网）
+<br/>
 ###adb shell pm uninstall --user 0 com.lbe.security.miui #MIUI权限管理（可用安卓自带权限管理代替）
 <br/>
 #adb shell pm uninstall --user 0 com.miui.core #MIUI SDK（提供一些系统级的API调用）
