@@ -29,34 +29,31 @@
 
 .select {
     height: 48px;
-    width: 117px;
+    width: calc(120px - 0px);
     font-size: 16px;
-    border-radius: 44px;
+    border-radius: 40px;
     letter-spacing: 0;
     cursor: pointer;
-    font-weight: 600;
     padding: 0 14px 0 10px;
     float: left;
     outline: none;
-    border: 2px solid rgba(0, 120, 254, 0.4);
+    border: 2px solid rgba(0, 120, 254, 0.5);
     text-indent: 0;
-    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);*/
     text-align: center;
     appearance: none;
     text-align-last: center;
 }
 
 .input {
-    height: 44px;
-    line-height: 44px;
-    width: calc(100% - 117px - 30px - 4px - 5px);
+    height: 48px;
+    width: calc(100% - 120px - 0px);
     letter-spacing: 1px;
-    font-size: 17px;
+    font-size: 18px;
     padding: 0 15px;
     float: right;
-    border-radius: 44px;
+    border-radius: 40px;
     outline: none;
-    border: 2px solid rgba(0, 120, 254, 0.4);
+    border: 2px solid rgba(0, 120, 254, 0.5);
 }
 
 .search-style {
@@ -77,28 +74,27 @@
 
 .input-div:after {
     position: absolute;
-    left: 80px;
-    top: 0;
+    left: 84px;
+    top: 0px;
     z-index: 1;
     content: "▼";
-    height: 47px;
-    width: 47px;
-    line-height: 49px;
+    height: 48px;
+    width: 40px;
+    line-height: 48px;
     pointer-events: none;
     box-sizing: border-box;
     font-size: 14px;
     text-align: center;
     border-radius: 44px;
     background: transparent;
-    color: rgba(0, 120, 254, 0.4);
-    /*border: 2px solid black;*/
+    color: rgba(0, 120, 254, 0.5);
 }
 
 .input-div-blur:after {
     content: "▼";
     transition: transform 0.5s;
     transform: rotateZ(0deg);
-    color: rgba(0, 120, 254, 0.4);
+    color: rgba(0, 120, 254, 0.5);
 }
 
 .input-div-focus:after {
@@ -155,8 +151,7 @@
     height: 38px;
     overflow: hidden;
     text-align: center;
-    border: 2px solid rgba(0, 120, 254, 0.3);
-    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
+    border: 2px solid rgba(0, 120, 254, 0.4);
     float: left;
     margin-left: 10px;
     margin-right: 10px;

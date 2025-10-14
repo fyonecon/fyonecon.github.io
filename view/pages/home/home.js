@@ -107,7 +107,7 @@ function create_input(pre, swiper_dom) { // 渲染模板
     content.innerHTML =
         '<div class="input-div" id="input-div">' +
         '   <select class="select search-style div_theme select-none" id="select"></select>' +
-        '   <input type="text" value="" maxlength="1500" autocomplete="off" id="input" class="input search-style div_theme"  placeholder="' + pre + view.language_txt("input_placeholder") + '" title="Keywords"/>' +
+        '   <input type="search" value="" maxlength="1200" autocomplete="off" id="input" class="input search-style div_theme"  placeholder="' + pre + view.language_txt("input_placeholder") + '" title="Keywords"/>' +
         '   <div class="clear"></div>' +
         '</div>' +
         '<div class="search-btn-div" id="search-btn">'+search_btn_dom+'</div>' +
