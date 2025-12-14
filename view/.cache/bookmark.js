@@ -102,6 +102,11 @@ function bookmark_list(){
             title: "YouTube",
             href: "https://youtube.com"
         },
+        { //
+            show_lang: "all",
+            title: "喵磁力",
+            href: "https://www.miaocili.com/"
+        },
 
     ];
     //
