@@ -104,8 +104,13 @@ function bookmark_list(){
         },
         { //
             show_lang: "all",
-            title: "喵磁力",
+            title: "喵磁力🧲",
             href: "https://www.miaocili.com/"
+        },
+        { //
+            show_lang: "all",
+            title: "PureHome🔍",
+            href: "./?route=home"
         },
 
     ];
