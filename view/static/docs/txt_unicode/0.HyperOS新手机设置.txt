@@ -289,7 +289,6 @@ adb shell pm uninstall --user 0 com.miui.greenguard	   #家人守护、系统未
 #adb shell pm uninstall --user 0 com.miui.cloudservice	#小米云服务（查找设备<仅能中国大陆ID>、同步“相册、蓝牙、笔记、录音”，可以用GooglePhoto、GoogleKeep、OneDrive代替）
 #adb shell pm uninstall --user 0 com.xiaomi.micloud.sdk #小米云服务SDK
 <br/>
-<br/>
 #adb shell pm uninstall --user 0 com.miui.micloudsync	#小米云同步（仅同步“联系人、通话、短信、安全服务、Wi-Fi”，可以用Google服务代替。）
 <br/>
 ###adb shell pm uninstall --user 0 com.xiaomi.account	#小米账号（绑定任意国家ID：防止手机刷机，启用小爱同学，启用小米运动，退出小米账号后可以删除）
@@ -395,6 +394,7 @@ adb push ../android_backup/Files/APK.zip /sdcard/Documents/
 给手机导入卡刷包：
 <br/>
 adb push ../android_backup/OS/RedmiNote14Pro-CN-malachite-ota_full-OS2.0.10.0.VOOCNXM-user-15.0-13718ddde6.zip /sdcard/Documents/
+<br/>
 ============================
 <br/>
 <br/>
