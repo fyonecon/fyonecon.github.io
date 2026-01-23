@@ -1,6 +1,6 @@
 <div class="blue">《小米手机系统优化对照表及说明》</div>
 <br/>
-（2025-05-27更新）
+（ 2026-01-23更新，适配os1、os2、os3 ）
 <br/>
 <br/>
 ============================
@@ -15,16 +15,18 @@
 <div class="red">
 4️⃣如下情况会卡米，不要操作：
 <br/>
-com.android.htmlviewer HTML查看器不要卸载；
+com.android.htmlviewer HTML查看器不要卸载（重启卡米），可以停用；
 <br/>
-com.miui.packageinstaller 应用包管理器不要卸载；
+com.miui.packageinstaller 应用包管理器不要卸载（重启卡米）；
 <br/>
-com.xiaomi.metoknlp	网络位置不要卸载;
+com.xiaomi.metoknlp	网络位置不要卸载（切换系统明暗主题时会卡米）;
+<br/>
+com.android.trace 程序追踪不要卸载（卡米）;
 <br/>
 </div>
 5️⃣ 尽量使用Win、Mac的ADB环境（下载Win或Mac的ADB工具：https://developer.android.google.cn/tools/releases/platform-tools?hl=zh-cn ），不要使用手机端ADB软件；
 <br/>
-6️⃣ 澎湃2比澎湃1好用，推荐澎湃2；
+6️⃣ 澎湃2比澎湃1好用，推荐澎湃2；澎湃3比澎湃2好用，推荐澎湃3。使用本教程从2升级到3重启时可能会卡米，建议先手动备份2文件系统到电脑里面，再升级到3；
 <br/>
 7️⃣ 虚拟内存可以关闭或只设置为扩展4G，因为使用感知不强。
 <br/>
@@ -86,7 +88,7 @@ adb push ../android_backup/Files/APK.zip /sdcard/Documents/
 安装apk（<br/>
 LibCheck< <a class="blue" href="https://www.downkuai.com/android/147630.html" target="_blank">https://www.downkuai.com/android/147630.html</a> >、
 <br/>
-Devcheck< <a class="blue" href="https://www.ddooo.com/softdown/224201.htm" target="_blank">https://www.ddooo.com/softdown/224201.htm</a> >、
+DevCheck< <a class="blue" href="https://www.ddooo.com/softdown/224201.htm" target="_blank">https://www.ddooo.com/softdown/224201.htm</a> >、
 <br/>
 APKExport< <a class="blue" href="https://leftshine.gitlab.io/apkexport/" target="_blank">https://leftshine.gitlab.io/apkexport/</a> >、
 <br/>
@@ -105,7 +107,7 @@ Edge浏览器< <a class="blue" href="http://www.jxdown.com/soft/20238.html" targ
 ）
 <br/>
 <br/>
-17. 用devcheck（下载：<a class="blue" href="https://www.ddooo.com/softdown/224201.htm" target="_blank">https://www.ddooo.com/softdown/224201.htm</a>）设置：
+17. 用devcheck（下载：<a class="blue" href="https://www.ddooo.com/softdown/224201.htm" target="_blank">https://www.ddooo.com/softdown/224201.htm</a>）设置，（可选）：
 <br/>
 “com.android.htmlviewer HTML查看器”权限，关闭通讯录权限；
 <br/>
@@ -135,8 +137,13 @@ Edge浏览器< <a class="blue" href="http://www.jxdown.com/soft/20238.html" targ
 <br/>
 18.7 设置-开发者模式-“App缓存优化”-打开。（这是小米官方替代“Google墓碑机制”国产App手段功能）
 <br/>
+18.8 ⚠️设置-开发者模式-“系统优化”（os1、os2中可以直接看到，os3中连续点击“开发者模式-自动填充-重置为默认值”3次可以看到。）-关闭。（澎湃的纯净模式，近似原生安卓，此时内置的小米的安全追踪大部分关闭<LBE可以ADB直接卸载、手机管家安全服务可以ADB直接卸载>、系统主题部分失效<请提前设置好>、软件安装自由度火力全开、权限管理近似原生。）
+<br/>
 <br/>
 19. 用ADB删除系统应用（“#”为暂时不要删除的应用）：
+获取当前安卓的用户标记，对多用户系统同样有用（如，0 、10 ）：
+<br/>
+adb shell am get-current-user
 <br/>
 ===必删App，广告与游戏===
 <br/>
@@ -165,6 +172,10 @@ adb shell pm uninstall --user 0 com.xiaomi.gamecenter  	#小米游戏中心（os
 <br/>
 adb shell pm uninstall --user 0 com.xiaomi.macro  	#自动连招
 <br/>
+adb shell pm uninstall --user 10 com.miui.com.miui.misightservice    #系统质量检测（os3中有）
+<br/>
+adb shell pm uninstall --user 0 com.xiaomi.security.onetrack     #似乎与用户数据收集有关
+<br/>
 <br/>
 ===可删App，性能与墓碑机制===
 <br/>
@@ -192,10 +203,6 @@ adb shell pm uninstall --user 0 com.xiaomi.ab  #小米售后支持
 adb shell pm uninstall --user 0 com.miui.phrase  #常用语（无卵用）
 <br/>
 adb shell pm uninstall --user 0 com.miui.contentcatcher	#应用扩展服务（也与广告有关）
-<br/>
-######adb shell pm uninstall --user 0 com.xiaomi.metoknlp	#网络位置（含有高德SDK，与深色模式的自动切换有关，卸载后如果深色模式选择“日出日落模式”则会卡米）
-<br/>
-######adb shell pm uninstall --user 0 com.xiaomi.location.fused	#融合位置服务（含有高德SDK，删除后有些软件到定位位置更新会变慢）
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.payment	#米币支付（含有银联SDK）
 <br/>
@@ -229,31 +236,31 @@ adb shell pm uninstall --user 0 com.miui.mediaviewer	#媒体查看器(MXPlayer�
 <br/>
 // 手机基本功能（按需卸载）
 <br/>
-###adb shell pm uninstall --user 0 com.miui.securitycenter	#安全服务（无界面、电池管理、应用列表、隐藏应用、应用联网）
+###adb shell pm uninstall --user 0 com.miui.securitycenter	    #安全服务（无界面、电池管理、应用列表、隐藏应用、应用联网，请用“LibCheck <a class="blue" href="https://www.downkuai.com/android/147630.html" target="_blank">https://www.downkuai.com/android/147630.html</a> ”软件代替管理应用列表）
 <br/>
-###adb shell pm uninstall --user 0 com.lbe.security.miui #MIUI权限管理（可用安卓自带权限管理代替）
+###adb shell pm uninstall --user 0 com.lbe.security.miui      #MIUI权限管理（可用安卓自带权限管理代替）
 <br/>
-#adb shell pm uninstall --user 0 com.miui.core #MIUI SDK（提供一些系统级的API调用）
+#adb shell pm uninstall --user 0 com.miui.core      #MIUI SDK（提供一些系统级的API调用）
 <br/>
-#adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi 	#搜狗输入法（微信输入法、GBoard输入法代替）
+#adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi 	    #搜狗输入法（微信输入法、GBoard输入法代替）
 <br/>
 adb shell pm uninstall --user 0 com.miui.securitycenter.securitycenter_phone_overlay.config.overlay  #(不知道)
 <br/>
 ###adb shell pm uninstall --user 0 com.android.mms    #短信（谷歌短信App代替）
 <br/>
-###adb shell pm uninstall --user 0 com.android.contacts    #电话、通讯录、营业厅（谷歌电话App、联系人App代替）
+######adb shell pm uninstall --user 0 com.android.contacts    #电话、通讯录、营业厅（谷歌电话App、联系人App代替。os1、os2中可删，os3中请保留。）
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.market  	#小米应用商店（别的商店代替，推荐vivo H5应用商店 （<a href="https://h5.appstore.vivo.com.cn" class="blue" target="_self">https://h5.appstore.vivo.com.cn</a> ）、Google Play）
 <br/>
 #adb shell pm uninstall --user 0 com.google.android.webview 	#Webview(可能含有网址访问认证，Google Play里面下别的版本的webview代替)
 <br/>
-###adb shell pm uninstall --user 0 com.android.thememanager	#系统主题(设置)（主题、图标、壁纸设置好了以后再删除此App）
+###adb shell pm uninstall --user 0 com.android.thememanager	     #系统主题(设置)（主题、图标、壁纸设置好了以后再删除此App）
 <br/>
-#adb shell pm uninstall --user 0 com.android.providers.downloads  #下载器（下载主题、下载系统、自动下载和安装App。如果需要更新系统，恢复软件即可。）
+#adb shell pm uninstall --user 0 com.android.providers.downloads  #下载器（下载主题、下载系统、自动下载和安装App。如果需要更新系统，ADB恢复下载器软件+重启手机。）
 <br/>
 adb shell pm uninstall --user 0 com.android.quicksearchbox 	#桌面搜索
 <br/>
-###adb shell pm uninstall --user 0 com.miui.personalassistant 	#桌面负一屏（小部件、智能助理）
+###adb shell pm uninstall --user 0 com.miui.personalassistant 	#桌面负一屏（小部件、安卓小部件、负一平智能助理）
 <br/>
 #######adb shell pm uninstall --user 0 com.miui.home    #小米桌面（可以用第三方桌面替代，比如GooglePlay里面的“迷你桌面”。但是 最近任务、导航栏 消失）
 <br/>
@@ -261,35 +268,37 @@ adb shell pm uninstall --user 0 com.android.quicksearchbox 	#桌面搜索
 <br/>
 ###adb shell pm uninstall --user 0 com.miui.voicetrigger  	#语音唤醒小爱
 <br/>
-###adb shell pm uninstall --user 0 com.miui.voiceassist  	#小爱同学
+###adb shell pm uninstall --user 0 com.miui.voiceassist  	#小爱同学、超级小爱
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.aicr  	#MiAI引擎、澎湃AI引擎
 <br/>
-#adb shell pm uninstall --user 0 com.xiaomi.aireco  #小爱建议
+#adb shell pm uninstall --user 0 com.xiaomi.aireco   #小爱建议
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.aiasst.vision	#小爱翻译
 <br/>
-#adb shell pm uninstall --user 0 com.xiaomi.scanner	#小爱视觉（还需要在小爱视觉设置-关于-关闭“上传图片图片识别优化”）
+#adb shell pm uninstall --user 0 com.xiaomi.scanner	  #小爱视觉（还需要在小爱视觉设置-关于-关闭“上传图片图片识别优化”）
 <br/>
 #adb shell pm uninstall --user 0 com.xiaomi.aiasst.service	#小爱通话
 <br/>
 // 小米账号与云服务（谨慎卸载）
 <br/>
-adb shell pm uninstall --user 0 com.miui.greenguard	   #家人守护
+adb shell pm uninstall --user 0 com.miui.greenguard	   #家人守护、系统未成年模式
 <br/>
 #adb shell pm uninstall --user 0 com.miui.cloudbackup	#小米云备份
 <br/>
 #adb shell pm uninstall --user 0 com.miui.cloudservice	#小米云服务（查找设备<仅能中国大陆ID>、同步“相册、蓝牙、笔记、录音”，可以用GooglePhoto、GoogleKeep、OneDrive代替）
+#adb shell pm uninstall --user 0 com.xiaomi.micloud.sdk #小米云服务SDK
+<br/>
 <br/>
 #adb shell pm uninstall --user 0 com.miui.micloudsync	#小米云同步（仅同步“联系人、通话、短信、安全服务、Wi-Fi”，可以用Google服务代替。）
 <br/>
 ###adb shell pm uninstall --user 0 com.xiaomi.account	#小米账号（绑定任意国家ID：防止手机刷机，启用小爱同学，启用小米运动，退出小米账号后可以删除）
 <br/>
-###adb shell pm uninstall --user 0 com.xiaomi.xmsf		#小米服务框架（微信消息、MiPush、设备统计相关、用户大数据分析等）
+######adb shell pm uninstall --user 0 com.xiaomi.xmsf	#小米服务框架（微信消息、APP后台消息推送、MiPush、设备统计相关、用户大数据分析等）
 <br/>
-adb shell pm uninstall --user 0 com.android.updater	#小米系统更新
+adb shell pm uninstall --user 0 com.android.updater	    #小米系统更新（需要与“com.android.providers.downloads”下载器搭配才能更新系统）
 <br/>
-###adb shell pm uninstall --user 0 com.miui.securitycore	#系统功能服务组件（应用双开、手机分身、边缘触控）
+######adb shell pm uninstall --user 0 com.miui.securitycore	#系统功能服务组件（应用双开、手机分身、系统多开、边缘触控）
 <br/>
 <br/>
 ===手动重启手机===
@@ -386,100 +395,6 @@ adb push ../android_backup/Files/APK.zip /sdcard/Documents/
 给手机导入卡刷包：
 <br/>
 adb push ../android_backup/OS/RedmiNote14Pro-CN-malachite-ota_full-OS2.0.10.0.VOOCNXM-user-15.0-13718ddde6.zip /sdcard/Documents/
-<br/>
-<br/>
-============================
-<br/>
-<br/>
-1️⃣一次执行多条adb shell指令（全部复制进入终端即可）:
-<br/>
-<br/>
-adb shell pm uninstall --user 0 com.android.browser;
-adb shell pm uninstall --user 0 com.miui.yellowpage;
-adb shell pm uninstall --user 0 com.miui.hybrid;
-adb shell pm uninstall --user 0 com.miui.analytics;
-adb shell pm uninstall --user 0 com.miui.systemAdSolution;
-adb shell pm uninstall --user 0 com.miui.guardprovider;
-adb shell pm uninstall --user 0 com.miui.bugreport;
-adb shell pm uninstall --user 0 com.miui.securityadd;
-adb shell pm uninstall --user 0 com.xiaomi.gamecenter.sdk.service;
-adb shell pm uninstall --user 0 com.xiaomi.gamecenter;
-adb shell pm uninstall --user 0 com.xiaomi.macro;
-
-adb shell pm uninstall --user 0 com.xiaomi.joyose;
-adb shell pm uninstall --user 0 com.xiaomi.mtb;
-adb shell pm uninstall --user 0 com.mobiletools.systemhelper;
-adb shell pm uninstall --user 0 com.miui.daemon;
-
-adb shell pm uninstall --user 0 com.miui.miservice;
-adb shell pm uninstall --user 0 com.milink.service;
-adb shell pm uninstall --user 0 com.xiaomi.mi_connect_service;
-adb shell pm uninstall --user 0 com.xiaomi.ab;
-adb shell pm uninstall --user 0 com.miui.phrase;
-adb shell pm uninstall --user 0 com.miui.contentcatcher;
-adb shell pm uninstall --user 0 com.xiaomi.payment;
-adb shell pm uninstall --user 0 com.unionpay.tsmservice.mi;
-adb shell pm uninstall --user 0 com.wapi.wapicertmanager;
-adb shell pm uninstall --user 0 com.miui.thirdappassistant;
-adb shell pm uninstall --user 0 com.android.adservices.api;
-adb shell pm uninstall --user 0 com.miui.mishare.connectivity;
-adb shell pm uninstall --user 0 com.miui.nextpay;
-adb shell pm uninstall --user 0 com.android.healthconnect.controller;
-adb shell pm uninstall --user 0 com.google.android.configupdater;
-adb shell pm uninstall --user 0 com.miui.touchassistant;
-adb shell pm uninstall --user 0 com.miui.contentextension;
-adb shell pm uninstall --user 0 com.miui.accessibility;
-adb shell pm uninstall --user 0 com.miui.mediaviewer;
-
-adb shell pm uninstall --user 0 com.sohu.inputmethod.sogou.xiaomi;
-adb shell pm uninstall --user 0 com.miui.securitycenter.securitycenter_phone_overlay.config.overlay;
-adb shell pm uninstall --user 0 com.google.android.webview;
-adb shell pm uninstall --user 0 com.google.android.webview;
-adb shell pm uninstall --user 0 com.android.quicksearchbox;
-
-adb shell pm uninstall --user 0 com.xiaomi.aicr;
-adb shell pm uninstall --user 0 com.xiaomi.aireco;
-adb shell pm uninstall --user 0 com.xiaomi.aiasst.vision;
-adb shell pm uninstall --user 0 com.xiaomi.scanner;
-adb shell pm uninstall --user 0 com.xiaomi.aiasst.service;
-
-adb shell pm uninstall --user 0 com.miui.greenguard;
-adb shell pm uninstall --user 0 com.miui.cloudbackup;
-adb shell pm uninstall --user 0 com.miui.cloudservice;
-adb shell pm uninstall --user 0 com.miui.micloudsync;
-adb shell pm uninstall --user 0 com.android.updater;
-
-adb push ../android_backup/Files/铃声.zip /sdcard/Documents/;
-adb push ../android_backup/Files/APK.zip /sdcard/Documents/;
-
-adb shell pm uninstall --user 0 com.miui.settings.rro.device.hide.statusbar.overlay;
-adb shell pm uninstall --user 0 com.miui.settings.rro.device.systemui.overlay;
-adb shell pm uninstall --user 0 com.miui.settings.rro.device.type.overlay;
-adb shell pm uninstall --user 0 com.android.internal.systemui.navbar.threebutton;
-adb shell pm uninstall --user 0 com.miui.qr;
-adb shell pm uninstall --user 0 com.android.traceur;
-adb shell pm uninstall --user 0 com.miui.carlink;
-adb shell pm uninstall --user 0 com.miui.systemui.overlay.devices.android;
-adb shell pm uninstall --user 0 com.miui.systemui.devices.overlay;
-adb shell pm uninstall --user 0 com.miui.core;
-
-adb reboot;
-
-<br/>
-<br/>
-2️⃣设置完成后、Google Play安装后，将最后的垃圾应用卸载掉：
-<br/>
-
-adb shell pm uninstall --user 0 com.android.contacts;
-adb shell pm uninstall --user 0 com.android.mms;
-adb shell pm uninstall --user 0 com.android.thememanager;
-adb shell pm uninstall --user 0 com.xiaomi.market;
-adb shell pm uninstall --user 0 com.android.providers.downloads;
-
-adb reboot;
-
-<br/>
-<br/>
 ============================
 <br/>
 <br/>
