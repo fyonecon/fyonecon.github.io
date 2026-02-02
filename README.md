@@ -1,8 +1,8 @@
 # ViewOnSvelte
 
-项目：https://github.com/fyonecon/ViewOnSvelte
+项目：https://github.com/fyonecon/fyonecon.github.io
 
-工作流：https://fyonecon.github.io/ViewOnSvelte
+工作流：https://fyonecon.github.io
 
 ### 推荐IDE（webstorm）：
 ```
