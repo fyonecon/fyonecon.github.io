@@ -80,3 +80,9 @@
 
 
 </script>
+
+<svelte:head>
+    <title>Datathink.top</title>
+    <meta name="keywords" content="Datathink" />
+    <meta name="description" content="datathink.top" />
+</svelte:head>

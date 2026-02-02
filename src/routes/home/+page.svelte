@@ -6,9 +6,9 @@
 </script>
 
 <svelte:head>
-    <title>{func.get_translate("Home")}</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <title>PureHome</title>
+    <meta name="keywords" content="PureHome" />
+    <meta name="description" content="PureHome，替代浏览器主页。不收集任何隐私！" />
 </svelte:head>
 
 <section class="section-main scroll-y-style bg-neutral-100 dark:bg-neutral-900">
