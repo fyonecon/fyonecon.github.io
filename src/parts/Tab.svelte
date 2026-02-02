@@ -35,7 +35,7 @@
             tab_width = (85 + 10) * len + 10;
         },
         show_glass_div: function (){ // 是否隐藏tab区域
-            if (route === "/" || route === "/bookmark"){
+            if (route === "/bookmark"){ // 正常Tab路由
                 glass_div_display = "show";
             }else{
                 if (route === "/home"){
