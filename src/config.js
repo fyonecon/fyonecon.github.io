@@ -1,0 +1,19 @@
+// 自定义的前端配置文件
+const config = {
+    debug: false, // true、false
+    app: {
+        app_name: "View",
+        app_class: "View_dtthk_", // ginthon_sv_ 、waigo_sv_
+        app_version: "1.6.5", // 1.0.0
+    },
+    sys:{
+        backend: "JS", // go、py
+        base_route: "", // 此值请同样svelte.config.js中paths的base  ""、"/view"、'/view_static'，结尾无/
+        home_route: "/home", // 主页默认页的路由 ""、"/home"
+    },
+    api: {
+        js_call_py_url: "https://127.0.0.1:9750/api/js_call_py", // http(s)://127.0.0.1:9750/api/js_call_py 、http(s)://127.0.0.1:9850/api/js_call_go
+        api_host: "https://127.0.0.1:9750", // http(s)://127.0.0.1:9750、http(s)://127.0.0.1:9850
+    },
+};
+export default config;

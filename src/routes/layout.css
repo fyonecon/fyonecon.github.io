@@ -1,0 +1,279 @@
+@import 'tailwindcss';
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton-svelte';
+@import '@skeletonlabs/skeleton/themes/cerberus';
+/* skeleton UI教程：https://www.skeleton.dev/docs/svelte/guides/mode */
+/* iconify图标教程：https://icon-sets.iconify.design/solar/ */
+/* 如果上面遇到@import引入错误，请手动运行‘ npx sv add tailwindcss ’ 来安装tailwindcss */
+
+body,
+html {
+	font-family: "Noto Sans Light", sans-serif;
+	letter-spacing: 1px;
+}
+
+/*亮暗主题切换*/
+@custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
+
+/**/
+@media only screen and (max-width: 279px) {
+    body:after{
+        width: 700px; height: 100%;
+        content:"Width >= 280 PX";
+        position:fixed; top: 0;
+        text-align: left;
+        padding: 0 0 0 20px;
+        font-size: 24px; color: rgba(220,220,220,1); line-height: 300px;
+        background: rgba(0,0,0,0.6);
+        cursor: not-allowed;
+        letter-spacing: 2px;
+        z-index: 999900000;
+    }
+}
+
+.app {
+	font-size: 14px;
+    clear: both;
+}
+
+
+.main{
+    width: 100%;
+}
+
+
+.can-drag {
+	--wails-draggable: drag;
+    -webkit-app-region: drag;
+}
+
+.no-drag {
+	--wails-draggable: no-drag !important;
+    -webkit-app-region: no-drag !important;
+}
+
+.clear{
+    clear: both;
+}
+
+.hide {
+	display: none !important;
+}
+
+.center {
+	text-align: center;
+}
+
+.break {
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.break-ellipsis {
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+::selection {
+	color: #FCFCFC;
+	background: orange;
+	outline: thick solid #FF0000;
+}
+
+::-moz-selection {
+	color: #FCFCFC;
+	background: #CD5C5C;
+}
+
+.scroll-y-style {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.scroll-y-style::-webkit-scrollbar {
+	width: 10px;
+	background-color: rgba(115,115,115,0);
+}
+
+.scroll-y-style::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	height: 44px;
+	background-color: rgba(115,115,115,0.5);
+	cursor: pointer;
+}
+
+.font-white{
+    color: white;
+}
+.font-black{
+    color: black;
+}
+.font-blue{
+    color: var(--color-blue-500);
+}
+.font-orange{
+    color: var(--color-orange-400);
+}
+.font-red{
+    color: var(--color-red-600);
+}
+.font-green{
+    color: var(--color-green-600);
+}
+
+.click-none {
+	cursor: not-allowed;
+	user-select: none;
+}
+
+.click {
+	cursor: pointer;
+    user-select: none;
+}
+.click:hover{
+    opacity: 0.9;
+}
+.click:active {
+	opacity: 0.8;
+}
+
+.not-click{
+    cursor: not-allowed;
+}
+
+.hover:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.select-none {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.select-all {
+	-moz-user-select: all;
+	-webkit-user-select: all;
+	-ms-user-select: all;
+	user-select: all;
+}
+
+.select-text {
+	-moz-user-select: text;
+	-webkit-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+}
+
+.font-mini {
+	font-size: 12px;
+}
+
+.font-text {
+	font-size: 14px;
+}
+
+.font-title {
+	font-size: 16px;
+}
+
+.font-class {
+	font-size: 20px;
+}
+
+
+.border-radius {
+    border-radius: 10px;
+}
+
+.svg-icon{
+    float: left;
+    margin-right: 8px;
+}
+
+.a-btn{
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.btn-base{
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+.btn-sm{
+    border-radius: 15px;
+}
+
+.box-shadow{
+    box-shadow: 0 0 40px rgba(100, 100, 100, 0.5);
+}
+
+
+.input-style{
+    height: 40px;
+    display: block;
+    background: rgba(160,160,160, 0.2);
+    padding: 0 10px;
+    outline: none;
+    border: 1px solid rgba(160,160,160, 0.2);
+    opacity: 0.8;
+}
+.input-style:focus{
+    outline: 2px solid var(--color-blue-500);
+}
+
+
+div[data-part="group"] { /*notice*/
+    top: 50px !important;
+}
+div[data-part="root"] { /*notice*/
+    width: 280px;
+    padding: 5px 10px;
+    /*box-shadow: 0 0 20px rgba(160,160,160, 0.2);*/
+    border: 1px solid rgba(160,160,160, 0.5);
+    opacity: 0.8;
+}
+div[data-part="content"] { /*confirm*/
+    /*box-shadow: 0 0 20px rgba(160,160,160, 0.2);*/
+    border: 1px solid rgba(160,160,160, 0.5);
+    max-width: 300px;
+    margin-top: -120px;
+}
+@media only screen and (max-width: 400px){
+    div[data-part="content"] { /*confirm*/
+        max-width: 280px;
+    }
+}
+
+
+/*流水字，从右向左*/
+.text-marquee {
+    display: inline-block;
+    animation: text_marquee 10s linear infinite;
+}
+.text-marquee:hover {
+    animation-play-state: paused; /* 鼠标悬停暂停 */
+}
+@keyframes text_marquee {
+    0% {
+        transform: translateX(101%); /* 从右侧开始 */
+    }
+    100% {
+        transform: translateX(-101%); /* 移动到左侧 */
+    }
+}
+
+
+/*背景轮动颜色*/
+.bg-animation{
+    animation: play_animation 10s infinite ease-in-out;
+}
+@keyframes play_animation {
+    0%   {background-color: rgba(100,100,100,0.5);color: rgba(220,220,220,1)}
+    25%  {background-color: rgba(60,179,113,0.5);color: rgba(20,20,20,1)}
+    50%  {background-color: rgba(26,114,254,0.5);color: rgba(200,200,200,1)}
+    75%  {background-color: rgba(255,99,71,0.5);color: rgba(20,20,20,1)}
+    100% {background-color: rgba(100,100,100,0.5);color: rgba(220,220,220,1)}
+}

@@ -1,0 +1,53 @@
+# .github/workflows/deploy.yml
+name: datathink.top
+
+on:
+  push:
+    branches: [main]
+
+env:
+  NODE_VERSION: "20"
+  CACHE_MAX_AGE: "360000"  # 100小时
+  BUILD_DIR: "./dist"
+
+# 添加权限配置
+permissions:
+  contents: write  # 必需：允许写入内容
+  pages: write     # 如果需要 GitHub Pages
+  id-token: write  # 如果需要 OIDC
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm install --no-audit
+
+      - name: 🏗️ Build project
+        run: npm run build
+
+#      - name: 🔧 Fix SvelteKit paths
+#        run: |
+#          cd ${{ env.BUILD_DIR }}
+#          touch .nojekyll
+#          if [ -f "index.html" ]; then
+#            sed -i 's|/_app/|./_app/|g' index.html
+#            sed -i 's|src="/|src="./|g' index.html
+#            sed -i 's|href="/|href="./|g' index.html
+#          fi
+
+      - name: 🚀 Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ env.BUILD_DIR }}
