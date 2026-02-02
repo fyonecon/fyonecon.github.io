@@ -22,7 +22,7 @@
     ];
     let route = $state(func.get_route());
     let tab_width = $state(205);
-    let glass_div_display = $state("show");
+    let glass_div_display = $state("hide");
 
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
