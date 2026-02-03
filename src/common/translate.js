@@ -46,8 +46,8 @@ const lang_dict = {
         en: "Example",
     },
     Home: {
-        zh: "PureHome",
-        en: "PureHome",
+        zh: "主页",
+        en: "Home",
     },
     Settings: {
         zh: "设置",
@@ -74,17 +74,21 @@ const lang_dict = {
         en: "Themes",
     },
     //
+    PureHome: {
+        zh: "PureHome",
+        en: "PureHome",
+    },
     Search: {
         zh: "🔍 搜索",
         en: "🔍 Search",
     },
-    Info: {
-        zh: "查看信息",
-        en: "Info",
-    },
     Bookmark: {
         zh: "收 藏",
         en: "Bookmark",
+    },
+    Info: {
+        zh: "查看信息",
+        en: "Info",
     },
     JYP: {
         zh: "教育片",

@@ -10,9 +10,9 @@
     const tab_data = [ // tab数据。3个最佳，3个以上需要重新计算单个tab的宽度
         {
             icon: '<svg xmlns="http://www.w3.org/2000/svg" style="display: inline-block;" width="26" height="26" viewBox="0 0 24 24"><g fill="currentColor"><path d="M10 13v-1.978l1.5-1.094l1.5 1.094V13a.25.25 0 0 1-.25.25h-2.5A.25.25 0 0 1 10 13"/><path d="M3.25 11.5a8.25 8.25 0 1 1 14.578 5.294l2.675 2.676a.75.75 0 0 1-1.06 1.06l-2.678-2.678A8.25 8.25 0 0 1 3.25 11.5m10.942-1.466l-2.25-1.64a.75.75 0 0 0-.884 0l-2.25 1.64a.75.75 0 0 0-.308.606V13c0 .966.784 1.75 1.75 1.75h2.5A1.75 1.75 0 0 0 14.5 13v-2.36a.75.75 0 0 0-.308-.606"/></g></svg>', // 图标，26px
-            title: func.get_translate("Home"), // 名字
-            route: "/home", // 对应的route名字
-            href: "./home", // 跳转地址
+            title: func.get_translate("PureHome"), // 名字
+            route: "/purehome", // 对应的route名字
+            href: "./purehome", // 跳转地址
         },
         {
             icon: '<svg xmlns="http://www.w3.org/2000/svg" style="display: inline-block;" width="26" height="26" viewBox="0 0 24 24"><path fill="currentColor" d="m12 12.625l1.275.775q.275.175.538-.025T14 12.85l-.325-1.45l1.1-.95q.25-.225.163-.525t-.438-.35l-1.45-.125l-.6-1.375q-.125-.3-.45-.3t-.45.3l-.6 1.375l-1.45.125q-.35.05-.437.35t.162.525l1.1.95L10 12.85q-.075.325.188.525t.537.025zM12 18l-4.2 1.8q-1 .425-1.9-.162T5 17.975V5q0-.825.588-1.412T7 3h10q.825 0 1.413.588T19 5v12.975q0 1.075-.9 1.663t-1.9.162z"/></svg>',
@@ -38,7 +38,7 @@
             if (route === "/bookmark"){ // 正常Tab路由
                 glass_div_display = "show";
             }else{
-                if (route === "/home"){
+                if (route === "/purehome"){
                     glass_div_display = (func.get_local_data(config.app.app_class+"home_tab_show")==="show")?"show":"hide";
                 }else{
                     glass_div_display = "hide";
