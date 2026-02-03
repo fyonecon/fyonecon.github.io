@@ -219,12 +219,11 @@
         input_del_history: function(){
             let that = this;
             //
-            func.loading_show();
+            func.loading_show("", 1200);
             func.del_db_data(search_history_key).then(state=>{
                 del_input_history_dialog_is_open = false;
                 that.input_auto_write("");
                 that.show_history("");
-                func.loading_hide();
             });
         },
         change_arrow_direct_class: function(state=false){

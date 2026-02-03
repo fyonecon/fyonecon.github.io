@@ -955,8 +955,8 @@ const func = {
         if (timeout_ms === "long"){
             // 长时间显示
         }else{
-            if (timeout_ms <= 1000){
-                timeout_ms = 5000;
+            if (timeout_ms <= 400){
+                timeout_ms = 400;
             }
             //
             loading_show_timer = setTimeout(function () {
@@ -976,8 +976,8 @@ const func = {
         if (timeout_ms === "long"){
             // 长时间显示
         }else{
-            if (timeout_ms <= 1000){
-                timeout_ms = 1000;
+            if (timeout_ms <= 400){
+                timeout_ms = 400;
             }
             //
             //
@@ -991,8 +991,8 @@ const func = {
         alert_data.alert_msg = msg;
     },
     notice: function (title="", msg="", timeout_ms = 5000, trigger="info"){
-        if (timeout_ms <= 1000){
-            timeout_ms = 1000;
+        if (timeout_ms <= 400){
+            timeout_ms = 400;
         }
         switch (trigger) {
             case "info":
