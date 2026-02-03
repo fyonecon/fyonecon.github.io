@@ -115,13 +115,13 @@
                 },
                 { //
                     show_lang: "all",
-                    title: "浏览器信息",
-                    href: "@info"
+                    title: "中科大网速测试",
+                    href: "https://test.ustc.edu.cn"
                 },
                 { //
                     show_lang: "all",
-                    title: "中科大网速测试",
-                    href: "https://test.ustc.edu.cn"
+                    title: "浏览器信息",
+                    href: "@info"
                 },
                 { //
                     show_lang: "all",
@@ -152,6 +152,7 @@
     const def = {
         open_url: function(_href=""){
             // func.open_url(_href);
+            func.loading_show("", 2000);
             let href = "./search?word="+encodeURIComponent(_href)+"&engine=bing&url_timeout="+func.url_timeout_encode("search", 2*60*60)+"&ap=bkmk";
             if (browser){
                 if (func.is_mobile_screen()){

@@ -98,6 +98,7 @@
     const def = {
         open_url: function(_href=""){
             // func.open_url(_href);
+            func.loading_show("", 2000);
             let href = "./search?word="+encodeURIComponent(_href)+"&engine=bing&url_timeout="+func.url_timeout_encode("search", 2*60*60)+"&ap=bkmk";
             if (browser){
                 if (func.is_mobile_screen()){
