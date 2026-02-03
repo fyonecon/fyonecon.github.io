@@ -80,11 +80,13 @@
         // 系统基础条件检测
         if (!runtime_ok()){ // false
             func.alert_msg(func.get_translate("runtime_error_alert"), "long");
+            func.title("⚠️");
             page_display="hide";
             return
         }else{ // 附加条件检测
             if (!browser_ok()){ // false
                 func.alert_msg(func.get_translate("runtime_cn_chat_alert"), "long");
+                func.title("😅");
                 page_display="hide";
                 return
             }else{ // ok

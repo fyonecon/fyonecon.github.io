@@ -260,12 +260,12 @@ const lang_dict = {
         en: "Enter folder path",
     },
     runtime_error_alert: {
-        zh: "⚠️ 系统运行条件不符合，已经阻止访问内容.",
-        en: "⚠️ The system operating conditions do not meet the requirements, and access to the content has been blocked.",
+        zh: "系统运行条件不符合，已经阻止访问内容.",
+        en: "The system operating conditions do not meet the requirements, and access to the content has been blocked.",
     },
     runtime_cn_chat_alert: {
-        zh: "😊 请不要在「微信、QQ、钉钉、飞书、企业微信」中打开本网站，请使用外部浏览器。",
-        en: "😊 Please do not open this website within \"WeChat, QQ, DingTalk, Feishu(Lark), or Enterprise WeChat.\" Please use an external browser instead.",
+        zh: "请不要在「微信、QQ、钉钉、飞书、企业微信」中打开本网站。<br/>请使用外部浏览器打开。",
+        en: "Please do not open this website within \" WeChat, QQ, DingTalk, Feishu(Lark), or Enterprise WeChat.\" . <br/>Please open with an external browser.",
     },
     //
     search_del_history: {

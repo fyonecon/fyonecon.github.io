@@ -17,7 +17,7 @@ const runtime_func = {
 const browser_func = {
     is_weixin: function (){
         let ua = window.navigator.userAgent.toLowerCase();
-        return ua.match(/micromessenger/i) === 'micromessenger';
+        return ua.indexOf("micromessenger")!==-1;
     },
     is_qq: function (){
         let ua = window.navigator.userAgent.toLowerCase();

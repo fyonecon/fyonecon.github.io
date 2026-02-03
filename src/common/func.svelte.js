@@ -43,6 +43,11 @@ const func = {
             //
         }
     },
+    title: function(_title="-"){
+        if (browser){
+            document.title = _title;
+        }
+    },
     url_path: function(pathname){ // URL的path路径前缀，适配后端服务器输出规则。默认""，推荐"."。pathname开头/ 。
         return ""+pathname;
     },

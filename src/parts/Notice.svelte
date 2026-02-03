@@ -8,8 +8,8 @@
     {#snippet children(toast)}
         <Toast {toast}>
             <Toast.Message>
-                <Toast.Title>{toast.title}</Toast.Title>
-                <Toast.Description>{toast.description}</Toast.Description>
+                <Toast.Title>{@html toast.title}</Toast.Title>
+                <Toast.Description>{@html toast.description}</Toast.Description>
             </Toast.Message>
             <Toast.CloseTrigger />
         </Toast>
