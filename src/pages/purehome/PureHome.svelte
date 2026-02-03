@@ -166,10 +166,11 @@
             let that = this;
             //
             func.loading_show();
+            clearTimeout(open_url_loading_timer);
+            clearTimeout(open_url_open_timer);
+            //
             let the_value = input_value_search.trim();
             if (the_value){
-                clearTimeout(open_url_loading_timer);
-                clearTimeout(open_url_open_timer);
                 //
                 if (the_value === "@tabshow" || the_value === "@tab"){ // 展示tab栏
                     func.set_local_data(config.app.app_class+"home_tab_show", "show"); // hide show
@@ -181,7 +182,7 @@
                         open_url_loading_timer = setTimeout(function (){
                             that.input_auto_write("");
                             func.loading_hide();
-                        }, 1000);
+                        }, 1200);
                         //
                         if (!value) {value = "bing";}
                         //
@@ -196,13 +197,14 @@
                             }else{
                                 func.open_url_with_default_browser(href);
                             }
-                        }, 100);
+                        }, 200);
                     });
                 });
             }else{
                 input_object.focus();
-                func.loading_hide();
-                // func.notice(func.get_translate("input_null"), "", 2000);
+                open_url_loading_timer = setTimeout(function (){
+                    func.loading_hide();
+                }, 200);
             }
         },
         input_auto_write: function(value=""){ // 自动填充input
