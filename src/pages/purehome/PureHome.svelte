@@ -171,9 +171,9 @@
                 clearTimeout(open_url_loading_timer);
                 clearTimeout(open_url_open_timer);
                 //
-                if (the_value === "@tabshow" || the_value === "@tab"){
+                if (the_value === "@tabshow" || the_value === "@tab"){ // 展示tab栏
                     func.set_local_data(config.app.app_class+"home_tab_show", "show"); // hide show
-                    the_value = "@home"; // 刷新页面即可
+                    the_value = config.sys.home_route_white_word; // 刷新页面即可
                 }
                 //
                 that.input_history(the_value).then(v=>{
@@ -185,7 +185,7 @@
                         //
                         if (!value) {value = "bing";}
                         //
-                        let href = "./search?word="+encodeURIComponent(the_value)+"&engine="+value+"&url_timeout="+func.url_timeout_encode("search", 6*60*60)+"&ap=ipt";
+                        let href = "./search?word="+encodeURIComponent(the_value)+"&engine="+value+"&url_timeout="+func.url_timeout_encode("search", 1.5*60*60)+"&ap=ipt";
                         open_url_open_timer = setTimeout(function (){
                             if (browser){
                                 if (func.is_mobile_screen()){

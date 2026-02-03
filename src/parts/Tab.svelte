@@ -105,11 +105,6 @@
 </div>
 
 <style>
-
-    .hide{
-        display: none;
-    }
-
     /**/
     .liquidGlass-box {
         position: fixed;

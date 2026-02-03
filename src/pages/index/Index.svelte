@@ -39,10 +39,11 @@
             let array = href.split("route=home");
             let url = "";
             if (array.length >= 2){
-                url = host + "home?" + array[1];
+                url = host + config.sys.home_route + "?" + array[1];
             }else{
-                url = host + "home";
+                url = host + config.sys.home_route + "";
             }
+            url = url.replaceAll("//", "/");
             func.open_url(url);
         }
         else if (href.indexOf("route=search") != -1){

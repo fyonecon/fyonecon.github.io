@@ -28,9 +28,12 @@
             browser_search_engine_show = "hide";
             let browser_search_engine_http = (window.location.host.indexOf(".github.io") !== -1)?"https":"http";
             // 白名单跳转
-            if (word === "@home"){
+            if (word === config.sys.home_route_white_word){ // 必要，home页面
                 back_state = true;
-                that.open_url("./home?cache="+func.js_rand(10000, 99999));
+                let href = "."+config.sys.home_route+"?cache="+func.js_rand(10000, 99999)
+                href = href.replaceAll(".?cache=", "./?cache=");
+                href = href.replaceAll("//", "/");
+                that.open_url(href);
             }
             else if (word === "@bookmark"){
                 back_state = true;
@@ -51,7 +54,7 @@
             else if (word === "@clear"){ // 只删除配置信息，不删除用户信息
                 back_state = true;
                 func.clear_local_data();
-                that.open_url("./home?clear="+func.js_rand(10000, 99999));
+                that.open_url(func.url_path(config.sys.base_route+config.sys.home_route)+"?clear="+func.js_rand(10000, 99999));
             }
             // 自定义搜索引擎
             else if (word === "@bing"){
