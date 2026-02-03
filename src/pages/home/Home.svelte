@@ -237,22 +237,25 @@
 
     // 页面函数执行的入口，实时更新数据
     function page_start(){
-        func.console_log("page_start()=", route);
+        func.console_log("page_start=", route);
         // 创建视图
         def.create_select();
         def.input_history("");
         // 监听输入法输入事件
         func.watch_input_enter(input_object);
-        // 监测页面标签是否处于显示
-        if (browser){
-            document.addEventListener("visibilitychange", () => {
-                if (document.hidden) { // onHide
-                    //
-                } else { // onShow
-                    def.input_history("");
-                }
-            });
-        }
+    }
+
+    // 标签处于切换显示状态
+    function page_show(){
+        func.console_log("page_show=", route);
+        // show
+        def.input_history("");
+    }
+
+    // 标签处于切换隐藏状态
+    function page_hide(){
+        func.console_log("page_hide=", route);
+        // hide
     }
 
 
@@ -265,14 +268,25 @@
     // 刷新页面数据
     afterNavigate(() => {
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
-        //
+        // 开始
         page_start();
     });
 
 
     // 页面装载完成后，只运行一次
+    // addEventListener专用函数
     onMount(() => {
-        //
+        if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
+        // 监测页面标签是否处于显示
+        if (browser){
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) { // onHide
+                    page_show();
+                } else { // onShow
+                    page_hide();
+                }
+            });
+        }
     });
 
 
@@ -325,7 +339,7 @@
                 </Dialog.Description>
                 <footer class="flex justify-center gap-10 select-none  px-[10px] py-[10px]">
                     <button title="Cancel" class="btn btn-base preset-tonal font-title" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
-                    <button title="Update" type="button" class="btn btn-base preset-filled-primary-500 font-title" onclick={()=>def.input_del_history()}>{func.get_translate("remove")}</button>
+                    <button title="Update" type="button" class="btn btn-base preset-filled-primary-500 font-title" onclick={()=>def.input_del_history()}>{func.get_translate("clear")}</button>
                 </footer>
             </Dialog.Content>
         </Dialog.Positioner>

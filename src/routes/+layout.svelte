@@ -1,4 +1,5 @@
 <script lang="ts">
+    /*全局事件*/
 	import './layout.css'; // 全局CSS
 	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/state';
@@ -20,6 +21,7 @@
 
 
     // 本页面参数
+    let route = $state(func.get_route());
     let page_display = $state("hide");
     let theme_model = $state("");
     let lang_index = $state("");
@@ -58,34 +60,23 @@
     };
 
 
-    // 监控所有$state()值变化
-    $effect(() => {
-        // console.log("layout=effect=", page.route);
-    });
+    // 页面函数执行的入口，实时更新数据
+    function page_start(){
+        func.console_log("page_start=", route);
+        // 开始
+        route = func.get_route();
 
-
-	// 路由变化之前
-	beforeNavigate(() => {
-		//
-	});
-
-
-	// 路由变化之后
-	afterNavigate(() => {
-        // 必要运行
-        // def.auto_set_language_index();
-        // def.auto_set_theme_model();
-
-        //
+        // 网站翻译语言
         let lang = func.get_lang();
         watch_lang_data.lang_index = lang;
         lang_index = lang; // 监测本地语言
-        //
+
+        // 网站主题
         let mode = func.get_theme_model();
         watch_theme_model_data.theme_model = mode;
         theme_model = mode;
         document.documentElement.setAttribute('data-mode', mode);
-        
+
         // 系统基础条件检测
         if (!runtime_ok()){ // false
             func.alert_msg(func.get_translate("runtime_error_alert"), "long");
@@ -103,14 +94,50 @@
             }
         }
 
+        //
+    }
+
+    // 标签处于切换显示状态
+    function page_show(){
+        func.console_log("page_show=", route);
+        // show
+    }
+
+    // 标签处于切换隐藏状态
+    function page_hide(){
+        func.console_log("page_hide=", route);
+        // hide
+    }
+
+
+    // 监控所有$state()值变化
+    $effect(() => {
+        // console.log("layout=effect=", page.route);
+    });
+
+
+	// 路由变化之后
+	afterNavigate(() => {
+        // 开始
+        page_start();
 	});
 
 
-    // 页面装载完成后，只运行一次
+    // 页面装载完成后，只运行一次。
+    // addEventListener专用函数
     onMount(() => {
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
-
-        //
+        // 监测页面标签是否处于显示
+        if (browser){
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) { // onHide
+                    page_show();
+                } else { // onShow
+                    page_hide();
+                }
+            });
+        }
+        // 监听亮暗主题
         let theme_event = window.matchMedia('(prefers-color-scheme: dark)');
         theme_event.addEventListener('change', function (event){ // 监测主题变化
             let mode = func.get_theme_model();
@@ -118,22 +145,17 @@
             theme_model = mode;
             document.documentElement.setAttribute('data-mode', mode);
         });
-
-        // 监测页面标签是否处于显示
-        if (browser){
-            document.addEventListener("visibilitychange", () => {
-                if (document.hidden) { // onHide
-                    func.console_log("onHide");
-                } else { // onShow
-                    func.console_log("onShow");
-                }
-            });
-        }
-
+        //
     });
 
 
-    //
+    // 路由变化之前
+    beforeNavigate(() => {
+        //
+    });
+
+
+    // 整个网站关闭时
     onDestroy(() => {
         //
     });

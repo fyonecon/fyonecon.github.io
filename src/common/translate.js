@@ -223,13 +223,17 @@ const lang_dict = {
         zh: "移除",
         en: "Remove",
     },
+    clear: {
+        zh: "清除",
+        en: "Clear",
+    },
     remove_help_1:{
         zh: "移除该文件夹（不会从本机删除该文件夹）",
         en: "Remove the folder (The folder will not be deleted from the local machine)",
     },
     remove_help_2:{
-        zh: "移除搜索历史？",
-        en: "Remove search history?",
+        zh: "清除搜索历史？",
+        en: "Clear search history?",
     },
     del: {
         zh: "删除",
@@ -261,8 +265,8 @@ const lang_dict = {
     },
     //
     search_del_history: {
-        zh: "移除历史",
-        en: "Remove",
+        zh: "清除历史",
+        en: "Clear",
     },
     search_clear_input: {
         zh: "重新输入",

@@ -169,8 +169,21 @@
 
     // 页面函数执行的入口，实时更新数据
     function page_start(){
-        func.console_log("page_start()=", route);
+        func.console_log("page_start=", route);
         // 开始
+    }
+
+    // 标签处于切换显示状态
+    function page_show(){
+        func.console_log("page_show=", route);
+        // show
+        func.loading_hide();
+    }
+
+    // 标签处于切换隐藏状态
+    function page_hide(){
+        func.console_log("page_hide=", route);
+        // hide
     }
 
 
@@ -189,8 +202,19 @@
 
 
     // 页面装载完成后，只运行一次
+    // addEventListener专用函数
     onMount(() => {
-        //
+        if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
+        // 监测页面标签是否处于显示
+        if (browser){
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) { // onHide
+                    page_show();
+                } else { // onShow
+                    page_hide();
+                }
+            });
+        }
     });
 
 

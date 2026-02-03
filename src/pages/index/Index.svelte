@@ -1,26 +1,32 @@
 <script lang="ts">
+    /*根路由*/
     import { resolve } from '$app/paths';
     import func from "../../common/func.svelte.js";
-    import config from "../../config";
     import {afterNavigate} from "$app/navigation";
     import {onMount} from "svelte";
     import {browser_ok, runtime_ok} from "../../common/middleware.svelte";
     import {browser} from "$app/environment";
-
-
-    // 链接携带的信息
-    const error_url = func.search_param("error_url")
-    const error_msg = func.search_param("error_msg");
-    const back_url = func.url_path(config.sys.home_route);
+    import config from "../../config";
 
 
     // 本页面参数
     let route = $state(func.get_route());
+    let href = $state(func.get_href());
+    let host = $state(config.sys.base_route+"/");
+    if (browser){
+        host = "//"+window.location.host+config.sys.base_route+"/";
+    }
 
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
     const def = {
-        //
+        go_home: function(){
+            // 重新定向 /到 /home 页面
+            func.redirect_pathname({
+                url_pathname: func.url_path(config.sys.base_route+config.sys.home_route),
+                url_params: func.get_params(),
+            });
+        }
     };
 
 
@@ -28,6 +34,41 @@
     function page_start(){
         func.console_log("page_start=", route);
         // 开始
+        // 兼容老View框架的路由
+        if (href.indexOf("route=home") != -1){
+            let array = href.split("route=home");
+            let url = "";
+            if (array.length >= 2){
+                url = host + "home?" + array[1];
+            }else{
+                url = host + "home";
+            }
+            func.open_url(url);
+        }
+        else if (href.indexOf("route=search") != -1){
+            let array = href.split("route=search");
+            let url = "";
+            if (array.length >= 2){
+                url = host + "search?" + array[1];
+            }else{
+                url = host + "search";
+            }
+            func.open_url(url);
+        }
+        else if (href.indexOf("route=info") != -1){
+            let array = href.split("route=info");
+            let url = "";
+            if (array.length >= 2){
+                url = host + "info?" + array[1];
+            }else{
+                url = host + "info"
+            }
+            func.open_url(url);
+        }
+        // 新版直接跳转
+        else{
+            def.go_home();
+        }
     }
 
     // 标签处于切换显示状态
@@ -52,7 +93,7 @@
     // 刷新页面数据
     afterNavigate(() => {
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
-        //
+        // 开始
         page_start();
     });
 
@@ -75,19 +116,3 @@
 
 
 </script>
-
-<div class="select-text">
-    <br/>
-    <h2 class="break">{error_msg?error_msg:"404"}</h2>
-    <br/>
-    <p class="break">{error_url?"Error URL: "+error_url:""}</p>
-    <br/>
-    <br/>
-    <div class="" style="display:flex; justify-content: center; align-items: center;">
-        <div style="clear: both;">
-            <a class="click font-blue" href={resolve(back_url)} target="_self" title="Back Home"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="float: left; margin-right: 10px;"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="m15.5 9l-3 3l3 3m-4-6l-3 3l3 3"/></g></svg>{func.get_translate("a_click_tip_back_home")}</a>
-        </div>
-    </div>
-    <br/>
-    <br/>
-</div>

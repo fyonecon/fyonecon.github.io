@@ -6,6 +6,7 @@
 
 
     // 本页面参数
+    let route = $state(func.get_route());
     const tab_data = [ // tab数据。3个最佳，3个以上需要重新计算单个tab的宽度
         {
             icon: '<svg xmlns="http://www.w3.org/2000/svg" style="display: inline-block;" width="26" height="26" viewBox="0 0 24 24"><g fill="currentColor"><path d="M10 13v-1.978l1.5-1.094l1.5 1.094V13a.25.25 0 0 1-.25.25h-2.5A.25.25 0 0 1 10 13"/><path d="M3.25 11.5a8.25 8.25 0 1 1 14.578 5.294l2.675 2.676a.75.75 0 0 1-1.06 1.06l-2.678-2.678A8.25 8.25 0 0 1 3.25 11.5m10.942-1.466l-2.25-1.64a.75.75 0 0 0-.884 0l-2.25 1.64a.75.75 0 0 0-.308.606V13c0 .966.784 1.75 1.75 1.75h2.5A1.75 1.75 0 0 0 14.5 13v-2.36a.75.75 0 0 0-.308-.606"/></g></svg>', // 图标，26px
@@ -20,7 +21,6 @@
             href: "./bookmark",
         },
     ];
-    let route = $state(func.get_route());
     let tab_width = $state(205);
     let glass_div_display = $state("hide");
 
@@ -51,7 +51,7 @@
     // 刷新页面数据
     afterNavigate(() => {
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
-        //
+        // 开始
         route = func.get_route();
         def.calc_tab();
         def.show_glass_div();
