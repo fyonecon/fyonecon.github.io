@@ -219,7 +219,7 @@
         input_del_history: function(){
             let that = this;
             //
-            func.loading_show("", 1000);
+            func.loading_show("", 800);
             try {
                 func.del_db_data(search_history_key).then(state=>{
                     del_input_history_dialog_is_open = false;
@@ -265,12 +265,6 @@
     }
 
 
-    // 检测$state()值变化
-    $effect(() => {
-        //
-    });
-
-
     // 刷新页面数据
     afterNavigate(() => {
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
@@ -298,7 +292,7 @@
 
 </script>
 
-<div class="search-div select-none" style="min-height: {search_div_min_height}px;">
+<div class="page-div search-box select-none" style="min-height: {search_div_min_height}px;">
     <div class="search-div-input">
         <select class="search-div-input-select input-border font-text " onchange={(event)=>def.update_select(event)}>
             {#each search_engines_array as option_dict}
@@ -353,7 +347,7 @@
 </Dialog>
 
 <style>
-    .search-div{
+    .search-box{
         width: calc(100%);
         margin-left: auto;
         margin-right: auto;
@@ -363,37 +357,37 @@
         opacity: 0.9;
     }
     @media only screen and (min-width: 200px){
-        .search-div{
+        .search-box{
             padding-top: 10px;
         }
     }
     @media only screen and (min-width: 300px){
-        .search-div{
+        .search-box{
             padding-top: 20px;
         }
     }
     @media only screen and (min-width: 500px){
-        .search-div{
+        .search-box{
             padding-top: 40px;
         }
     }
     @media only screen and (min-width: 600px){
-        .search-div{
+        .search-box{
             padding-top: 60px;
         }
     }
     @media only screen and (min-width: 800px){
-        .search-div{
+        .search-box{
             padding-top: 80px;
         }
     }
     @media only screen and (min-width: 800px){
-        .search-div{
+        .search-box{
             padding-top: 100px;
         }
     }
     @media only screen and (min-width: 1200px){
-        .search-div{
+        .search-box{
             padding-top: 130px;
         }
     }

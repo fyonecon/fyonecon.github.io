@@ -112,7 +112,7 @@
     }
 
 
-    // 监控所有$state()值变化
+    // 监控所有$state()值变化，此函数尽量少用
     $effect(() => {
         // console.log("layout=effect=", page.route);
     });

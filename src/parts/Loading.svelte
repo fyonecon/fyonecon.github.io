@@ -2,7 +2,7 @@
     import {loading_data} from "../stores/loading.store.svelte.js"
 </script>
 
-<div class="alert_loading-div select-none not-click {loading_data.loading_show}">
+<div class="part-div alert_loading-div select-none not-click {loading_data.loading_show}">
     <div class="select-none">
         <div class="loading-info border-radius font-text">
             <div class="alert_loading_msg break select-text">{@html loading_data.loading_msg}</div>
@@ -34,6 +34,7 @@
         right: 0;
         margin: auto auto;
         text-align: center;
+        opacity: 0.6;
     }
     .alert_loading_msg{
         text-align: center;

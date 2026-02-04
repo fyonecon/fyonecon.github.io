@@ -25,7 +25,7 @@
 
 </script>
 
-<div class="Demo-box select-none">
+<div class="part-div Demo-box select-none">
     <div>{@html route}</div>
 </div>
 

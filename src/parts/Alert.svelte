@@ -2,7 +2,7 @@
     import {alert_data} from "../stores/alert.store.svelte.js"
 </script>
 
-<div class="alert_loading-div select-none {alert_data.alert_show}">
+<div class="part-div alert_loading-div select-none {alert_data.alert_show}">
     <div class="select-none">
         <div class="loading-info ">
             <div class="alert_loading_msg break border-radius font-text bg-neutral-200 dark:bg-neutral-900 select-text">{@html alert_data.alert_msg}</div>

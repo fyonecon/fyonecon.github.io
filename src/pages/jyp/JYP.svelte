@@ -149,12 +149,6 @@
     }
 
 
-    // 检测$state()值变化
-    $effect(() => {
-        //
-    });
-
-
     // 刷新页面数据
     afterNavigate(() => {
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
@@ -182,7 +176,7 @@
 
 </script>
 
-<div class="bookmark-box select-none">
+<div class="page-div bookmark-box select-none">
     <div class="bookmark-group ">
         <div class="bookmark-group-name font-text">教育片 <i class="font-red select-text">@jyp</i> 提醒</div>
         <div class="bookmark-group-list font-text">

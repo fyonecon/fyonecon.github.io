@@ -60,7 +60,7 @@
 
 </script>
 
-<div class="liquidGlass-div select-none {glass_div_display} ">
+<div class="part-div liquidGlass-div select-none {glass_div_display} ">
     <!---->
     <svg style="display: none;">
         <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">

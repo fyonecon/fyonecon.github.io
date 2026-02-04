@@ -215,12 +215,6 @@
     }
 
 
-    // 检测$state()值变化
-    $effect(() => {
-        //
-    });
-
-
     // 刷新页面数据
     afterNavigate(() => {
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
@@ -248,7 +242,7 @@
 
 </script>
 
-<div class="browser-search-engine {browser_search_engine_show} ">
+<div class="page-div select-none browser-search-engine {browser_search_engine_show} ">
     <br/>
     <h3 class="font-title">可以添加如下链接到浏览器的自定义搜索引擎：</h3>
     <br/>

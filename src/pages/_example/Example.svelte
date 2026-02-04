@@ -36,12 +36,6 @@
     }
 
 
-    // 检测$state()值变化
-    $effect(() => {
-        //
-    });
-
-
     // 刷新页面数据
     afterNavigate(() => {
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
@@ -69,7 +63,7 @@
 
 </script>
 
-<div>
+<div class="page-div example-box select-none">
     <h3>{route}</h3>
     <ul class="ul-group font-text">
         <li class="li-group">
