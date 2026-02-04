@@ -265,7 +265,7 @@ const lang_dict = {
     },
     runtime_cn_chat_alert: {
         zh: "请不要在「微信、QQ、钉钉、飞书、企业微信」中打开本网站。<br/>请使用外部浏览器打开。",
-        en: "Please do not open this website within \" WeChat, QQ, DingTalk, Feishu(Lark), or Enterprise WeChat.\" . <br/>Please open with an external browser.",
+        en: "Please do not open this website within \" WeChat(weixin), QQ, DingTalk(dingding), Lark(Feishu), or Enterprise WeChat.\" . <br/>Please open with an external browser.",
     },
     //
     search_del_history: {

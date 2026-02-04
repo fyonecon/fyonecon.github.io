@@ -69,7 +69,7 @@
         // 网站翻译语言
         let lang = func.get_lang();
         watch_lang_data.lang_index = lang;
-        lang_index = lang; // 监测本地语言
+        lang_index = lang;
 
         // 网站主题
         let mode = func.get_theme_model();
@@ -128,7 +128,23 @@
     // 页面装载完成后，只运行一次。
     // addEventListener专用函数
     onMount(() => {
+
+        // 网站翻译语言
+        let lang = func.get_lang();
+        watch_lang_data.lang_index = lang;
+        lang_index = lang;
+
+        // 监听亮暗主题
+        let theme_event = window.matchMedia('(prefers-color-scheme: dark)');
+        theme_event.addEventListener('change', function (event){ // 监测主题变化
+            let mode = func.get_theme_model();
+            watch_theme_model_data.theme_model = mode;
+            theme_model = mode;
+            document.documentElement.setAttribute('data-mode', mode);
+        });
+
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
+
         // 监测页面标签是否处于显示
         if (browser){
             document.addEventListener("visibilitychange", () => {
@@ -139,15 +155,8 @@
                 }
             });
         }
-        // 监听亮暗主题
-        let theme_event = window.matchMedia('(prefers-color-scheme: dark)');
-        theme_event.addEventListener('change', function (event){ // 监测主题变化
-            let mode = func.get_theme_model();
-            watch_theme_model_data.theme_model = mode;
-            theme_model = mode;
-            document.documentElement.setAttribute('data-mode', mode);
-        });
         //
+
     });
 
 
