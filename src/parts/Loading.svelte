@@ -34,7 +34,6 @@
         right: 0;
         margin: auto auto;
         text-align: center;
-        opacity: 0.6;
     }
     .alert_loading_msg{
         text-align: center;
@@ -49,6 +48,7 @@
         height: 50px;
         display: block;
         margin: auto auto;
+        opacity: 0.8;
     }
 
 </style>
