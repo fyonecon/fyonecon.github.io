@@ -177,7 +177,7 @@
 </script>
 
 <div class="page-div bookmark-box select-none">
-    <div class="bookmark-group bg-neutral-100 dark:bg-neutral-900">
+    <div class="bookmark-group">
         <div class="bookmark-group-name font-text">教育片 <i class="font-red select-text">@jyp</i> 提醒</div>
         <div class="bookmark-group-list font-text">
             <div class="bookmark-group-name-txt">
@@ -189,11 +189,11 @@
         </div>
     </div>
     {#each bookmark_data as group_data}
-        <div class="bookmark-group bg-neutral-100 dark:bg-neutral-900">
+        <div class="bookmark-group ">
             <div class="bookmark-group-name font-text">{group_data.name}</div>
             <div class="bookmark-group-list font-text">
                 {#each group_data.list as list_data}
-                    <button class="bookmark-group-list-item break bg-white dark:bg-black" onclick={()=>def.open_url(list_data.href)}>{list_data.title}</button>
+                    <button class="bookmark-group-list-item break font-blue bg-white dark:bg-surface-950" onclick={()=>def.open_url(list_data.href)}>{list_data.title}</button>
                 {/each}
                 <div class="clear"></div>
             </div>
@@ -210,6 +210,7 @@
         border-radius: 10px;
         margin-bottom: 20px;
         padding: 10px 5px;
+        border: 1px solid rgba(160,160,160, 0.5);
     }
     .bookmark-group-name{
         /*border-left: 2px solid var(--color-blue-800);*/
@@ -242,7 +243,7 @@
         margin: 10px 5px 5px 5px;
         padding: 10px 10px;
         border-radius: 10px;
-        border: 1px solid rgba(180,180,180, 1);
+        border: 1px solid rgba(160,160,160, 1);
         letter-spacing: 2px;
     }
 

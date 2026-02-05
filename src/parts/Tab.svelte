@@ -219,7 +219,7 @@
         bottom: 80px;
         border-radius: 5px;
         padding: 1px 1px;
-        background-color: rgba(180,180,180, 0.5);
+        background-color: rgba(160,160,160, 0.5);
         overflow: hidden;
         width: 20px;
         height: 20px;

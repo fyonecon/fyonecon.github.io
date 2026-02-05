@@ -129,12 +129,12 @@
 
 <div class="page-div info-box select-none">
 
-    <div class="info-div bg-neutral-100 dark:bg-neutral-900">
+    <div class="info-div">
         <div class="info-div-title">
             <span class="font-text">Ping 网络</span>
             <button type="button" class="btn btn-sm preset-filled-primary-500" onclick={()=>def.ping_show()} title="Click">Start</button>
         </div>
-        <div class="info-div-content bg-white dark:bg-black">
+        <div class="info-div-content bg-white dark:bg-surface-950">
             <div class="info-div-content-li break">
                 <span class="info-div-content-li-title select-text">https://www.google.com ：</span>
                 <br>
@@ -180,11 +180,11 @@
         </div>
     </div>
 
-    <div class="info-div bg-neutral-100 dark:bg-neutral-900">
+    <div class="info-div ">
         <div class="info-div-title">
             <span class="font-text">浏览器信息</span>
         </div>
-        <div class="info-div-content bg-white dark:bg-black">
+        <div class="info-div-content bg-white dark:bg-surface-950">
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">浏览器时区 ：</span>
                 <br>
@@ -279,11 +279,11 @@
         </div>
     </div>
 
-    <div class="info-div hide bg-neutral-100 dark:bg-neutral-900">
+    <div class="info-div hide ">
         <div class="info-div-title">
             <span class="font-text"> </span>
         </div>
-        <div class="info-div-content bg-white dark:bg-black">
+        <div class="info-div-content bg-white dark:bg-surface-950">
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title "> </span>
                 <span class="info-div-content-li-res"> </span>
@@ -303,6 +303,7 @@
         border-radius: 10px;
         padding: 10px 10px;
         margin-bottom: 20px;
+        border: 1px solid rgba(160,160,160, 0.5);
     }
 
     .info-div-title{
