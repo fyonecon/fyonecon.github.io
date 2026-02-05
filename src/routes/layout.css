@@ -277,3 +277,12 @@ div[data-part="content"] { /*confirm*/
     75%  {background-color: rgba(255,99,71,0.5);color: rgba(20,20,20,1)}
     100% {background-color: rgba(100,100,100,0.5);color: rgba(220,220,220,1)}
 }
+
+
+.page-div{
+    width: 100%;
+    max-width: 640px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 100px;
+}

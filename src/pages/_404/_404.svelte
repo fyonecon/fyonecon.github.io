@@ -89,3 +89,9 @@
         <br/>
     </div>
 </div>
+
+<style>
+    ._404-box{
+        padding: 10px 10px;
+    }
+</style>

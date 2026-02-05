@@ -348,13 +348,11 @@
 
 <style>
     .search-box{
-        width: calc(100%);
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 640px;
         padding-bottom: 40px;
         padding-top: 50px;
         opacity: 0.9;
+        /**/
+        margin-bottom: 0 !important;
     }
     @media only screen and (min-width: 200px){
         .search-box{

@@ -242,18 +242,21 @@
 
 </script>
 
-<div class="page-div select-none browser-search-engine {browser_search_engine_show} ">
-    <br/>
-    <h3 class="font-title">可以添加如下链接到浏览器的自定义搜索引擎：</h3>
-    <br/>
-    <div class="font-text select-text font-blue break">{browser_search_engine}</div>
-    <br/>
+<div class="page-div search-box select-none {browser_search_engine_show} ">
+    <div class="browser-search-engine">
+        <br/>
+        <h3 class="font-title">可以添加如下链接到浏览器的自定义搜索引擎：</h3>
+        <br/>
+        <div class="font-text select-text font-blue break">{browser_search_engine}</div>
+        <br/>
+    </div>
 </div>
 
 <style>
+    .search-box{
+        padding: 10px 10px;
+    }
     .browser-search-engine{
-        width: 100%;
-        padding: 20px 20px;
-        max-width: 640px;
+        opacity: 0.9;
     }
 </style>

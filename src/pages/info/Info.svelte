@@ -129,139 +129,161 @@
 
 <div class="page-div info-box select-none">
 
-    <div class="info-div">
+    <div class="info-div bg-neutral-100 dark:bg-neutral-900">
         <div class="info-div-title">
-            <span class="font-title">【 Ping 网络 】</span>
+            <span class="font-text">Ping 网络</span>
             <button type="button" class="btn btn-sm preset-filled-primary-500" onclick={()=>def.ping_show()} title="Click">Start</button>
         </div>
-        <div class="info-div-content">
+        <div class="info-div-content bg-white dark:bg-black">
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://www.google.com</span>
+                <span class="info-div-content-li-title select-text">https://www.google.com ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html ping_google}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://www.bing.com</span>
+                <span class="info-div-content-li-title select-text">https://www.bing.com ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html ping_bing}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://www.youtube.com</span>
+                <span class="info-div-content-li-title select-text">https://www.youtube.com ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html ping_youtube}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://www.ithome.com</span>
+                <span class="info-div-content-li-title select-text">https://www.ithome.com ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html ping_ithome}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://github.com</span>
+                <span class="info-div-content-li-title select-text">https://github.com ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html ping_github}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">http://{func.get_host()}</span>
+                <span class="info-div-content-li-title select-text">http://{func.get_host()} ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html ping_host}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://{func.get_host()}</span>
+                <span class="info-div-content-li-title select-text">https://{func.get_host()} ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html ping_hosts}</span>
                 <div class="clear"></div>
             </div>
         </div>
     </div>
 
-    <div class="info-div">
+    <div class="info-div bg-neutral-100 dark:bg-neutral-900">
         <div class="info-div-title">
-            <span class="font-title">【 浏览器信息 】</span>
+            <span class="font-text">浏览器信息</span>
         </div>
-        <div class="info-div-content">
+        <div class="info-div-content bg-white dark:bg-black">
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">浏览器时区 ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html Intl.DateTimeFormat().resolvedOptions().timeZone || "-不支持-"}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">浏览器语言 ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html window.navigator.languages}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">设备CPU数(核) ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html window.navigator.hardwareConcurrency || "-不支持-"}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">设备内存(GB) ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html window.navigator.deviceMemory || "-不支持-"}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">UserAgent ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html window.navigator.userAgent}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">Screen尺度参数 ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html "screen.width=" + window.screen.width + "<br/>screen.height=" + window.screen.height+ "<br/>screen.availWidth=" + window.screen.availWidth+ "<br/>screen.availHeight=" + window.screen.availHeight}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">Pages尺度参数 ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html "innerWidth=" + window.innerWidth + "<br/>innerHeight=" + window.innerHeight}</span>
                 <div class="clear"></div>
             </div>
 
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">是否处于PWA(Mobile、PC) ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html [func.is_mobile_pwa(), func.is_pc_pwa()]}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">IsMobileScreen ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html func.is_mobile_screen()}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">浏览器主题 ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html func.get_theme_model()}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">当前地址的Refer ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html document.referrer.slice(0, 120)+ " ..."}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">当前地址的Host ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html window.location.host}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">appVersion ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html "v"+config.app.app_version}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">appUID ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html "-"}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">Date ：</span>
+                <br>
                 <span class="info-div-content-li-res">{@html func.get_time_date("Y/m/d")}</span>
                 <div class="clear"></div>
             </div>
         </div>
     </div>
 
-    <div class="info-div">
+    <div class="info-div hide bg-neutral-100 dark:bg-neutral-900">
         <div class="info-div-title">
-            <span class="font-title"> </span>
+            <span class="font-text"> </span>
         </div>
-        <div class="info-div-content">
+        <div class="info-div-content bg-white dark:bg-black">
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title "> </span>
                 <span class="info-div-content-li-res"> </span>
@@ -274,37 +296,34 @@
 
 <style>
     .info-box{
-        width: 100%;
-        max-width: 640px;
-        margin-right: auto;
-        margin-left: auto;
-        margin-bottom: 100px;
-    }
-    .info-div{
         padding: 10px 10px;
+    }
+
+    .info-div{
+        border-radius: 10px;
+        padding: 10px 10px;
+        margin-bottom: 20px;
     }
 
     .info-div-title{
         padding: 10px 0;
     }
     .info-div-content{
-        padding: 0 0;
+        padding: 10px 10px;
+        border-radius: 10px;
     }
 
     .info-div-content-li{
-        clear: both;
-        padding-bottom: 10px;
-        line-height: 24px;
+        margin-bottom: 10px;
     }
 
     .info-div-content-li-title{
-        float: left;
-        margin-right: 10px;
-        opacity: 0.8;
+        line-height: 30px;
+        opacity: 0.9;
     }
     .info-div-content-li-res{
+        line-height: 22px;
         opacity: 0.6;
-        float: left;
     }
 
 </style>

@@ -113,3 +113,9 @@
 </script>
 
 <div class="page-div index-box select-none"></div>
+
+<style>
+    .index-box{
+        padding: 10px 10px;
+    }
+</style>

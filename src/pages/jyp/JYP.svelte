@@ -177,7 +177,7 @@
 </script>
 
 <div class="page-div bookmark-box select-none">
-    <div class="bookmark-group ">
+    <div class="bookmark-group bg-neutral-100 dark:bg-neutral-900">
         <div class="bookmark-group-name font-text">教育片 <i class="font-red select-text">@jyp</i> 提醒</div>
         <div class="bookmark-group-list font-text">
             <div class="bookmark-group-name-txt">
@@ -189,11 +189,11 @@
         </div>
     </div>
     {#each bookmark_data as group_data}
-        <div class="bookmark-group ">
+        <div class="bookmark-group bg-neutral-100 dark:bg-neutral-900">
             <div class="bookmark-group-name font-text">{group_data.name}</div>
             <div class="bookmark-group-list font-text">
                 {#each group_data.list as list_data}
-                    <button class="bookmark-group-list-item break bg-neutral-200 dark:bg-neutral-800" onclick={()=>def.open_url(list_data.href)}>{list_data.title}</button>
+                    <button class="bookmark-group-list-item break bg-white dark:bg-black" onclick={()=>def.open_url(list_data.href)}>{list_data.title}</button>
                 {/each}
                 <div class="clear"></div>
             </div>
@@ -203,22 +203,18 @@
 
 <style>
     .bookmark-box{
-        width: 100%;
-        padding: 20px 10px;
-        margin-right: auto;
-        margin-left: auto;
-        max-width: 640px;
-        margin-bottom: 100px;
+        padding: 10px 10px;
     }
 
     .bookmark-group{
         border-radius: 10px;
         margin-bottom: 20px;
+        padding: 10px 5px;
     }
-
     .bookmark-group-name{
         /*border-left: 2px solid var(--color-blue-800);*/
         margin-left: 5px;
+        margin-bottom: 5px;
         /*text-indent: 5px;*/
         height: 24px;
         line-height: 24px;
@@ -229,7 +225,7 @@
     }
     .bookmark-group-list-item{
         width: calc(100%/3 - 10px);
-        margin: 10px 5px 5px 5px;
+        margin: 5px 5px 5px 5px;
         padding: 5px 5px;
         float: left;
         line-height: 18px;
@@ -237,7 +233,7 @@
         overflow: hidden;
         text-align: center;
         border-radius: 10px;
-        opacity: 0.7;
+        opacity: 0.9;
     }
 
     .bookmark-group-name-txt{
