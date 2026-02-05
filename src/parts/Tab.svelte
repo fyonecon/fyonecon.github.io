@@ -26,8 +26,8 @@
     let qr_img_display = $state("hide");
     let qr_img_src = $state("");
     let qr_enbig_num = $state(0);
-    let qr_enbig_width = $state(30);
-    let qr_enbig_height = $state(30);
+    let qr_enbig_width = $state(20);
+    let qr_enbig_height = $state(20);
 
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
@@ -72,8 +72,8 @@
                 qr_enbig_height = 100;
                 qr_enbig_num = 1;
             }else{
-                qr_enbig_width = 30;
-                qr_enbig_height = 30;
+                qr_enbig_width = 20;
+                qr_enbig_height = 20;
                 qr_enbig_num = 0;
             }
         },
@@ -215,18 +215,19 @@
     .tab-qr-box{
         position: fixed;
         z-index: 1;
-        right: 15px;
-        bottom: 90px;
-        border-radius: 10px;
-        padding: 5px 5px;
+        right: 10px;
+        bottom: 80px;
+        border-radius: 5px;
+        padding: 1px 1px;
         background-color: rgba(180,180,180, 0.5);
         overflow: hidden;
-        width: 30px;
-        height: 30px;
+        width: 20px;
+        height: 20px;
     }
     .tab-qr-img{
         display: inline-block;
         width: 100%;
+        height: 100%;
         border-radius: 5px;
         border: none;
         outline: none;
