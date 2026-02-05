@@ -176,7 +176,7 @@
         z-index: 1;
         position: absolute;
         inset: 0;
-        background: rgba(180, 180, 180, 0.20);
+        background: rgba(160,160,160, 0.2);
         border-radius: 20px;
     }
     .liquidGlass-shine {

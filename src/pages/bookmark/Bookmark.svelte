@@ -20,7 +20,7 @@
                 },
                 { //
                     show_lang: "all",
-                    title: "IT之家手机版",
+                    title: "IT之家",
                     href: "https://m.ithome.com"
                 },
                 { //
@@ -30,7 +30,7 @@
                 },
                 { //
                     show_lang: "all",
-                    title: "太平洋科技7x24",
+                    title: "太平洋科技",
                     href: "https://g.pconline.com.cn/x/news"
                 },
                 { //
@@ -58,11 +58,11 @@
                     title: "MacRumors",
                     href: "https://www.macrumors.com"
                 },
-                { //
-                    show_lang: "all",
-                    title: "【综合热点榜】",
-                    href: "https://rebang.today"
-                },
+                // { //
+                //     show_lang: "all",
+                //     title: "综合热点榜",
+                //     href: "https://rebang.today"
+                // },
                 { //
                     show_lang: "all",
                     title: "V2EX.com",
@@ -140,7 +140,7 @@
                 },
                 { //
                     show_lang: "all",
-                    title: "中科大网速测试",
+                    title: "网速测试",
                     href: "https://test.ustc.edu.cn"
                 },
                 { //
@@ -150,7 +150,7 @@
                 },
                 { //
                     show_lang: "all",
-                    title: "【🧲喵磁力】",
+                    title: "🧲喵磁力",
                     href: "https://www.miaocili.com/"
                 },
             ],
@@ -277,7 +277,7 @@
 <div class="page-div bookmark-box select-none">
     {#each bookmark_data as group_data}
         <div class="bookmark-group ">
-            <div class="bookmark-group-name font-text">{group_data.name}</div>
+            <div class="bookmark-group-title font-text">{group_data.name}</div>
             <div class="bookmark-group-list font-text">
                 {#each group_data.list as list_data}
                     <button class="bookmark-group-list-item break bg-neutral-200 dark:bg-surface-800" onclick={()=>def.open_url(list_data.href)}>{list_data.title}</button>
@@ -291,7 +291,7 @@
 <style>
 
     .bookmark-box{
-        padding: 10px 0;
+        padding: 20px 0;
     }
 
     .bookmark-group{
@@ -300,13 +300,14 @@
         margin-bottom: 20px;
         /*border: 1px solid rgba(160,160,160, 0.5);*/
     }
-    .bookmark-group-name{
+    .bookmark-group-title{
         margin-left: 5px;
         margin-bottom: 5px;
         /*text-indent: 5px;*/
         height: 24px;
         line-height: 24px;
         opacity: 0.9;
+        text-indent: 1px;
     }
     .bookmark-group-list{
         width: 100%;
