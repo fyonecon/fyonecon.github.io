@@ -280,7 +280,7 @@
             <div class="bookmark-group-name font-text">{group_data.name}</div>
             <div class="bookmark-group-list font-text">
                 {#each group_data.list as list_data}
-                    <button class="bookmark-group-list-item break font-blue bg-white dark:bg-surface-950" onclick={()=>def.open_url(list_data.href)}>{list_data.title}</button>
+                    <button class="bookmark-group-list-item break bg-neutral-200 dark:bg-surface-800" onclick={()=>def.open_url(list_data.href)}>{list_data.title}</button>
                 {/each}
                 <div class="clear"></div>
             </div>
@@ -298,10 +298,9 @@
         border-radius: 10px;
         padding: 10px 5px;
         margin-bottom: 20px;
-        border: 1px solid rgba(160,160,160, 0.5);
+        /*border: 1px solid rgba(160,160,160, 0.5);*/
     }
     .bookmark-group-name{
-        /*border-left: 2px solid var(--color-blue-800);*/
         margin-left: 5px;
         margin-bottom: 5px;
         /*text-indent: 5px;*/
