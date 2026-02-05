@@ -291,12 +291,12 @@
 <style>
 
     .bookmark-box{
-        padding: 10px 10px;
+        padding: 10px 0;
     }
 
     .bookmark-group{
         border-radius: 10px;
-        padding: 10px 5px;
+        padding: 0 5px;
         margin-bottom: 20px;
         /*border: 1px solid rgba(160,160,160, 0.5);*/
     }
