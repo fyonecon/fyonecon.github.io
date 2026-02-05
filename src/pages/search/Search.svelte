@@ -39,7 +39,7 @@
                 back_state = true;
                 that.open_url("./bookmark");
             }
-            else if (word === "@jyp" || word === "@JYP" || word === "@xsp" || word === "@xjp" || word === "@mp" || word === "@MP"){
+            else if (word === "@jyp" || word === "@JYP" || word === "@Jyp"){
                 back_state = true;
                 that.open_url("./jyp?url_timeout="+func.url_timeout_encode("jyp", 2*60*60)+"&ap=ipt");
             }
