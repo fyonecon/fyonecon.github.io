@@ -23,6 +23,11 @@
     ];
     let tab_width = $state(205);
     let glass_div_display = $state("hide");
+    let qr_img_display = $state("hide");
+    let qr_img_src = $state("");
+    let qr_enbig_num = $state(0);
+    let qr_enbig_width = $state(30);
+    let qr_enbig_height = $state(30);
 
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
@@ -35,14 +40,41 @@
             tab_width = (85 + 10) * len + 10;
         },
         show_glass_div: function (){ // 是否隐藏tab区域
-            if (route === "/bookmark"){ // 正常Tab路由
+            if (route === "/purehome" || route === "/bookmark"){
                 glass_div_display = "show";
             }else{
-                if (route === "/purehome"){
-                    glass_div_display = (func.get_local_data(config.app.app_class+"home_tab_show")==="show")?"show":"hide";
-                }else{
-                    glass_div_display = "hide";
-                }
+                glass_div_display = "hide";
+            }
+            //
+            // if (route === "/bookmark"){ // 正常Tab路由
+            //     glass_div_display = "show";
+            // }else{
+            //     if (route === "/purehome"){
+            //         glass_div_display = (func.get_local_data(config.app.app_class+"home_tab_show")==="show")?"show":"hide";
+            //     }else{
+            //         glass_div_display = "hide";
+            //     }
+            // }
+        },
+        show_qr_div: function (){
+            if (route === "/purehome" || route === "/bookmark" || route === "/info"){
+                func.make_qr_base64(func.get_href()).then(base64=>{
+                    qr_img_display = "show";
+                    qr_img_src = base64;
+                });
+            }else{
+                qr_img_display = "hide";
+            }
+        },
+        qr_enbig: function (){
+            if (qr_enbig_num === 0){
+                qr_enbig_width = 100;
+                qr_enbig_height = 100;
+                qr_enbig_num = 1;
+            }else{
+                qr_enbig_width = 30;
+                qr_enbig_height = 30;
+                qr_enbig_num = 0;
             }
         },
     };
@@ -55,6 +87,7 @@
         route = func.get_route();
         def.calc_tab();
         def.show_glass_div();
+        def.show_qr_div();
     });
 
 
@@ -103,6 +136,10 @@
         </div>
     </div>
 </div>
+
+<button class="tab-qr-box select-none font-mini click {qr_img_display} " style="width: {qr_enbig_width}px; height: {qr_enbig_height}px;" onclick={()=>def.qr_enbig()}>
+    <img class="tab-qr-img" src="{qr_img_src}" alt="QR" />
+</button>
 
 <style>
     /**/
@@ -172,6 +209,27 @@
     }
     .tab-item-active{
         color: var(--color-blue-500);
+    }
+
+    /**/
+    .tab-qr-box{
+        position: fixed;
+        z-index: 1;
+        right: 15px;
+        bottom: 90px;
+        border-radius: 10px;
+        padding: 5px 5px;
+        background-color: rgba(180,180,180, 0.5);
+        overflow: hidden;
+        width: 30px;
+        height: 30px;
+    }
+    .tab-qr-img{
+        display: inline-block;
+        width: 100%;
+        border-radius: 5px;
+        border: none;
+        outline: none;
     }
 
 </style>

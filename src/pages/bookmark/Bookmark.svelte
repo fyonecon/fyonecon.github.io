@@ -25,8 +25,13 @@
                 },
                 { //
                     show_lang: "all",
-                    title: "太平洋科技",
-                    href: "https://www.pconline.com.cn"
+                    title: "搜狐新闻",
+                    href: "https://sohu.com"
+                },
+                { //
+                    show_lang: "all",
+                    title: "太平洋科技7x24",
+                    href: "https://g.pconline.com.cn/x/news"
                 },
                 { //
                     show_lang: "all",
@@ -35,13 +40,28 @@
                 },
                 { //
                     show_lang: "all",
+                    title: "联合早报7x24",
+                    href: "https://yzaobao.com/realtime"
+                },
+                { //
+                    show_lang: "all",
                     title: "新浪行情",
                     href: "https://gu.sina.cn/#/index/index"
                 },
                 { //
                     show_lang: "all",
+                    title: "雪球话题",
+                    href: "https://xueqiu.com/today"
+                },
+                { //
+                    show_lang: "all",
                     title: "MacRumors",
                     href: "https://www.macrumors.com"
+                },
+                { //
+                    show_lang: "all",
+                    title: "【综合热点榜】",
+                    href: "https://rebang.today"
                 },
                 { //
                     show_lang: "all",
@@ -70,13 +90,13 @@
                 },
                 { //
                     show_lang: "all",
-                    title: "CCTV7军事",
-                    href: "https://tv.cctv.cn/live/cctv7/"
+                    title: "CCTV14少儿",
+                    href: "https://tv.cctv.cn/live/cctvchild/"
                 },
                 { //
                     show_lang: "all",
-                    title: "CCTV14少儿",
-                    href: "https://tv.cctv.cn/live/cctvchild/"
+                    title: "CCTV7军事",
+                    href: "https://tv.cctv.cn/live/cctv7/"
                 },
                 { //
                     show_lang: "all",
@@ -90,13 +110,18 @@
                 },
                 { //
                     show_lang: "all",
-                    title: "B站-LAO",
-                    href: "https://space.bilibili.com/33882856"
+                    title: "阮一峰周报",
+                    href: "https://ruanyifeng.com/blog"
                 },
                 { //
                     show_lang: "all",
                     title: "YouTube",
                     href: "https://youtube.com"
+                },
+                { //
+                    show_lang: "all",
+                    title: "Reddit",
+                    href: "https://reddit.com"
                 },
             ],
         },
@@ -125,8 +150,28 @@
                 },
                 { //
                     show_lang: "all",
-                    title: "🧲喵磁力",
+                    title: "【🧲喵磁力】",
                     href: "https://www.miaocili.com/"
+                },
+            ],
+        },
+        {
+            name: "AI",
+            list: [
+                { //
+                    show_lang: "all",
+                    title: "Deepseek",
+                    href: "https://chat.deepseek.com"
+                },
+                { //
+                    show_lang: "all",
+                    title: "Gemini",
+                    href: "https://gemini.google.com"
+                },
+                { //
+                    show_lang: "all",
+                    title: "Grok",
+                    href: "https://grok.com"
                 },
             ],
         },
@@ -142,6 +187,21 @@
                     show_lang: "all",
                     title: "MacOS Release",
                     href: "https://developer.apple.com/documentation/macos-release-notes"
+                },
+                { //
+                    show_lang: "all",
+                    title: "Svelte",
+                    href: "https://svelte.dev"
+                },
+                { //
+                    show_lang: "all",
+                    title: "Golang",
+                    href: "https://golang.google.cn"
+                },
+                { //
+                    show_lang: "all",
+                    title: "菜鸟教程",
+                    href: "https://www.runoob.com"
                 },
             ],
         },
