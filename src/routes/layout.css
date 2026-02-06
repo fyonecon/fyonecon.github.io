@@ -286,3 +286,38 @@ div[data-part="content"] { /*confirm*/
     margin-left: auto;
     margin-bottom: 100px;
 }
+
+.link-box{
+    padding: 20px 0;
+}
+
+.link-group{
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 0 5px;
+    /*border: 1px solid rgba(160,160,160, 0.5);*/
+}
+.link-group-title{
+    margin-left: 5px;
+    margin-bottom: 5px;
+    /*text-indent: 5px;*/
+    height: 24px;
+    line-height: 24px;
+    opacity: 0.9;
+    text-indent: 1px;
+}
+.link-group-list{
+    width: 100%;
+}
+.link-group-list-item{
+    width: calc(100%/3 - 10px);
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px;
+    float: left;
+    line-height: 18px;
+    height: 43px;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 10px;
+    opacity: 0.9;
+}

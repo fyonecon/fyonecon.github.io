@@ -186,7 +186,7 @@
                         //
                         if (!value) {value = "bing";}
                         //
-                        let href = "./search?word="+encodeURIComponent(the_value)+"&engine="+value+"&url_timeout="+func.url_timeout_encode("search", 1.5*60*60)+"&ap=ipt";
+                        let href = "./search?word="+encodeURIComponent(func.string_to_unicode(the_value))+"&engine="+value+"&url_timeout="+func.url_timeout_encode("search", 2*60*60)+"&ap=ipt";
                         open_url_open_timer = setTimeout(function (){
                             if (browser){
                                 if (func.is_mobile_screen()){
@@ -299,7 +299,7 @@
                 <option value="{option_dict.value}" selected="{option_dict.selected}">{option_dict.name}</option>
             {/each}
         </select>
-        <input class="search-div-input-input input-border w-full font-title select-text" type="search" maxlength="1200" placeholder="{func.get_translate('input_placeholder_search')}"
+        <input class="search-div-input-input input-border w-full font-title select-text" type="search" maxlength="500" placeholder="{func.get_translate('input_placeholder_search')}"
                bind:value={input_value_search}
                onkeydown={(e)=>def.input_enter(e)}
                onmouseenter={(e) => e.currentTarget.focus()}
@@ -330,7 +330,7 @@
     <Portal>
         <Dialog.Backdrop class="fixed inset-0 z-50 bg-surface-50-950/80  select-none" />
         <Dialog.Positioner class="fixed inset-0 z-50 flex justify-center items-center font-text select-none">
-            <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-800 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
+            <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-900 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
                 <header class="flex justify-between items-center pywebview-drag-region can-drag">
                     <Dialog.Title class="font-title font-bold">⚠️</Dialog.Title>
                 </header>

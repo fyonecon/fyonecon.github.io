@@ -35,9 +35,9 @@
                 href = href.replaceAll("//", "/");
                 that.open_url(href);
             }
-            else if (word === "@bookmark"){
+            else if (word === "@link"){
                 back_state = true;
-                that.open_url("./bookmark");
+                that.open_url("./link");
             }
             else if (word === "@jyp" || word === "@JYP" || word === "@Jyp"){
                 back_state = true;
@@ -102,7 +102,7 @@
         check_param: function(){
             let that = this;
             // 接收的参数
-            let word = func.search_href_param("", "word").trim();
+            let word = func.unicode_to_string(func.search_href_param("", "word").trim());
             let engine = func.search_href_param("", "engine").trim();
             let history = func.search_href_param("", "history").trim();
             let url_timeout = func.search_href_param("", "url_timeout").trim();

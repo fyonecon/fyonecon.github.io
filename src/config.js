@@ -4,7 +4,7 @@ const config = {
     app: {
         app_name: "View",
         app_class: "View_dtthk_", // ginthon_sv_ 、waigo_sv_
-        app_version: "1.6.5", // 1.0.0
+        app_version: "1.7.0", // 1.0.0
     },
     sys:{
         backend: "JS", // go、py

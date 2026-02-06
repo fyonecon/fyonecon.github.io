@@ -10,29 +10,29 @@
     
     // 本页面参数
     let route = $state(func.get_route());
-    const bookmark_data = [
+    const link_data = [
         {
             name: func.get_translate("mp_chigua"),
             list: [
                 { //
                     show_lang: "all",
-                    title: func.unicode_to_string("57,49,49,29190,26009,32593"),
-                    href: func.unicode_to_string("104,116,116,112,115,58,47,47,57,49,49,98,108,48,51,46,99,111,109")
+                    title: "57,49,49,29190,26009,32593",
+                    href: "104,116,116,112,115,58,47,47,57,49,49,98,108,48,51,46,99,111,109"
                 },
                 { //
                     show_lang: "all",
-                    title: func.unicode_to_string("57,49,21507,29916,32593"),
-                    href: func.unicode_to_string("104,116,116,112,58,47,47,57,49,99,103,119,49,54,46,99,111,109")
+                    title: "57,49,21507,29916,32593",
+                    href: "104,116,116,112,58,47,47,57,49,99,103,119,49,54,46,99,111,109"
                 },
                 { //
                     show_lang: "all",
-                    title: func.unicode_to_string("53,49,21507,29916,32593"),
-                    href: func.unicode_to_string("104,116,116,112,58,47,47,53,49,99,103,122,54,46,99,111,109")
+                    title: "53,49,21507,29916,32593",
+                    href: "104,116,116,112,58,47,47,53,49,99,103,122,54,46,99,111,109"
                 },
                 { //
                     show_lang: "all",
-                    title: func.unicode_to_string("27599,26085,22823,36187"),
-                    href: func.unicode_to_string("104,116,116,112,58,47,47,109,114,100,115,50,51,46,99,111,109")
+                    title: "27599,26085,22823,36187",
+                    href: "104,116,116,112,58,47,47,109,114,100,115,50,51,46,99,111,109"
                 },
             ],
         },
@@ -41,8 +41,8 @@
             list: [
                 { //
                     show_lang: "all",
-                    title: func.unicode_to_string("57,49"),
-                    href: func.unicode_to_string("104,116,116,112,115,58,47,47,118,105,112,46,57,49,112,48,55,46,99,111,109,47,105,110,100,101,120,46,112,104,112")
+                    title: "57,49",
+                    href: "104,116,116,112,115,58,47,47,118,105,112,46,57,49,112,48,55,46,99,111,109,47,105,110,100,101,120,46,112,104,112"
                 },
             ],
         },
@@ -51,8 +51,8 @@
             list: [
                 { //
                     show_lang: "all",
-                    title: func.unicode_to_string("37324,30058,21160,28459"),
-                    href: func.unicode_to_string("104,116,116,112,115,58,47,47,116,116,100,109,46,109,101")
+                    title: "37324,30058,21160,28459",
+                    href: "104,116,116,112,115,58,47,47,116,116,100,109,46,109,101"
                 },
             ],
         },
@@ -61,18 +61,18 @@
             list: [
                 { //
                     show_lang: "all",
-                    title: func.unicode_to_string("77,105,115,115,32,65,86"),
-                    href: func.unicode_to_string("104,116,116,112,115,58,47,47,109,105,115,115,97,118,46,119,115,47,100,109,49,50,47,99,110")
+                    title: "77,105,115,115,32,65,86",
+                    href: "104,116,116,112,115,58,47,47,109,105,115,115,97,118,46,119,115,47,100,109,49,50,47,99,110"
                 },
                 { //
                     show_lang: "all",
-                    title: func.unicode_to_string("21941,30913,21147"),
-                    href: func.unicode_to_string("104,116,116,112,115,58,47,47,119,119,119,46,109,105,97,111,99,105,108,105,46,99,111,109,47")
+                    title: "21941,30913,21147",
+                    href: "104,116,116,112,115,58,47,47,119,119,119,46,109,105,97,111,99,105,108,105,46,99,111,109,47"
                 },
                 { //
                     show_lang: "en",
-                    title: func.unicode_to_string("12304,30005,25253,25628,32676,12305,20013,25991,25628,32034"),
-                    href: func.unicode_to_string("104,116,116,112,115,58,47,47,116,46,109,101,47,115,111,117,115,117,111,51,51")
+                    title: "12304,30005,25253,25628,32676,12305,20013,25991,25628,32034",
+                    href: "104,116,116,112,115,58,47,47,116,46,109,101,47,115,111,117,115,117,111,51,51"
                 },
             ],
         },
@@ -81,13 +81,13 @@
         //     list: [
         //         { //
         //             show_lang: "en",
-        //             title: func.unicode_to_string("28023,35282,23448,26041"),
-        //             href: func.unicode_to_string("104,116,116,112,115,58,47,47,104,97,105,106,105,97,111,46,99,111,109")
+        //             title: "28023,35282,23448,26041",
+        //             href: "104,116,116,112,115,58,47,47,104,97,105,106,105,97,111,46,99,111,109"
         //         },
         //         { //
         //             show_lang: "en",
-        //             title: func.unicode_to_string("28023,35282,28909,38376"),
-        //             href: func.unicode_to_string("104,116,116,112,115,58,47,47,104,97,105,106,49,46,99,111,109")
+        //             title: "28023,35282,28909,38376",
+        //             href: "104,116,116,112,115,58,47,47,104,97,105,106,49,46,99,111,109"
         //         },
         //     ],
         // },
@@ -176,11 +176,11 @@
 
 </script>
 
-<div class="page-div bookmark-box select-none">
-    <div class="bookmark-group">
-        <div class="bookmark-group-title font-text">教育片 <i class="font-red select-text">@jyp</i> 提醒</div>
-        <div class="bookmark-group-list font-text">
-            <div class="bookmark-group-title-txt">
+<div class="page-div link-box select-none">
+    <div class="link-group">
+        <div class="link-group-title font-text">教育片 <i class="font-red select-text">@jyp</i> 提醒</div>
+        <div class="link-group-list font-text">
+            <div class="link-group-title-txt">
                 <p>◉ 内容仅供教育学习。</p>
                 <p>◉ 谨防网络赌博诈骗。</p>
                 <p>◉ 推荐“联通、电信”等网络。</p>
@@ -188,12 +188,12 @@
             </div>
         </div>
     </div>
-    {#each bookmark_data as group_data}
-        <div class="bookmark-group ">
-            <div class="bookmark-group-title font-text">{group_data.name}</div>
-            <div class="bookmark-group-list font-text">
+    {#each link_data as group_data}
+        <div class="link-group ">
+            <div class="link-group-title font-text">{group_data.name}</div>
+            <div class="link-group-list font-text">
                 {#each group_data.list as list_data}
-                    <button class="bookmark-group-list-item break bg-neutral-200 dark:bg-surface-800" onclick={()=>def.open_url(list_data.href)}>{list_data.title}</button>
+                    <button class="link-group-list-item break bg-neutral-200 dark:bg-surface-800" onclick={()=>def.open_url(list_data.href)}>{list_data.title}</button>
                 {/each}
                 <div class="clear"></div>
             </div>
@@ -202,42 +202,8 @@
 </div>
 
 <style>
-    .bookmark-box{
-        padding: 20px 0;
-    }
 
-    .bookmark-group{
-        border-radius: 10px;
-        margin-bottom: 20px;
-        padding: 0 5px;
-        /*border: 1px solid rgba(160,160,160, 0.5);*/
-    }
-    .bookmark-group-title{
-        margin-left: 5px;
-        margin-bottom: 5px;
-        /*text-indent: 5px;*/
-        height: 24px;
-        line-height: 24px;
-        opacity: 0.9;
-        text-indent: 1px;
-    }
-    .bookmark-group-list{
-        width: 100%;
-    }
-    .bookmark-group-list-item{
-        width: calc(100%/3 - 10px);
-        margin: 5px 5px 5px 5px;
-        padding: 5px 5px;
-        float: left;
-        line-height: 18px;
-        height: 43px;
-        overflow: hidden;
-        text-align: center;
-        border-radius: 10px;
-        opacity: 0.9;
-    }
-
-    .bookmark-group-title-txt{
+    .link-group-title-txt{
         opacity: 0.6;
         line-height: 24px;
         margin: 10px 5px 5px 5px;
@@ -246,6 +212,5 @@
         border: 1px solid rgba(160,160,160, 0.5);
         letter-spacing: 2px;
     }
-
 
 </style>

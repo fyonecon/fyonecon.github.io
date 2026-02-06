@@ -15,10 +15,10 @@
             href: "./purehome", // 跳转地址
         },
         {
-            icon: '<svg xmlns="http://www.w3.org/2000/svg" style="display: inline-block;" width="26" height="26" viewBox="0 0 24 24"><path fill="currentColor" d="m12 12.625l1.275.775q.275.175.538-.025T14 12.85l-.325-1.45l1.1-.95q.25-.225.163-.525t-.438-.35l-1.45-.125l-.6-1.375q-.125-.3-.45-.3t-.45.3l-.6 1.375l-1.45.125q-.35.05-.437.35t.162.525l1.1.95L10 12.85q-.075.325.188.525t.537.025zM12 18l-4.2 1.8q-1 .425-1.9-.162T5 17.975V5q0-.825.588-1.412T7 3h10q.825 0 1.413.588T19 5v12.975q0 1.075-.9 1.663t-1.9.162z"/></svg>',
-            title: func.get_translate("Bookmark"),
-            route: "/bookmark",
-            href: "./bookmark",
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" style="display: inline-block;" width="26" height="26" viewBox="0 0 24 24"><path fill="currentColor" d="M9.5 21h2.066A4.7 4.7 0 0 1 11 18.75c0-1.025.325-1.974.877-2.75H9.5zM21 9.5v4.833A4.7 4.7 0 0 0 19.25 14H16V9.5zm-6.5 0v4.666a4.7 4.7 0 0 0-.874.334H9.5v-5zM21 8V6.25A3.25 3.25 0 0 0 17.75 3H16v5zm-6.5-5h-5v5h5zM8 3H6.25A3.25 3.25 0 0 0 3 6.25V8h5zM3 9.5v5h5v-5zM3 16v1.75A3.25 3.25 0 0 0 6.25 21H8v-5zm16.25-1a3.75 3.75 0 0 1 .202 7.495l-.199.005v.005a.75.75 0 0 1-.108-1.493l.102-.007l.003-.005a2.25 2.25 0 0 0 .154-4.495l-.154-.005a.75.75 0 0 1-.102-1.493zm-3.5 0a.75.75 0 0 1 .102 1.493l-.102.007a2.25 2.25 0 0 0-.154 4.495l.154.005a.75.75 0 0 1 .102 1.493l-.102.007a3.75 3.75 0 0 1-.2-7.495zm3.5 3a.75.75 0 0 1 .102 1.493l-.102.007h-3.5a.75.75 0 0 1-.102-1.493L15.75 18z"/></svg>',
+            title: func.get_translate("Link"),
+            route: "/link",
+            href: "./link",
         },
     ];
     let tab_width = $state(205);
@@ -37,16 +37,18 @@
         },
         calc_tab: function (){ // 计算tab的实际宽度
             let len = tab_data.length;
-            tab_width = (85 + 10) * len + 10;
+            let wrapper_padding = 5;
+            let item_margin = 2;
+            tab_width = (80 + item_margin*2) * len + wrapper_padding*2;
         },
         show_glass_div: function (){ // 是否隐藏tab区域
-            if (route === "/purehome" || route === "/bookmark"){
+            if (route === "/purehome" || route === "/link"){
                 glass_div_display = "show";
             }else{
                 glass_div_display = "hide";
             }
             //
-            // if (route === "/bookmark"){ // 正常Tab路由
+            // if (route === "/link"){ // 正常Tab路由
             //     glass_div_display = "show";
             // }else{
             //     if (route === "/purehome"){
@@ -57,7 +59,7 @@
             // }
         },
         show_qr_div: function (){
-            if (route === "/purehome" || route === "/bookmark" || route === "/info"){
+            if (route === "/purehome" || route === "/link" || route === "/info"){
                 func.make_qr_base64(func.get_href()).then(base64=>{
                     qr_img_display = "show";
                     qr_img_src = base64;
@@ -195,8 +197,8 @@
 
     /**/
     .tab-item{
-        width: 85px;
-        margin: 5px 5px;
+        width: 80px;
+        margin: 5px 2px;
         overflow: hidden;
         text-align: center;
         border: none;

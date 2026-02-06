@@ -75,16 +75,16 @@ const lang_dict = {
     },
     //
     PureHome: {
-        zh: "PureHome",
+        zh: "主页",
         en: "PureHome",
     },
     Search: {
         zh: "🔍 搜索",
         en: "🔍 Search",
     },
-    Bookmark: {
-        zh: "收 藏",
-        en: "Bookmark",
+    Link: {
+        zh: "链签",
+        en: "Link",
     },
     Info: {
         zh: "查看信息",
@@ -281,19 +281,19 @@ const lang_dict = {
         en: "Search",
     },
     //
-    bookmark_news: {
+    link_news: {
         zh: "新闻",
         en: "News",
     },
-    bookmark_subscribe: {
+    link_subscribe: {
         zh: "订阅",
-        en: "Subscribe",
+        en: "Subscriptions",
     },
-    bookmark_tools: {
+    link_tools: {
         zh: "工具",
         en: "Tools",
     },
-    bookmark_docs: {
+    link_docs: {
         zh: "文档",
         en: "Docs",
     },
