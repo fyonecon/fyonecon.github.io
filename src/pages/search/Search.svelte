@@ -35,7 +35,7 @@
                 href = href.replaceAll("//", "/");
                 that.open_url(href);
             }
-            else if (word === "@link"){
+            else if (word === "@link" || word === "@bookmark"){
                 back_state = true;
                 that.open_url("./link");
             }
@@ -103,6 +103,9 @@
             let that = this;
             // 接收的参数
             let word = func.unicode_to_string(func.search_href_param("", "word").trim());
+            // console.log("check_param=", [word, func.search_href_param("", "word").trim()]);
+            // http://localhost:9770/search?engine=bing&history=no&word=%s
+            // return;
             let engine = func.search_href_param("", "engine").trim();
             let history = func.search_href_param("", "history").trim();
             let url_timeout = func.search_href_param("", "url_timeout").trim();
@@ -117,7 +120,7 @@
                     // 是url链接就直接打开
                     if (func.is_url(word)){
                         that.open_url(word);
-                        return
+                        return;
                     }
                     // word白名单级校验
                     if (!that.check_white_word(word)){ // 正常打开关键词
@@ -188,6 +191,7 @@
     // 页面函数执行的入口，实时更新数据
     function page_start(){
         func.console_log("page_start=", route);
+        func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // 开始
         def.check_param();
         // 监测页面标签是否处于显示

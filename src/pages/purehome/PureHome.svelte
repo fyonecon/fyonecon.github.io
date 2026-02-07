@@ -70,6 +70,7 @@
                     });
                 }else{ // 给一个默认值
                     func.notice("DB Error");
+                    value = "bing";
                     func.set_db_data(search_selected_key, value).then(v=>{
                         func.console_log("update_select=", value, v);
                         // that.create_select();
@@ -244,18 +245,17 @@
     // 页面函数执行的入口，实时更新数据
     function page_start(){
         func.console_log("page_start=", route);
+        func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // 创建视图
         def.create_select();
         def.input_history("");
-        // 监听输入法输入事件
-        func.watch_input_enter(input_object);
     }
 
     // 标签处于切换显示状态
     function page_show(){
         func.console_log("page_show=", route);
         // show
-        def.input_history("");
+        page_start();
     }
 
     // 标签处于切换隐藏状态
@@ -277,6 +277,8 @@
     // addEventListener专用函数
     onMount(() => {
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
+        // 监听输入法输入事件
+        func.watch_input_enter(input_object);
         // 监测页面标签是否处于显示
         if (browser){
             document.addEventListener("visibilitychange", () => {
@@ -424,12 +426,12 @@
     }
 
     .input-border{
-        border: 1px solid var(--color-blue-800);
+        border: 1px solid var(--color-blue-700);
         border-radius: 30px;
         opacity: 0.9;
     }
     .btn-border{
-        border: 1px solid var(--color-blue-800);
+        border: 1px solid var(--color-blue-700);
         border-radius: 20px;
         opacity: 0.8;
     }
@@ -491,7 +493,7 @@
     .search-div-input-select-blur {
         transition: transform 0.5s;
         transform: rotateZ(0deg);
-        color: var(--color-blue-800);
+        color: var(--color-blue-700);
     }
     .search-div-input-select-focus {
         transition: transform 0.5s;

@@ -27,6 +27,7 @@
     // 页面函数执行的入口，实时更新数据
     function page_start(){
         func.console_log("page_start=", route);
+        func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // 开始
     }
 
@@ -73,9 +74,9 @@
 <div class="page-div _404-box select-none">
     <div class="select-text">
         <br/>
-        <h2 class="break">{error_msg?error_msg:"404"}</h2>
+        <h2 class="break" data-error_msg="{error_msg}">{error_msg?error_msg:"404"}</h2>
         <br/>
-        <p class="break">{error_url?"Error URL: "+error_url:""}</p>
+        <p class="break" data-error_url="{error_url}">{error_url?"Error URL: "+error_url.slice(0, 120)+" ... ":""}</p>
         <br/>
         <br/>
         <div class="" style="display:flex; justify-content: center; align-items: center;">

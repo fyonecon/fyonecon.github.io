@@ -84,6 +84,7 @@
     // 页面函数执行的入口，实时更新数据
     function page_start(){
         func.console_log("page_start=", route);
+        func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // 开始
     }
 
@@ -311,7 +312,7 @@
     .info-div-content{
         padding: 10px 10px;
         border-radius: 10px;
-        border: 1px solid rgba(160,160,160, 0.5);
+        border: 1px solid rgba(160,160,160, 0.4);
     }
 
     .info-div-content-li{

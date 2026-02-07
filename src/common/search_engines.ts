@@ -30,26 +30,42 @@ const search_engines_dict: SearchEnginesDictType = {
         name: "Yandex",
         url: "https://yandex.com/search/?text=",
     },
+    // windows_us: {
+    //     name: "Windows Apps",
+    //     url: "https://apps.microsoft.com/search?hl=en-US&query=",
+    // },
+    windows_cn: {
+        name: "中国区Win应用",
+        url: "https://apps.microsoft.com/search?hl=zh-CN&query=",
+    },
+    // mac_us: {
+    //     name: "Mac Apps",
+    //     url: "https://apps.apple.com/us/mac/search?term=",
+    // },
+    mac_cn: {
+        name: "中国区Mac应用",
+        url: "https://apps.apple.com/cn/mac/search?term=",
+    },
     android_cn: {
-        name: "中国安卓应用",
+        name: "中国区安卓应用",
         url: "https://h5.appstore.vivo.com.cn/#/result?keyfrom=2&keyword=",
     },
     // android_gl: {
     //     name: "Android APK",
     //     url: "https://www.apk20.com/search/",
     // },
-    // icon_images: {
-    //     name: "Icon Images",
-    //     url: "https://www.flaticon.com/search?word=",
-    // },
+    icon_images: {
+        name: "Icon Images",
+        url: "https://www.flaticon.com/search?word=",
+    },
     svg_images: {
         name: "SVG Images",
         url: "https://icon-sets.iconify.design/?query=",
     },
-    // ip_domain: {
-    //     name: "IP & Domain",
-    //     url: "https://ipchaxun.com/",
-    // },
+    ip_domain: {
+        name: "IP & Domain",
+        url: "https://ipchaxun.com/",
+    },
     whois: {
         name: "Whois",
         url: "https://www.whois.com/whois/",

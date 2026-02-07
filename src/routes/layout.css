@@ -232,12 +232,12 @@ div[data-part="root"] { /*notice*/
     width: 280px;
     padding: 5px 10px;
     /*box-shadow: 0 0 20px rgba(160,160,160, 0.2);*/
-    border: 1px solid rgba(160,160,160, 0.5);
+    border: 1px solid rgba(160,160,160, 0.4);
     opacity: 0.8;
 }
 div[data-part="content"] { /*confirm*/
     /*box-shadow: 0 0 20px rgba(160,160,160, 0.2);*/
-    border: 1px solid rgba(160,160,160, 0.5);
+    border: 1px solid rgba(160,160,160, 0.4);
     max-width: 300px;
     margin-top: -120px;
 }
@@ -287,15 +287,15 @@ div[data-part="content"] { /*confirm*/
     margin-bottom: 100px;
 }
 
+
 .link-box{
     padding: 20px 0;
 }
-
 .link-group{
     border-radius: 10px;
     margin-bottom: 20px;
     padding: 0 5px;
-    /*border: 1px solid rgba(160,160,160, 0.5);*/
+    /*border: 1px solid rgba(160,160,160, 0.4);*/
 }
 .link-group-title{
     margin-left: 5px;

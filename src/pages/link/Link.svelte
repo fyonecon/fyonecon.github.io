@@ -160,7 +160,7 @@
             list: [
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("Deepseek"),
+                    title: func.string_to_unicode("DeepSeek"),
                     href: func.string_to_unicode("https://chat.deepseek.com")
                 },
                 { //
@@ -230,6 +230,7 @@
     // 页面函数执行的入口，实时更新数据
     function page_start(){
         func.console_log("page_start=", route);
+        func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // 开始
     }
 
@@ -280,7 +281,7 @@
             <div class="link-group-title font-text">{@html group_data.name}</div>
             <div class="link-group-list font-text">
                 {#each group_data.list as list_data}
-                    <button class="link-group-list-item break bg-neutral-200 dark:bg-surface-800" onclick={()=>def.open_url(list_data.href)}>{@html func.unicode_to_string(list_data.title)}</button>
+                    <button class="link-group-list-item break bg-neutral-100 dark:bg-surface-900" onclick={()=>def.open_url(list_data.href)}>{@html func.unicode_to_string(list_data.title)}</button>
                 {/each}
                 <div class="clear"></div>
             </div>

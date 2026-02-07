@@ -298,21 +298,39 @@ const lang_dict = {
         en: "Docs",
     },
     //
+    mp_title: {
+        zh: "教育片",
+        en: "Educational Film",
+    },
+    mp_notice: {
+        zh: "提醒",
+        en: "Notice",
+    },
+    mp_notice_txt: {
+        zh: '<p>◉ 内容仅供教育学习。</p>' +
+            '<p>◉ 谨防网络赌博诈骗。</p>' +
+            '<p>◉ 推荐“联通、电信”等网络。</p>' +
+            '<p>◉ 推荐“<i class="select-text">Safari、Chrome、火狐、Edge</i>”等浏览器。</p>',
+        en: '<p>◉ The content is for educational purposes only.</p>' +
+            '<p>◉ Beware of online gambling fraud.</p>' +
+            '<p>◉ Recommend networks such as China Unicom and China Telecom.</p>' +
+            '<p>◉ Recommend browsers such as “<i class="select-text">Safari、Chrome、Firefox、Edge</i>”.</p>',
+    },
     mp_so: {
-        zh: "搜索",
-        en: "Search",
+        zh: "查找",
+        en: "Find",
     },
     mp_chigua: {
         zh: "吃瓜网",
         en: "Rumors",
     },
     mp_fabu: {
-        zh: "好人发布",
-        en: "People Workstation",
+        zh: "1/e的人感谢你",
+        en: "1/e People thanks you",
     },
     mp_dongman: {
-        zh: "动漫",
-        en: "Cartoon",
+        zh: "影视/动漫",
+        en: "TV/Cartoon",
     },
     mp_lieqi: {
         zh: "猎奇",

@@ -41,7 +41,7 @@
             list: [
                 { //
                     show_lang: "all",
-                    title: "57,49",
+                    title: "57,49,80",
                     href: "104,116,116,112,115,58,47,47,118,105,112,46,57,49,112,48,55,46,99,111,109,47,105,110,100,101,120,46,112,104,112"
                 },
             ],
@@ -51,8 +51,18 @@
             list: [
                 { //
                     show_lang: "all",
+                    title: "24433,35270,22823,20840",
+                    href: "104,116,116,112,115,58,47,47,121,115,50,48,52,54,46,99,118"
+                },
+                { //
+                    show_lang: "all",
                     title: "37324,30058,21160,28459",
                     href: "104,116,116,112,115,58,47,47,116,116,100,109,46,109,101"
+                },
+                { //
+                    show_lang: "all",
+                    title: "72,21160,28459",
+                    href: "104,116,116,112,115,58,47,47,49,56,104,100,109,46,99,111,109"
                 },
             ],
         },
@@ -61,7 +71,7 @@
             list: [
                 { //
                     show_lang: "all",
-                    title: "77,105,115,115,32,65,86",
+                    title: "77,105,115,115",
                     href: "104,116,116,112,115,58,47,47,109,105,115,115,97,118,46,119,115,47,100,109,49,50,47,99,110"
                 },
                 { //
@@ -76,22 +86,28 @@
                 },
             ],
         },
-        // {
-        //     name: func.get_translate("mp_lieqi"),
-        //     list: [
-        //         { //
-        //             show_lang: "en",
-        //             title: "28023,35282,23448,26041",
-        //             href: "104,116,116,112,115,58,47,47,104,97,105,106,105,97,111,46,99,111,109"
-        //         },
-        //         { //
-        //             show_lang: "en",
-        //             title: "28023,35282,28909,38376",
-        //             href: "104,116,116,112,115,58,47,47,104,97,105,106,49,46,99,111,109"
-        //         },
-        //     ],
-        // },
+        {
+            name: func.get_translate("mp_lieqi"),
+            list: [
+                { //
+                    show_lang: "all",
+                    title: "56,88,56,88",
+                    href: "104,116,116,112,115,58,47,47,121,57,54,51,100,97,46,99,111,109"
+                },
+                { //
+                    show_lang: "en",
+                    title: "72,97,105,74,105,97,111",
+                    href: "104,116,116,112,115,58,47,47,104,97,105,106,105,97,111,46,99,111,109"
+                },
+                { //
+                    show_lang: "all",
+                    title: "24517,35874,31934,36873",
+                    href: "104,116,116,112,115,58,47,47,119,119,119,46,122,109,108,122,109,46,99,111,109"
+                },
+            ],
+        },
     ];
+    let page_dispplay_show = $state("hide");
 
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
@@ -128,18 +144,32 @@
         },
     };
 
+
     // 页面函数执行的入口，实时更新数据
     function page_start(){
         func.console_log("page_start=", route);
         // 开始
+        page_dispplay_show = "show";
         def.check_param();
+        func.title(func.get_translate("mp_title")+" @jyp ");
+        // if (browser){
+        //     if (func.is_mobile_screen()){
+        //         page_dispplay_show = "show";
+        //         def.check_param();
+        //     }else{
+        //         page_dispplay_show = "hide";
+        //         func.title("...");
+        //         func.open_url_404("./", "Page Error", "❌");
+        //     }
+        // }
+        //
     }
 
     // 标签处于切换显示状态
     function page_show(){
         func.console_log("page_show=", route);
+        func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // show
-        func.loading_hide();
     }
 
     // 标签处于切换隐藏状态
@@ -176,15 +206,12 @@
 
 </script>
 
-<div class="page-div link-box select-none">
+<div class="page-div link-box select-none {page_dispplay_show} ">
     <div class="link-group">
-        <div class="link-group-title font-text">教育片 <i class="font-red select-text">@jyp</i> 提醒</div>
+        <div class="link-group-title font-text">{@html func.get_translate("mp_title")} <i class="font-red select-text">@jyp</i> {@html func.get_translate("mp_notice")}</div>
         <div class="link-group-list font-text">
             <div class="link-group-title-txt">
-                <p>◉ 内容仅供教育学习。</p>
-                <p>◉ 谨防网络赌博诈骗。</p>
-                <p>◉ 推荐“联通、电信”等网络。</p>
-                <p>◉ 推荐“<i class="select-text">Safari、Chrome、火狐、Edge</i>”等浏览器。</p>
+                {@html func.get_translate("mp_notice_txt")}
             </div>
         </div>
     </div>
@@ -193,7 +220,7 @@
             <div class="link-group-title font-text">{@html group_data.name}</div>
             <div class="link-group-list font-text">
                 {#each group_data.list as list_data}
-                    <button class="link-group-list-item break bg-neutral-200 dark:bg-surface-800" onclick={()=>def.open_url(list_data.href)}>{@html func.unicode_to_string(list_data.title)}</button>
+                    <button class="link-group-list-item break bg-neutral-100 dark:bg-surface-900" onclick={()=>def.open_url(list_data.href)}>{@html func.unicode_to_string(list_data.title)}</button>
                 {/each}
                 <div class="clear"></div>
             </div>
@@ -209,7 +236,7 @@
         margin: 10px 5px 5px 5px;
         padding: 10px 10px;
         border-radius: 10px;
-        border: 1px solid rgba(160,160,160, 0.5);
+        border: 1px solid rgba(160,160,160, 0.4);
         letter-spacing: 2px;
     }
 
