@@ -30,7 +30,7 @@
             // 白名单跳转
             if (word === config.sys.home_route_white_word){ // 必要，home页面
                 back_state = true;
-                let href = "."+config.sys.home_route+"?cache="+func.js_rand(10000, 99999)
+                let href = "."+config.sys.home_route+"?cache="+func.js_rand(100000, 9999999)
                 href = href.replaceAll(".?cache=", "./?cache=");
                 href = href.replaceAll("//", "/");
                 that.open_url(href);
@@ -194,22 +194,14 @@
         func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // 开始
         def.check_param();
-        // 监测页面标签是否处于显示
-        if (browser){
-            document.addEventListener("visibilitychange", () => {
-                if (document.hidden) { // onHide
-                    //
-                } else { // onShow
-                    def.check_param();
-                }
-            });
-        }
     }
 
     // 标签处于切换显示状态
     function page_show(){
         func.console_log("page_show=", route);
+        if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
         // show
+        def.check_param();
     }
 
     // 标签处于切换隐藏状态
@@ -246,12 +238,18 @@
 
 </script>
 
+<div class="page-back select-none">
+    <a href="./?from=search" title="Back home">
+        <div class="font-text font-blue center" style="height: 50px; line-height: 50px; overflow: hidden; padding: 0 20px;">&nbsp;</div>
+    </a>
+</div>
+
 <div class="page-div search-box select-none {browser_search_engine_show} ">
     <div class="browser-search-engine">
         <br/>
         <h3 class="font-title">可以添加如下链接到浏览器的自定义搜索引擎：</h3>
         <br/>
-        <div class="font-text select-text font-blue break">{browser_search_engine}</div>
+        <div class="font-text select-text font-blue break">{browser_search_engine} </div>
         <br/>
     </div>
 </div>
@@ -261,6 +259,6 @@
         padding: 10px 10px;
     }
     .browser-search-engine{
-        opacity: 0.9;
+        margin-top: 20px;
     }
 </style>

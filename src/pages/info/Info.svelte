@@ -312,7 +312,7 @@
     .info-div-content{
         padding: 10px 10px;
         border-radius: 10px;
-        border: 1px solid rgba(160,160,160, 0.4);
+        border: 1px solid rgba(160,160,160, 0.6);
     }
 
     .info-div-content-li{
@@ -321,11 +321,10 @@
 
     .info-div-content-li-title{
         line-height: 30px;
-        opacity: 0.9;
     }
     .info-div-content-li-res{
         line-height: 22px;
-        opacity: 0.6;
+        opacity: 0.7;
     }
 
 </style>

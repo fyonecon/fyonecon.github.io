@@ -9,7 +9,8 @@
 body,
 html {
 	font-family: "Noto Sans Light", sans-serif;
-	letter-spacing: 1px;
+    font-size: 14px;
+    opacity: 0.9;
 }
 
 /*亮暗主题切换*/
@@ -32,7 +33,6 @@ html {
 }
 
 .app {
-	font-size: 14px;
     clear: both;
 }
 
@@ -218,7 +218,6 @@ html {
     padding: 0 10px;
     outline: none;
     border: 1px solid rgba(160,160,160, 0.2);
-    opacity: 0.8;
 }
 .input-style:focus{
     outline: 2px solid var(--color-blue-500);
@@ -232,12 +231,12 @@ div[data-part="root"] { /*notice*/
     width: 280px;
     padding: 5px 10px;
     /*box-shadow: 0 0 20px rgba(160,160,160, 0.2);*/
-    border: 1px solid rgba(160,160,160, 0.4);
+    border: 1px solid rgba(160,160,160, 0.6);
     opacity: 0.8;
 }
 div[data-part="content"] { /*confirm*/
     /*box-shadow: 0 0 20px rgba(160,160,160, 0.2);*/
-    border: 1px solid rgba(160,160,160, 0.4);
+    border: 1px solid rgba(160,160,160, 0.6);
     max-width: 300px;
     margin-top: -120px;
 }
@@ -285,39 +284,4 @@ div[data-part="content"] { /*confirm*/
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 100px;
-}
-
-
-.link-box{
-    padding: 20px 0;
-}
-.link-group{
-    border-radius: 10px;
-    margin-bottom: 20px;
-    padding: 0 5px;
-    /*border: 1px solid rgba(160,160,160, 0.4);*/
-}
-.link-group-title{
-    margin-left: 5px;
-    margin-bottom: 5px;
-    /*text-indent: 5px;*/
-    height: 24px;
-    line-height: 24px;
-    opacity: 0.9;
-    text-indent: 1px;
-}
-.link-group-list{
-    width: 100%;
-}
-.link-group-list-item{
-    width: calc(100%/3 - 10px);
-    margin: 5px 5px 5px 5px;
-    padding: 5px 5px;
-    float: left;
-    line-height: 18px;
-    height: 43px;
-    overflow: hidden;
-    text-align: center;
-    border-radius: 10px;
-    opacity: 0.9;
 }

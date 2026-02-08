@@ -281,7 +281,7 @@
             <div class="link-group-title font-text">{@html group_data.name}</div>
             <div class="link-group-list font-text">
                 {#each group_data.list as list_data}
-                    <button class="link-group-list-item break bg-neutral-100 dark:bg-surface-900" onclick={()=>def.open_url(list_data.href)}>{@html func.unicode_to_string(list_data.title)}</button>
+                    <button class="link-group-list-item break bg-neutral-200 dark:bg-surface-800" onclick={()=>def.open_url(list_data.href)}>{@html func.unicode_to_string(list_data.title)}</button>
                 {/each}
                 <div class="clear"></div>
             </div>

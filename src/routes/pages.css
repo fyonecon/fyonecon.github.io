@@ -1,0 +1,33 @@
+/*自定义的pages公共CSS*/
+
+.link-box{
+    padding: 20px 0;
+}
+.link-group{
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 0 5px;
+}
+.link-group-title{
+    margin-left: 5px;
+    margin-bottom: 5px;
+    /*text-indent: 5px;*/
+    height: 24px;
+    line-height: 24px;
+    text-indent: 1px;
+}
+.link-group-list{
+    width: 100%;
+}
+.link-group-list-item{
+    width: calc(100%/3 - 10px);
+    margin: 5px 5px 10px 5px;
+    padding: 5px 5px;
+    float: left;
+    line-height: 18px;
+    height: 42px;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 25px;
+}
+

@@ -151,9 +151,11 @@
         left: 0;
         right: 0;
         margin: 0 auto;
-        width: calc(205px);
+        width: calc(270px);
+        height: 55px;
+        /*overflow: hidden;*/
         z-index: 1;
-        border-radius: 20px;
+        border-radius: 30px;
     }
     .liquidGlass-wrapper {
         position: relative;
@@ -161,7 +163,7 @@
         overflow: hidden;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
-        border-radius: 20px;
+        border-radius: 30px;
         padding: 0 5px;
     }
     .liquidGlass-effect {
@@ -172,14 +174,14 @@
         filter: url(#glass-distortion);
         overflow: hidden;
         isolation: isolate;
-        border-radius: 20px;
+        border-radius: 30px;
     }
     .liquidGlass-tint {
         z-index: 1;
         position: absolute;
         inset: 0;
-        background: rgba(160,160,160, 0.2);
-        border-radius: 20px;
+        background: rgba(160,160,160, 0.25);
+        border-radius: 30px;
     }
     .liquidGlass-shine {
         position: absolute;
@@ -188,11 +190,11 @@
         overflow: hidden;
         box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2),
         inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
+        border-radius: 30px;
     }
     .liquidGlass-text {
         z-index: 3;
-        border-radius: 20px;
+        border-radius: 30px;
     }
 
     /**/
@@ -204,9 +206,8 @@
         border: none;
         outline: none;
         float: left;
-        border-radius: 20px;
+        border-radius: 30px;
         transition: all 0.1s ease-in;
-        opacity: 0.9;
         cursor: pointer;
     }
     .tab-item-active{
@@ -221,7 +222,7 @@
         bottom: 80px;
         border-radius: 5px;
         padding: 1px 1px;
-        background-color: rgba(160,160,160, 0.4);
+        background-color: rgba(160,160,160, 0.6);
         overflow: hidden;
         width: 20px;
         height: 20px;

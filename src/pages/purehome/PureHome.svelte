@@ -332,7 +332,7 @@
     <Portal>
         <Dialog.Backdrop class="fixed inset-0 z-50 bg-surface-50-950/80  select-none" />
         <Dialog.Positioner class="fixed inset-0 z-50 flex justify-center items-center font-text select-none">
-            <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-900 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
+            <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-800 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
                 <header class="flex justify-between items-center pywebview-drag-region can-drag">
                     <Dialog.Title class="font-title font-bold">⚠️</Dialog.Title>
                 </header>
@@ -352,7 +352,6 @@
     .search-box{
         padding-bottom: 40px;
         padding-top: 50px;
-        opacity: 0.9;
         /**/
         margin-bottom: 0 !important;
     }
@@ -428,12 +427,10 @@
     .input-border{
         border: 1px solid var(--color-blue-700);
         border-radius: 30px;
-        opacity: 0.9;
     }
     .btn-border{
         border: 1px solid var(--color-blue-700);
         border-radius: 20px;
-        opacity: 0.8;
     }
 
     .search-div-input-select{
@@ -480,7 +477,6 @@
         padding: 0 5px;
         float: left;
         height: 38px;
-        opacity: 0.9;
     }
 
     .history-btn{

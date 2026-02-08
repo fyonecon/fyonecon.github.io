@@ -1,6 +1,7 @@
 <script lang="ts">
     /*全局事件*/
 	import './layout.css'; // 全局CSS
+    import './pages.css'; // 自定义的pages公共CSS
 	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/state';
 	import func from "../common/func.svelte.js";

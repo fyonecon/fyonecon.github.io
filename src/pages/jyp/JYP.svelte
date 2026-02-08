@@ -210,8 +210,10 @@
     <div class="link-group">
         <div class="link-group-title font-text">{@html func.get_translate("mp_title")} <i class="font-red select-text">@jyp</i> {@html func.get_translate("mp_notice")}</div>
         <div class="link-group-list font-text">
-            <div class="link-group-title-txt">
-                {@html func.get_translate("mp_notice_txt")}
+            <div class="link-group-title-div">
+                <div class="link-group-title-txt">
+                    {@html func.get_translate("mp_notice_txt")}
+                </div>
             </div>
         </div>
     </div>
@@ -220,7 +222,7 @@
             <div class="link-group-title font-text">{@html group_data.name}</div>
             <div class="link-group-list font-text">
                 {#each group_data.list as list_data}
-                    <button class="link-group-list-item break bg-neutral-100 dark:bg-surface-900" onclick={()=>def.open_url(list_data.href)}>{@html func.unicode_to_string(list_data.title)}</button>
+                    <button class="link-group-list-item break bg-neutral-200 dark:bg-surface-800" onclick={()=>def.open_url(list_data.href)}>{@html func.unicode_to_string(list_data.title)}</button>
                 {/each}
                 <div class="clear"></div>
             </div>
@@ -230,14 +232,16 @@
 
 <style>
 
-    .link-group-title-txt{
-        opacity: 0.6;
+    .link-group-title-div{
         line-height: 24px;
         margin: 10px 5px 5px 5px;
         padding: 10px 10px;
         border-radius: 10px;
-        border: 1px solid rgba(160,160,160, 0.4);
+        border: 1px solid rgba(160,160,160, 0.6);
         letter-spacing: 2px;
+    }
+    .link-group-title-txt{
+        opacity: 0.7;
     }
 
 </style>

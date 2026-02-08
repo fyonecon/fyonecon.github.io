@@ -48,7 +48,6 @@
         height: 50px;
         display: block;
         margin: auto auto;
-        opacity: 0.9;
     }
 
 </style>
