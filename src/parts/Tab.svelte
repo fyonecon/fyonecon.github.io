@@ -151,17 +151,17 @@
         left: 0;
         right: 0;
         margin: 0 auto;
-        width: calc(100% - 20px);
+        width: calc(270px);
         z-index: 1;
-        border-radius: 30px;
+        border-radius: 27px;
     }
     .liquidGlass-wrapper {
         position: relative;
         display: flex;
         overflow: hidden;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
-        border-radius: 30px;
+        transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+        border-radius: 27px;
         padding: 0 5px;
     }
     .liquidGlass-effect {
@@ -172,14 +172,14 @@
         filter: url(#glass-distortion);
         overflow: hidden;
         isolation: isolate;
-        border-radius: 30px;
+        border-radius: 27px;
     }
     .liquidGlass-tint {
         z-index: 1;
         position: absolute;
         inset: 0;
-        background: rgba(160,160,160, 0.25);
-        border-radius: 30px;
+        background: rgba(160,160,160, 0.2);
+        border-radius: 27px;
     }
     .liquidGlass-shine {
         position: absolute;
@@ -188,11 +188,11 @@
         overflow: hidden;
         box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2),
         inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);
-        border-radius: 30px;
+        border-radius: 27px;
     }
     .liquidGlass-text {
         z-index: 3;
-        border-radius: 30px;
+        border-radius: 27px;
     }
 
     /**/
@@ -204,8 +204,9 @@
         border: none;
         outline: none;
         float: left;
-        border-radius: 30px;
+        border-radius: 22px;
         transition: all 0.1s ease-in;
+        opacity: 0.9;
         cursor: pointer;
     }
     .tab-item-active{

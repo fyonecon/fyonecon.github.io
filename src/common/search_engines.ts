@@ -50,10 +50,10 @@ const search_engines_dict: SearchEnginesDictType = {
         name: "EN APK",
         url: "https://en.divxland.org/?s=",
     },
-    android_ru: {
-        name: "RU APK",
-        url: "https://5play.org/index.php?lang=en&do=search&subaction=search&titleonly=0&story=",
-    },
+    // android_ru: {
+    //     name: "RU APK",
+    //     url: "https://5play.org/index.php?lang=en&do=search&subaction=search&titleonly=0&story=",
+    // },
     icon_images: {
         name: "PNG Image",
         url: "https://www.flaticon.com/search?word=",

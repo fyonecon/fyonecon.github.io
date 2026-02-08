@@ -337,7 +337,7 @@
                 <header class="flex justify-between items-center pywebview-drag-region can-drag">
                     <Dialog.Title class="font-title font-bold">⚠️</Dialog.Title>
                 </header>
-                <Dialog.Description class="font-text select-text">
+                <Dialog.Description class="font-title select-text">
                     {@html func.get_translate('remove_help_2')}
                 </Dialog.Description>
                 <footer class="flex justify-center gap-10 select-none  px-[10px] py-[10px]">
