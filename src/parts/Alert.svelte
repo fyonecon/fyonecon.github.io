@@ -22,6 +22,7 @@
         right: 0;
         margin: auto auto;
         background-color: rgba(50, 50, 50, 0);
+        opacity: 0.8;
     }
     .loading-info{
         position: absolute;

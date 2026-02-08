@@ -329,25 +329,27 @@
 
 
 <!-- 删除已设置的本地文件夹 -->
-<Dialog closeOnInteractOutside={false} closeOnEscape={false} open={del_input_history_dialog_is_open} onOpenChange={()=>{}}>
-    <Portal>
-        <Dialog.Backdrop class="fixed inset-0 z-50 bg-surface-50-950/80  select-none" />
-        <Dialog.Positioner class="fixed inset-0 z-50 flex justify-center items-center font-text select-none">
-            <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-900 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
-                <header class="flex justify-between items-center pywebview-drag-region can-drag">
-                    <Dialog.Title class="font-title font-bold">⚠️</Dialog.Title>
-                </header>
-                <Dialog.Description class="font-title select-text">
-                    {@html func.get_translate('remove_help_2')}
-                </Dialog.Description>
-                <footer class="flex justify-center gap-10 select-none  px-[10px] py-[10px]">
-                    <button title="Cancel" class="btn btn-base preset-tonal font-title" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
-                    <button title="Update" type="button" class="btn btn-base preset-filled-primary-500 font-title" onclick={()=>def.input_del_history()}>{func.get_translate("clear")}</button>
-                </footer>
-            </Dialog.Content>
-        </Dialog.Positioner>
-    </Portal>
-</Dialog>
+<div class="part-div">
+    <Dialog closeOnInteractOutside={false} closeOnEscape={false} open={del_input_history_dialog_is_open} onOpenChange={()=>{}}>
+        <Portal>
+            <Dialog.Backdrop class="fixed inset-0 z-50 bg-surface-50-950/80  select-none" />
+            <Dialog.Positioner class="fixed inset-0 z-50 flex justify-center items-center font-text select-none">
+                <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-900 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
+                    <header class="flex justify-between items-center pywebview-drag-region can-drag">
+                        <Dialog.Title class="font-title font-bold">⚠️</Dialog.Title>
+                    </header>
+                    <Dialog.Description class="font-title select-text">
+                        {@html func.get_translate('remove_help_2')}
+                    </Dialog.Description>
+                    <footer class="flex justify-center gap-10 select-none  px-[10px] py-[10px]">
+                        <button title="Cancel" class="btn btn-base preset-tonal font-title" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
+                        <button title="Update" type="button" class="btn btn-base preset-filled-primary-500 font-title" onclick={()=>def.input_del_history()}>{func.get_translate("clear")}</button>
+                    </footer>
+                </Dialog.Content>
+            </Dialog.Positioner>
+        </Portal>
+    </Dialog>
+</div>
 
 <style>
     .search-box{
