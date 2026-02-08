@@ -43,7 +43,13 @@
             }else{
                 url = host + config.sys.home_route + "";
             }
+            // 处理url格式
             url = url.replaceAll("//", "/");
+            if (url.indexOf("/") === 0){
+                url = url.replace("/", "");
+            }
+            url = "//"+url;
+            //
             func.open_url(url);
         }
         else if (href.indexOf("route=search") != -1){
