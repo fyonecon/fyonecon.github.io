@@ -151,9 +151,7 @@
         left: 0;
         right: 0;
         margin: 0 auto;
-        width: calc(270px);
-        height: 55px;
-        /*overflow: hidden;*/
+        width: calc(100% - 20px);
         z-index: 1;
         border-radius: 30px;
     }
