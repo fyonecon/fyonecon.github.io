@@ -122,6 +122,6 @@
 
 <style>
     .index-box{
-
+        padding: 20px 15px;
     }
 </style>

@@ -330,8 +330,6 @@
 </div>
 
 <style>
-    .link-box{
 
-    }
 
 </style>
