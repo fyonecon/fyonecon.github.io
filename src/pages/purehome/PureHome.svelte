@@ -332,7 +332,7 @@
     <Portal>
         <Dialog.Backdrop class="fixed inset-0 z-50 bg-surface-50-950/80  select-none" />
         <Dialog.Positioner class="fixed inset-0 z-50 flex justify-center items-center font-text select-none">
-            <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-800 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
+            <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-900 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
                 <header class="flex justify-between items-center pywebview-drag-region can-drag">
                     <Dialog.Title class="font-title font-bold">⚠️</Dialog.Title>
                 </header>
