@@ -81,6 +81,6 @@
 
 <style>
     .example-box{
-        padding: 10px 10px;
+
     }
 </style>

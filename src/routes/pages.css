@@ -1,21 +1,33 @@
 /*自定义的pages公共CSS*/
 
 
-button:hover{
-    opacity: 0.9;
+.section-main{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    opacity: 0.8;
 }
-button:active{
-    opacity: 0.7;
+.page-div{
+    width: 100%;
+    max-width: 640px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px 10px 120px 10px;
+}
+.part-div{
+
 }
 
 
-.link-box{
-    padding: 20px 0;
-}
 .link-group{
     border-radius: 10px;
     margin-bottom: 20px;
-    padding: 0 5px;
 }
 .link-group-title{
     margin-left: 5px;

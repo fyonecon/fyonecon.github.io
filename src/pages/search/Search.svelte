@@ -256,7 +256,7 @@
 
 <style>
     .search-box{
-        padding: 10px 10px;
+
     }
     .browser-search-engine{
         margin-top: 20px;

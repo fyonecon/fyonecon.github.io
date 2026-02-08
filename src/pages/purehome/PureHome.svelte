@@ -27,8 +27,6 @@
     let open_url_loading_timer = $state(0);
     let open_url_open_timer = $state(0);
     let arrow_direct_class = $state("search-div-input-select-blur");
-    // let search_div_min_height = $state(((window.innerHeight>window.innerWidth)?window.innerHeight:window.innerWidth));
-    let search_div_min_height = $state(window.innerHeight);
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
     const def = {
@@ -78,12 +76,6 @@
                     });
                 }
             });
-            // 管理页面高度
-            if (browser){
-                window.addEventListener('resize', function (){
-                    search_div_min_height = window.innerHeight;
-                });
-            }
         },
         update_select: function(event: any){
             let that = this;
@@ -295,7 +287,7 @@
 
 </script>
 
-<div class="page-div search-box select-none" style="min-height: {search_div_min_height}px;">
+<div class="page-div purehome-box select-none">
     <div class="search-div-input">
         <select class="search-div-input-select input-border font-text " onchange={(event)=>def.update_select(event)}>
             {#each search_engines_array as option_dict}
@@ -322,7 +314,7 @@
     </div>
     <div class="search-div-history font-text font-blue scroll-y-style">
         {#each search_history_array as history_value}
-            <button class="history-btn break break-ellipsis" onclick={()=>def.input_auto_write(history_value)} title="{history_value}">{"# "+history_value + " "}</button>
+            <button class="history-btn click break break-ellipsis" onclick={()=>def.input_auto_write(history_value)} title="{history_value}">{"# "+history_value + " "}</button>
         {/each}
     </div>
 </div>
@@ -352,44 +344,42 @@
 </div>
 
 <style>
-    .search-box{
+    .purehome-box{
         padding-bottom: 40px;
         padding-top: 50px;
-        /**/
-        margin-bottom: 0 !important;
     }
     @media only screen and (min-width: 200px){
-        .search-box{
+        .purehome-box{
             padding-top: 10px;
         }
     }
     @media only screen and (min-width: 300px){
-        .search-box{
+        .purehome-box{
             padding-top: 20px;
         }
     }
     @media only screen and (min-width: 500px){
-        .search-box{
+        .purehome-box{
             padding-top: 40px;
         }
     }
     @media only screen and (min-width: 600px){
-        .search-box{
+        .purehome-box{
             padding-top: 60px;
         }
     }
     @media only screen and (min-width: 800px){
-        .search-box{
+        .purehome-box{
             padding-top: 80px;
         }
     }
     @media only screen and (min-width: 800px){
-        .search-box{
+        .purehome-box{
             padding-top: 100px;
         }
     }
     @media only screen and (min-width: 1200px){
-        .search-box{
+        .purehome-box{
             padding-top: 130px;
         }
     }
@@ -418,13 +408,11 @@
     }
     .search-div-history{
         width: calc(100%);
-        margin-right: auto;
-        margin-left: auto;
         padding: 10px 15px;
-        min-height: 60px;
+        min-height: 100px;
         max-height: 300px;
         clear: both;
-        margin-top: 30px;
+        margin: 30px auto 60px auto;
     }
 
     .input-border{
@@ -484,6 +472,7 @@
 
     .history-btn{
         margin: 2px 12px;
+        padding: 2px 10px;
         max-width: 220px;
         overflow: hidden;
         float: left;

@@ -176,8 +176,9 @@
 </script>
 
 <div class="app {page_display} select-none" data-theme_model="{theme_model}" data-language_index="{lang_index}">
-    <!-- 内容 -->
+    <!-- Route内容 -->
 	<main class="main {page_display} ">{@render children()}</main>
+    <!-- 自定义公共组件 -->
     <Tab />
 </div>
 

@@ -39,7 +39,7 @@
         text-align: center;
         width: 280px;
         line-height: 22px;
-        max-height: 108px;
+        max-height: 160px;
         overflow: hidden;
         margin-bottom: 10px;
         padding: 10px 10px;

@@ -78,7 +78,6 @@ html {
 	background: orange;
 	outline: thick solid #FF0000;
 }
-
 ::-moz-selection {
 	color: #FCFCFC;
 	background: #CD5C5C;
@@ -88,15 +87,13 @@ html {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-
 .scroll-y-style::-webkit-scrollbar {
-	width: 10px;
 	background-color: rgba(115,115,115,0);
 }
-
 .scroll-y-style::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	height: 44px;
+	border-radius: 5px;
+    width: 8px;
+	height: 60px;
 	background-color: rgba(115,115,115,0.5);
 	cursor: pointer;
 }
@@ -274,17 +271,4 @@ div[data-part="content"] { /*confirm*/
     50%  {background-color: rgba(26,114,254,0.5);color: rgba(200,200,200,1)}
     75%  {background-color: rgba(255,99,71,0.5);color: rgba(20,20,20,1)}
     100% {background-color: rgba(100,100,100,0.5);color: rgba(220,220,220,1)}
-}
-
-
-.page-div{
-    width: 100%;
-    max-width: 640px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 100px;
-    opacity: 0.8;
-}
-.part-div{
-
 }

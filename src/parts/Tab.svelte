@@ -127,7 +127,7 @@
             <div class="liquidGlass-text">
                 <!---->
                 {#each tab_data as item}
-                    <button class="tab-item select-none {(route === item.route)?'tab-item-active':''}" onclick={()=>def.open_url(item.href)} >
+                    <button class="tab-item select-none click {(route === item.route)?'tab-item-active':''}" onclick={()=>def.open_url(item.href)} >
                         <div>{@html item.icon}</div>
                         <div class="font-mini">{@html item.title}</div>
                     </button>
@@ -217,7 +217,7 @@
     .tab-qr-box{
         position: fixed;
         z-index: 1;
-        right: 10px;
+        right: 15px;
         bottom: 80px;
         border-radius: 5px;
         padding: 1px 1px;
