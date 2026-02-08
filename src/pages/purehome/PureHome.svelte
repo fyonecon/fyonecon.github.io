@@ -462,7 +462,7 @@
         height: 16px;
         border-radius: 8px;
         overflow: hidden;
-        left: 114px;
+        left: 104px;
         top: 24px;
     }
     .search-div-input-select:focus{
@@ -489,12 +489,12 @@
     }
 
     .search-div-input-select-blur {
-        transition: transform 0.5s;
+        transition: transform 0.4s;
         transform: rotateZ(0deg);
         color: var(--color-blue-700);
     }
     .search-div-input-select-focus {
-        transition: transform 0.5s;
+        transition: transform 0.4s;
         transform: rotateZ(90deg);
         color: var(--color-blue-500);
     }
