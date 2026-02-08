@@ -150,6 +150,11 @@
                 },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("🧲喵磁力"),
+                    href: func.string_to_unicode("https://www.miaocili.com/")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("豌豆荚"),
                     href: func.string_to_unicode("https://www.wandoujia.com")
                 },
@@ -160,18 +165,33 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("APKPure"),
-                    href: func.string_to_unicode("https://apkpure.com/cn/app")
-                },
-                { //
-                    show_lang: "all",
                     title: func.string_to_unicode("APKPure.apk"),
                     href: func.string_to_unicode("https://download.cnet.com/apkpure/3000-2094_4-77459320.html")
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("🧲喵磁力"),
-                    href: func.string_to_unicode("https://www.miaocili.com/")
+                    title: func.string_to_unicode("Gboard.apk"),
+                    href: func.string_to_unicode("https://gboard.en.divxland.org/download/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Chrome.apk"),
+                    href: func.string_to_unicode("https://google-chrome.en.divxland.org/download/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("DevCheck.apk"),
+                    href: func.string_to_unicode("https://www.ddooo.com/softdown/224201.htm ")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("LibCheck.apk"),
+                    href: func.string_to_unicode("https://www.downkuai.com/android/147630.html")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Firefox.apk"),
+                    href: func.string_to_unicode("https://firefox.en.divxland.org/download/")
                 },
             ],
         },
