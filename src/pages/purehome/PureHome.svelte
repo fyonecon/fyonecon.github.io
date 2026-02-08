@@ -462,7 +462,7 @@
         height: 16px;
         border-radius: 8px;
         overflow: hidden;
-        left: 104px;
+        left: 105px;
         top: 24px;
     }
     .search-div-input-select:focus{
