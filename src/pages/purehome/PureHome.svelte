@@ -385,12 +385,12 @@
     }
     @media only screen and (min-width: 1800px){
         .purehome-box{
-            padding-top: 190px;
+            padding-top: 150px;
         }
     }
     @media only screen and (min-width: 2600px){
         .purehome-box{
-            padding-top: 270px;
+            padding-top: 200px;
         }
     }
 
@@ -398,7 +398,7 @@
         width: calc(100%);
         margin-right: auto;
         margin-left: auto;
-        padding: 10px 10px;
+        padding: 10px 0;
         height: 70px;
         overflow: hidden;
         clear: both;
@@ -414,11 +414,11 @@
         overflow: hidden;
         clear: both;
         margin-top: 30px;
-        padding: 0 15px;
+        padding: 0 0;
     }
     .search-div-history{
         width: calc(100%);
-        padding: 10px 10px;
+        padding: 10px 0;
         min-height: 100px;
         max-height: 300px;
         clear: both;
@@ -472,9 +472,9 @@
         border: 2px solid var(--color-blue-500);
     }
     .search-div-btn-btn{
-        width: calc(100%/3 - 16px);
+        width: calc(100%/3 - 20px);
         overflow: hidden;
-        margin: 0 8px;
+        margin: 0 10px;
         padding: 0 5px;
         float: left;
         height: 38px;
