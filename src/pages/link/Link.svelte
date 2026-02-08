@@ -150,6 +150,26 @@
                 },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("豌豆荚"),
+                    href: func.string_to_unicode("https://www.wandoujia.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("应用汇"),
+                    href: func.string_to_unicode("http://m.appchina.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("APKPure"),
+                    href: func.string_to_unicode("https://apkpure.com/cn/app")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("APKPure.apk"),
+                    href: func.string_to_unicode("https://download.cnet.com/apkpure/3000-2094_4-77459320.html")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("🧲喵磁力"),
                     href: func.string_to_unicode("https://www.miaocili.com/")
                 },

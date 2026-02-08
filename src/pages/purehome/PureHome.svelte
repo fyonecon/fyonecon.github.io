@@ -27,7 +27,8 @@
     let open_url_loading_timer = $state(0);
     let open_url_open_timer = $state(0);
     let arrow_direct_class = $state("search-div-input-select-blur");
-    let search_div_min_height = $state(((window.innerHeight>window.innerWidth)?window.innerHeight:window.innerWidth));
+    // let search_div_min_height = $state(((window.innerHeight>window.innerWidth)?window.innerHeight:window.innerWidth));
+    let search_div_min_height = $state(window.innerHeight);
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
     const def = {

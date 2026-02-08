@@ -30,36 +30,36 @@ const search_engines_dict: SearchEnginesDictType = {
         name: "Yandex",
         url: "https://yandex.com/search/?text=",
     },
-    // windows_us: {
-    //     name: "Windows Apps",
-    //     url: "https://apps.microsoft.com/search?hl=en-US&query=",
-    // },
+    android_cn: {
+        name: "中国区安卓应用",
+        url: "https://h5.appstore.vivo.com.cn/#/result?keyfrom=2&keyword=",
+    },
     windows_cn: {
         name: "中国区Win应用",
         url: "https://apps.microsoft.com/search?hl=zh-CN&query=",
     },
     // mac_us: {
-    //     name: "Mac Apps",
+    //     name: "Mac App",
     //     url: "https://apps.apple.com/us/mac/search?term=",
     // },
-    mac_cn: {
-        name: "中国区Mac应用",
-        url: "https://apps.apple.com/cn/mac/search?term=",
-    },
-    android_cn: {
-        name: "中国区安卓应用",
-        url: "https://h5.appstore.vivo.com.cn/#/result?keyfrom=2&keyword=",
-    },
-    // android_gl: {
-    //     name: "Android APK",
-    //     url: "https://www.apk20.com/search/",
+    // mac_cn: {
+    //     name: "中国区Mac应用",
+    //     url: "https://apps.apple.com/cn/mac/search?term=",
     // },
+    android_en: {
+        name: "EN APK",
+        url: "https://en.divxland.org/?s=",
+    },
+    android_ru: {
+        name: "RU APK",
+        url: "https://5play.org/index.php?lang=en&do=search&subaction=search&titleonly=0&story=",
+    },
     icon_images: {
-        name: "Icon Images",
+        name: "PNG Image",
         url: "https://www.flaticon.com/search?word=",
     },
     svg_images: {
-        name: "SVG Images",
+        name: "SVG Image",
         url: "https://icon-sets.iconify.design/?query=",
     },
     ip_domain: {
