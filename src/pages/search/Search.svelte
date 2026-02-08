@@ -240,7 +240,7 @@
 
 <div class="page-back select-none">
     <a href="./?from=search" title="Back home">
-        <div class="font-text font-blue center" style="height: 50px; line-height: 50px; overflow: hidden; padding: 0 20px;">&nbsp;</div>
+        <div class="font-text font-blue center" style="height: 50px; line-height: 50px; overflow: hidden; padding: 0 20px;">.</div>
     </a>
 </div>
 
