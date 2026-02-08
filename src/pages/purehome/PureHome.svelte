@@ -383,6 +383,16 @@
             padding-top: 130px;
         }
     }
+    @media only screen and (min-width: 1800px){
+        .purehome-box{
+            padding-top: 190px;
+        }
+    }
+    @media only screen and (min-width: 2600px){
+        .purehome-box{
+            padding-top: 270px;
+        }
+    }
 
     .search-div-input{
         width: calc(100%);
@@ -408,7 +418,7 @@
     }
     .search-div-history{
         width: calc(100%);
-        padding: 10px 15px;
+        padding: 10px 10px;
         min-height: 100px;
         max-height: 300px;
         clear: both;
@@ -471,9 +481,9 @@
     }
 
     .history-btn{
-        margin: 2px 12px;
-        padding: 2px 10px;
-        max-width: 220px;
+        padding: 0 10px;
+        max-width: 250px;
+        border-radius: 5px;
         overflow: hidden;
         float: left;
     }
