@@ -183,10 +183,14 @@
                         let href = "./search?word="+encodeURIComponent(func.string_to_unicode(the_value))+"&engine="+value+"&url_timeout="+func.url_timeout_encode("search", 2*60*60)+"&ap=ipt";
                         open_url_open_timer = setTimeout(function (){
                             if (browser){
-                                if (func.is_mobile_screen()){
-                                    window.open(href, "_self");
+                                if (func.is_wails() || func.is_gthon()){
+                                    func.open_url_with_default_browser(href);
                                 }else{
-                                    window.open(href, "_blank");
+                                    if (func.is_mobile_screen()){
+                                        window.open(href, "_self");
+                                    }else{
+                                        window.open(href, "_blank");
+                                    }
                                 }
                             }else{
                                 func.open_url_with_default_browser(href);
