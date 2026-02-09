@@ -20,16 +20,6 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("IT之家"),
-                    href: func.string_to_unicode("https://m.ithome.com")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("搜狐新闻"),
-                    href: func.string_to_unicode("https://sohu.com")
-                },
-                { //
-                    show_lang: "all",
                     title: func.string_to_unicode("太平洋科技"),
                     href: func.string_to_unicode("https://g.pconline.com.cn/x/news")
                 },
@@ -55,6 +45,11 @@
                 },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("IT之家"),
+                    href: func.string_to_unicode("https://m.ithome.com")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("MacRumors"),
                     href: func.string_to_unicode("https://www.macrumors.com")
                 },
@@ -65,6 +60,21 @@
                 // },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("搜狐新闻"),
+                    href: func.string_to_unicode("https://sohu.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("凤凰科技"),
+                    href: func.string_to_unicode("https://itech.ifeng.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("南方周末"),
+                    href: func.string_to_unicode("https://www.infzm.com")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("V2EX.com"),
                     href: func.string_to_unicode("https://v2ex.com")
                 },
@@ -72,11 +82,6 @@
                     show_lang: "all",
                     title: func.string_to_unicode("Linux.do"),
                     href: func.string_to_unicode("https://linux.do")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("X.com"),
-                    href: func.string_to_unicode("https://x.com")
                 },
             ],
         },
@@ -120,6 +125,11 @@
                 },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("X.com"),
+                    href: func.string_to_unicode("https://x.com")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("Reddit"),
                     href: func.string_to_unicode("https://reddit.com")
                 },
@@ -158,11 +168,11 @@
                     title: func.string_to_unicode("豌豆荚"),
                     href: func.string_to_unicode("https://www.wandoujia.com")
                 },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("应用汇"),
-                    href: func.string_to_unicode("http://m.appchina.com")
-                },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("应用汇"),
+                //     href: func.string_to_unicode("http://m.appchina.com")
+                // },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("APKPure.apk"),
@@ -188,11 +198,11 @@
                     title: func.string_to_unicode("LibCheck.apk"),
                     href: func.string_to_unicode("https://www.downkuai.com/android/147630.html")
                 },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Firefox.apk"),
-                    href: func.string_to_unicode("https://firefox.en.divxland.org/download/")
-                },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("Firefox.apk"),
+                //     href: func.string_to_unicode("https://firefox.en.divxland.org/download/")
+                // },
             ],
         },
         {
