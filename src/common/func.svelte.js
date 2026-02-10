@@ -366,7 +366,11 @@ const func = {
                 }
                 return back;
             }else{
-                return unicode;
+                try {
+                    return String.fromCharCode(unicode);
+                }catch (e) {
+                    return unicode;
+                }
             }
         }catch (e) {
             return unicode;
