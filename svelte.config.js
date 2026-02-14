@@ -1,6 +1,8 @@
 //import adapter from '@sveltejs/adapter-auto';
 import adapter from '@sveltejs/adapter-static';
 
+// ⚠️ 下面配置为静态网站配置，适合“直接根目录文件型，如https://aaa.com”或者“含有域名含有文件夹型，，如https://aaa.com/xxx”，服务端输出文件时请配置“忽略 html 扩展名”。
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {

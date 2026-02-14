@@ -123,13 +123,13 @@
                     // 使用setTimeout或requestAnimationFrame避免阻塞
                     touchDo = setTimeout(() => {
                         if (deltaX > 0) { // right
-                            console.log("right", route);
+                            // console.log("right", route);
                             //
                             if (route === "/purehome") {
                                 func.open_url("./link");
                             }
                         } else { // left
-                            console.log("left", route);
+                            // console.log("left", route);
                             //
                             if (route === "/link") {
                                 func.open_url("./purehome");
