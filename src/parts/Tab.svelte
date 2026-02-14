@@ -3,6 +3,8 @@
     import {afterNavigate} from "$app/navigation";
     import {browser_ok, runtime_ok} from "../common/middleware.svelte.js";
     import config from "../config.js";
+    import {browser} from "$app/environment";
+    import {onMount} from "svelte";
 
 
     // 本页面参数
@@ -28,6 +30,14 @@
     let qr_enbig_num = $state(0);
     let qr_enbig_width = $state(20);
     let qr_enbig_height = $state(20);
+
+
+    // 监听左右滑动
+    let touchDo = $state(0);
+    let touchStartX = $state(0);
+    let touchStartY = $state(0);
+    let touchXMin = $state(50); // px
+    let touchXMax = $state(260);
 
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
@@ -79,6 +89,61 @@
                 qr_enbig_num = 0;
             }
         },
+        watch_touch_swiper: function (id_name) { // 监听左右滑动（PC端Safari不支持，Chrome和Firefox全端支持）
+            if (!browser) {return;}
+            //
+            const element = document.getElementById(id_name);
+            if (!element) {console.warn("id_name=", id_name);return;}
+
+            //
+            clearTimeout(touchDo);
+
+            // 关键：设置CSS属性，告诉浏览器如何处理触摸事件
+            element.style.touchAction = 'pan-y'; // 允许垂直滚动，但水平滚动由JS处理
+
+            // 或者更严格的：element.style.touchAction = 'none'; // 完全禁止滚动
+
+            element.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+
+            // 完全移除touchmove监听器，让CSS处理滚动
+            // 这样就不会有阻止滚动的尝试了
+
+            element.addEventListener('touchend', function(e) {
+                if (!touchStartX) {return;}
+
+                const deltaX = e.changedTouches[0].clientX - touchStartX;
+                const deltaY = e.changedTouches[0].clientY - touchStartY;
+                const distance = Math.abs(deltaX);
+
+                if (Math.abs(deltaY) < Math.abs(deltaX) / 2 &&
+                    distance >= touchXMin && distance <= touchXMax) {
+                    // 使用setTimeout或requestAnimationFrame避免阻塞
+                    touchDo = setTimeout(() => {
+                        if (deltaX > 0) { // right
+                            console.log("right", route);
+                            //
+                            if (route === "/purehome") {
+                                func.open_url("./link");
+                            }
+                        } else { // left
+                            console.log("left", route);
+                            //
+                            if (route === "/link") {
+                                func.open_url("./purehome");
+                            }
+                        }
+                    }, 0);
+                }
+
+                // init
+                touchStartX = 0;
+                touchStartY = 0;
+            }, { passive: true });
+        },
+        //
     };
 
 
@@ -93,9 +158,17 @@
     });
 
 
+    // 页面装载完成后，只运行一次。
+    // addEventListener专用函数
+    onMount(() => {
+        // 监听左右滑动
+        def.watch_touch_swiper("tab-touch_swiper");
+    });
+
+
 </script>
 
-<div class="part-div liquidGlass-div select-none {glass_div_display} ">
+<div class="part-div liquidGlass-div select-none {glass_div_display} " id="tab-touch_swiper">
     <!---->
     <svg style="display: none;">
         <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
@@ -119,7 +192,7 @@
         </filter>
     </svg>
     <!---->
-    <div class="liquidGlass-box pywebview-drag-region can-drag  " style="width: {tab_width}px;" >
+    <div class="liquidGlass-box pywebview-drag-region can-drag  " id="swiper_tab" style="width: {tab_width}px;" >
         <div class="liquidGlass-wrapper">
             <div class="liquidGlass-effect"></div>
             <div class="liquidGlass-tint"></div>

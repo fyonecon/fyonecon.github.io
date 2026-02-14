@@ -16,10 +16,10 @@ html {
 @custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
 
 /**/
-@media only screen and (max-width: 279px) {
+@media only screen and (max-width: 259px) {
     body:after{
         width: 700px; height: 100%;
-        content:"Width >= 280 PX";
+        content:"Width >= 260 PX";
         position:fixed; top: 0;
         text-align: left;
         padding: 0 0 0 20px;
@@ -54,6 +54,12 @@ html {
 .clear{
     clear: both;
 }
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
 
 .hide {
 	display: none !important;
@@ -83,19 +89,33 @@ html {
 	background: #CD5C5C;
 }
 
+/* 滚动区域基础样式 - 兼容主流浏览器 */
 .scroll-y-style {
-	overflow-y: auto;
-	overflow-x: hidden;
+    /* 滚动控制 */
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* 触摸行为控制 */
+    touch-action: pan-y;
+    /* iOS平滑滚动 */
+    -webkit-overflow-scrolling: touch;
+    /* Firefox滚动条样式 */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(115, 115, 115, 0.5) transparent;
+    /* 平滑滚动 */
+    scroll-behavior: smooth;
 }
+/* WebKit内核滚动条样式 (Chrome, Safari, Edge新版) */
 .scroll-y-style::-webkit-scrollbar {
-	background-color: rgba(115,115,115,0);
+    width: 8px;
+    background-color: transparent;
 }
 .scroll-y-style::-webkit-scrollbar-thumb {
-	border-radius: 5px;
-    width: 8px;
-	height: 60px;
-	background-color: rgba(115,115,115,0.5);
-	cursor: pointer;
+    border-radius: 8px;
+    background-color: rgba(115, 115, 115, 0.5);
+    min-height: 40px;
+}
+.scroll-y-style::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(115, 115, 115, 0.8);
 }
 
 .font-white{

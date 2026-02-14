@@ -6,6 +6,8 @@
     import {onMount} from "svelte";
     import {browser_ok, runtime_ok} from "../../common/middleware.svelte";
     import {browser} from "$app/environment";
+    import FetchPOST from "../../common/post.svelte";
+    import FetchGET from "../../common/get.svelte";
 
 
     // 本页面参数
@@ -19,6 +21,8 @@
     let ping_host = $state("...");
     let ping_hosts = $state("...");
     let test_db_data = $state("...");
+    let test_index_html_api = $state("...");
+    let test_index_html_info: object[]  = $state([]);
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
     const def = {
@@ -74,8 +78,25 @@
             test_db_data = "Loading...";
             let mark = func.get_time_date("Y-m-d H:i");
             func.set_db_data("test_" + mark, "This db data. " + mark).then(value=>{
-                console.log(value);
+                // console.log(value);
                 test_db_data = value;
+            });
+        },
+        test_index_html: function(){
+            test_index_html_api = "//" + window.location.host;
+            test_index_html_info = [{
+                key: "CDN",
+                value: test_index_html_api,
+            }];
+            fetch(test_index_html_api).then(response => {
+                let headers = response.headers;
+                for (let [key, value] of headers) {
+                    // console.log(`${key}: ${value}`);
+                    test_index_html_info.push({
+                        key: key,
+                        value: value,
+                    });
+                }
             });
         },
     };
@@ -86,6 +107,8 @@
         func.console_log("page_start=", route);
         func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // 开始
+        func.title(func.get_translate("Info"));
+        def.test_index_html();
     }
 
     // 标签处于切换显示状态
@@ -137,45 +160,38 @@
         </div>
         <div class="info-div-content">
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://www.google.com ：</span>
-                <br>
-                <span class="info-div-content-li-res">{@html ping_google}</span>
+                <span class="info-div-content-li-title select-text float-left">google.com ：</span>
+                <span class="info-div-content-li-res float-left">{@html ping_google}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://www.bing.com ：</span>
-                <br>
-                <span class="info-div-content-li-res">{@html ping_bing}</span>
+                <span class="info-div-content-li-title select-text float-left">bing.com ：</span>
+                <span class="info-div-content-li-res float-left">{@html ping_bing}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://www.youtube.com ：</span>
-                <br>
-                <span class="info-div-content-li-res">{@html ping_youtube}</span>
+                <span class="info-div-content-li-title select-text float-left">youtube.com ：</span>
+                <span class="info-div-content-li-res float-left">{@html ping_youtube}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://www.ithome.com ：</span>
-                <br>
-                <span class="info-div-content-li-res">{@html ping_ithome}</span>
+                <span class="info-div-content-li-title select-text float-left">ithome.com ：</span>
+                <span class="info-div-content-li-res float-left">{@html ping_ithome}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://github.com ：</span>
-                <br>
-                <span class="info-div-content-li-res">{@html ping_github}</span>
+                <span class="info-div-content-li-title select-text float-left">github.com ：</span>
+                <span class="info-div-content-li-res float-left">{@html ping_github}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">http://{func.get_host()} ：</span>
-                <br>
-                <span class="info-div-content-li-res">{@html ping_host}</span>
+                <span class="info-div-content-li-title select-text float-left">http://{func.get_host()} ：</span>
+                <span class="info-div-content-li-res float-left">{@html ping_host}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break">
-                <span class="info-div-content-li-title select-text">https://{func.get_host()} ：</span>
-                <br>
-                <span class="info-div-content-li-res">{@html ping_hosts}</span>
+                <span class="info-div-content-li-title select-text float-left">https://{func.get_host()} ：</span>
+                <span class="info-div-content-li-res float-left">{@html ping_hosts}</span>
                 <div class="clear"></div>
             </div>
         </div>
@@ -199,7 +215,7 @@
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
-                <span class="info-div-content-li-title ">设备CPU数(核) ：</span>
+                <span class="info-div-content-li-title ">设备CPU数(逻辑核) ：</span>
                 <br>
                 <span class="info-div-content-li-res">{@html window.navigator.hardwareConcurrency || "-不支持-"}</span>
                 <div class="clear"></div>
@@ -280,16 +296,19 @@
         </div>
     </div>
 
-    <div class="info-div hide ">
+    <div class="info-div">
         <div class="info-div-title">
-            <span class="font-text"> </span>
+            <span class="font-text">CDN信息</span>
         </div>
         <div class="info-div-content ">
-            <div class="info-div-content-li break select-text">
-                <span class="info-div-content-li-title "> </span>
-                <span class="info-div-content-li-res"> </span>
-                <div class="clear"></div>
-            </div>
+            {#each test_index_html_info as info}
+                <div class="info-div-content-li break select-text">
+                    <span class="info-div-content-li-title ">{@html info.key}:  </span>
+                    <br>
+                    <span class="info-div-content-li-res ">{@html info.value}</span>
+                    <div class="clear"></div>
+                </div>
+            {/each}
         </div>
     </div>
 

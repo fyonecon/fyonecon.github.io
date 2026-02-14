@@ -57,14 +57,16 @@
                 theme_model = mode;
                 document.documentElement.setAttribute('data-mode', mode);
             });
-        }
+        },
+        //
     };
 
 
     // 页面函数执行的入口，实时更新数据
     function page_start(){
         func.console_log("page_start=", route);
-        // 开始
+
+        //
         route = func.get_route();
 
         // 网站翻译语言
@@ -156,7 +158,6 @@
                 }
             });
         }
-        //
 
     });
 

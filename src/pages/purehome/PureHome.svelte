@@ -243,7 +243,8 @@
     function page_start(){
         func.console_log("page_start=", route);
         func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
-        // 创建视图
+        // 开始
+        func.title(func.get_translate("PureHome"));
         def.create_select();
         def.input_history("");
     }

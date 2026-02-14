@@ -11,6 +11,6 @@
     <meta name="description" content="PureHome，纯净主页，替代浏览器主页。不收集任何隐私！" />
 </svelte:head>
 
-<section class="section-main scroll-y-style ">
+<section class="section-main scroll-y-style">
     <PureHome />
 </section>

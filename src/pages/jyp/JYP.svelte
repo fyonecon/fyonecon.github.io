@@ -170,6 +170,7 @@
         func.console_log("page_show=", route);
         func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // show
+        func.title(func.get_translate("JYP"));
     }
 
     // 标签处于切换隐藏状态

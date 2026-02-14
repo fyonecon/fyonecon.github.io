@@ -8,7 +8,7 @@ interface SearchEnginesDictType {
 const search_engines_dict: SearchEnginesDictType = {
     bing: {
         name: "Bing",
-        url: "https://www.bing.com/?ensearch=0&q=",
+        url: "https://www.bing.com/?ensearch=0&adlt=strict&q=",
     },
     baidu: {
         name: "百度Baidu",
@@ -20,7 +20,7 @@ const search_engines_dict: SearchEnginesDictType = {
     },
     google: {
         name: "Google",
-        url: "https://www.google.com/search?q=",
+        url: "https://www.google.com/search?safe=active&num=50&q=",
     },
     yahoo: {
         name: "Yahoo!",
@@ -28,7 +28,7 @@ const search_engines_dict: SearchEnginesDictType = {
     },
     yandex: {
         name: "Yandex",
-        url: "https://yandex.com/search/?text=",
+        url: "https://yandex.com/search/?filter=none&text=",
     },
     android_cn: {
         name: "中国区安卓应用",

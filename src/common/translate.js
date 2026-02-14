@@ -92,7 +92,7 @@ const lang_dict = {
     },
     JYP: {
         zh: "教育片",
-        en: "JYP",
+        en: "Educational film",
     },
     //
     url_timeout: {
@@ -279,6 +279,14 @@ const lang_dict = {
     search_enter_input: {
         zh: "🔍&nbsp;搜 索",
         en: "🔍&nbsp;Search",
+    },
+    search_opening_page: {
+        zh: "正在打开",
+        en: "Opening",
+    },
+    search_res_show: {
+        zh: "内容",
+        en: "The result",
     },
     //
     link_news: {

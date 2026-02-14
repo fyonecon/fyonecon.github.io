@@ -35,6 +35,10 @@
                 href = href.replaceAll("//", "/");
                 that.open_url(href);
             }
+            else if (word === "@reload" || word === "@fresh" || word === "@refresh"){
+                back_state = true;
+                func.fresh_page(0);
+            }
             else if (word === "@link" || word === "@bookmark"){
                 back_state = true;
                 that.open_url("./link");
@@ -58,34 +62,34 @@
             }
             // 自定义搜索引擎
             else if (word === "@bing"){
+                back_state = true;
                 browser_search_engine_show = "show";
                 browser_search_engine = browser_search_engine_http + "://" + window.location.host + config.sys.base_route + "/search" + "?engine=bing&history=yes&word=%s";
-                back_state = true;
             }
             else if (word === "@baidu"){
+                back_state = true;
                 browser_search_engine_show = "show";
                 browser_search_engine = browser_search_engine_http + "://" + window.location.host + config.sys.base_route + "/search" + "?engine=baidu&history=no&word=%s";
-                back_state = true;
             }
             else if (word === "@sogou"){
+                back_state = true;
                 browser_search_engine_show = "show";
                 browser_search_engine = browser_search_engine_http + "://" + window.location.host + config.sys.base_route + "/search" + "?engine=sogou&history=no&word=%s";
-                back_state = true;
             }
             else if (word === "@google"){
+                back_state = true;
                 browser_search_engine_show = "show";
                 browser_search_engine = browser_search_engine_http + "://" + window.location.host + config.sys.base_route + "/search" + "?engine=google&history=yes&word=%s";
-                back_state = true;
             }
             else if (word === "@yahoo"){
+                back_state = true;
                 browser_search_engine_show = "show";
                 browser_search_engine = browser_search_engine_http + "://" + window.location.host + config.sys.base_route + "/search" + "?engine=yahoo&history=yes&word=%s";
-                back_state = true;
             }
             else if (word === "@yandex"){
+                back_state = true;
                 browser_search_engine_show = "show";
                 browser_search_engine = browser_search_engine_http + "://" + window.location.host + config.sys.base_route + "/search" + "?engine=yandex&history=yes&word=%s";
-                back_state = true;
             }
             //
 
@@ -109,6 +113,8 @@
             let engine = func.search_href_param("", "engine").trim();
             let history = func.search_href_param("", "history").trim();
             let url_timeout = func.search_href_param("", "url_timeout").trim();
+            // 显示title
+            func.title(func.get_translate("search_opening_page") + " [" + word.slice(0, 30) + " ...]");
             // 插入历史记录
             if (history === "yes" || history === "true" || history === "True" || history === "1"){
                 that.input_history(word);
@@ -129,6 +135,7 @@
                         that.open_url(href);
                     }else{
                         func.loading_hide();
+                        func.title(func.get_translate("search_res_show"));
                     }
                 }else{ // 过期
                     func.open_url_404("./", func.get_translate("url_timeout"), func.get_href());
@@ -141,6 +148,7 @@
                     that.open_url(href);
                 }else{
                     func.loading_hide();
+                    func.title(func.get_translate("search_res_show"));
                 }
             }
         },
