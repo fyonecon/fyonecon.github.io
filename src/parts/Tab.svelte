@@ -220,7 +220,7 @@
     /**/
     .liquidGlass-box {
         position: fixed;
-        bottom: 25px;
+        bottom: 22px;
         left: 0;
         right: 0;
         margin: 0 auto;
