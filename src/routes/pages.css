@@ -4,7 +4,7 @@
 .section-main{
     position: fixed;
     width: 100%;
-    height: calc(100% - 10px);
+    height: calc(100% - 5px);
     top: 0;
     z-index: 0;
     left: 0;

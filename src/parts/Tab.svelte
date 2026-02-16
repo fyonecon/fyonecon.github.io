@@ -30,6 +30,7 @@
     let qr_enbig_num = $state(0);
     let qr_enbig_width = $state(20);
     let qr_enbig_height = $state(20);
+    let tab_bottom = $state(10);
 
 
     // 监听左右滑动
@@ -155,6 +156,11 @@
         def.calc_tab();
         def.show_glass_div();
         def.show_qr_div();
+        if (func.is_pc_pwa() || func.is_mobile_pwa()){
+            tab_bottom = 22;
+        }else{
+            tab_bottom = 10;
+        }
     });
 
 
@@ -192,7 +198,7 @@
         </filter>
     </svg>
     <!---->
-    <div class="liquidGlass-box pywebview-drag-region can-drag  " id="swiper_tab" style="width: {tab_width}px;" >
+    <div class="liquidGlass-box pywebview-drag-region can-drag  " id="swiper_tab" style="width: {tab_width}px; bottom: {tab_bottom}px;" >
         <div class="liquidGlass-wrapper">
             <div class="liquidGlass-effect"></div>
             <div class="liquidGlass-tint"></div>
@@ -220,7 +226,7 @@
     /**/
     .liquidGlass-box {
         position: fixed;
-        bottom: 22px;
+        bottom: 10px;
         left: 0;
         right: 0;
         margin: 0 auto;
@@ -291,13 +297,14 @@
         position: fixed;
         z-index: 1;
         right: 15px;
-        bottom: 80px;
+        bottom: 90px;
         border-radius: 5px;
         padding: 1px 1px;
         background-color: rgba(160,160,160, 0.6);
         overflow: hidden;
         width: 20px;
         height: 20px;
+        opacity: 0.9;
     }
     .tab-qr-img{
         width: 100%;
