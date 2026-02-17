@@ -238,8 +238,8 @@
         position: relative;
         display: flex;
         overflow: hidden;
-        /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);*/
-        border: 1px solid rgba(160,160,160, 0.6);
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(160,160,160, 0);
         transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.2);
         border-radius: 27px;
         padding: 0 5px;
@@ -267,7 +267,7 @@
         z-index: 2;
         overflow: hidden;
         /*box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);*/
-        border: 1px solid rgba(250,250,250, 0.6);
+        border: 2px solid rgba(250,250,250, 0.2);
         border-radius: 27px;
     }
     .liquidGlass-text {
