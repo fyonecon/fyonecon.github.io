@@ -238,7 +238,7 @@
         position: relative;
         display: flex;
         overflow: hidden;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0);
         border: 1px solid rgba(160,160,160, 0);
         transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.2);
         border-radius: 25px;
@@ -248,7 +248,7 @@
         position: absolute;
         z-index: 0;
         inset: 0;
-        backdrop-filter: blur(2px);
+        backdrop-filter: blur(4px);
         filter: url(#glass-distortion);
         overflow: hidden;
         isolation: isolate;
@@ -267,7 +267,7 @@
         z-index: 2;
         overflow: hidden;
         /*box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);*/
-        border: 1px solid rgba(250,250,250, 0.5);
+        border: 1px solid rgba(250,250,250, 0.6);
         border-radius: 25px;
     }
     .liquidGlass-text {
