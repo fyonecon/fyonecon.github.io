@@ -267,7 +267,7 @@
         z-index: 2;
         overflow: hidden;
         /*box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);*/
-        border: 1px solid rgba(250,250,250, 0.4);
+        border: 1px solid rgba(250,250,250, 0.5);
         border-radius: 25px;
     }
     .liquidGlass-text {
@@ -278,7 +278,7 @@
     /**/
     .tab-item{
         width: 80px;
-        margin: 3px 0px;
+        margin: 4px 0;
         overflow: hidden;
         text-align: center;
         border: none;
