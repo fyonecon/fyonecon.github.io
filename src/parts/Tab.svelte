@@ -50,7 +50,7 @@
             let len = tab_data.length;
             let wrapper_padding = 5;
             let item_margin = 2;
-            tab_width = (80 + item_margin*2) * len + wrapper_padding*2;
+            tab_width = (80 + item_margin*2) * len + wrapper_padding*2 + 2;
         },
         show_glass_div: function (){ // 是否隐藏tab区域
             if (route === "/purehome" || route === "/link"){
@@ -238,7 +238,8 @@
         position: relative;
         display: flex;
         overflow: hidden;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);
+        /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);*/
+        border: 1px solid rgba(160,160,160, 0.6);
         transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.2);
         border-radius: 27px;
         padding: 0 5px;
@@ -257,7 +258,7 @@
         z-index: 1;
         position: absolute;
         inset: 0;
-        background: rgba(160,160,160, 0.2);
+        background: rgba(160,160,160, 0.1);
         border-radius: 27px;
     }
     .liquidGlass-shine {
@@ -265,8 +266,8 @@
         inset: 0;
         z-index: 2;
         overflow: hidden;
-        box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2),
-        inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);
+        /*box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);*/
+        border: 1px solid rgba(250,250,250, 0.6);
         border-radius: 27px;
     }
     .liquidGlass-text {
