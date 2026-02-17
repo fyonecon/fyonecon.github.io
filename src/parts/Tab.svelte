@@ -50,7 +50,7 @@
             let len = tab_data.length;
             let wrapper_padding = 5;
             let item_margin = 2;
-            tab_width = (80 + item_margin*2) * len + wrapper_padding*2 + 2;
+            tab_width = (80 + item_margin*2 - 4) * len + wrapper_padding*2 + 2;
         },
         show_glass_div: function (){ // 是否隐藏tab区域
             if (route === "/purehome" || route === "/link"){
@@ -278,7 +278,7 @@
     /**/
     .tab-item{
         width: 80px;
-        margin: 5px 2px;
+        margin: 3px 0px;
         overflow: hidden;
         text-align: center;
         border: none;
@@ -288,6 +288,10 @@
         transition: all 0.1s ease-in;
         opacity: 0.9;
         cursor: pointer;
+        /*  移除原始点击效果  */
+        box-shadow: none;
+        background: transparent;
+        -webkit-tap-highlight-color: transparent;
     }
     .tab-item-active{
         color: var(--color-blue-500);
