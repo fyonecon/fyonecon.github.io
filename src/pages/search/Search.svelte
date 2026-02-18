@@ -13,6 +13,9 @@
     let route = $state(func.get_route());
     let browser_search_engine_show = $state("hide");
     let browser_search_engine = $state("");
+    let show_txt = $state("🚩");
+    let page_show_num = $state(0);
+    let page_show_num_timer = $state(0);
 
     const search_selected_key = config.app.app_class + "search_selected";
     const search_history_key = search_selected_key+"_history";
@@ -123,6 +126,7 @@
             if (url_timeout){ // 从搜索页过来
                 func.loading_show();
                 if (func.url_timeout_decode("search", url_timeout)){
+                    show_txt = func.get_translate("search_opening_page") + " ...";
                     // 是url链接就直接打开
                     if (func.is_url(word)){
                         that.open_url(word);
@@ -135,6 +139,7 @@
                         that.open_url(href);
                     }else{
                         func.loading_hide();
+                        show_txt = "🚩";
                         func.title(func.get_translate("search_res_show"));
                     }
                 }else{ // 过期
@@ -209,7 +214,18 @@
         func.console_log("page_show=", route);
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
         // show
-        def.check_param();
+
+        // 优化open_url体验
+        page_show_num++;
+        clearTimeout(page_show_num_timer);
+        if (page_show_num <= 2){
+            page_show_num_timer = setTimeout(function (){
+                def.check_param();
+            }, 800);
+        }
+
+        //
+
     }
 
     // 标签处于切换隐藏状态
@@ -248,7 +264,7 @@
 
 <div class="page-back select-none">
     <a href="./?from=search" title="Back home">
-        <div class="font-text font-blue center" style="height: 50px; line-height: 50px; overflow: hidden; padding: 0 20px;">.</div>
+        <div class="font-text center" style="height: 50px; line-height: 50px; overflow: hidden; padding: 0 20px; opacity: 0.5;">{@html show_txt}</div>
     </a>
 </div>
 

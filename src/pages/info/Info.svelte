@@ -316,7 +316,7 @@
 
 <style>
     .info-box{
-        padding: 20px 15px;
+        padding: 20px 10px;
     }
 
     .info-div{

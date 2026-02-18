@@ -362,5 +362,8 @@
 
 <style>
 
+    .link-box{
+        padding: 20px 5px;
+    }
 
 </style>

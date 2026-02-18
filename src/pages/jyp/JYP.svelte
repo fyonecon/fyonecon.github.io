@@ -263,6 +263,10 @@
 
 <style>
 
+    .link-box{
+        padding: 20px 5px;
+    }
+
     .link-group-title-div{
         line-height: 24px;
         margin: 10px 5px 5px 5px;
