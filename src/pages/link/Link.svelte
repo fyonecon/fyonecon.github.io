@@ -15,21 +15,6 @@
             list: [
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("虎嗅"),
-                    href: func.string_to_unicode("https://www.huxiu.com")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("太平洋科技"),
-                    href: func.string_to_unicode("https://g.pconline.com.cn/x/news")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("IT之家"),
-                    href: func.string_to_unicode("https://m.ithome.com")
-                },
-                { //
-                    show_lang: "all",
                     title: func.string_to_unicode("新浪财经7x24"),
                     href: func.string_to_unicode("https://finance.sina.com.cn/7x24/")
                 },
@@ -50,6 +35,11 @@
                 // },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("每日早报"),
+                    href: func.string_to_unicode("https://readhub.cn/daily")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("联合早报"),
                     href: func.string_to_unicode("https://yzaobao.com")
                 },
@@ -60,19 +50,39 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("CNN"),
-                    href: func.string_to_unicode("https://edition.cnn.com/world")
+                    title: func.string_to_unicode("三联生活周刊"),
+                    href: func.string_to_unicode("https://www.lifeweek.com.cn/")
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("搜狐新闻"),
-                    href: func.string_to_unicode("https://sohu.com")
+                    title: func.string_to_unicode("虎嗅"),
+                    href: func.string_to_unicode("https://www.huxiu.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("太平洋科技"),
+                    href: func.string_to_unicode("https://g.pconline.com.cn/x/news")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("IT之家"),
+                    href: func.string_to_unicode("https://m.ithome.com")
                 },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("凤凰科技"),
                     href: func.string_to_unicode("https://itech.ifeng.com")
                 },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("CNN"),
+                    href: func.string_to_unicode("https://edition.cnn.com/world")
+                },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("搜狐新闻"),
+                //     href: func.string_to_unicode("https://sohu.com")
+                // },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("MacRumors"),
@@ -118,11 +128,11 @@
                     title: func.string_to_unicode("YouTube"),
                     href: func.string_to_unicode("https://youtube.com")
                 },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("X.com"),
-                    href: func.string_to_unicode("https://x.com")
-                },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("X.com"),
+                //     href: func.string_to_unicode("https://x.com")
+                // },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("Reddit"),
@@ -133,11 +143,11 @@
                     title: func.string_to_unicode("V2EX.com"),
                     href: func.string_to_unicode("https://v2ex.com")
                 },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Linux.do"),
-                    href: func.string_to_unicode("https://linux.do")
-                },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("Linux.do"),
+                //     href: func.string_to_unicode("https://linux.do")
+                // },
             ],
         },
         {
@@ -193,11 +203,11 @@
                     title: func.string_to_unicode("Gboard.apk"),
                     href: func.string_to_unicode("https://gboard.en.divxland.org/download/")
                 },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Chrome.apk"),
-                    href: func.string_to_unicode("https://google-chrome.en.divxland.org/download/")
-                },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("Chrome.apk"),
+                //     href: func.string_to_unicode("https://google-chrome.en.divxland.org/download/")
+                // },
                 // { //
                 //     show_lang: "all",
                 //     title: func.string_to_unicode("DevCheck.apk"),
