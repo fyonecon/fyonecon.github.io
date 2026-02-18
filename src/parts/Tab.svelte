@@ -24,8 +24,8 @@
         },
         //
     ];
-    let tab_width = $state(280);
-    let tab_item_width = $state(72);
+    let tab_div_width = $state(280);
+    let tab_item_width = $state(80);
     let glass_div_display = $state("hide");
     let qr_img_display = $state("hide");
     let qr_img_src = $state("");
@@ -52,21 +52,23 @@
             let max_screen_width = 300; // px，最小屏幕宽度
             let tab_data_len = tab_data.length; // tab_item数量
 
-            // 边框px
-            let wrapper_padding = 5;
+            // 留白边框px
             let item_margin = 2;
+            let item_padding = 2;
+            let auto_item_margin = ((item_padding+item_margin)*2 - item_margin*2*(tab_data_len-1)); // 自适应tab的交叉和
 
-            // 动态计算tab_div和tab_item的实际宽度
-            if (tab_data_len <= 3){ // tab[0, 3]
+            // tab_item宽度
+            if (tab_data_len <= 3){ // tab=[0, 3]
                 tab_item_width = 80; // px
-            }else{ // tab[4, 9]
-                tab_item_width = Math.floor((max_screen_width - (wrapper_padding+item_margin)*2)/tab_data_len);
-                if (tab_item_width <= 32){ // 限制最多9个
-                    tab_item_width = 32;
+            } else { // tab=[4, 8]
+                tab_item_width = Math.floor((max_screen_width - auto_item_margin)/tab_data_len);
+                if (tab_item_width <= 40){ // tab=8
+                    tab_item_width = 40;
                 }
             }
-            //
-            tab_width = (tab_item_width + item_margin*2 - 4) * tab_data_len + wrapper_padding*2 + 2;
+
+            // tab_div总宽
+            tab_div_width = tab_item_width*tab_data_len + auto_item_margin;
         },
         route_in_tab_data: function (_route){ // object[]是否含有某key的value值
             return tab_data.find(tab => tab.route === _route);
@@ -236,7 +238,7 @@
         </filter>
     </svg>
     <!---->
-    <div class="liquidGlass-box pywebview-drag-region can-drag  " id="swiper_tab" style="width: {tab_width}px; bottom: {tab_bottom}px;" >
+    <div class="liquidGlass-box pywebview-drag-region can-drag  " id="swiper_tab" style="width: {tab_div_width}px; bottom: {tab_bottom}px;" >
         <div class="liquidGlass-wrapper">
             <div class="liquidGlass-effect"></div>
             <div class="liquidGlass-tint"></div>
@@ -316,13 +318,14 @@
     /**/
     .tab-item{
         /*width: 72px; !*80px 72px *!*/
-        margin: 4px 0;
+        margin: 2px -2px;
+        padding: 2px 0;
         overflow: hidden;
         text-align: center;
         border: none;
         outline: none;
         float: left;
-        border-radius: 22px;
+        border-radius: 25px;
         transition: all 0.1s ease-in;
         opacity: 0.9;
         cursor: pointer;
