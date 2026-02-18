@@ -326,7 +326,7 @@
 
     .info-div-title{
         padding: 10px 0;
-        text-indent: 1px;
+        text-indent: 2px;
     }
     .info-div-content{
         padding: 10px 10px;
