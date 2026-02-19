@@ -90,12 +90,16 @@
             }];
             fetch(test_index_html_api).then(response => {
                 let headers = response.headers;
+                let index = 0;
                 for (let [key, value] of headers) {
                     // console.log(`${key}: ${value}`);
-                    test_index_html_info.push({
-                        key: key,
-                        value: value,
-                    });
+                    if (index <= 6){ // 不需要展示全部
+                        test_index_html_info.push({
+                            key: key,
+                            value: value,
+                        });
+                    }
+                    ++index;
                 }
             });
         },
