@@ -350,8 +350,9 @@
 
 <style>
     .purehome-box{
-        padding-bottom: 40px;
-        padding-top: 50px;
+        padding-bottom: 80px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     @media only screen and (min-width: 200px){
         .purehome-box{
@@ -360,37 +361,37 @@
     }
     @media only screen and (min-width: 300px){
         .purehome-box{
-            padding-top: 20px;
+            padding-top: 10px;
         }
     }
     @media only screen and (min-width: 500px){
         .purehome-box{
-            padding-top: 40px;
+            padding-top: 30px;
         }
     }
     @media only screen and (min-width: 600px){
         .purehome-box{
-            padding-top: 60px;
+            padding-top: 50px;
         }
     }
     @media only screen and (min-width: 800px){
         .purehome-box{
-            padding-top: 80px;
+            padding-top: 70px;
         }
     }
     @media only screen and (min-width: 800px){
         .purehome-box{
-            padding-top: 100px;
+            padding-top: 90px;
         }
     }
     @media only screen and (min-width: 1200px){
         .purehome-box{
-            padding-top: 130px;
+            padding-top: 120px;
         }
     }
     @media only screen and (min-width: 1800px){
         .purehome-box{
-            padding-top: 150px;
+            padding-top: 140px;
         }
     }
     @media only screen and (min-width: 2600px){
@@ -407,7 +408,7 @@
         height: 70px;
         overflow: hidden;
         clear: both;
-        margin-top: 30px;
+        margin-top: 20px;
         position: relative;
     }
     .search-div-btn{

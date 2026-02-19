@@ -32,7 +32,7 @@
     let qr_enbig_num = $state(0);
     let qr_enbig_width = $state(20);
     let qr_enbig_height = $state(20);
-    let tab_bottom = $state(15);
+    let tab_bottom = $state(10);
 
 
     // 监听左右滑动
@@ -197,9 +197,9 @@
         def.show_glass_div();
         def.show_qr_div();
         if (func.is_pc_pwa() || func.is_mobile_pwa()){
-            tab_bottom = 22;
+            tab_bottom = 20;
         }else{
-            tab_bottom = 15;
+            tab_bottom = 10;
         }
     });
 

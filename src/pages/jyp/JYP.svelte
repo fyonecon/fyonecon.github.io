@@ -264,7 +264,7 @@
 <style>
 
     .link-box{
-        padding: 20px 5px;
+        padding: 10px 5px;
     }
 
     .link-group-title-div{

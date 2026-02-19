@@ -279,10 +279,16 @@
 </div>
 
 <style>
-    .search-box{
-        padding: 20px 15px;
+    .page-back{
+        position: fixed;
+        z-index: 2;
+        width: 100%;
+        height: 50px;
+        top: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
-    .browser-search-engine{
-        margin-top: 20px;
+    .search-box{
+        padding: 10px 10px;
     }
 </style>
