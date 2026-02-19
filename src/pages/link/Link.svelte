@@ -35,8 +35,8 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("凤凰科技"),
-                    href: func.string_to_unicode("https://itech.ifeng.com")
+                    title: func.string_to_unicode("太平洋科技"),
+                    href: func.string_to_unicode("https://g.pconline.com.cn/x/news")
                 },
                 { //
                     show_lang: "all",
@@ -45,18 +45,18 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("太平洋科技"),
-                    href: func.string_to_unicode("https://g.pconline.com.cn/x/news")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("CNN"),
-                    href: func.string_to_unicode("https://edition.cnn.com/world")
+                    title: func.string_to_unicode("凤凰科技"),
+                    href: func.string_to_unicode("https://itech.ifeng.com")
                 },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("搜狐新闻"),
                     href: func.string_to_unicode("https://sohu.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("CNN"),
+                    href: func.string_to_unicode("https://edition.cnn.com/world")
                 },
                 { //
                     show_lang: "all",
@@ -81,6 +81,11 @@
             list: [
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("CCTV1综合"),
+                    href: func.string_to_unicode("https://tv.cctv.cn/live/cctv1/")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("CCTV17农业"),
                     href: func.string_to_unicode("https://tv.cctv.cn/live/cctv17/")
                 },
@@ -88,11 +93,6 @@
                     show_lang: "all",
                     title: func.string_to_unicode("CCTV14少儿"),
                     href: func.string_to_unicode("https://tv.cctv.cn/live/cctvchild/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("CCTV1综合"),
-                    href: func.string_to_unicode("https://tv.cctv.cn/live/cctv1/")
                 },
                 { //
                     show_lang: "all",
@@ -172,7 +172,7 @@
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("vivo-安卓商店"),
-                    href: func.string_to_unicode("http://m.appchina.com")
+                    href: func.string_to_unicode("https://h5.appstore.vivo.com.cn/#/")
                 },
                 // { //
                 //     show_lang: "all",

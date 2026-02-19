@@ -408,7 +408,7 @@
         height: 70px;
         overflow: hidden;
         clear: both;
-        margin-top: 20px;
+        /*margin-top: 10px;*/
         position: relative;
     }
     .search-div-btn{

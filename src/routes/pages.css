@@ -12,7 +12,7 @@
     margin-right: auto;
     margin-left: auto;
     opacity: 0.8;
-    padding-bottom: 100px;
+    padding-bottom: 115px;
 }
 .page-div{
     width: 100%;
@@ -49,6 +49,6 @@
     height: 42px;
     overflow: hidden;
     text-align: center;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 

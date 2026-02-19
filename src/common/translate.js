@@ -135,7 +135,7 @@ const lang_dict = {
     },
     a_click_tip_back_home: {
         zh: "返回主页",
-        en: "Back Home",
+        en: "Back Home Page",
     },
     //
     confirm_change_language_tip: {
