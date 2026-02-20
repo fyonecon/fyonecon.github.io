@@ -9,7 +9,8 @@
 body,
 html {
 	font-family: "Noto Sans Light", sans-serif;
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 22px;
 }
 
 /*亮暗主题切换*/
@@ -185,18 +186,24 @@ html {
 
 .font-mini {
 	font-size: 12px;
+ line-height: 15px;
 }
 
 .font-text {
-	font-size: 16px;
+	font-size: 15px;
+ line-height: 20px;
 }
 
 .font-title {
-	font-size: 20px;
+	font-size: 18px;
+ line-height: 24px;
+ font-weight: 500;
 }
 
 .font-class {
 	font-size: 24px;
+line-height: 30px;
+font-weight: 600;
 }
 
 
