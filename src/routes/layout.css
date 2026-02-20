@@ -9,7 +9,7 @@
 body,
 html {
 	font-family: "Noto Sans Light", sans-serif;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 /*亮暗主题切换*/
@@ -188,15 +188,15 @@ html {
 }
 
 .font-text {
-	font-size: 15px;
+	font-size: 16px;
 }
 
 .font-title {
-	font-size: 18px;
+	font-size: 20px;
 }
 
 .font-class {
-	font-size: 22px;
+	font-size: 24px;
 }
 
 
