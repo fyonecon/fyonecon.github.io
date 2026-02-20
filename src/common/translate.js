@@ -278,7 +278,7 @@ const lang_dict = {
     },
     search_enter_input: {
         zh: "🔍&nbsp;搜 索",
-        en: "🔍&nbsp;Search",
+        en: "Search",
     },
     search_opening_page: {
         zh: "正在打开",
