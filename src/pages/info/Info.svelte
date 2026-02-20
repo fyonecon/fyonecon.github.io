@@ -157,10 +157,10 @@
 
 <div class="page-div info-box select-none">
 
-    <div class="info-div">
+    <div class="info-div font-text">
         <div class="info-div-title">
             <span class="font-text">Ping 网络</span>
-            <button type="button" class="btn btn-sm preset-filled-primary-500" onclick={()=>def.ping_show()} title="Click">Start</button>
+            <button type="button" class="btn btn-sm preset-filled-primary-500 font-mini" onclick={()=>def.ping_show()} title="Click">Start</button>
         </div>
         <div class="info-div-content">
             <div class="info-div-content-li break">
@@ -201,7 +201,7 @@
         </div>
     </div>
 
-    <div class="info-div ">
+    <div class="info-div font-text">
         <div class="info-div-title">
             <span class="font-text">浏览器信息</span>
         </div>
@@ -300,7 +300,7 @@
         </div>
     </div>
 
-    <div class="info-div">
+    <div class="info-divfont-text">
         <div class="info-div-title">
             <span class="font-text">CDN信息</span>
         </div>
