@@ -300,7 +300,7 @@
         </div>
     </div>
 
-    <div class="info-divfont-text">
+    <div class="info-div font-text">
         <div class="info-div-title">
             <span class="font-text">CDN信息</span>
         </div>

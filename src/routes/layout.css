@@ -6,11 +6,11 @@
 /* iconify图标教程：https://icon-sets.iconify.design/solar/ */
 /* 如果上面遇到@import引入错误，请手动运行‘ npx sv add tailwindcss ’ 来安装tailwindcss */
 
-body,
-html {
+body, html {
 	font-family: "Noto Sans Light", sans-serif;
     font-size: 15px;
     line-height: 22px; /*1.5倍的字体大小*/
+    letter-spacing: 1px;
 }
 
 /*亮暗主题切换*/
@@ -125,6 +125,9 @@ html {
 .font-black{
     color: black;
 }
+.font-gray{
+    color: rgba(160, 160, 160, 1);
+}
 .font-blue{
     color: var(--color-blue-500);
 }
@@ -187,6 +190,7 @@ html {
 .font-mini {
 	font-size: 12px;
     line-height: 16px; /*1.3倍的字体大小*/
+    letter-spacing: 0;
 }
 .font-text {
 	font-size: 15px;

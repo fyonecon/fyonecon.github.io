@@ -299,7 +299,7 @@
                 <option value="{option_dict.value}" selected="{option_dict.selected}">{option_dict.name}</option>
             {/each}
         </select>
-        <input class="search-div-input-input input-border w-full font-text select-text" type="search" maxlength="500" placeholder="{func.get_translate('input_placeholder_search')}"
+        <input class="search-div-input-input input-border w-full font-title select-text" type="search" maxlength="500" placeholder="{func.get_translate('input_placeholder_search')}"
                bind:value={input_value_search}
                onkeydown={(e)=>def.input_enter(e)}
                onmouseenter={(e) => e.currentTarget.focus()}
