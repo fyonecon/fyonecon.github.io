@@ -38,13 +38,31 @@
         },
         create_select: function(){
             //
-            search_engines_array = [
+            search_engines_array = [ // 默认值
                 {
                     name: "Bing",
                     value: "bing",
-                    url: "https://www.bing.com/?ensearch=1&q=",
-                    selected: "selected",
-                }
+                    url: "https://www.bing.com/?ensearch=0&adlt=strict&q=",
+                    selected: "selected", // 默认选中
+                },
+                {
+                    name: "Baidu",
+                    value: "baidu",
+                    url: "https://www.baidu.com/s?ie=utf-8&wd=",
+                    selected: "",
+                },
+                {
+                    name: "Google",
+                    value: "google",
+                    url: "https://www.google.com/search?safe=active&num=20&q=",
+                    selected: "",
+                },
+                {
+                    name: "Yandex",
+                    value: "yandex",
+                    url: "https://yandex.com/search/?filter=none&text=",
+                    selected: "",
+                },
             ];
             //
             func.get_db_data(search_selected_key).then(value => {
@@ -149,9 +167,14 @@
                 if (input_enter_data.input_doing === 1 || input_enter_data.input_doing === 2){ // 输入法输入完成
                     func.console_log("输入法输入完成=", input_enter_data.input_doing);
                     input_enter_data.input_doing = -1; // init
-                    // 执行回车操作
                     that.input_run_search();
                 }else{ // 输入法正在输入
+                    let the_value = input_value_search.trim();
+                    if (!the_value){ // 此处仅做提醒使用，无实际动作
+                        input_enter_data.input_doing = -1;
+                        that.input_run_search();
+                    }
+                    //
                     func.console_log("输入法正在输入=", input_enter_data.input_doing);
                 }
             }
@@ -173,10 +196,12 @@
                 //
                 that.input_history(the_value).then(v=>{
                     func.get_db_data(search_selected_key).then(value => {
+                        //
+                        input_object.blur();
                         open_url_loading_timer = setTimeout(function (){
                             that.input_auto_write("");
                             func.loading_hide();
-                        }, 1200);
+                        }, 2400); // 1.2s是服务器返回.html的时间，0.4s是点击延迟的时间，所以这里建议[1.6s, 3.2s]
                         //
                         if (!value) {value = "bing";}
                         //
@@ -195,14 +220,14 @@
                             }else{
                                 func.open_url_with_default_browser(href);
                             }
-                        }, 200);
+                        }, 400);
                     });
                 });
             }else{
                 input_object.focus();
                 open_url_loading_timer = setTimeout(function (){
                     func.loading_hide();
-                }, 200);
+                }, 400);
             }
         },
         input_auto_write: function(value=""){ // 自动填充input
