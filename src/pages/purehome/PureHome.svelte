@@ -46,7 +46,7 @@
                     selected: "selected", // 默认选中
                 },
                 {
-                    name: "Baidu",
+                    name: "百度Baidu",
                     value: "baidu",
                     url: "https://www.baidu.com/s?ie=utf-8&wd=",
                     selected: "",
@@ -58,15 +58,27 @@
                     selected: "",
                 },
                 {
+                    name: "Yahoo!",
+                    value: "yahoo",
+                    url: "https://search.yahoo.com/search?p=",
+                    selected: "",
+                },
+                {
                     name: "Yandex",
                     value: "yandex",
                     url: "https://yandex.com/search/?filter=none&text=",
                     selected: "",
                 },
+                {
+                    name: "Whois",
+                    value: "whois",
+                    url: "https://www.whois.com/whois/",
+                    selected: "",
+                },
             ];
             //
             func.get_db_data(search_selected_key).then(value => {
-                if (!value){value = "bing";}
+                if (!value){value = "bing";} // 默认选中
                 //
                 let the_dict = search_engines_dict[value];
                 if (the_dict){ // 读取到已设置的引擎

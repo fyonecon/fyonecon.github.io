@@ -82,7 +82,13 @@
 
         // 系统基础条件检测
         if (!runtime_ok()){ // false
-            func.alert_msg(func.get_translate("runtime_error_alert"), "long");
+            let screen_w = 0;
+            let screen_h = 0;
+            if (browser){
+                screen_w = window.screen.availWidth;
+                screen_h = window.screen.availHeight;
+            }
+            func.alert_msg(func.get_translate("runtime_error_alert") + " - [" + screen_w.toString() + "x" +  screen_h.toString() + "]", "long");
             func.title("⚠️");
             page_display="hide";
             return
