@@ -72,6 +72,23 @@
                 ping_hosts = msg;
             });
         },
+        see_ip_detail: function(){
+            let see = "https://ip.im";
+            let href = "./search?word="+encodeURIComponent(func.string_to_unicode(see))+"&engine=bing&url_timeout="+func.url_timeout_encode("search", 0.5*60*60)+"&ap=info";
+            if (browser){
+                if (func.is_wails() || func.is_gthon()){
+                    func.open_url_with_default_browser(href);
+                }else{
+                    if (func.is_mobile_screen()){
+                        window.open(href, "_self");
+                    }else{
+                        window.open(href, "_blank");
+                    }
+                }
+            }else{
+                func.open_url_with_default_browser(href);
+            }
+        },
         test_db: function(){
             let that = this;
             //
@@ -198,6 +215,16 @@
                 <span class="info-div-content-li-res float-left">{@html ping_hosts}</span>
                 <div class="clear"></div>
             </div>
+        </div>
+    </div>
+
+    <div class="info-div font-text">
+        <div class="info-div-title">
+            <span class="font-text">用户IP</span>
+            <button type="button" class="btn btn-sm preset-filled-primary-500 font-mini" onclick={()=>def.see_ip_detail()} title="Click">Detail</button>
+        </div>
+        <div class="info-div-content">
+            <img src="//ip.im/img" alt="My IP Address" style="min-width: 215px; height: 70px; width: 100%;">
         </div>
     </div>
 

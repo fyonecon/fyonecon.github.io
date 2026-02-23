@@ -141,7 +141,7 @@
             list: [
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("Ping、Info"),
+                    title: func.string_to_unicode("Ping/IP/Info"),
                     href: func.string_to_unicode("@info")
                 },
                 { //

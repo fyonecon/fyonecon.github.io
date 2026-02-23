@@ -63,7 +63,7 @@ const search_engines_dict: SearchEnginesDictType = {
         url: "https://icon-sets.iconify.design/?query=",
     },
     ip_domain: {
-        name: "IP & Domain",
+        name: "IP/Domain/CN",
         url: "https://ipchaxun.com/",
     },
     whois: {
