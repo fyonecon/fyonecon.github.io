@@ -84,11 +84,15 @@
         if (!runtime_ok()){ // false
             let screen_w = 0;
             let screen_h = 0;
+            let avail_w = 0;
+            let avail_h = 0;
             if (browser){
-                screen_w = window.screen.availWidth;
-                screen_h = window.screen.availHeight;
+                screen_w = window.screen.width;
+                screen_h = window.screen.height;
+                avail_w = window.screen.availWidth;
+                avail_h = window.screen.availHeight;
             }
-            func.alert_msg(func.get_translate("runtime_error_alert") + " - [" + screen_w.toString() + "x" +  screen_h.toString() + "]", "long");
+            func.alert_msg(func.get_translate("runtime_error_alert") + " - [" + screen_w.toString() + "x" +  screen_h.toString() + "_"+ avail_w.toString() + "x" + avail_h.toString()+"]", "long");
             func.title("⚠️");
             page_display="hide";
             return

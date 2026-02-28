@@ -260,8 +260,8 @@ const lang_dict = {
         en: "Enter folder path",
     },
     runtime_error_alert: {
-        zh: "请尝试“手动刷新页面”或“使用人类浏览器打开页面”",
-        en: "Please try \"manually refreshing the page\" or \"opening the page using a human browser.\"",
+        zh: "请尝试“手动刷新页面🔁”或“使用人类浏览器打开页面”",
+        en: "Please try \"manually refreshing the page🔁\" or \"opening the page using a human browser.\"",
     },
     runtime_cn_chat_alert: {
         zh: "请不要在「微信、QQ、钉钉、飞书、企业微信」中打开本网站。<br/>请使用外部浏览器打开。",
