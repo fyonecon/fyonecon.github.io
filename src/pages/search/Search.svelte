@@ -99,6 +99,15 @@
             //
             return back_state;
         },
+        get_href_domain: function(href=""){ // 返回href的host+port
+            try {
+                const urlObj = new URL(href);
+                let host = urlObj.hostname;
+                return host.replace(/^www\./, '').replaceAll(".", "·").replaceAll(":", "：").slice(0, 54);
+            }catch (e) {
+                return "···";
+            }
+        },
         open_url: function(href=""){
             if (browser){
                 window.location.replace(href);
@@ -126,21 +135,22 @@
             if (url_timeout){ // 从搜索页过来
                 func.loading_show();
                 if (func.url_timeout_decode("search", url_timeout)){
-                    show_txt = func.get_translate("search_opening_page") + " ...";
                     // 是url链接就直接打开
                     if (func.is_url(word)){
+                        show_txt = func.get_translate("search_opening_page") + " " + def.get_href_domain(word);
                         that.open_url(word);
-                        return;
-                    }
-                    // word白名单级校验
-                    if (!that.check_white_word(word)){ // 正常打开关键词
-                        if (!search_engines_dict[engine]){engine = "bing";}
-                        let href = search_engines_dict[engine].url+encodeURIComponent(word);
-                        that.open_url(href);
                     }else{
-                        func.loading_hide();
-                        show_txt = "🚩";
-                        func.title(func.get_translate("search_res_show"));
+                        // word白名单级校验
+                        if (!that.check_white_word(word)){ // 其它关键词
+                            if (!search_engines_dict[engine]){engine = "bing";}
+                            let href = search_engines_dict[engine].url+encodeURIComponent(word);
+                            show_txt = func.get_translate("search_opening_page") + " " + def.get_href_domain(word);
+                            that.open_url(href);
+                        }else{ // 白名单关键词
+                            func.loading_hide();
+                            show_txt = "🚩";
+                            func.title(func.get_translate("search_res_show"));
+                        }
                     }
                 }else{ // 过期
                     func.open_url_404("./", func.get_translate("url_timeout"), func.get_href());
