@@ -94,6 +94,10 @@ const lang_dict = {
         zh: "教育片",
         en: "Educational film",
     },
+    Calculator: {
+        zh: "科学计算器",
+        en: "Scientific Calculator",
+    },
     //
     url_timeout: {
         zh: "链接过期",
@@ -343,6 +347,15 @@ const lang_dict = {
     mp_lieqi: {
         zh: "猎奇",
         en: "Special",
+    },
+    //
+    calculator_history_null: {
+        zh: "历史为空",
+        en: "History is null",
+    },
+    calculator_clear_history: {
+        zh: "清空历史记录？",
+        en: "Clear all history?",
     },
 
 

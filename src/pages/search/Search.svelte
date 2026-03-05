@@ -54,6 +54,10 @@
                 back_state = true;
                 that.open_url("./info");
             }
+            else if (word === "@calculator" || word === "@calc"){
+                back_state = true;
+                that.open_url("./calculator");
+            }
             else if (word === "@404"){
                 back_state = true;
                 that.open_url("./_404");

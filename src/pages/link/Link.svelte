@@ -146,6 +146,11 @@
                 },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("科学计算器"),
+                    href: func.string_to_unicode("@calculator")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("Windy天气"),
                     href: func.string_to_unicode("https://www.windy.com")
                 },
