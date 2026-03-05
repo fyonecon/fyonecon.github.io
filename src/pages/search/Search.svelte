@@ -103,9 +103,9 @@
             try {
                 const urlObj = new URL(href);
                 let host = urlObj.hostname;
-                return host.replace(/^www\./, '').replaceAll(".", "·").replaceAll(":", "：").slice(0, 54);
+                return host.replace(/^www\./, '').slice(0, 54);
             }catch (e) {
-                return "···";
+                return "...";
             }
         },
         open_url: function(href=""){
@@ -126,7 +126,7 @@
             let history = func.search_href_param("", "history").trim();
             let url_timeout = func.search_href_param("", "url_timeout").trim();
             // 显示title
-            func.title(func.get_translate("search_opening_page") + " [" + word.slice(0, 30) + " ...]");
+            func.title(func.get_translate("search_opening_page") + " [" + word.slice(0, 30) + " ... ]");
             // 插入历史记录
             if (history === "yes" || history === "true" || history === "True" || history === "1"){
                 that.input_history(word);
@@ -137,18 +137,18 @@
                 if (func.url_timeout_decode("search", url_timeout)){
                     // 是url链接就直接打开
                     if (func.is_url(word)){
-                        show_txt = func.get_translate("search_opening_page") + " " + def.get_href_domain(word);
+                        show_txt = func.get_translate("search_opening_page") + "  " + def.get_href_domain(word);
                         that.open_url(word);
                     }else{
                         // word白名单级校验
                         if (!that.check_white_word(word)){ // 其它关键词
                             if (!search_engines_dict[engine]){engine = "bing";}
                             let href = search_engines_dict[engine].url+encodeURIComponent(word);
-                            show_txt = func.get_translate("search_opening_page") + " " + def.get_href_domain(word);
+                            show_txt = func.get_translate("search_opening_page") + "  " + def.get_href_domain(word);
                             that.open_url(href);
                         }else{ // 白名单关键词
                             func.loading_hide();
-                            show_txt = "🚩";
+                            show_txt = func.get_translate("search_opening_page");
                             func.title(func.get_translate("search_res_show"));
                         }
                     }
@@ -274,7 +274,7 @@
 
 <div class="page-back select-none">
     <a href="./?from=search" title="Back home">
-        <div class="font-text center" style="height: 50px; line-height: 50px; overflow: hidden; padding: 0 20px; opacity: 0.5;">{@html show_txt}</div>
+        <div class="font-mini center" style="height: 50px; line-height: 50px; overflow: hidden; padding: 0 20px; opacity: 0.4;">{@html show_txt}</div>
     </a>
 </div>
 
