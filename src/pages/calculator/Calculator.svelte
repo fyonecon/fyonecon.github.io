@@ -99,7 +99,7 @@
 
                 function renderHistory() {
                     if (history.length === 0) {
-                        historyList.innerHTML = '<li class="empty-history" style="text-align: center; font-size: 16px; line-height: 70px;"> ✨ '+func.get_translate("Calculator")+' ✨ </li>';
+                        historyList.innerHTML = '<li class="empty-history" style="text-align: center; font-size: 16px; line-height: 70px;opacity: 0.6;"> ✨ '+func.get_translate("Calculator")+' ✨ </li>';
                         return;
                     }
 
@@ -691,7 +691,7 @@
         padding: 10px 10px;
         transition: all 0.1s;
         user-select: none;
-        background: #1e2b36;
+        background-color: var(--color-surface-950);
         color: white;
     }
 
@@ -699,6 +699,7 @@
         border-radius: 20px;
         padding: 0 10px;
         border: 1px solid rgba(180,180,180, 0.9);
+        /*background-color: #314a5c;*/
     }
 
     .history-section {
