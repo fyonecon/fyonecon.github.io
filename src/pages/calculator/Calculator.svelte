@@ -1,34 +1,101 @@
 <script lang="ts">
-    import { resolve } from '$app/paths';
     import func from "../../common/func.svelte.js";
     import {afterNavigate} from "$app/navigation";
     import {onMount} from "svelte";
     import {browser_ok, runtime_ok} from "../../common/middleware.svelte";
     import {browser} from "$app/environment";
     import config from "../../config";
-    import btn_click_mp3 from "../../common/btn_click_mp3";
+    import btn_click_base64_mp3 from "../../common/btn_click_base64_mp3";
 
 
     // 本页面参数
     let route = $state(func.get_route());
-    const audio = new Audio(btn_click_mp3);
+    let calculator_clear_history_timer = $state(0);
+
+    // 播放按键点击mp3声音
+    // AudioContext法（主）
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    let audioBuffer = $state(null);
+    // Audio法（备）
+    const audio = new Audio(btn_click_base64_mp3);
+    audio.volume = 0.8;
+    audio.load(); // 预加载音频并保持准备状态
+    audio.preload = 'auto'; // 添加预加载和缓存优化
 
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
     const def = {
+        init_audio_buffer: function(){ // 预加载音频并保持准备状态
+            // 将Base64转换为ArrayBuffer进行更高效的播放
+            async function loadAudioBuffer() {
+                try {
+                    // 假设btn_click_base64_mp3是Base64字符串
+                    const base64Data = btn_click_base64_mp3.split(',')[1] || btn_click_base64_mp3;
+                    const binaryString = atob(base64Data);
+                    const bytes = new Uint8Array(binaryString.length);
+                    for (let i = 0; i < binaryString.length; i++) {
+                        bytes[i] = binaryString.charCodeAt(i);
+                    }
+                    audioBuffer = await audioContext.decodeAudioData(bytes.buffer);
+                } catch (e) {
+                    console.warn('Web Audio API 不支持，回退到普通Audio', e);
+                }
+            }
+            // 如果支持Web Audio API，使用更高效的播放方式
+            if (window.AudioContext || window.webkitAudioContext) {
+                loadAudioBuffer();
+            }
+        },
         play_btn_click_mp3: function(){
-            // init
-            audio.pause();
-            audio.currentTime = 0;
-            //
-            audio.volume = 0.8;
-            //
-            audio.play()
-                .then(() => {})
-                .catch(error => console.log('播放失败:', error));
-            //
-            audio.addEventListener('ended', () => {
-                //
+            // 使用Web Audio API进行更高效的播放（如果可用）
+            if (audioBuffer && audioContext && audioContext.state !== 'closed') {
+                try {
+                    // 恢复音频上下文（如果在Safari中需要）
+                    if (audioContext.state === 'suspended') {
+                        audioContext.resume();
+                    }
+
+                    const source = audioContext.createBufferSource();
+                    source.buffer = audioBuffer;
+                    source.connect(audioContext.destination);
+                    source.start(0);
+                    return;
+                } catch (e) { // 降级到普通Audio
+                    // 中断上一个未完成的任务，保证当前仅播放一个mp3
+                    audio.paused;
+                    audio.currentTime = 0;
+                    // 播放当前的
+                    audio.play();
+                    //
+                    audio.addEventListener('ended', () => {
+                        audio.load();  // 预加载音频
+                    });
+                }
+            }else{
+                console.warn('音频播放失，audioContext参数错误');
+            }
+
+            // 降级方案：使用优化后的普通Audio
+            // 使用requestAnimationFrame避免阻塞UI
+            requestAnimationFrame(() => {
+                try {
+                    // 克隆音频节点以实现重叠播放
+                    const quickAudio = new Audio(btn_click_base64_mp3);
+                    quickAudio.volume = 0.6; // 稍微降低音量避免爆音
+                    quickAudio.play().catch(e => {
+                        // 忽略自动播放策略错误
+                        if (e.name !== 'NotAllowedError') {
+                            console.warn('音频播放失败1', e);
+                        }
+                    });
+                    // 播放后立即释放资源
+                    quickAudio.addEventListener('ended', () => {
+                        quickAudio.remove();
+                    }, { once: true });
+                } catch (e) {
+                    // 静默失败
+                    console.warn('音频播放失败2', e);
+                }
             });
         },
         init_calculator: function(){
@@ -197,13 +264,16 @@
                     }
 
                     // 显示确认弹窗
-                    if (confirm('⚠️ '+func.get_translate("calculator_clear_history"))) {
-                        clearError();
-                        //
-                        history = [];
-                        saveHistory();
-                        renderHistory();
-                    }
+                    clearTimeout(calculator_clear_history_timer);
+                    calculator_clear_history_timer = setTimeout(function (){
+                        if (confirm('⚠️ '+func.get_translate("calculator_clear_history"))) {
+                            clearError();
+                            //
+                            history = [];
+                            saveHistory();
+                            renderHistory();
+                        }
+                    }, 200);
 
                 });
 
@@ -709,6 +779,7 @@
         // 开始
         func.title(func.get_translate("Calculator"));
         def.init_calculator();
+        def.init_audio_buffer();
     }
 
     // 标签处于切换显示状态
@@ -776,7 +847,7 @@
             <button class="btn clear_history" title="Clear all history" data-action="clear_history" id="clearHistoryBtn">Clear</button>
             <button class="btn rewrite" data-action="R" title="Rewrite">Rewrite</button>
             <button class="btn del" data-action="DEL" title="Del">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M19 3a3 3 0 0 1 2.995 2.824L22 6v12a3 3 0 0 1-2.824 2.995L19 21H8.108a3 3 0 0 1-2.436-1.25l-.108-.16l-4.08-6.53a2 2 0 0 1-.087-1.967l.086-.153l4.081-6.53a3 3 0 0 1 2.351-1.404L8.108 3zm0 2H8.108a1 1 0 0 0-.773.366l-.075.104L3.18 12l4.08 6.53a1 1 0 0 0 .72.462l.128.008H19a1 1 0 0 0 .993-.883L20 18V6a1 1 0 0 0-.883-.993zm-8.121 3.464l2.12 2.122l2.122-2.122a1 1 0 1 1 1.414 1.415L14.415 12l2.12 2.121a1 1 0 0 1-1.414 1.415L13 13.414l-2.121 2.122a1 1 0 1 1-1.415-1.415L11.586 12L9.464 9.879a1 1 0 0 1 1.415-1.415"/></g></svg>
+                <svg style="display: inline-block;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M19 3a3 3 0 0 1 2.995 2.824L22 6v12a3 3 0 0 1-2.824 2.995L19 21H8.108a3 3 0 0 1-2.436-1.25l-.108-.16l-4.08-6.53a2 2 0 0 1-.087-1.967l.086-.153l4.081-6.53a3 3 0 0 1 2.351-1.404L8.108 3zm0 2H8.108a1 1 0 0 0-.773.366l-.075.104L3.18 12l4.08 6.53a1 1 0 0 0 .72.462l.128.008H19a1 1 0 0 0 .993-.883L20 18V6a1 1 0 0 0-.883-.993zm-8.121 3.464l2.12 2.122l2.122-2.122a1 1 0 1 1 1.414 1.415L14.415 12l2.12 2.121a1 1 0 0 1-1.414 1.415L13 13.414l-2.121 2.122a1 1 0 1 1-1.415-1.415L11.586 12L9.464 9.879a1 1 0 0 1 1.415-1.415"/></g></svg>
             </button>
             <!--2-->
             <button class="btn function" data-action="sin">sin</button>
@@ -824,6 +895,11 @@
         margin: 0 auto;
     }
 
+    /* 隐藏默认的触摸高亮 */
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+
     .calculator {
         font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
         max-width: 520px;
@@ -834,7 +910,6 @@
         /**/
         margin: auto auto;
         padding: 10px 10px;
-        transition: all 0.1s;
         user-select: none;
         background-color: var(--color-surface-950);
         color: white;
@@ -943,8 +1018,8 @@
         opacity: 1;
     }
     .btn:active {
-        transform: translateY(2px);
-        opacity: 0.8;
+        transform: scale(1.08);
+        transition: transform 0.1s linear;
     }
     .btn:hover {
         opacity: 0.9;
@@ -959,22 +1034,18 @@
     }
     .btn.equals {
         background-color: #e6845e;
-        font-weight: 600;
+        font-weight: 700;
         grid-column: span 2;
     }
+
     .btn.clear_history{
         line-height: 16px;
         background-color: red;
-        font-size: 13px;
-        color: #0f212b;
-        border-color: red;
-    }
-    .btn.rewrite {
-        line-height: 16px;
-        background-color: #e6845e;
         font-size: 11px;
         color: #0f212b;
+        border-color: red;
         font-weight: 400;
+        /**/
         transform: scaleY(1.2);
         display: inline-block;
         padding-top: 0;
@@ -983,15 +1054,52 @@
         margin-top: 4px;
         border-radius: 53px;
     }
+    .btn.clear_history:active{
+        transform: translateY(4px);
+        transition: transform 0.1s ease;
+    }
+    .btn.rewrite {
+        line-height: 16px;
+        background-color: #e6845e;
+        font-size: 11px;
+        color: #0f212b;
+        font-weight: 400;
+        /**/
+        transform: scaleY(1.2);
+        display: inline-block;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 36px;
+        margin-top: 4px;
+        border-radius: 53px;
+    }
+    .btn.rewrite:active{
+        transform: translateY(4px);
+        transition: transform 0.1s ease;
+    }
     .btn.del {
         line-height: 16px;
         background-color: #e6845e;
         font-size: 16px;
         color: #0f212b;
+        font-weight: 400;
+        /**/
+        transform: scaleY(1.2);
+        display: inline-block;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 36px;
+        margin-top: 4px;
+        border-radius: 53px;
+    }
+    .btn.del:active{
+        transform: translateY(4px);
+        transition: transform 0.1s ease;
     }
     .btn.del {
         &::before {
             content: '';
         }
     }
+
 </style>
