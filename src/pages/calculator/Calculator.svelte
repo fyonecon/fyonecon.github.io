@@ -108,7 +108,7 @@
                 let lastError = '';
 
                 // 从localStorage加载历史记录，最多N条
-                const MAX_HISTORY = 999; // 999最佳
+                const MAX_HISTORY = 500; // [100, 999]
                 let history = [];
                 const STORAGE_KEY = config.app.app_class + 'calculator_history';
 
@@ -198,7 +198,7 @@
                         // 值
                         const valSpan = document.createElement('span');
                         valSpan.className = 'history-value';
-                        valSpan.innerHTML = "<span style='opacity: 0.5;color: white; padding-left: 10px; padding-right: 10px;'>=</span>" + item.value;
+                        valSpan.innerHTML = "<span style='opacity: 0.5;color: white; padding-left: 5px; padding-right: 5px;'>=</span>" + item.value;
                         //
                         li.appendChild(exprSpan);
                         li.appendChild(valSpan);
@@ -311,351 +311,83 @@
                 }
                 Math.factorial = factorialN;
 
-                // 预处理计算表达式
+                // 预处理计算表达式 - 使用高精度常数（可配置精度）
                 function preprocessExpression(expr) {
                     if (!expr || expr.trim() === '') return '';
 
-                    let processed = expr.replace(/×/g, '*')
+                    // 高精度常数（仅将e作为“数值e”，不作为“科学计数法e<10^>”）
+                    const PI = '3.14159265358979323846264338327950288419716939937510';  // 50位
+                    const E = '2.71828182845904523536028747135266249775724709369995';   // 50位
+
+                    // 运算符还原
+                    let processed = expr
+                        // 替换运算符
+                        .replace(/×/g, '*')
                         .replace(/÷/g, '/')
                         .replace(/−/g, '-')
                         .replace(/\^/g, '**');
 
-                    // 处理数学常数 - 按照优先级处理
+                    // 先处理函数名称，避免函数名中的'e'被误替换
+                    // 临时替换函数名中的e（如 'log' 中的 'g' 不影响，但如果有函数包含'e'如 'exp'）
+                    processed = processed
+                        .replace(/\b(sin|cos|tan|asin|acos|atan|log|ln|sqrt|exp)\b\s*\(/g, function(match) {
+                            // 使用特殊标记临时保护
+                            return 'FUNC_' + match.replace('(', '_LP_');
+                        });
 
-                    // 1. 处理 e+(表达式) 这种情况 - 常数e加上括号内的表达式
-                    // 例如：6e+(6×3) -> 6*Math.E+(6*3), e+(6×3) -> Math.E+(6*3)
-                    processed = processed.replace(/(\d*)e\+\(/g, function(match, num) {
-                        if (num === '1' || num === '') {
-                            return 'Math.E+(';
-                        } else {
-                            return num + '*Math.E+(';
-                        }
+                    // 1. 处理 e 后面直接跟 π 的情况（使用单词边界避免匹配到函数名）
+                    processed = processed.replace(/(?<![a-zA-Z])eπ/g, E + '*' + PI);
+
+                    // 2. 处理 e 后面直接跟 ( 的情况
+                    processed = processed.replace(/(?<![a-zA-Z])e\(/g, E + '*(');
+
+                    // 3. 处理 π（包括前面有数字的情况）
+                    processed = processed.replace(/(\d*)π/g, function(match, num) {
+                        if (num === '') return PI;
+                        return num + '*' + PI;
                     });
 
-                    // 2. 处理 e-(表达式) 这种情况 - 常数e减去括号内的表达式
-                    processed = processed.replace(/(\d*)e\-\(/g, function(match, num) {
-                        if (num === '1' || num === '') {
-                            return 'Math.E-(';
-                        } else {
-                            return num + '*Math.E-(';
-                        }
+                    // 4. 处理 e 常数（包括前面和后面有数字或小数点的情况）
+                    //    e 仅作为常数，不作为科学计数法
+                    processed = processed.replace(/(\d*)(?:\.?\d*)?e(\d*\.?\d*)/g, function(match, numBefore, numAfter) {
+                        // 避免处理函数名
+                        if (match.includes('FUNC_')) return match;
+
+                        if (numBefore === '' && numAfter === '') return E;                    // 单独的 e
+                        if (numBefore === '') return E + '*' + parseFloat(numAfter);          // e后面跟数字，如 e9 → e*9
+                        if (numAfter === '') return parseFloat(numBefore) + '*' + E;          // 数字后面跟e，如 2e → 2*e
+                        return parseFloat(numBefore) + '*' + E + '*' + parseFloat(numAfter);  // 数字e数字，如 2e3 → 2*e*3
                     });
 
-                    // 3. 处理 e(数字) 这种形式 - 变成 Math.E*(数字)
-                    processed = processed.replace(/(\d*)e\((\d+)\)/g, function(match, num, val) {
-                        if (num === '1' || num === '') {
-                            return 'Math.E*' + val;
-                        } else {
-                            return num + '*Math.E*' + val;
-                        }
-                    });
+                    // 5. 处理 e 后面跟小数点的情况（如 e.5）
+                    processed = processed.replace(/(?<![a-zA-Z])e\.(\d+)/g, E + '*0.$1');
 
-                    // 4. 处理 e(表达式) 通用情况 - 常数e乘以括号内的表达式
-                    processed = processed.replace(/(\d*)e\s*\(/g, function(match, num) {
-                        if (num === '1' || num === '') {
-                            return 'Math.E*(';
-                        } else {
-                            return num + '*Math.E*(';
-                        }
-                    });
+                    // 6. 处理数字后面跟 e. 的情况（如 2e.5）
+                    processed = processed.replace(/(\d+)e\.(\d+)/g, '$1*' + E + '*0.$2');
 
-                    // 5. 处理 e+数字 或 e-数字（常数e的加减运算）
-                    // 例如：6e+3 -> 6*Math.E+3, e+3 -> Math.E+3
-                    processed = processed.replace(/(\d*)e\+(\d+)/g, function(match, num, val) {
-                        if (num === '1' || num === '') {
-                            return 'Math.E+' + val;
-                        } else {
-                            return num + '*Math.E+' + val;
-                        }
-                    });
+                    // 恢复函数名
+                    processed = processed.replace(/FUNC_(\w+)_LP_/g, '$1(');
 
-                    processed = processed.replace(/(\d*)e\-(\d+)/g, function(match, num, val) {
-                        if (num === '1' || num === '') {
-                            return 'Math.E-' + val;
-                        } else {
-                            return num + '*Math.E-' + val;
-                        }
-                    });
+                    // 其他计算
+                    processed = processed
+                        // 处理省略乘号
+                        .replace(/(\d)\(/g, '$1*(')
+                        .replace(/\)(\d)/g, ')*$1')
+                        .replace(/\)\(/g, ')*(')
 
-                    // 6. 处理数字后跟e（且e后面直接跟数字）- 常数e乘法
-                    // 例如：6e3 -> 6*Math.E*3, e3 -> Math.E*3
-                    processed = processed.replace(/(\d*)e(\d+)/g, function(match, num, val) {
-                        if (num === '1' || num === '') {
-                            return 'Math.E*' + val;
-                        } else {
-                            return num + '*Math.E*' + val;
-                        }
-                    });
+                        // 处理百分比
+                        .replace(/(\d+(\.\d*)?|\.\d+)%/g, '$1*0.01')
 
-                    // 7. 处理数字后跟e（且e后面不是数字、符号和左括号）- 常数e乘法
-                    // 例如：6e -> 6*Math.E, e -> Math.E
-                    processed = processed.replace(/(\d*)e(?![\d\+\-\(])/g, function(match, num) {
-                        if (num === '1' || num === '') {
-                            return 'Math.E';
-                        } else {
-                            return num + '*Math.E';
-                        }
-                    });
+                        // 处理阶乘（Math.factorial 已定义）
+                        .replace(/(\d+|\))\s*!/g, function(match) {
+                            const num = match.replace('!', '').trim();
+                            return `Math.factorial(${num})`;
+                        })
 
-                    // 8. 处理π（同样支持省略1*的规则）
-                    // 处理 π+(表达式)
-                    processed = processed.replace(/(\d*)π\+\(/g, function(match, num) {
-                        if (num === '1' || num === '') {
-                            return 'Math.PI+(';
-                        } else {
-                            return num + '*Math.PI+(';
-                        }
-                    });
-
-                    // 处理 π-(表达式)
-                    processed = processed.replace(/(\d*)π\-\(/g, function(match, num) {
-                        if (num === '1' || num === '') {
-                            return 'Math.PI-(';
-                        } else {
-                            return num + '*Math.PI-(';
-                        }
-                    });
-
-                    // 处理 π(数字)
-                    processed = processed.replace(/(\d*)π\((\d+)\)/g, function(match, num, val) {
-                        if (num === '1' || num === '') {
-                            return 'Math.PI*' + val;
-                        } else {
-                            return num + '*Math.PI*' + val;
-                        }
-                    });
-
-                    // 处理 π(表达式)
-                    processed = processed.replace(/(\d*)π\s*\(/g, function(match, num) {
-                        if (num === '1' || num === '') {
-                            return 'Math.PI*(';
-                        } else {
-                            return num + '*Math.PI*(';
-                        }
-                    });
-
-                    // 处理 π+数字 或 π-数字
-                    processed = processed.replace(/(\d*)π\+(\d+)/g, function(match, num, val) {
-                        if (num === '1' || num === '') {
-                            return 'Math.PI+' + val;
-                        } else {
-                            return num + '*Math.PI+' + val;
-                        }
-                    });
-
-                    processed = processed.replace(/(\d*)π\-(\d+)/g, function(match, num, val) {
-                        if (num === '1' || num === '') {
-                            return 'Math.PI-' + val;
-                        } else {
-                            return num + '*Math.PI-' + val;
-                        }
-                    });
-
-                    // 处理 π后面直接跟数字
-                    processed = processed.replace(/(\d*)π(\d+)/g, function(match, num, val) {
-                        if (num === '1' || num === '') {
-                            return 'Math.PI*' + val;
-                        } else {
-                            return num + '*Math.PI*' + val;
-                        }
-                    });
-
-                    // 处理单独的π
-                    processed = processed.replace(/(\d*)π(?![\d\+\-\(])/g, function(match, num) {
-                        if (num === '1' || num === '') {
-                            return 'Math.PI';
-                        } else {
-                            return num + '*Math.PI';
-                        }
-                    });
-
-                    // ===== 处理 π 和 e 相邻的情况 =====
-
-                    // 9. 处理 πe 或 eπ 这种两个常数直接相乘的情况
-                    // 处理 πe (π乘以e) - 前面可能有数字，后面也可能有数字
-                    processed = processed.replace(/(\d*)πe(\d*)/g, function(match, num1, num2) {
-                        if (num1 === '' && num2 === '') {
-                            return 'Math.PI*Math.E';
-                        } else if (num1 !== '' && num2 === '') {
-                            return num1 + '*Math.PI*Math.E';
-                        } else if (num1 === '' && num2 !== '') {
-                            return 'Math.PI*Math.E*' + num2;
-                        } else {
-                            return num1 + '*Math.PI*Math.E*' + num2;
-                        }
-                    });
-
-                    // 处理 eπ (e乘以π) - 前面可能有数字，后面也可能有数字
-                    processed = processed.replace(/(\d*)eπ(\d*)/g, function(match, num1, num2) {
-                        if (num1 === '' && num2 === '') {
-                            return 'Math.E*Math.PI';
-                        } else if (num1 !== '' && num2 === '') {
-                            return num1 + '*Math.E*Math.PI';
-                        } else if (num1 === '' && num2 !== '') {
-                            return 'Math.E*Math.PI*' + num2;
-                        } else {
-                            return num1 + '*Math.E*Math.PI*' + num2;
-                        }
-                    });
-
-                    // 10. 处理 π e (π空格e) 的情况
-                    processed = processed.replace(/(\d*)π\s+e(\d*)/g, function(match, num1, num2) {
-                        if (num1 === '' && num2 === '') {
-                            return 'Math.PI*Math.E';
-                        } else if (num1 !== '' && num2 === '') {
-                            return num1 + '*Math.PI*Math.E';
-                        } else if (num1 === '' && num2 !== '') {
-                            return 'Math.PI*Math.E*' + num2;
-                        } else {
-                            return num1 + '*Math.PI*Math.E*' + num2;
-                        }
-                    });
-
-                    // 11. 处理 e π (e空格π) 的情况
-                    processed = processed.replace(/(\d*)e\s+π(\d*)/g, function(match, num1, num2) {
-                        if (num1 === '' && num2 === '') {
-                            return 'Math.E*Math.PI';
-                        } else if (num1 !== '' && num2 === '') {
-                            return num1 + '*Math.E*Math.PI';
-                        } else if (num1 === '' && num2 !== '') {
-                            return 'Math.E*Math.PI*' + num2;
-                        } else {
-                            return num1 + '*Math.E*Math.PI*' + num2;
-                        }
-                    });
-
-                    // 12. 处理数字 + πe 的情况 (如 2πe)
-                    processed = processed.replace(/(\d+)πe/g, function(match, num) {
-                        return num + '*Math.PI*Math.E';
-                    });
-
-                    // 13. 处理数字 + eπ 的情况 (如 2eπ)
-                    processed = processed.replace(/(\d+)eπ/g, function(match, num) {
-                        return num + '*Math.E*Math.PI';
-                    });
-
-                    // ===== 处理括号内的常数 =====
-
-                    // 14. 处理 (e)π 或 (π)e 的情况
-                    processed = processed.replace(/\(e\)\s*π/g, '(Math.E)*Math.PI');
-                    processed = processed.replace(/\(π\)\s*e/g, '(Math.PI)*Math.E');
-
-                    // 15. 处理 (e)后面跟数字或其他常数的情况
-                    processed = processed.replace(/\(e\)\s*(\d+)/g, '(Math.E)*$1');
-                    processed = processed.replace(/\(π\)\s*(\d+)/g, '(Math.PI)*$1');
-
-                    // 16. 处理数字或其他常数前面有 (e) 的情况
-                    processed = processed.replace(/(\d+)\s*\(e\)/g, '$1*(Math.E)');
-                    processed = processed.replace(/(\d+)\s*\(π\)/g, '$1*(Math.PI)');
-
-                    // 17. 更通用的规则：处理任何括号内是常数的情况
-                    // 匹配 (e) 后面跟任何非数字字符（除了乘号等）
-                    processed = processed.replace(/\(e\)\s*([\+\-\*\/\^\)]|$)/g, function(match, p1) {
-                        return '(Math.E)' + (p1 || '');
-                    });
-
-                    processed = processed.replace(/\(π\)\s*([\+\-\*\/\^\)]|$)/g, function(match, p1) {
-                        return '(Math.PI)' + (p1 || '');
-                    });
-
-                    // 18. 处理括号内常数与其他常数相邻的情况（没有运算符）
-                    // 例如：(e)π, (π)e, (e)e, (π)π
-                    processed = processed.replace(/\(e\)\s*e/g, '(Math.E)*Math.E');
-                    processed = processed.replace(/\(e\)\s*π/g, '(Math.E)*Math.PI');
-                    processed = processed.replace(/\(π\)\s*π/g, '(Math.PI)*Math.PI');
-                    processed = processed.replace(/\(π\)\s*e/g, '(Math.PI)*Math.E');
-
-                    // 19. 处理括号内常数直接跟左括号的情况
-                    // 例如：(e)( 或 (π)(
-                    processed = processed.replace(/\(e\)\s*\(/g, '(Math.E)*(');
-                    processed = processed.replace(/\(π\)\s*\(/g, '(Math.PI)*(');
-
-                    // 20. 处理括号内常数后面跟函数的情况
-                    // 例如：(e)sin( 或 (π)cos(
-                    const funcNames2 = ['sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'log', 'ln', 'sqrt'];
-                    funcNames2.forEach(func => {
-                        const regexE = new RegExp('\\(e\\)\\s*' + func + '\\s*\\(', 'g');
-                        const regexPi = new RegExp('\\(π\\)\\s*' + func + '\\s*\\(', 'g');
-                        processed = processed.replace(regexE, '(Math.E)*' + func + '(');
-                        processed = processed.replace(regexPi, '(Math.PI)*' + func + '(');
-                    });
-
-                    // 21. 处理括号内常数在表达式开头的情况
-                    processed = processed.replace(/^\(e\)\s*/, '(Math.E)');
-                    processed = processed.replace(/^\(π\)\s*/, '(Math.PI)');
-
-                    // 22. 处理括号内常数在表达式结尾的情况
-                    processed = processed.replace(/\(e\)$/, '(Math.E)');
-                    processed = processed.replace(/\(π\)$/, '(Math.PI)');
-
-                    // 处理百分比
-                    processed = processed.replace(/(\d+(\.\d*)?|\.\d+)%/g, '$1*0.01');
-
-                    // 处理阶乘操作符
-                    processed = processed.replace(/(\d+|\)|Math\.E|Math\.PI)\s*!/g, function(match) {
-                        const num = match.replace('!', '').trim();
-                        return `Math.factorial(${num})`;
-                    });
-
-                    // 处理省略乘号的情况
-                    processed = processed.replace(/(\d)\(/g, '$1*(');
-                    processed = processed.replace(/\)(\d)/g, ')*$1');
-                    processed = processed.replace(/\)\(/g, ')*(');
-
-                    // 处理函数名
-                    const funcNames = ['sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'log', 'ln', 'sqrt'];
-
-                    // 数字后面跟函数名
-                    funcNames.forEach(func => {
-                        const regex = new RegExp('(\\d)(' + func + '\\()', 'g');
-                        processed = processed.replace(regex, '$1*$2');
-                    });
-
-                    // 右括号后面跟函数名
-                    funcNames.forEach(func => {
-                        const regex = new RegExp('(\\))(' + func + '\\()', 'g');
-                        processed = processed.replace(regex, '$1*$2');
-                    });
-
-                    // 处理常数后面跟函数名（例如：πsin( 或 esin()
-                    funcNames.forEach(func => {
-                        const regexPi = new RegExp('(Math\\.PI)\\s*' + func + '\\s*\\(', 'g');
-                        const regexE = new RegExp('(Math\\.E)\\s*' + func + '\\s*\\(', 'g');
-                        processed = processed.replace(regexPi, '$1*' + func + '(');
-                        processed = processed.replace(regexE, '$1*' + func + '(');
-                    });
-
-                    // 函数名替换
-                    const funcMap = {
-                        'sin': 'Math.sin',
-                        'cos': 'Math.cos',
-                        'tan': 'Math.tan',
-                        'asin': 'Math.asin',
-                        'acos': 'Math.acos',
-                        'atan': 'Math.atan',
-                        'log': 'Math.log10',
-                        'ln': 'Math.log',
-                        'sqrt': 'Math.sqrt',
-                    };
-
-                    for (let [key, value] of Object.entries(funcMap)) {
-                        const regex = new RegExp('\\b' + key + '\\s*\\(', 'g');
-                        processed = processed.replace(regex, value + '(');
-                    }
-
-                    // 最后的通用处理
-                    processed = processed.replace(/(Math\.PI)\s*(Math\.E)/g, '$1*$2');
-                    processed = processed.replace(/(Math\.E)\s*(Math\.PI)/g, '$1*$2');
-
-                    // 处理常数和数字相邻的情况
-                    processed = processed.replace(/(Math\.PI)\s*(\d+)/g, '$1*$2');
-                    processed = processed.replace(/(\d+)\s*(Math\.PI)/g, '$1*$2');
-                    processed = processed.replace(/(Math\.E)\s*(\d+)/g, '$1*$2');
-                    processed = processed.replace(/(\d+)\s*(Math\.E)/g, '$1*$2');
-
-                    // 处理括号内的常数已经被替换但还保留括号的情况
-                    processed = processed.replace(/\(Math\.E\)/g, 'Math.E');
-                    processed = processed.replace(/\(Math\.PI\)/g, 'Math.PI');
+                        // 处理函数
+                        .replace(/\b(sin|cos|tan|asin|acos|atan|log|ln|sqrt)\s*\(/g, 'Math.$1(')
+                        .replace(/\blog\b\s*\(/g, 'Math.log10(')
+                        .replace(/\bln\b\s*\(/g, 'Math.log(');
 
                     return processed;
                 }
