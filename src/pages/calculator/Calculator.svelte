@@ -40,8 +40,8 @@
                 let justCalculated = false;
                 let lastError = '';
 
-                // 从localStorage加载历史记录，最多50条
-                const MAX_HISTORY = 60;
+                // 从localStorage加载历史记录，最多N条
+                const MAX_HISTORY = 999; // 999最佳
                 let history = [];
                 const STORAGE_KEY = config.app.app_class + 'calculator_history';
 
@@ -107,19 +107,31 @@
                     // 显示最新的记录（数组前面是最新的）
                     history.slice(0, MAX_HISTORY).forEach((item, index) => {
                         const li = document.createElement('li');
-                        li.className = 'history-item click font-blue';
+                        li.className = 'history-item click font-blue break';
                         li.setAttribute('data-expr', item.expr);
                         li.setAttribute('data-value', item.value);
                         //
-                        li.innerHTML = " <span style='opacity: 0.4;color: white;'>#"+(history.length-index)+"</span> ";
+                        let _index = (history.length-index);
+                        let index_txt = "000";
+                        if (_index<10){
+                            index_txt = "00"+_index;
+                        }
+                        if (_index>=10 && _index<100){
+                            index_txt = "0"+_index;
+                        }
+                        if (_index>=100 && _index<999){
+                            index_txt = ""+_index;
+                        }
+                        //
+                        li.innerHTML = "<span style='opacity: 0.5;color: white; padding-right: 10px;'>#"+index_txt+"</span>";
                         // 表达式
                         const exprSpan = document.createElement('span');
                         exprSpan.className = 'history-expr';
-                        exprSpan.innerText = item.expr;
+                        exprSpan.innerHTML = item.expr;
                         // 值
                         const valSpan = document.createElement('span');
                         valSpan.className = 'history-value';
-                        valSpan.innerText = " = " + item.value;
+                        valSpan.innerHTML = "<span style='opacity: 0.5;color: white; padding-left: 10px; padding-right: 10px;'>=</span>" + item.value;
                         //
                         li.appendChild(exprSpan);
                         li.appendChild(valSpan);
@@ -229,7 +241,7 @@
                 }
                 Math.factorial = factorialN;
 
-                // 预处理表达式
+                // 预处理计算表达式
                 function preprocessExpression(expr) {
                     if (!expr || expr.trim() === '') return '';
 
@@ -238,31 +250,174 @@
                         .replace(/−/g, '-')
                         .replace(/\^/g, '**');
 
-                    // 替换数学常数，使用更精确的正则避免误匹配
-                    processed = processed.replace(/(^|[^a-zA-Z])π($|[^a-zA-Z])/g, '$1Math.PI$2');
-                    processed = processed.replace(/(^|[^a-zA-Z])e($|[^a-zA-Z])/g, '$1Math.E$2');
+                    // 处理数学常数 - 按照优先级处理
+
+                    // 1. 处理 e+(表达式) 这种情况 - 常数e加上括号内的表达式
+                    // 例如：6e+(6×3) -> 6*Math.E+(6*3), e+(6×3) -> Math.E+(6*3)
+                    processed = processed.replace(/(\d*)e\+\(/g, function(match, num) {
+                        if (num === '1' || num === '') {
+                            return 'Math.E+(';
+                        } else {
+                            return num + '*Math.E+(';
+                        }
+                    });
+
+                    // 2. 处理 e-(表达式) 这种情况 - 常数e减去括号内的表达式
+                    processed = processed.replace(/(\d*)e\-\(/g, function(match, num) {
+                        if (num === '1' || num === '') {
+                            return 'Math.E-(';
+                        } else {
+                            return num + '*Math.E-(';
+                        }
+                    });
+
+                    // 3. 处理 e(数字) 这种形式 - 变成 Math.E*(数字)
+                    processed = processed.replace(/(\d*)e\((\d+)\)/g, function(match, num, val) {
+                        if (num === '1' || num === '') {
+                            return 'Math.E*' + val;
+                        } else {
+                            return num + '*Math.E*' + val;
+                        }
+                    });
+
+                    // 4. 处理 e(表达式) 通用情况 - 常数e乘以括号内的表达式
+                    processed = processed.replace(/(\d*)e\s*\(/g, function(match, num) {
+                        if (num === '1' || num === '') {
+                            return 'Math.E*(';
+                        } else {
+                            return num + '*Math.E*(';
+                        }
+                    });
+
+                    // 5. 处理 e+数字 或 e-数字（常数e的加减运算）
+                    // 例如：6e+3 -> 6*Math.E+3, e+3 -> Math.E+3
+                    processed = processed.replace(/(\d*)e\+(\d+)/g, function(match, num, val) {
+                        if (num === '1' || num === '') {
+                            return 'Math.E+' + val;
+                        } else {
+                            return num + '*Math.E+' + val;
+                        }
+                    });
+
+                    processed = processed.replace(/(\d*)e\-(\d+)/g, function(match, num, val) {
+                        if (num === '1' || num === '') {
+                            return 'Math.E-' + val;
+                        } else {
+                            return num + '*Math.E-' + val;
+                        }
+                    });
+
+                    // 6. 处理数字后跟e（且e后面直接跟数字）- 常数e乘法
+                    // 例如：6e3 -> 6*Math.E*3, e3 -> Math.E*3
+                    processed = processed.replace(/(\d*)e(\d+)/g, function(match, num, val) {
+                        if (num === '1' || num === '') {
+                            return 'Math.E*' + val;
+                        } else {
+                            return num + '*Math.E*' + val;
+                        }
+                    });
+
+                    // 7. 处理数字后跟e（且e后面不是数字、符号和左括号）- 常数e乘法
+                    // 例如：6e -> 6*Math.E, e -> Math.E
+                    processed = processed.replace(/(\d*)e(?![\d\+\-\(])/g, function(match, num) {
+                        if (num === '1' || num === '') {
+                            return 'Math.E';
+                        } else {
+                            return num + '*Math.E';
+                        }
+                    });
+
+                    // 8. 处理π（同样支持省略1*的规则）
+                    // 处理 π+(表达式)
+                    processed = processed.replace(/(\d*)π\+\(/g, function(match, num) {
+                        if (num === '1' || num === '') {
+                            return 'Math.PI+(';
+                        } else {
+                            return num + '*Math.PI+(';
+                        }
+                    });
+
+                    // 处理 π-(表达式)
+                    processed = processed.replace(/(\d*)π\-\(/g, function(match, num) {
+                        if (num === '1' || num === '') {
+                            return 'Math.PI-(';
+                        } else {
+                            return num + '*Math.PI-(';
+                        }
+                    });
+
+                    // 处理 π(数字)
+                    processed = processed.replace(/(\d*)π\((\d+)\)/g, function(match, num, val) {
+                        if (num === '1' || num === '') {
+                            return 'Math.PI*' + val;
+                        } else {
+                            return num + '*Math.PI*' + val;
+                        }
+                    });
+
+                    // 处理 π(表达式)
+                    processed = processed.replace(/(\d*)π\s*\(/g, function(match, num) {
+                        if (num === '1' || num === '') {
+                            return 'Math.PI*(';
+                        } else {
+                            return num + '*Math.PI*(';
+                        }
+                    });
+
+                    // 处理 π+数字 或 π-数字
+                    processed = processed.replace(/(\d*)π\+(\d+)/g, function(match, num, val) {
+                        if (num === '1' || num === '') {
+                            return 'Math.PI+' + val;
+                        } else {
+                            return num + '*Math.PI+' + val;
+                        }
+                    });
+
+                    processed = processed.replace(/(\d*)π\-(\d+)/g, function(match, num, val) {
+                        if (num === '1' || num === '') {
+                            return 'Math.PI-' + val;
+                        } else {
+                            return num + '*Math.PI-' + val;
+                        }
+                    });
+
+                    // 处理 π后面直接跟数字
+                    processed = processed.replace(/(\d*)π(\d+)/g, function(match, num, val) {
+                        if (num === '1' || num === '') {
+                            return 'Math.PI*' + val;
+                        } else {
+                            return num + '*Math.PI*' + val;
+                        }
+                    });
+
+                    // 处理单独的π
+                    processed = processed.replace(/(\d*)π(?![\d\+\-\(])/g, function(match, num) {
+                        if (num === '1' || num === '') {
+                            return 'Math.PI';
+                        } else {
+                            return num + '*Math.PI';
+                        }
+                    });
 
                     // 处理百分比
                     processed = processed.replace(/(\d+(\.\d*)?|\.\d+)%/g, '$1*0.01');
 
-                    // 先处理阶乘操作符
-                    processed = processed.replace(/(\d+|\))\s*!/g, function(match) {
+                    // 处理阶乘操作符
+                    processed = processed.replace(/(\d+|\)|Math\.E|Math\.PI)\s*!/g, function(match) {
                         const num = match.replace('!', '').trim();
                         return `Math.factorial(${num})`;
                     });
 
-                    // 然后处理省略乘号的情况
-                    // 数字后面跟左括号
+                    // 处理省略乘号的情况
                     processed = processed.replace(/(\d)\(/g, '$1*(');
-                    // 右括号后面跟数字
                     processed = processed.replace(/\)(\d)/g, ')*$1');
-                    // 右括号后面跟左括号
                     processed = processed.replace(/\)\(/g, ')*(');
 
-                    // 数字后面跟函数名
+                    // 处理函数名
                     const funcNames = ['sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'log', 'ln', 'sqrt'];
+
+                    // 数字后面跟函数名
                     funcNames.forEach(func => {
-                        // 确保不会匹配到已经处理过的表达式
                         const regex = new RegExp('(\\d)(' + func + '\\()', 'g');
                         processed = processed.replace(regex, '$1*$2');
                     });
@@ -273,7 +428,7 @@
                         processed = processed.replace(regex, '$1*$2');
                     });
 
-                    // 最后处理函数名替换，使用单词边界确保完整匹配
+                    // 函数名替换
                     const funcMap = {
                         'sin': 'Math.sin',
                         'cos': 'Math.cos',
@@ -287,12 +442,9 @@
                     };
 
                     for (let [key, value] of Object.entries(funcMap)) {
-                        // 使用单词边界确保只匹配完整的函数名
                         const regex = new RegExp('\\b' + key + '\\s*\\(', 'g');
                         processed = processed.replace(regex, value + '(');
                     }
-
-                    processed = processed.replace(/1\/x/g, '1/');
 
                     return processed;
                 }
@@ -618,7 +770,7 @@
 
         <div class="buttons">
             <!--1-->
-            <!--        <button class="btn function" data-action="reciprocal">1/x</button>-->
+<!--        <button class="btn function" data-action="reciprocal">1/x</button>-->
             <button class="btn function" data-action="pi">π</button>
             <button class="btn function" data-action="e">e</button>
             <button class="btn clear_history" title="Clear all history" data-action="clear_history" id="clearHistoryBtn">Clear</button>
@@ -638,7 +790,7 @@
             <button class="btn function" data-action="atan">atan</button>
             <button class="btn function" data-action="n!">n!</button>
             <button class="btn function" data-action="pow">x^y</button>
-<!--            <button class="btn function" data-action="sqrt">√</button>-->
+<!--        <button class="btn function" data-action="sqrt">√</button>-->
             <!--4-->
             <button class="btn" data-action="7">7</button>
             <button class="btn" data-action="8">8</button>
@@ -678,14 +830,7 @@
         min-width: 280px;
         width: 100%;
         height: 100%;
-        min-height: 640px;
-        /**/
-        /*position: fixed;*/
-        /*z-index: 1;*/
-        /*left: 0;*/
-        /*right: 0;*/
-        /*top: 0;*/
-        /*bottom: 0;*/
+        min-height: 630px;
         /**/
         margin: auto auto;
         padding: 10px 10px;
@@ -704,7 +849,7 @@
 
     .history-section {
         padding: 10px 0;
-        border-bottom: 1px solid rgba(180,180,180, 0.9);
+        border-bottom: 1px solid rgba(180,180,180, 0.7);
     }
 
     .history-items-container {
@@ -743,55 +888,13 @@
         text-align: left;
     }
 
-    /*.history-item {*/
-    /*    background: #263b47;*/
-    /*    border-radius: 30px;*/
-    /*    padding: 6px 14px;*/
-    /*    color: #d5e8f5;*/
-    /*    font-size: 0.9rem;*/
-    /*    display: flex;*/
-    /*    justify-content: space-between;*/
-    /*    align-items: center;*/
-    /*    border-left: 4px solid #5f9ea0;*/
-    /*    box-shadow: 0 2px 5px #14212b;*/
-    /*    cursor: pointer;*/
-    /*    transition: 0.1s;*/
-    /*    word-break: break-word;*/
-    /*}*/
-
-    /*.history-item:hover {*/
-    /*    background: #2f4858;*/
-    /*    border-left-color: #9fc5e8;*/
-    /*    transform: translateX(2px);*/
-    /*}*/
-
-    /*.history-expr {*/
-    /*    font-weight: 300;*/
-    /*    color: #bfd9f0;*/
-    /*    font-size: 0.85rem;*/
-    /*}*/
-
-    /*.history-value {*/
-    /*    font-weight: 600;*/
-    /*    margin-left: 12px;*/
-    /*    font-size: 0.9rem;*/
-    /*}*/
-
-    /*.empty-history {*/
-    /*    color: #667f8f;*/
-    /*    text-align: center;*/
-    /*    padding: 8px;*/
-    /*    font-size: 18px;*/
-    /*    font-style: italic;*/
-    /*}*/
-
     .expression {
         font-size: 18px;
         font-weight: 300;
         text-align: right;
         word-wrap: break-word;
         word-break: break-all;
-        border-bottom: 1px dashed rgba(180,180,180, 0.6);
+        border-bottom: 1px dashed rgba(180,180,180, 0.7);
         padding: 10px 0;
         /**/
         height: 80px;
@@ -822,7 +925,7 @@
         /**/
         background: transparent;
         -webkit-tap-highlight-color: transparent;
-        margin-top: 20px;
+        margin-top: 15px;
         margin-bottom: 10px;
     }
     .btn {
@@ -856,28 +959,35 @@
     }
     .btn.equals {
         background-color: #e6845e;
-        font-weight: 700;
+        font-weight: 600;
         grid-column: span 2;
     }
     .btn.clear_history{
+        line-height: 16px;
         background-color: red;
-        font-size: 12px;
+        font-size: 13px;
         color: #0f212b;
-        border-radius: 30px;
-        font-weight: 400;
         border-color: red;
     }
     .btn.rewrite {
+        line-height: 16px;
         background-color: #e6845e;
-        font-size: 12px;
-        font-weight: 400;
+        font-size: 11px;
         color: #0f212b;
+        font-weight: 400;
+        transform: scaleY(1.2);
+        display: inline-block;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 36px;
+        margin-top: 4px;
+        border-radius: 53px;
     }
     .btn.del {
+        line-height: 16px;
         background-color: #e6845e;
         font-size: 16px;
         color: #0f212b;
-        font-weight: 400;
     }
     .btn.del {
         &::before {

@@ -11,15 +11,12 @@
     right: 0;
     margin-right: auto;
     margin-left: auto;
-    opacity: 0.8;
 }
 .page-div{
     width: 100%;
     max-width: 640px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 50px;
-    margin-bottom: 115px;
+    margin: 50px auto 115px auto;
+    opacity: 0.9;
 }
 .part-div{
     opacity: 1; /*必须为1*/

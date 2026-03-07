@@ -98,6 +98,10 @@ const lang_dict = {
         zh: "科学计算器",
         en: "Scientific Calculator",
     },
+    Calc: {
+        zh: "计算器",
+        en: "Calc",
+    },
     //
     url_timeout: {
         zh: "链接过期",

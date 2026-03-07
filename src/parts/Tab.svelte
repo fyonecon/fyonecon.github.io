@@ -11,17 +11,23 @@
     let route = $state(func.get_route());
     const tab_data = [ // tab数据，自动适配显示效果
         {
-            icon: '<svg xmlns="http://www.w3.org/2000/svg" style="display: inline-block;" width="26" height="26" viewBox="0 0 24 24"><g fill="currentColor"><path d="M10 13v-1.978l1.5-1.094l1.5 1.094V13a.25.25 0 0 1-.25.25h-2.5A.25.25 0 0 1 10 13"/><path d="M3.25 11.5a8.25 8.25 0 1 1 14.578 5.294l2.675 2.676a.75.75 0 0 1-1.06 1.06l-2.678-2.678A8.25 8.25 0 0 1 3.25 11.5m10.942-1.466l-2.25-1.64a.75.75 0 0 0-.884 0l-2.25 1.64a.75.75 0 0 0-.308.606V13c0 .966.784 1.75 1.75 1.75h2.5A1.75 1.75 0 0 0 14.5 13v-2.36a.75.75 0 0 0-.308-.606"/></g></svg>', // 图标，26 px
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><g fill="currentColor"><path d="M10 13v-1.978l1.5-1.094l1.5 1.094V13a.25.25 0 0 1-.25.25h-2.5A.25.25 0 0 1 10 13"/><path d="M3.25 11.5a8.25 8.25 0 1 1 14.578 5.294l2.675 2.676a.75.75 0 0 1-1.06 1.06l-2.678-2.678A8.25 8.25 0 0 1 3.25 11.5m10.942-1.466l-2.25-1.64a.75.75 0 0 0-.884 0l-2.25 1.64a.75.75 0 0 0-.308.606V13c0 .966.784 1.75 1.75 1.75h2.5A1.75 1.75 0 0 0 14.5 13v-2.36a.75.75 0 0 0-.308-.606"/></g></svg>', // 图标，26 px
             title: func.get_translate("PureHome"), // 名字
             route: "/purehome", // 对应的route名字，"/"，"/purehome"
             href: "./purehome", // 跳转地址，"./"，"./purehome"
         },
         {
-            icon: '<svg xmlns="http://www.w3.org/2000/svg" style="display: inline-block;" width="26" height="26" viewBox="0 0 24 24"><path fill="currentColor" d="M9.5 21h2.066A4.7 4.7 0 0 1 11 18.75c0-1.025.325-1.974.877-2.75H9.5zM21 9.5v4.833A4.7 4.7 0 0 0 19.25 14H16V9.5zm-6.5 0v4.666a4.7 4.7 0 0 0-.874.334H9.5v-5zM21 8V6.25A3.25 3.25 0 0 0 17.75 3H16v5zm-6.5-5h-5v5h5zM8 3H6.25A3.25 3.25 0 0 0 3 6.25V8h5zM3 9.5v5h5v-5zM3 16v1.75A3.25 3.25 0 0 0 6.25 21H8v-5zm16.25-1a3.75 3.75 0 0 1 .202 7.495l-.199.005v.005a.75.75 0 0 1-.108-1.493l.102-.007l.003-.005a2.25 2.25 0 0 0 .154-4.495l-.154-.005a.75.75 0 0 1-.102-1.493zm-3.5 0a.75.75 0 0 1 .102 1.493l-.102.007a2.25 2.25 0 0 0-.154 4.495l.154.005a.75.75 0 0 1 .102 1.493l-.102.007a3.75 3.75 0 0 1-.2-7.495zm3.5 3a.75.75 0 0 1 .102 1.493l-.102.007h-3.5a.75.75 0 0 1-.102-1.493L15.75 18z"/></svg>',
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path fill="currentColor" d="M9.5 21h2.066A4.7 4.7 0 0 1 11 18.75c0-1.025.325-1.974.877-2.75H9.5zM21 9.5v4.833A4.7 4.7 0 0 0 19.25 14H16V9.5zm-6.5 0v4.666a4.7 4.7 0 0 0-.874.334H9.5v-5zM21 8V6.25A3.25 3.25 0 0 0 17.75 3H16v5zm-6.5-5h-5v5h5zM8 3H6.25A3.25 3.25 0 0 0 3 6.25V8h5zM3 9.5v5h5v-5zM3 16v1.75A3.25 3.25 0 0 0 6.25 21H8v-5zm16.25-1a3.75 3.75 0 0 1 .202 7.495l-.199.005v.005a.75.75 0 0 1-.108-1.493l.102-.007l.003-.005a2.25 2.25 0 0 0 .154-4.495l-.154-.005a.75.75 0 0 1-.102-1.493zm-3.5 0a.75.75 0 0 1 .102 1.493l-.102.007a2.25 2.25 0 0 0-.154 4.495l.154.005a.75.75 0 0 1 .102 1.493l-.102.007a3.75 3.75 0 0 1-.2-7.495zm3.5 3a.75.75 0 0 1 .102 1.493l-.102.007h-3.5a.75.75 0 0 1-.102-1.493L15.75 18z"/></svg>',
             title: func.get_translate("Link"),
             route: "/link",
             href: "./link",
         },
+        // {
+        //     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 6h8m0 8v4m0-8h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></g></svg>', // 图标，26 px
+        //     title: func.get_translate("Calc"), // 名字
+        //     route: "/calculator",
+        //     href: "./calculator",
+        // },
         //
     ];
     let tab_div_width = $state(280);
@@ -247,8 +253,8 @@
                 <!---->
                 {#each tab_data as item}
                     <button class="tab-item select-none click {(route === item.route)?'tab-item-active':''}" style="width: {tab_item_width}px;" onclick={()=>def.open_url(item.href)} >
-                        <div>{@html item.icon}</div>
-                        <div class="font-mini">{@html item.title}</div>
+                        <div class="tab-item-icon">{@html item.icon.replace('<svg ', '<svg style="display:inline-block;height:26px;width:26px;" ')}</div>
+                        <div class="tab-item-icon font-mini">{@html item.title}</div>
                     </button>
                 {/each}
                 <!---->
@@ -360,5 +366,7 @@
         border: none;
         outline: none;
     }
+
+
 
 </style>
