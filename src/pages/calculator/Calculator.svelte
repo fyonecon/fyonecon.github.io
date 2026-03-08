@@ -827,9 +827,9 @@
             <button class="btns operator" data-action="+">+</button>
             <button class="btns operator" data-action="-">−</button>
             <!--7-->
+            <button class="btns" data-action="%">%</button>
             <button class="btns zero" data-action="0">0</button>
             <button class="btns" data-action=".">.</button>
-            <button class="btns" data-action="%">%</button>
             <button class="btns equals" data-action="=" title="=">=<span style="font-weight: 400;font-size: 14px;margin-left: 5px;">(Save)</span></button>
         </div>
     </div>
