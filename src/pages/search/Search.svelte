@@ -58,6 +58,10 @@
                 back_state = true;
                 that.open_url("./calculator");
             }
+            else if (word === "@dumogu" || word === "@dmg"){
+                back_state = true;
+                that.open_url("./dumogu.html");
+            }
             else if (word === "@404"){
                 back_state = true;
                 that.open_url("./_404");

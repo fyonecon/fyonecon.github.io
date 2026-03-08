@@ -102,7 +102,7 @@
         test_index_html: function(){
             test_index_html_api = "//" + window.location.host;
             test_index_html_info = [{
-                key: "CDN",
+                key: "File URL",
                 value: test_index_html_api,
             }];
             fetch(test_index_html_api).then(response => {
@@ -110,7 +110,7 @@
                 let index = 0;
                 for (let [key, value] of headers) {
                     // console.log(`${key}: ${value}`);
-                    if (index <= 6){ // 不需要展示全部
+                    if (index < 5){ // 不需要展示全部
                         test_index_html_info.push({
                             key: key,
                             value: value,
@@ -176,7 +176,7 @@
 
     <div class="info-div font-text">
         <div class="info-div-title">
-            <span class="font-text">Ping 网络</span>
+            <span class="font-text">Ping 网络 </span>
             <button type="button" class="btn btn-sm preset-filled-primary-500 font-mini" onclick={()=>def.ping_show()} title="Click">Start</button>
         </div>
         <div class="info-div-content">
@@ -220,11 +220,12 @@
 
     <div class="info-div font-text">
         <div class="info-div-title">
-            <span class="font-text">用户IP</span>
+            <span class="font-text">用户 IP </span>
             <button type="button" class="btn btn-sm preset-filled-primary-500 font-mini" onclick={()=>def.see_ip_detail()} title="Click">Detail</button>
         </div>
         <div class="info-div-content">
-            <img src="//ip.im/img" alt="My IP Address" style="min-width: 215px; height: 70px; width: 100%;">
+<!--            <img src="//ip.im/img" alt="My IP Address" style="min-width: 215px; height: 70px; width: 100%;">-->
+            <span style="opacity: 0.6;">(点击上面 Detail 按钮可查看)</span>
         </div>
     </div>
 
@@ -233,6 +234,12 @@
             <span class="font-text">浏览器信息</span>
         </div>
         <div class="info-div-content">
+            <div class="info-div-content-li break select-text">
+                <span class="info-div-content-li-title ">UserAgent ：</span>
+                <br>
+                <span class="info-div-content-li-res">{@html window.navigator.userAgent}</span>
+                <div class="clear"></div>
+            </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">浏览器时区 ：</span>
                 <br>
@@ -258,21 +265,26 @@
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
-                <span class="info-div-content-li-title ">UserAgent ：</span>
-                <br>
-                <span class="info-div-content-li-res">{@html window.navigator.userAgent}</span>
-                <div class="clear"></div>
-            </div>
-            <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">Screen尺度参数 ：</span>
                 <br>
-                <span class="info-div-content-li-res">{@html "screen.width=" + window.screen.width + "<br/>screen.height=" + window.screen.height+ "<br/>screen.availWidth=" + window.screen.availWidth+ "<br/>screen.availHeight=" + window.screen.availHeight}</span>
+                <span class="info-div-content-li-res">
+                    {@html
+                        "screen.width=" + window.screen.width+
+                        "<br/>screen.height=" + window.screen.height+
+                        "<br/>screen.availWidth=" + window.screen.availWidth+
+                        "<br/>screen.availHeight=" + window.screen.availHeight
+                    }
+                </span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">Pages尺度参数 ：</span>
                 <br>
-                <span class="info-div-content-li-res">{@html "innerWidth=" + window.innerWidth + "<br/>innerHeight=" + window.innerHeight}</span>
+                <span class="info-div-content-li-res">{@html
+                    "window.innerWidth=" + window.innerWidth +
+                    "<br/>window.innerHeight=" + window.innerHeight
+                }
+                </span>
                 <div class="clear"></div>
             </div>
 
@@ -329,7 +341,7 @@
 
     <div class="info-div font-text">
         <div class="info-div-title">
-            <span class="font-text">CDN信息</span>
+            <span class="font-text">CDN 文件信息</span>
         </div>
         <div class="info-div-content ">
             {#each test_index_html_info as info}

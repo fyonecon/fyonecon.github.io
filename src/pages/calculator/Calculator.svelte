@@ -51,7 +51,7 @@
             clear_history_state = 1;
             // UI和函数分开写，这里只处理UI
             clear_history_dialog_is_open = false;
-            func.loading_show("", 1800);
+            func.loading_show("", 1500);
 
         },
         init_audio_buffer: function(){ // 预加载音频并保持准备状态
@@ -323,7 +323,7 @@
                         watch_clear_history_state();
                         calculator_clear_history_state_timer = setInterval(function (){
                             watch_clear_history_state();
-                        }, 800);
+                        }, 700);
                     }, 100);
                 });
 

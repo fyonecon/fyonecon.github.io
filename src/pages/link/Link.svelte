@@ -86,18 +86,13 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("万年日历"),
-                    href: func.string_to_unicode("https://wannianrili.bmcx.com")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Windy天气"),
-                    href: func.string_to_unicode("https://www.windy.com")
-                },
-                { //
-                    show_lang: "all",
                     title: func.string_to_unicode("Ping/IP/Agent"),
                     href: func.string_to_unicode("@info")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("毒蘑菇测试"),
+                    href: func.string_to_unicode("@dumogu")
                 },
                 { //
                     show_lang: "all",
@@ -111,14 +106,24 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("🧲喵磁力"),
-                    href: func.string_to_unicode("https://www.miaocili.com/")
+                    title: func.string_to_unicode("万年日历"),
+                    href: func.string_to_unicode("https://wannianrili.bmcx.com")
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("vivo-安卓商店"),
-                    href: func.string_to_unicode("https://h5.appstore.vivo.com.cn/#/")
+                    title: func.string_to_unicode("Windy天气"),
+                    href: func.string_to_unicode("https://www.windy.com")
                 },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("🧲喵磁力"),
+                    href: func.string_to_unicode("https://www.miaocili.com/")
+                },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("vivo-安卓商店"),
+                //     href: func.string_to_unicode("https://h5.appstore.vivo.com.cn/#/")
+                // },
                 // { //
                 //     show_lang: "all",
                 //     title: func.string_to_unicode("豌豆荚-安卓商店"),
@@ -126,7 +131,7 @@
                 // },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("Divxland-安卓商店"),
+                    title: func.string_to_unicode("Divxland-Android"),
                     href: func.string_to_unicode("https://cn.divxland.org/apps/")
                 },
                 // { //
@@ -174,21 +179,21 @@
                     title: func.string_to_unicode("CCTV14少儿"),
                     href: func.string_to_unicode("https://tv.cctv.cn/live/cctvchild/")
                 },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("B站-极客湾"),
-                    href: func.string_to_unicode("https://space.bilibili.com/25876945/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("B站-淘沙博士"),
-                    href: func.string_to_unicode("https://space.bilibili.com/289706107/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("阮一峰周报"),
-                    href: func.string_to_unicode("https://ruanyifeng.com/blog")
-                },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("B站-极客湾"),
+                //     href: func.string_to_unicode("https://space.bilibili.com/25876945/")
+                // },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("B站-淘沙博士"),
+                //     href: func.string_to_unicode("https://space.bilibili.com/289706107/")
+                // },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("阮一峰周报"),
+                //     href: func.string_to_unicode("https://ruanyifeng.com/blog")
+                // },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("V2EX.com"),

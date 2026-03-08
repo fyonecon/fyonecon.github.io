@@ -355,8 +355,8 @@
         <button class="search-div-btn-btn break-ellipsis btn-border click" onclick={()=>def.input_run_search()}>{@html func.get_translate("search_enter_input")}</button>
     </div>
     <div class="search-div-history font-text font-blue scroll-y-style">
-        {#each search_history_array as history_value}
-            <button class="history-btn click break break-ellipsis" onclick={()=>def.input_auto_write(history_value)} title="{history_value}">{"# "+history_value + " "}</button>
+        {#each search_history_array as history_value, index}
+            <button class="history-btn click break break-ellipsis" onclick={()=>def.input_auto_write(history_value)} title="{history_value}">{@html "<span style='color: rgba(160,160,160, 1);margin-right: 5px;'>#"+(search_history_array.length-index)+"</span>" + history_value + " "}</button>
         {/each}
     </div>
 </div>
@@ -524,7 +524,7 @@
     }
 
     .history-btn{
-        padding: 0 10px;
+        padding: 2px 10px;
         max-width: 250px;
         border-radius: 5px;
         overflow: hidden;

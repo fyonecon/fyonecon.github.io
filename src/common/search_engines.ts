@@ -46,10 +46,10 @@ const search_engines_dict: SearchEnginesDictType = {
     //     name: "中国区Mac应用",
     //     url: "https://apps.apple.com/cn/mac/search?term=",
     // },
-    android_en: {
-        name: "EN APK",
-        url: "https://en.divxland.org/?s=",
-    },
+    // android_en: {
+    //     name: "EN APK",
+    //     url: "https://en.divxland.org/?s=",
+    // },
     // android_ru: {
     //     name: "RU APK",
     //     url: "https://5play.org/index.php?lang=en&do=search&subaction=search&titleonly=0&story=",
