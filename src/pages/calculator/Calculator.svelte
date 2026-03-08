@@ -885,7 +885,7 @@
         user-select: none;
         background-color: var(--color-surface-950);
         color: white;
-        border-radius: 20px;
+        border-radius: 25px;
         border: 1px solid rgba(180,180,180, 0.9);
     }
 
@@ -975,7 +975,7 @@
         background: transparent;
         -webkit-tap-highlight-color: transparent;
         margin-top: 15px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
     .btns {
         background-color: #314a5c;
