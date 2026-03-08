@@ -6,11 +6,21 @@
     import {browser} from "$app/environment";
     import config from "../../config";
     import btn_click_base64_mp3 from "../../common/btn_click_base64_mp3";
+    import {Dialog, Portal} from "@skeletonlabs/skeleton-svelte";
 
 
     // 本页面参数
+    const animation = 'transition transition-discrete opacity-0 translate-y-[100px] starting:data-[state=open]:opacity-0 starting:data-[state=open]:translate-y-[100px] data-[state=open]:opacity-100 data-[state=open]:translate-y-0';
     let route = $state(func.get_route());
     let calculator_clear_history_timer = $state(0);
+    let calculator_clear_history_state_timer = $state(0);
+    let clear_history_dialog_is_open = $state(false);
+    let history = $state([]);
+    let clear_history_state = $state(0); // 0未弹窗，1已弹窗
+    const calculator_history_min_height = 70; // 70
+    let calculator_history_height = $state(calculator_history_min_height);
+    const calculator_min_height = 630; // 630
+    let calculator_height = $state(calculator_min_height);
 
     // 播放按键点击mp3声音
     // AudioContext法（主）
@@ -25,6 +35,25 @@
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
     const def = {
+        close_dialog: function(){
+            clear_history_dialog_is_open = false;
+            clear_history_state = 0;
+            clearInterval(calculator_clear_history_state_timer);
+        },
+        open_dialog: function(){
+            clear_history_dialog_is_open = true;
+            clear_history_state = 0;
+            clearInterval(calculator_clear_history_state_timer);
+        },
+        clear_history: function(){
+            let that = this;
+            //
+            clear_history_state = 1;
+            // UI和函数分开写，这里只处理UI
+            clear_history_dialog_is_open = false;
+            func.loading_show("", 1800);
+
+        },
         init_audio_buffer: function(){ // 预加载音频并保持准备状态
             // 将Base64转换为ArrayBuffer进行更高效的播放
             async function loadAudioBuffer() {
@@ -109,12 +138,12 @@
 
                 // 从localStorage加载历史记录，最多N条
                 const MAX_HISTORY = 500; // [100, 999]
-                let history = [];
                 const STORAGE_KEY = config.app.app_class + 'calculator_history';
 
                 // 保留小数点位数
-                const result_fixed_len = 10;
+                const result_fixed_len = 15;
 
+                //
                 const exprEl = document.getElementById('expression');
                 const resultEl = document.getElementById('result');
                 const errorEl = document.getElementById('errorMessage');
@@ -123,21 +152,27 @@
 
                 // 从localStorage加载历史
                 function loadHistory() {
-                    try {
-                        const saved = localStorage.getItem(STORAGE_KEY);
-                        if (saved) {
-                            history = JSON.parse(saved);
-                            // 确保不超过最大限制
-                            if (history.length > MAX_HISTORY) {
-                                history = history.slice(0, MAX_HISTORY);
+                    return new Promise(resolve => {
+                        try {
+                            const saved = localStorage.getItem(STORAGE_KEY);
+                            if (saved) {
+                                history = JSON.parse(saved);
+                                // 确保不超过最大限制
+                                if (history.length > MAX_HISTORY) {
+                                    history = history.slice(0, MAX_HISTORY);
+                                }
+                                //
+                                resolve(history);
+                            } else {
+                                history = [];
+                                resolve(history);
                             }
-                        } else {
+                        } catch (e) {
+                            console.warn('加载历史记录失败:', e);
                             history = [];
+                            resolve(history);
                         }
-                    } catch (e) {
-                        console.warn('加载历史记录失败:', e);
-                        history = [];
-                    }
+                    });
                 }
 
                 // 保存历史到localStorage
@@ -164,6 +199,7 @@
                     errorEl.innerText = '';
                 }
 
+                // 显示历史
                 function renderHistory() {
                     if (history.length === 0) {
                         historyList.innerHTML = '<li class="empty-history" style="text-align: center; font-size: 16px; line-height: 70px;opacity: 0.6;"> ✨ '+func.get_translate("Calculator")+' ✨ </li>';
@@ -254,27 +290,41 @@
                     renderHistory();
                 }
 
+                // 清除全部历史
+                function clear_all_history(){
+                    clearError();
+                    //
+                    history = [];
+                    //
+                    saveHistory();
+                    renderHistory();
+                }
+
                 // 清除历史
                 clearHistoryBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
-
-                    // 如果没有历史记录，直接返回
-                    if (history.length === 0) {
-                        return;
-                    }
-
                     // 显示确认弹窗
                     clearTimeout(calculator_clear_history_timer);
+                    clearInterval(calculator_clear_history_state_timer);
+                    //
                     calculator_clear_history_timer = setTimeout(function (){
-                        if (confirm('⚠️ '+func.get_translate("calculator_clear_history"))) {
-                            clearError();
-                            //
-                            history = [];
-                            saveHistory();
-                            renderHistory();
+                        clear_history_dialog_is_open = true;
+                        // do
+                        function watch_clear_history_state(){
+                            if (clear_history_state===1){ // 监听到正确值，关闭UI、清除数据。
+                                // UI和函数分开写，这里只处理数据
+                                clear_all_history()
+                                that.close_dialog();
+                            }else{ // 持续监听
+                                // console.log("0=", [calculator_clear_history_state_timer, clear_history_state]);
+                            }
                         }
-                    }, 200);
-
+                        // 监听clear_history_state值是否为1
+                        watch_clear_history_state();
+                        calculator_clear_history_state_timer = setInterval(function (){
+                            watch_clear_history_state();
+                        }, 800);
+                    }, 100);
                 });
 
                 // 检查括号是否匹配
@@ -460,6 +510,8 @@
                 function handleAction(action, btnText) {
                     const rawChar = btnText || action;
 
+                    that.play_btn_click_mp3();
+
                     clearError();
 
                     if (justCalculated) {
@@ -567,11 +619,9 @@
                 }
 
                 // 绑定按钮事件
-                document.querySelectorAll('.btn').forEach(btn => {
+                document.querySelectorAll('.btns').forEach(btn => {
                     btn.addEventListener('click', (e) => {
                         e.preventDefault();
-                        //
-                        that.play_btn_click_mp3();
                         //
                         const action = btn.getAttribute('data-action');
                         const btnText = btn.innerText;
@@ -600,7 +650,7 @@
                         handleAction('+', '+');
                     } else if (key === '-') {
                         handleAction('-', '−');
-                    } else if (key === '*') {
+                    } else if (key === '*' || key === 'X') {
                         handleAction('*', '×');
                     } else if (key === '/') {
                         handleAction('/', '÷');
@@ -629,17 +679,33 @@
                         handleAction('cos', 'cos');
                     } else if (key === 'T') {
                         handleAction('tan', 'tan');
-                    } else if (key === 'N') {
+                    } else if (key === 'N' || key === '!') {
                         handleAction('n!', 'n!');
+                    } else if (key === '%') {
+                        handleAction('%', '%');
                     }
                 });
 
                 // 初始化
-                loadHistory();
-                renderHistory();
-                updateDisplay();
+                loadHistory().then((data)=>{
+                    renderHistory();
+                    updateDisplay();
+                });
             }else{
                 console.log("Sever===");
+            }
+        },
+        auto_calc_calculator_height: function(){ // 动态计算计算器的高度
+            let section_main_space_height = 5; // px
+            let bar_bottom = 20; // px，这还是横条区域的高度
+            let avail_height = window.innerHeight;
+            //
+            if (avail_height > calculator_min_height+bar_bottom){
+                calculator_height = avail_height - section_main_space_height;
+                calculator_history_height = (avail_height - calculator_min_height - bar_bottom) + calculator_history_min_height - section_main_space_height;
+            }else{
+                calculator_height = calculator_min_height+bar_bottom - section_main_space_height;
+                calculator_history_height = calculator_history_min_height - section_main_space_height;
             }
         },
     };
@@ -682,6 +748,7 @@
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
         // 监测页面标签是否处于显示
         if (browser){
+            //
             document.addEventListener("visibilitychange", () => {
                 if (document.hidden) { // onHide
                     page_show();
@@ -689,6 +756,12 @@
                     page_hide();
                 }
             });
+            //
+            def.auto_calc_calculator_height();
+            window.onresize = function (){
+                def.auto_calc_calculator_height();
+            };
+            //
         }
     });
 
@@ -696,11 +769,11 @@
 </script>
 
 <div class="page-div calc-box select-none">
-    <div class="calculator">
+    <div class="calculator" style="height: {calculator_height}px;">
         <div class="display-area">
             <!-- 历史记录 -->
             <div class="history-section">
-                <div class="history-items-container" id="historyContainer">
+                <div class="history-items-container" id="historyContainer" style="height: {calculator_history_height}px;">
                     <ul class="history-list" id="historyList"></ul>
                 </div>
             </div>
@@ -714,58 +787,83 @@
 
         <div class="buttons">
             <!--1-->
-<!--        <button class="btn function" data-action="reciprocal">1/x</button>-->
-            <button class="btn function" data-action="pi">π</button>
-            <button class="btn function" data-action="e">e</button>
-            <button class="btn clear_history" title="Clear all history" data-action="clear_history" id="clearHistoryBtn">Clear</button>
-            <button class="btn rewrite" data-action="R" title="Rewrite">Rewrite</button>
-            <button class="btn del" data-action="DEL" title="Del">
+<!--        <button class="btns function" data-action="reciprocal">1/x</button>-->
+            <button class="btns function" data-action="pi">π</button>
+            <button class="btns function" data-action="e">e</button>
+            <button class="btns clear_history" title="Clear all history" data-action="clear_history" id="clearHistoryBtn">Clear</button>
+            <button class="btns rewrite" data-action="R" title="Rewrite">Rewrite</button>
+            <button class="btns del" data-action="DEL" title="Del">
                 <svg style="display: inline-block;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M19 3a3 3 0 0 1 2.995 2.824L22 6v12a3 3 0 0 1-2.824 2.995L19 21H8.108a3 3 0 0 1-2.436-1.25l-.108-.16l-4.08-6.53a2 2 0 0 1-.087-1.967l.086-.153l4.081-6.53a3 3 0 0 1 2.351-1.404L8.108 3zm0 2H8.108a1 1 0 0 0-.773.366l-.075.104L3.18 12l4.08 6.53a1 1 0 0 0 .72.462l.128.008H19a1 1 0 0 0 .993-.883L20 18V6a1 1 0 0 0-.883-.993zm-8.121 3.464l2.12 2.122l2.122-2.122a1 1 0 1 1 1.414 1.415L14.415 12l2.12 2.121a1 1 0 0 1-1.414 1.415L13 13.414l-2.121 2.122a1 1 0 1 1-1.415-1.415L11.586 12L9.464 9.879a1 1 0 0 1 1.415-1.415"/></g></svg>
             </button>
             <!--2-->
-            <button class="btn function" data-action="sin">sin</button>
-            <button class="btn function" data-action="cos">cos</button>
-            <button class="btn function" data-action="tan">tan</button>
-            <button class="btn function" data-action="log">log</button>
-            <button class="btn function" data-action="ln">ln</button>
+            <button class="btns function" data-action="sin">sin</button>
+            <button class="btns function" data-action="cos">cos</button>
+            <button class="btns function" data-action="tan">tan</button>
+            <button class="btns function" data-action="log">log</button>
+            <button class="btns function" data-action="ln">ln</button>
             <!--3-->
-            <button class="btn function" data-action="asin">asin</button>
-            <button class="btn function" data-action="acos">acos</button>
-            <button class="btn function" data-action="atan">atan</button>
-            <button class="btn function" data-action="n!">n!</button>
-            <button class="btn function" data-action="pow">x^y</button>
-<!--        <button class="btn function" data-action="sqrt">√</button>-->
+            <button class="btns function" data-action="asin">asin</button>
+            <button class="btns function" data-action="acos">acos</button>
+            <button class="btns function" data-action="atan">atan</button>
+            <button class="btns function" data-action="n!">n!</button>
+            <button class="btns function" data-action="pow">x^y</button>
+<!--        <button class="btns function" data-action="sqrt">√</button>-->
             <!--4-->
-            <button class="btn" data-action="7">7</button>
-            <button class="btn" data-action="8">8</button>
-            <button class="btn" data-action="9">9</button>
-            <button class="btn operator" data-action="(">(</button>
-            <button class="btn operator" data-action=")">)</button>
+            <button class="btns" data-action="7">7</button>
+            <button class="btns" data-action="8">8</button>
+            <button class="btns" data-action="9">9</button>
+            <button class="btns operator" data-action="(">(</button>
+            <button class="btns operator" data-action=")">)</button>
             <!--5-->
-            <button class="btn" data-action="4">4</button>
-            <button class="btn" data-action="5">5</button>
-            <button class="btn" data-action="6">6</button>
-            <button class="btn operator" data-action="*">×</button>
-            <button class="btn operator" data-action="/">/</button>
+            <button class="btns" data-action="4">4</button>
+            <button class="btns" data-action="5">5</button>
+            <button class="btns" data-action="6">6</button>
+            <button class="btns operator" data-action="*">×</button>
+            <button class="btns operator" data-action="/">/</button>
             <!--6-->
-            <button class="btn" data-action="1">1</button>
-            <button class="btn" data-action="2">2</button>
-            <button class="btn" data-action="3">3</button>
-            <button class="btn operator" data-action="+">+</button>
-            <button class="btn operator" data-action="-">−</button>
+            <button class="btns" data-action="1">1</button>
+            <button class="btns" data-action="2">2</button>
+            <button class="btns" data-action="3">3</button>
+            <button class="btns operator" data-action="+">+</button>
+            <button class="btns operator" data-action="-">−</button>
             <!--7-->
-            <button class="btn zero" data-action="0">0</button>
-            <button class="btn" data-action=".">.</button>
-            <button class="btn" data-action="%">%</button>
-            <button class="btn equals" data-action="=" title="=">=<span style="font-weight: 400;font-size: 14px;">(Save)</span></button>
+            <button class="btns zero" data-action="0">0</button>
+            <button class="btns" data-action=".">.</button>
+            <button class="btns" data-action="%">%</button>
+            <button class="btns equals" data-action="=" title="=">=<span style="font-weight: 400;font-size: 14px;margin-left: 5px;">(Save)</span></button>
         </div>
     </div>
+</div>
+
+<!-- 删除已设置的本地文件夹 -->
+<div class="part-div">
+    <Dialog closeOnInteractOutside={false} closeOnEscape={false} open={clear_history_dialog_is_open} onOpenChange={()=>{}}>
+        <Portal>
+            <Dialog.Backdrop class="fixed inset-0 z-50 bg-surface-50-950/80  select-none" />
+            <Dialog.Positioner class="fixed inset-0 z-50 flex justify-center items-center font-text select-none">
+                <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-900 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
+                    <header class="flex justify-between items-center pywebview-drag-region can-drag">
+                        <Dialog.Title class="font-text">⚠️</Dialog.Title>
+                    </header>
+                    <Dialog.Description class="font-text select-text">
+                        {@html func.get_translate('calculator_clear_history')}
+                    </Dialog.Description>
+                    <footer class="flex justify-center gap-10 select-none  px-[10px] py-[10px]">
+                        <button title="Cancel" class="btn btn-base preset-tonal font-text" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
+                        <button title="Update" type="button" class="btn btn-base preset-filled-primary-500 font-text" onclick={()=>def.clear_history()}>{func.get_translate("clear")}</button>
+                    </footer>
+                </Dialog.Content>
+            </Dialog.Positioner>
+        </Portal>
+    </Dialog>
 </div>
 
 <style>
     .calc-box{
         padding: 0 0;
         margin: 0 auto;
+        /*background-color: var(--color-surface-950);*/
+        /*height: calc(100vh - 5px);*/
     }
 
     /* 隐藏默认的触摸高亮 */
@@ -781,11 +879,14 @@
         height: 100%;
         min-height: 630px;
         /**/
-        margin: auto auto;
+        margin-left: auto;
+        margin-right: auto;
         padding: 10px 10px;
         user-select: none;
         background-color: var(--color-surface-950);
         color: white;
+        border-radius: 20px;
+        border: 1px solid rgba(180,180,180, 0.9);
     }
 
     .display-area {
@@ -797,7 +898,7 @@
 
     .history-section {
         padding: 10px 0;
-        border-bottom: 1px solid rgba(180,180,180, 0.7);
+        border-bottom: 1px solid rgba(180,180,180, 0.9);
     }
 
     .history-items-container {
@@ -842,7 +943,7 @@
         text-align: right;
         word-wrap: break-word;
         word-break: break-all;
-        border-bottom: 1px dashed rgba(180,180,180, 0.7);
+        border-bottom: 1px dashed rgba(180,180,180, 0.6);
         padding: 10px 0;
         /**/
         height: 80px;
@@ -874,11 +975,11 @@
         background: transparent;
         -webkit-tap-highlight-color: transparent;
         margin-top: 15px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
-    .btn {
+    .btns {
         background-color: #314a5c;
-        padding: 13px 5px;
+        padding: 13px 2px;
         border-radius: 20px;
         font-size: 16px;
         font-weight: 500;
@@ -890,31 +991,31 @@
         border: 1px solid rgba(180,180,180, 0.9);
         opacity: 1;
     }
-    .btn:active {
+    .btns:active {
         transform: scale(1.08);
         transition: transform 0.1s linear;
     }
-    .btn:hover {
+    .btns:hover {
         opacity: 0.9;
     }
-    .btn.function {
+    .btns.function {
         background-color: #2f5570;
         font-size: 16px;
     }
-    .btn.operator {
+    .btns.operator {
         background-color: #d98c5f;
         font-size: 16px;
     }
-    .btn.equals {
+    .btns.equals {
         background-color: #e6845e;
         font-weight: 700;
         grid-column: span 2;
     }
 
-    .btn.clear_history{
+    .btns.clear_history{
         line-height: 16px;
         background-color: red;
-        font-size: 11px;
+        font-size: 12px;
         color: #0f212b;
         border-color: red;
         font-weight: 400;
@@ -927,14 +1028,14 @@
         margin-top: 4px;
         border-radius: 53px;
     }
-    .btn.clear_history:active{
+    .btns.clear_history:active{
         transform: translateY(4px);
         transition: transform 0.1s ease;
     }
-    .btn.rewrite {
+    .btns.rewrite {
         line-height: 16px;
         background-color: #e6845e;
-        font-size: 11px;
+        font-size: 12px;
         color: #0f212b;
         font-weight: 400;
         /**/
@@ -946,11 +1047,11 @@
         margin-top: 4px;
         border-radius: 53px;
     }
-    .btn.rewrite:active{
+    .btns.rewrite:active{
         transform: translateY(4px);
         transition: transform 0.1s ease;
     }
-    .btn.del {
+    .btns.del {
         line-height: 16px;
         background-color: #e6845e;
         font-size: 16px;
@@ -965,11 +1066,11 @@
         margin-top: 4px;
         border-radius: 53px;
     }
-    .btn.del:active{
+    .btns.del:active{
         transform: translateY(4px);
         transition: transform 0.1s ease;
     }
-    .btn.del {
+    .btns.del {
         &::before {
             content: '';
         }
