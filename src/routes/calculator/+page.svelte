@@ -9,6 +9,7 @@
     <title>Calculator</title>
     <meta name="keywords" content="Calculator,科学计算器" />
     <meta name="description" content="Calculator科学计算器" />
+    <link rel="apple-touch-icon" href="./calc-logo.png" />
     <link rel="manifest" href="./manifest-calculator.json" />
 </svelte:head>
 

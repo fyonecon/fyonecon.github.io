@@ -9,6 +9,7 @@
     <title>PureHome</title>
     <meta name="keywords" content="PureHome, PureStartPage, HomePage" />
     <meta name="description" content="PureHome，替代浏览器主页。不收集任何隐私！" />
+    <link rel="apple-touch-icon" href="./launcher.png" />
     <link rel="manifest" href="./manifest-purehome.json" />
 </svelte:head>
 

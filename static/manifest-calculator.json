@@ -7,7 +7,7 @@
   "description": "",
   "icons": [
     {
-      "src": "./launcher.png",
+      "src": "./calc-logo.png",
       "type": "image/png",
       "sizes": "192x192"
     }
