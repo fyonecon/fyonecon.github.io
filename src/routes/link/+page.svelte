@@ -6,9 +6,10 @@
 </script>
 
 <svelte:head>
-    <title>{func.get_translate("Link")}</title>
-    <meta name="keywords" content="链签, Links" />
-    <meta name="description" content="链签 Links" />
+    <title>Link</title>
+    <meta name="keywords" content="链签, Link" />
+    <meta name="description" content="链签 Link" />
+    <link rel="manifest" href="./manifest-purehome.json" />
 </svelte:head>
 
 <section class="section-main scroll-y-style">
