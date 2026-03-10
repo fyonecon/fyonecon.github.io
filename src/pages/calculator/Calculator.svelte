@@ -143,7 +143,7 @@
                 const STORAGE_KEY = config.app.app_class + 'calculator_history';
 
                 // 保留小数点位数
-                const result_fixed_len = 15;
+                const result_fixed_len = 20;
 
                 //
                 const exprEl = document.getElementById('expression');
@@ -437,7 +437,7 @@
                         })
 
                         // 处理函数
-                        .replace(/\b(sin|cos|tan|asin|acos|atan|log|ln|sqrt)\s*\(/g, 'Math.$1(')
+                        .replace(/\b(sin|cos|tan|asin|acos|atan|sqrt)\s*\(/g, 'Math.$1(')
                         .replace(/\blog\b\s*\(/g, 'Math.log10(')
                         .replace(/\bln\b\s*\(/g, 'Math.log(');
 
@@ -646,7 +646,7 @@
 
                     if (key >= '0' && key <= '9') {
                         handleAction(key, key);
-                    } else if (key === '.') {
+                    } else if (key === '.' || key === '。') {
                         handleAction('.', '.');
                     } else if (key === '+') {
                         handleAction('+', '+');
@@ -656,9 +656,9 @@
                         handleAction('*', '×');
                     } else if (key === '/') {
                         handleAction('/', '÷');
-                    } else if (key === '(') {
+                    } else if (key === '(' || key === '（') {
                         handleAction('(', '(');
-                    } else if (key === ')') {
+                    } else if (key === ')' || key === '）') {
                         handleAction(')', ')');
                     } else if (key === '^') {
                         handleAction('pow', '^');
@@ -681,7 +681,7 @@
                         handleAction('cos', 'cos');
                     } else if (key === 'T') {
                         handleAction('tan', 'tan');
-                    } else if (key === 'N' || key === '!') {
+                    } else if (key === 'N' || key === '!' || key === '！') {
                         handleAction('n!', 'n!');
                     } else if (key === '%') {
                         handleAction('%', '%');
