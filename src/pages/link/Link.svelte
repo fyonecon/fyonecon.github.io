@@ -45,8 +45,8 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("凤凰科技"),
-                    href: func.string_to_unicode("https://itech.ifeng.com")
+                    title: func.string_to_unicode("少数派"),
+                    href: func.string_to_unicode("https://sspai.com/")
                 },
                 { //
                     show_lang: "all",

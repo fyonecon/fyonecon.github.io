@@ -24,13 +24,15 @@
 
     // 播放按键点击mp3声音
     // AudioContext法（主）
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    let audioContext = $state(null);
     let audioBuffer = $state(null);
     // Audio法（备）
-    const audio = new Audio(btn_click_base64_mp3);
-    audio.volume = 0.8;
-    audio.load(); // 预加载音频并保持准备状态
-    audio.preload = 'auto'; // 添加预加载和缓存优化
+    // const audio = new Audio(btn_click_base64_mp3);
+    let audio = $state(null);
+    // audio.volume = 0.8;
+    // audio.load(); // 预加载音频并保持准备状态
+    // audio.preload = 'auto'; // 添加预加载和缓存优化
 
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
@@ -226,7 +228,7 @@
                             index_txt = ""+_index;
                         }
                         //
-                        li.innerHTML = "<span style='opacity: 0.5;color: white; padding-right: 10px;'>#"+index_txt+"</span>";
+                        li.innerHTML = "<span style='opacity: 0.5;color: white; padding-right: 5px;'>#"+index_txt+"</span>";
                         // 表达式
                         const exprSpan = document.createElement('span');
                         exprSpan.className = 'history-expr';
@@ -756,6 +758,12 @@
                     page_hide();
                 }
             });
+            //
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            audio = new Audio(btn_click_base64_mp3);
+            audio.volume = 0.8;
+            audio.load(); // 预加载音频并保持准备状态
+            audio.preload = 'auto'; // 添加预加载和缓存优化
             //
             def.auto_calc_calculator_height();
             window.onresize = function (){
