@@ -4,12 +4,24 @@
     import {afterNavigate} from "$app/navigation";
     import {onMount} from "svelte";
     import {browser_ok, runtime_ok} from "../../common/middleware.svelte";
-    import search_engines_dict from "../../common/search_engines";
     import {browser} from "$app/environment";
 
     
     // 本页面参数
     let route = $state(func.get_route());
+    let last_date = $state(20290201); // 截止日期
+    let link_data_cache = $state([
+        {
+            name: "",
+            list: [
+                {
+                    show_lang: "all",
+                    title: "32593",
+                    href: "104,116,116,112,115"
+                },
+            ],
+        }
+    ]);
     const link_data = [
         {
             name: func.get_translate("mp_chigua"),
@@ -132,7 +144,7 @@
             ],
         },
     ];
-    let page_dispplay_show = $state("hide");
+    let page_display_show = $state("hide");
 
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
@@ -174,20 +186,26 @@
     function page_start(){
         func.console_log("page_start=", route);
         // 开始
-        page_dispplay_show = "show";
         def.check_param();
-        func.title(func.get_translate("mp_title")+" @jyp ");
-        // if (browser){
-        //     if (func.is_mobile_screen()){
-        //         page_dispplay_show = "show";
-        //         def.check_param();
-        //     }else{
-        //         page_dispplay_show = "hide";
-        //         func.title("...");
-        //         func.open_url_404("./", "Page Error", "❌");
-        //     }
-        // }
         //
+        if (browser){
+            if (func.is_mobile_screen()){
+                // 截止日期，过后不再展示
+                let now_date = func.get_time_date("Ymd")*1;
+                if (now_date<=last_date){
+                    page_display_show = "show";
+                    func.title(func.get_translate("mp_title")+" @jyp ");
+                    link_data_cache = link_data;
+                }else{
+                    page_display_show = "hide";
+                    func.title("❌ Page Timeout");
+                }
+            }else{
+                page_display_show = "hide";
+                func.title("❌ Page Block");
+                func.open_url_404("./", "Page Error", "❌");
+            }
+        }
     }
 
     // 标签处于切换显示状态
@@ -195,7 +213,6 @@
         func.console_log("page_show=", route);
         func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // show
-        func.title(func.get_translate("JYP"));
     }
 
     // 标签处于切换隐藏状态
@@ -232,7 +249,7 @@
 
 </script>
 
-<div class="page-div link-box select-none {page_dispplay_show} ">
+<div class="page-div link-box select-none {page_display_show} ">
     <div class="link-group">
         <div class="link-group-title font-text">{@html func.get_translate("mp_title")} <i class="font-red select-text">@jyp</i> {@html func.get_translate("mp_notice")}</div>
         <div class="link-group-list font-text">
@@ -243,7 +260,7 @@
             </div>
         </div>
     </div>
-    {#each link_data as group_data}
+    {#each link_data_cache as group_data}
         <div class="link-group ">
             <div class="link-group-title font-text">{@html group_data.name}</div>
             <div class="link-group-list font-text">
