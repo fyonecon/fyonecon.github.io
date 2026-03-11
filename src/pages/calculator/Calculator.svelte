@@ -56,6 +56,23 @@
             func.loading_show("", 1500);
 
         },
+        auto_calc_calculator_height: function(){ // 动态计算计算器的高度
+            let section_main_space_height = 5; // px
+            let bar_bottom = 20; // px，这还是横条区域的高度
+            let avail_height = window.innerHeight;
+            //
+            if (avail_height > calculator_min_height+bar_bottom){
+                //
+                calculator_height = avail_height - section_main_space_height - bar_bottom;
+                //
+                calculator_history_height = (avail_height - calculator_min_height - bar_bottom) + calculator_history_min_height - section_main_space_height;
+            }else{
+                //
+                calculator_height = calculator_min_height-section_main_space_height - bar_bottom;
+                //
+                calculator_history_height = calculator_history_min_height - section_main_space_height;
+            }
+        },
         init_audio_buffer: function(){ // 预加载音频并保持准备状态
             // 将Base64转换为ArrayBuffer进行更高效的播放
             async function loadAudioBuffer() {
@@ -695,19 +712,6 @@
                 });
             }else{
                 console.log("Sever===");
-            }
-        },
-        auto_calc_calculator_height: function(){ // 动态计算计算器的高度
-            let section_main_space_height = 5; // px
-            let bar_bottom = 20; // px，这还是横条区域的高度
-            let avail_height = window.innerHeight;
-            //
-            if (avail_height > calculator_min_height+bar_bottom){
-                calculator_height = avail_height - section_main_space_height;
-                calculator_history_height = (avail_height - calculator_min_height - bar_bottom) + calculator_history_min_height - section_main_space_height;
-            }else{
-                calculator_height = calculator_min_height+bar_bottom - section_main_space_height;
-                calculator_history_height = calculator_history_min_height - section_main_space_height;
             }
         },
     };
