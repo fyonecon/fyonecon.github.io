@@ -366,8 +366,8 @@ const lang_dict = {
         en: "Rewrite",
     },
     calculator_rewrite: {
-        zh: "重写输入内容？",
-        en: "Rewrite the input content?",
+        zh: "重写表达式？",
+        en: "Rewrite the expression?",
     },
 
 
