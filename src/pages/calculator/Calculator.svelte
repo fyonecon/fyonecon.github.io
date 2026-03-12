@@ -17,7 +17,7 @@
     let history = $state([]);
     const calculator_history_min_height = 70; // 70
     let calculator_history_height = $state(calculator_history_min_height);
-    const calculator_min_height = 630; // 630
+    const calculator_min_height = 600; // 630
     let calculator_height = $state(calculator_min_height);
 
     // 播放按键点击mp3声音
@@ -86,12 +86,12 @@
                 //
                 calculator_height = avail_height - section_main_space_height - bar_bottom;
                 //
-                calculator_history_height = (avail_height - calculator_min_height - bar_bottom) + calculator_history_min_height - section_main_space_height - 44 + 20;
+                calculator_history_height = (avail_height - calculator_min_height - bar_bottom) + calculator_history_min_height - section_main_space_height - bar_bottom;
             }else{
                 //
                 calculator_height = calculator_min_height-section_main_space_height - bar_bottom;
                 //
-                calculator_history_height = calculator_history_min_height - section_main_space_height - 44 + 10;
+                calculator_history_height = calculator_history_min_height - section_main_space_height- bar_bottom;
             }
         },
         init_audio_buffer: function(){ // 预加载音频并保持准备状态
@@ -240,7 +240,7 @@
             // 显示最新的记录（数组前面是最新的）
             history.slice(0, MAX_HISTORY).forEach((item, index) => {
                 const li = document.createElement('li');
-                li.className = 'history-item click font-blue break';
+                li.className = 'history-item click font-text font-blue break';
                 li.setAttribute('data-expr', item.expr);
                 li.setAttribute('data-value', item.value);
                 //
@@ -256,7 +256,7 @@
                     index_txt = ""+_index;
                 }
                 //
-                li.innerHTML = "<span style='opacity: 0.5;color: white; padding-right: 5px;'>#"+index_txt+"</span>";
+                li.innerHTML = "<span style='color: rgba(160,160,160, 1); padding-right: 5px;'>#"+index_txt+"</span>";
                 // 表达式
                 const exprSpan = document.createElement('span');
                 exprSpan.className = 'history-expr';
@@ -264,7 +264,7 @@
                 // 值
                 const valSpan = document.createElement('span');
                 valSpan.className = 'history-value';
-                valSpan.innerHTML = "<span style='opacity: 0.5;color: white; padding-left: 5px; padding-right: 5px;'>=</span>" + item.value;
+                valSpan.innerHTML = "<span style='color: rgba(160,160,160, 1); padding-left: 5px; padding-right: 5px;'>=</span>" + item.value;
                 //
                 li.appendChild(exprSpan);
                 li.appendChild(valSpan);
@@ -833,7 +833,7 @@
 
 <div class="page-div calc-box select-none">
     <div class="calculator" style="height: {calculator_height}px;">
-        <div class="display-area">
+        <div class="display-area bg-neutral-100 dark:bg-neutral-800">
             <!-- 历史记录 -->
             <div class="history-section">
                 <div class="history-items-container" id="historyContainer" style="height: {calculator_history_height}px;">
@@ -848,13 +848,13 @@
             </div>
         </div>
 
-        <div class="buttons">
+        <div class="buttons bg-neutral-100 dark:bg-neutral-800">
             <!--1-->
-            <button class="btns clear_history" title="Clear all history" data-action="clear_history" id="clearHistoryBtn">Clear</button>
-            <button class="btns rewrite" data-action="R" title="Rewrite">Rewrite</button>
-            <button class="btns cursor-move" data-action="CURSOR_LEFT" title="Move Left">←</button>
-            <button class="btns cursor-move" data-action="CURSOR_RIGHT" title="Move Right">→</button>
-            <button class="btns del" data-action="DEL" title="Del">
+            <button class="btns edit clear_history" title="Clear all history" data-action="clear_history" id="clearHistoryBtn">Clear</button>
+            <button class="btns edit rewrite" data-action="R" title="Rewrite">Rewrite</button>
+            <button class="btns edit cursor-move" data-action="CURSOR_LEFT" title="Move Left">←</button>
+            <button class="btns edit cursor-move" data-action="CURSOR_RIGHT" title="Move Right">→</button>
+            <button class="btns edit del" data-action="DEL" title="Del">
                 <svg style="display: inline-block;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M19 3a3 3 0 0 1 2.995 2.824L22 6v12a3 3 0 0 1-2.824 2.995L19 21H8.108a3 3 0 0 1-2.436-1.25l-.108-.16l-4.08-6.53a2 2 0 0 1-.087-1.967l.086-.153l4.081-6.53a3 3 0 0 1 2.351-1.404L8.108 3zm0 2H8.108a1 1 0 0 0-.773.366l-.075.104L3.18 12l4.08 6.53a1 1 0 0 0 .72.462l.128.008H19a1 1 0 0 0 .993-.883L20 18V6a1 1 0 0 0-.883-.993zm-8.121 3.464l2.12 2.122l2.122-2.122a1 1 0 1 1 1.414 1.415L14.415 12l2.12 2.121a1 1 0 0 1-1.414 1.415L13 13.414l-2.121 2.122a1 1 0 1 1-1.415-1.415L11.586 12L9.464 9.879a1 1 0 0 1 1.415-1.415"/></g></svg>
             </button>
             <!--1-->
@@ -877,28 +877,28 @@
             <button class="btns function" data-action="n!">n!</button>
             <button class="btns function" data-action="pow">x^y</button>
             <!--4-->
-            <button class="btns" data-action="7">7</button>
-            <button class="btns" data-action="8">8</button>
-            <button class="btns" data-action="9">9</button>
-            <button class="btns function" data-action="(">(</button>
-            <button class="btns function" data-action=")">)</button>
+            <button class="btns number" data-action="7">7</button>
+            <button class="btns number" data-action="8">8</button>
+            <button class="btns number" data-action="9">9</button>
+            <button class="btns operator" data-action="(">(</button>
+            <button class="btns operator" data-action=")">)</button>
             <!--5-->
-            <button class="btns" data-action="4">4</button>
-            <button class="btns" data-action="5">5</button>
-            <button class="btns" data-action="6">6</button>
+            <button class="btns number" data-action="4">4</button>
+            <button class="btns number" data-action="5">5</button>
+            <button class="btns number" data-action="6">6</button>
             <button class="btns operator" data-action="*">×</button>
             <button class="btns operator" data-action="/">/</button>
             <!--6-->
-            <button class="btns" data-action="1">1</button>
-            <button class="btns" data-action="2">2</button>
-            <button class="btns" data-action="3">3</button>
+            <button class="btns number" data-action="1">1</button>
+            <button class="btns number" data-action="2">2</button>
+            <button class="btns number" data-action="3">3</button>
             <button class="btns operator" data-action="+">+</button>
             <button class="btns operator" data-action="-">−</button>
             <!--7-->
-            <button class="btns" data-action="%">%</button>
-            <button class="btns zero" data-action="0">0</button>
-            <button class="btns" data-action=".">.</button>
-            <button class="btns equals" data-action="=" title="=">=<span style="font-weight: 400;font-size: 14px;margin-left: 5px;">(Save)</span></button>
+            <button class="btns number" data-action="%">%</button>
+            <button class="btns number zero" data-action="0">0</button>
+            <button class="btns number" data-action=".">.</button>
+            <button class="btns operator equals" data-action="=" title="=">=<span style="font-weight: 400;font-size: 14px;margin-left: 5px;">(Save)</span></button>
         </div>
     </div>
 </div>
@@ -948,11 +948,10 @@
 </div>
 
 <style>
+
     .calc-box{
         padding: 0 0;
         margin: 0 auto;
-        /*background-color: var(--color-surface-950);*/
-        /*height: calc(100vh - 5px);*/
     }
 
     /* 隐藏默认的触摸高亮 */
@@ -970,22 +969,19 @@
         /**/
         margin-left: auto;
         margin-right: auto;
-        padding: 10px 10px;
+        padding: 5px 5px;
         user-select: none;
-        background-color: var(--color-surface-950);
-        color: white;
-        border-radius: 30px;
-        border: 1px solid rgba(180,180,180, 0.9);
     }
 
     .display-area {
-        border-radius: 20px;
+        display: block;
+        border-radius: 15px;
         padding: 0 5px;
-        border: 1px solid rgba(180,180,180, 0.9);
+        border: 1px solid rgba(180,180,180, 1);
     }
     .history-section {
         padding: 5px 0;
-        border-bottom: 1px solid rgba(180,180,180, 0.9);
+        border-bottom: 1px solid rgba(180,180,180, 0.6);
     }
     .history-items-container {
         height: 70px; /* 大约2条记录的高度 */
@@ -1014,12 +1010,11 @@
         flex-direction: column;
         gap: 5px;
         padding-right: 10px;
-        padding-top: 5px;
         padding-bottom: 5px;
         font-weight: 400;
         text-align: left;
-        font-size: 16px;
         line-height: 1.3;
+        font-size: 16px;
     }
 
     .expression {
@@ -1029,12 +1024,12 @@
         text-align: right;
         word-wrap: break-word;
         word-break: break-all;
-        border-bottom: 1px dashed rgba(180,180,180, 0.6);
+        border-bottom: 1px solid rgba(180,180,180, 0.6);
         padding: 5px 0;
         /**/
         /*min-height: 56px;*/
         /*max-height: 80px;*/
-        height: 72px;
+        height: 80px;
         overflow-y: auto;
         /* 保证光标span可见 */
         white-space: pre-wrap;
@@ -1046,7 +1041,6 @@
         text-align: right;
         word-wrap: break-word;
         word-break: break-all;
-        text-shadow: 0 2px 4px black;
         padding: 5px 0;
         height: 40px;
         overflow-y: auto;
@@ -1061,17 +1055,17 @@
     .buttons {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 10px 10px;
+        gap: 5px 5px;
         box-shadow: none;
         /**/
-        background: transparent;
-        -webkit-tap-highlight-color: transparent;
-        margin-top: 15px;
+        border-radius: 15px;
+        margin-top: 7px;
+        padding: 5px 5px 8px 5px;
+        border: 1px solid rgba(180,180,180, 1);
     }
     .btns {
-        background-color: #314a5c;
         padding: 13px 2px;
-        border-radius: 20px;
+        border-radius: 10px;
         font-size: 16px;
         font-weight: 500;
         cursor: pointer;
@@ -1079,8 +1073,11 @@
         align-items: center;
         justify-content: center;
         line-height: 1;
-        border: 1px solid rgba(180,180,180, 0.9);
         opacity: 1;
+        height: 42px;
+        /**/
+        background: transparent;
+        -webkit-tap-highlight-color: transparent;
     }
     .btns:active {
         transform: scale(1.08);
@@ -1089,23 +1086,26 @@
     .btns:hover {
         opacity: 0.9;
     }
+
+    .btns.edit{
+        background-color: #C95A4D; /*编辑*/
+    }
     .btns.function {
-        background-color: #2f5570;
-        font-size: 16px;
+        background-color: #6A9E7D; /*函数*/
+    }
+    .btns.number{
+        background-color: #6FB7D4; /*数字*/
     }
     .btns.operator {
-        background-color: #d98c5f;
-        font-size: 16px;
+        background-color: #D9B650; /*等于*/
     }
+
     .btns.equals {
-        background-color: #e6845e;
-        font-weight: 700;
         grid-column: span 2;
     }
 
     .btns.clear_history{
         line-height: 16px;
-        background-color: red;
         font-size: 12px;
         color: #0f212b;
         border-color: red;
@@ -1115,10 +1115,10 @@
         display: inline-block;
         padding-top: 0;
         padding-bottom: 0;
-        height: 36px;
-        margin-top: 3px;
-        margin-bottom: 2px;
-        border-radius: 53px;
+        height: 35px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-radius: 15px;
     }
     .btns.clear_history:active{
         transform: translateY(4px);
@@ -1126,7 +1126,6 @@
     }
     .btns.rewrite {
         line-height: 16px;
-        background-color: red;
         font-size: 12px;
         color: #0f212b;
         font-weight: 400;
@@ -1135,10 +1134,10 @@
         display: inline-block;
         padding-top: 0;
         padding-bottom: 0;
-        height: 36px;
-        margin-top: 3px;
-        margin-bottom: 2px;
-        border-radius: 53px;
+        height: 35px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-radius: 15px;
     }
     .btns.rewrite:active{
         transform: translateY(4px);
@@ -1146,8 +1145,7 @@
     }
     .btns.del {
         line-height: 16px;
-        background-color: #e6845e;
-        font-size: 16px;
+        font-size: 18px;
         color: #0f212b;
         font-weight: 400;
         /**/
@@ -1155,10 +1153,10 @@
         display: inline-block;
         padding-top: 0;
         padding-bottom: 0;
-        height: 36px;
-        margin-top: 3px;
-        margin-bottom: 2px;
-        border-radius: 53px;
+        height: 35px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-radius: 15px;
     }
     .btns.del:active{
         transform: translateY(4px);
@@ -1171,19 +1169,17 @@
     }
     .btns.cursor-move {
         line-height: 16px;
-        background-color: #e6845e;
         font-size: 16px;
         color: #0f212b;
-        font-weight: 400;
         /**/
         transform: scaleY(1.2);
         display: inline-block;
         padding-top: 0;
         padding-bottom: 0;
-        height: 36px;
-        margin-top: 3px;
-        margin-bottom: 2px;
-        border-radius: 53px;
+        height: 35px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-radius: 15px;
     }
     .btns.cursor-move:active{
         transform: translateY(4px);

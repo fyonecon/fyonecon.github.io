@@ -341,7 +341,7 @@ const lang_dict = {
         en: "Rumors",
     },
     mp_fabu: {
-        zh: "1/e的人感谢你",
+        zh: "1/e的人类感谢你",
         en: "1/e People thanks you",
     },
     mp_dongman: {
@@ -358,7 +358,7 @@ const lang_dict = {
         en: "History is null",
     },
     calculator_clear_history: {
-        zh: "清空历史记录？",
+        zh: "清除全部历史记录？",
         en: "Clear all history?",
     },
     rewrite:{

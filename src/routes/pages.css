@@ -55,7 +55,7 @@
     display: inline-block;
     height: 18px;
     font-size: 18px;
-    color: rgba(180,180,180, 1);
+    color: rgba(160,160,160, 1);
     margin: 0 1px;
     animation: blink 1s step-end infinite;
     opacity: 1;
