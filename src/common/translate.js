@@ -369,6 +369,10 @@ const lang_dict = {
         zh: "重写表达式？",
         en: "Rewrite the expression?",
     },
+    save: {
+        zh: "保存",
+        en: "Save",
+    },
 
 
     // =========

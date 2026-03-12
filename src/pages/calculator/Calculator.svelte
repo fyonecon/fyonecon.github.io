@@ -232,7 +232,7 @@
             if (!historyList) return;
 
             if (history.length === 0) {
-                historyList.innerHTML = '<li class="empty-history" style="text-align: center; font-size: 16px; line-height: 70px;opacity: 0.6;"> ✨ '+func.get_translate("Calculator")+' ✨ </li>';
+                historyList.innerHTML = '<li class="empty-history" style="text-align: center; font-size: 16px; line-height: 60px;"> ✨ <span style="opacity: 0.6;">'+func.get_translate("Calculator")+'</span> ✨ </li>';
                 return;
             }
 
@@ -848,10 +848,10 @@
             </div>
         </div>
 
-        <div class="buttons bg-neutral-100 dark:bg-neutral-800">
+        <div class="buttons-div bg-neutral-100 dark:bg-neutral-800">
             <!--1-->
-            <button class="btns edit clear_history" title="Clear all history" data-action="clear_history" id="clearHistoryBtn">Clear</button>
-            <button class="btns edit rewrite" data-action="R" title="Rewrite">Rewrite</button>
+            <button class="btns edit clear_history" title="Clear all history" data-action="clear_history" id="clearHistoryBtn">{func.get_translate("clear")}</button>
+            <button class="btns edit rewrite" data-action="R" title="Rewrite">{func.get_translate("rewrite")}</button>
             <button class="btns edit cursor-move" data-action="CURSOR_LEFT" title="Move Left">←</button>
             <button class="btns edit cursor-move" data-action="CURSOR_RIGHT" title="Move Right">→</button>
             <button class="btns edit del" data-action="DEL" title="Del">
@@ -898,7 +898,7 @@
             <button class="btns number" data-action="%">%</button>
             <button class="btns number zero" data-action="0">0</button>
             <button class="btns number" data-action=".">.</button>
-            <button class="btns operator equals" data-action="=" title="=">=<span style="font-weight: 400;font-size: 14px;margin-left: 5px;">(Save)</span></button>
+            <button class="btns operator equals" data-action="=" title="=">=<span style="font-weight: 400;font-size: 14px;margin-left: 5px;">({func.get_translate("save")})</span></button>
         </div>
     </div>
 </div>
@@ -1052,7 +1052,7 @@
         min-height: 20px;
     }
 
-    .buttons {
+    .buttons-div {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 5px 5px;
@@ -1065,7 +1065,7 @@
     }
     .btns {
         padding: 13px 2px;
-        border-radius: 10px;
+        border-radius: 5px;
         font-size: 16px;
         font-weight: 500;
         cursor: pointer;
