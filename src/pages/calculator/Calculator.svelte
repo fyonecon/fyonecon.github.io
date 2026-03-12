@@ -24,15 +24,10 @@
 
     // 播放按键点击mp3声音
     // AudioContext法（主）
-    // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     let audioContext = $state(null);
     let audioBuffer = $state(null);
     // Audio法（备）
-    // const audio = new Audio(btn_click_base64_mp3);
     let audio = $state(null);
-    // audio.volume = 0.8;
-    // audio.load(); // 预加载音频并保持准备状态
-    // audio.preload = 'auto'; // 添加预加载和缓存优化
 
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
@@ -58,7 +53,7 @@
         },
         auto_calc_calculator_height: function(){ // 动态计算计算器的高度
             let section_main_space_height = 5; // px
-            let bar_bottom = 20; // px，这还是横条区域的高度
+            let bar_bottom = 5; // px，这还是横条区域的高度
             let avail_height = window.innerHeight;
             //
             if (avail_height > calculator_min_height+bar_bottom){
@@ -474,9 +469,6 @@
                     try {
                         const processedExpr = preprocessExpression(expr);
 
-                        // console.log('原始表达式:', expr);
-                        // console.log('处理后表达式:', processedExpr);
-
                         if (processedExpr.includes('Function') ||
                             processedExpr.includes('eval') ||
                             processedExpr.includes('setTimeout') ||
@@ -486,8 +478,6 @@
 
                         const func = new Function('Math', 'return (' + processedExpr + ')');
                         let result = func(Math);
-
-                        // console.log('计算结果=', result, typeof result);
 
                         if (typeof result !== 'number') { // 表达式错误
                             return { value: null, error: 'Math Error.' };
@@ -506,11 +496,6 @@
                         }
                         return { value: result.toString(), error: null };
                     } catch (e) {
-                        // console.error('计算错误:', e);
-                        // console.error('错误信息:', e.message);
-                        // console.error('当前表达式:', expr);
-                        // console.error('处理后表达式:', preprocessExpression(expr));
-
                         if (e.message.includes('Unexpected token')) {
                             return { value: null, error: 'Input Error.' };
                         } else if (e.message.includes('is not defined')) {
@@ -824,8 +809,8 @@
             <button class="btns" data-action="7">7</button>
             <button class="btns" data-action="8">8</button>
             <button class="btns" data-action="9">9</button>
-            <button class="btns operator" data-action="(">(</button>
-            <button class="btns operator" data-action=")">)</button>
+            <button class="btns function" data-action="(">(</button>
+            <button class="btns function" data-action=")">)</button>
             <!--5-->
             <button class="btns" data-action="4">4</button>
             <button class="btns" data-action="5">5</button>
@@ -897,7 +882,7 @@
         user-select: none;
         background-color: var(--color-surface-950);
         color: white;
-        border-radius: 25px;
+        border-radius: 30px;
         border: 1px solid rgba(180,180,180, 0.9);
     }
 
@@ -905,14 +890,11 @@
         border-radius: 20px;
         padding: 0 10px;
         border: 1px solid rgba(180,180,180, 0.9);
-        /*background-color: #314a5c;*/
     }
-
     .history-section {
         padding: 10px 0;
         border-bottom: 1px solid rgba(180,180,180, 0.9);
     }
-
     .history-items-container {
         height: 70px; /* 大约2条记录的高度 */
         overflow-y: auto;
@@ -920,25 +902,20 @@
         scrollbar-width: thin;
         scrollbar-color: #5f9ea0 #1d2a32;
     }
-
     .history-items-container::-webkit-scrollbar {
         width: 6px;
     }
-
     .history-items-container::-webkit-scrollbar-track {
         background: #1d2a32;
         border-radius: 20px;
     }
-
     .history-items-container::-webkit-scrollbar-thumb {
         background: #5f9ea0;
         border-radius: 20px;
     }
-
     .history-items-container::-webkit-scrollbar-thumb:hover {
         background: #7fb8ba;
     }
-
     .history-list {
         list-style: none;
         display: flex;
@@ -981,13 +958,12 @@
     .buttons {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 11px 10px;
+        gap: 10px 10px;
         box-shadow: none;
         /**/
         background: transparent;
         -webkit-tap-highlight-color: transparent;
-        margin-top: 15px;
-        margin-bottom: 10px;
+        margin-top: 19px;
     }
     .btns {
         background-color: #314a5c;
