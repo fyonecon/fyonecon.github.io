@@ -1145,11 +1145,27 @@ const func = {
             return false;
         }
     },
-    is_url: function (string=""){ // http(s) ftp(s)
-        try {
-            new URL(string);
-            return true;
-        } catch (err) {
+    is_url: function (string=""){ // http(s) ftp(s) file
+        string = string.toLowerCase();
+        if (
+            string.indexOf("http:") === 0
+            || string.indexOf("https:") === 0
+            || string.indexOf("ftp:") === 0
+            || string.indexOf("ftps:") === 0
+            || string.indexOf("file:") === 0
+            // || string.indexOf("view-source:") === 0
+            || string.indexOf("mailto:") === 0
+            || string.indexOf("rtsp:") === 0
+            || string.indexOf("tel:") === 0
+            || string.indexOf("sms:") === 0
+        ){ // 严格限制协议开头
+            try {
+                new URL(string);
+                return true;
+            } catch (err) {
+                return false;
+            }
+        }else{
             return false;
         }
     },
