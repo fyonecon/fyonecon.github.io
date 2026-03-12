@@ -361,6 +361,14 @@ const lang_dict = {
         zh: "清空历史记录？",
         en: "Clear all history?",
     },
+    rewrite:{
+        zh: "重写",
+        en: "Rewrite",
+    },
+    calculator_rewrite: {
+        zh: "重写输入内容？",
+        en: "Rewrite the input content?",
+    },
 
 
     // =========

@@ -49,3 +49,20 @@
     border-radius: 10px;
 }
 
+
+/* 光标闪烁动画 */
+.cursor-blink {
+    display: inline-block;
+    height: 18px;
+    font-size: 18px;
+    color: rgba(180,180,180, 1);
+    margin: 0 1px;
+    animation: blink 1s step-end infinite;
+    opacity: 1;
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
