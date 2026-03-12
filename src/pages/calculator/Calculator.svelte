@@ -27,9 +27,8 @@
     // Audio法（备）
     let audio = $state(null);
 
-    // 计算器全局变量
     // 从localStorage加载历史记录，最多N条
-    const MAX_HISTORY = 500; // [100, 999]
+    const MAX_HISTORY = 666; // [100, 999]
     const STORAGE_KEY = config.app.app_class + 'calculator_history';
 
     // 保留小数点位数
@@ -48,10 +47,11 @@
     let cursorPos = $state(0); // 光标位置（索引，从0开始，指向光标左侧的位置，即光标位于该索引之后）
 
     // DOM元素引用
+    let historyContainer: HTMLElement | null = $state(null);
+    let historyList: HTMLElement | null = $state(null);
     let exprEl: HTMLElement | null = $state(null);
     let resultEl: HTMLElement | null = $state(null);
     let errorEl: HTMLElement | null = $state(null);
-    let historyList: HTMLElement | null = $state(null);
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
     const def = {
@@ -76,6 +76,19 @@
             //
             def.close_dialog();
             def.rewrite_exp();
+        },
+        scroll_to_bottom: function(behavior = 'smooth', ele=null){ // 自动滚动到底部
+            if (ele){
+                // 元素滚动高度 = 整个内容高度 - 容器本身client高度
+                // scrollHeight 是内容总高度(包括溢出部分)，clientHeight 是可见区域高度
+                const targetScrollTop = ele.scrollHeight - ele.clientHeight;
+                ele.scrollTo({
+                    top: targetScrollTop,
+                    behavior: behavior      // 'smooth' 或 'auto'
+                });
+            }else{
+                console.warn("id_ele=null");
+            }
         },
         auto_calc_calculator_height: function(){ // 动态计算计算器的高度
             let section_main_space_height = 5; // px
@@ -238,13 +251,16 @@
 
             const frag = document.createDocumentFragment();
             // 显示最新的记录（数组前面是最新的）
-            history.slice(0, MAX_HISTORY).forEach((item, index) => {
+            let _history = history.slice(0, MAX_HISTORY).reverse(); // 最新的历史+倒叙
+            //
+            _history.forEach((item, index) => {
                 const li = document.createElement('li');
                 li.className = 'history-item click font-text font-blue break';
                 li.setAttribute('data-expr', item.expr);
                 li.setAttribute('data-value', item.value);
                 //
-                let _index = (history.length-index);
+                // let _index = (history.length-index);
+                let _index = index+1;
                 let index_txt = "000";
                 if (_index<10){
                     index_txt = "00"+_index;
@@ -289,9 +305,13 @@
                 //
                 frag.appendChild(li);
             });
-
+            //
             historyList.innerHTML = '';
             historyList.appendChild(frag);
+            //
+            setTimeout(function (){
+                def.scroll_to_bottom("smooth", historyContainer);
+            }, 100);
         },
         addHistory: function(expr, value) {
             if (!expr || expr.trim() === '' || value === undefined || value === null) return;
@@ -504,10 +524,9 @@
         },
         // 清除历史记录
         clear_history: function(){
-            def.clearError();
-            //
             history = [];
             //
+            def.clearError();
             def.saveHistory();
             def.renderHistory();
         },
@@ -516,15 +535,19 @@
             currentExpr = '';
             lastResult = '0';
             justCalculated = false;
+            lastError = '';
             cursorPos = 0;
+            //
             def.clearError();
-            def.updateDisplay();
-            def.close_dialog();
         },
         handleAction: function(action, btnText) {
             const rawChar = btnText || action;
 
             def.play_btn_click_mp3();
+
+            setTimeout(function (){
+                def.scroll_to_bottom("smooth", exprEl);
+            }, 100);
 
             def.clearError();
 
@@ -649,18 +672,15 @@
             let that = this;
             //
             if (browser){
-                // 重置状态变量
-                currentExpr = '';
-                lastResult = '0';
-                justCalculated = false;
-                lastError = '';
-                cursorPos = 0;
-
                 // 获取DOM元素引用
+                historyContainer = document.getElementById('historyContainer');
+                historyList = document.getElementById('historyList');
                 exprEl = document.getElementById('expression');
                 resultEl = document.getElementById('result');
                 errorEl = document.getElementById('errorMessage');
-                historyList = document.getElementById('historyList');
+
+                // 重置状态变量
+                def.rewrite_exp();
 
                 // 将阶乘函数添加到Math对象
                 Math.factorial = def.factorialN;
@@ -757,12 +777,13 @@
                         def.handleAction('phi', 'φ');
                     } else if (key === 'D') {
                         def.handleAction('date', 'date');
-                    } else if (key === ',' || key === '，') {
-                        def.handleAction('rand', 'rand');
                     }
+                    // else if (key === ',' || key === '，') {
+                    //     def.handleAction('rand', 'rand');
+                    // }
                 });
             }else{
-                console.log("Sever===");
+                console.warn("Sever===");
             }
         },
     };
@@ -828,11 +849,10 @@
         }
     });
 
-
 </script>
 
 <div class="page-div calc-box select-none">
-    <div class="calculator" style="height: {calculator_height}px;">
+    <div class="calculator-div" style="height: {calculator_height}px;">
         <div class="display-area bg-neutral-100 dark:bg-neutral-800">
             <!-- 历史记录 -->
             <div class="history-section">
@@ -953,13 +973,11 @@
         padding: 0 0;
         margin: 0 auto;
     }
-
-    /* 隐藏默认的触摸高亮 */
-    * {
+    * { /* 隐藏默认的触摸高亮 */
         -webkit-tap-highlight-color: transparent;
     }
 
-    .calculator {
+    .calculator-div {
         font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
         max-width: 520px;
         min-width: 280px;
@@ -981,7 +999,7 @@
     }
     .history-section {
         padding: 5px 0;
-        border-bottom: 1px solid rgba(180,180,180, 0.6);
+        border-bottom: 1px solid rgba(180,180,180, 1);
     }
     .history-items-container {
         height: 70px; /* 大约2条记录的高度 */
@@ -991,7 +1009,7 @@
         scrollbar-color: #5f9ea0 #1d2a32;
     }
     .history-items-container::-webkit-scrollbar {
-        width: 6px;
+        width: 5px;
     }
     .history-items-container::-webkit-scrollbar-track {
         background: #1d2a32;
@@ -1017,24 +1035,27 @@
         font-size: 16px;
     }
 
-    .expression {
+    .expression { /*表达式*/
         font-size: 18px;
         line-height: 1.3;
         font-weight: 300;
         text-align: right;
         word-wrap: break-word;
         word-break: break-all;
-        border-bottom: 1px solid rgba(180,180,180, 0.6);
+        border-bottom: 1px dashed rgba(180,180,180, 0.6);
         padding: 5px 0;
         /**/
-        /*min-height: 56px;*/
-        /*max-height: 80px;*/
         height: 80px;
         overflow-y: auto;
         /* 保证光标span可见 */
         white-space: pre-wrap;
+        /**/
+        scroll-snap-type: y mandatory;           /* 启用垂直方向强制吸附 */
+        scroll-behavior: smooth;                  /* 平滑滚动（可选） */
+        scroll-snap-align: end;                    /* 元素的底部与滚动容器底部对齐 */
+        scroll-margin-bottom: 5px;                  /* 微调，留一点边距 */
     }
-    .result {
+    .result { /*结果*/
         font-size: 18px;
         line-height: 1.3;
         font-weight: 600;
@@ -1045,7 +1066,7 @@
         height: 40px;
         overflow-y: auto;
     }
-    .error-message {
+    .error-message { /*错误信息*/
         color: #ffa07a;
         font-size: 16px;
         text-align: right;
@@ -1063,9 +1084,10 @@
         padding: 5px 5px 8px 5px;
         border: 1px solid rgba(180,180,180, 1);
     }
+
     .btns {
         padding: 13px 2px;
-        border-radius: 5px;
+        border-radius: 10px;
         font-size: 16px;
         font-weight: 500;
         cursor: pointer;
@@ -1104,65 +1126,41 @@
         grid-column: span 2;
     }
 
+    .btns.edit{
+        transform: scaleY(1.2);
+        display: inline-block;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 35px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-radius: 15px;
+        color: #0f212b;
+    }
+    .btns.edit:active{
+        transform: translateY(4px);
+        transition: transform 0.1s ease;
+    }
+
     .btns.clear_history{
         line-height: 16px;
         font-size: 12px;
-        color: #0f212b;
         border-color: red;
         font-weight: 400;
-        /**/
-        transform: scaleY(1.2);
-        display: inline-block;
-        padding-top: 0;
-        padding-bottom: 0;
-        height: 35px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        border-radius: 15px;
     }
-    .btns.clear_history:active{
-        transform: translateY(4px);
-        transition: transform 0.1s ease;
-    }
+
     .btns.rewrite {
         line-height: 16px;
         font-size: 12px;
-        color: #0f212b;
         font-weight: 400;
         /**/
-        transform: scaleY(1.2);
-        display: inline-block;
-        padding-top: 0;
-        padding-bottom: 0;
-        height: 35px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        border-radius: 15px;
-    }
-    .btns.rewrite:active{
-        transform: translateY(4px);
-        transition: transform 0.1s ease;
     }
     .btns.del {
         line-height: 16px;
         font-size: 18px;
-        color: #0f212b;
         font-weight: 400;
-        /**/
-        transform: scaleY(1.2);
-        display: inline-block;
-        padding-top: 0;
-        padding-bottom: 0;
-        height: 35px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        border-radius: 15px;
     }
-    .btns.del:active{
-        transform: translateY(4px);
-        transition: transform 0.1s ease;
-    }
-    .btns.del {
+    .btns.del { /*must*/
         &::before {
             content: '';
         }
@@ -1170,20 +1168,6 @@
     .btns.cursor-move {
         line-height: 16px;
         font-size: 16px;
-        color: #0f212b;
-        /**/
-        transform: scaleY(1.2);
-        display: inline-block;
-        padding-top: 0;
-        padding-bottom: 0;
-        height: 35px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        border-radius: 15px;
-    }
-    .btns.cursor-move:active{
-        transform: translateY(4px);
-        transition: transform 0.1s ease;
     }
 
 </style>
