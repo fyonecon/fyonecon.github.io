@@ -53,8 +53,10 @@
 /* 光标闪烁动画 */
 .cursor-blink {
     display: inline-block;
-    height: 18px;
-    font-size: 18px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: 600;
     color: rgba(160,160,160, 1);
     margin: 0 1px;
     animation: blink 1s step-end infinite;

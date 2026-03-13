@@ -99,12 +99,12 @@
                 //
                 calculator_height = avail_height - section_main_space_height - bar_bottom;
                 //
-                calculator_history_height = (avail_height - calculator_min_height - bar_bottom) + calculator_history_min_height - section_main_space_height - bar_bottom;
+                calculator_history_height = (avail_height - calculator_min_height - bar_bottom) + calculator_history_min_height - section_main_space_height - bar_bottom - 10;
             }else{
                 //
                 calculator_height = calculator_min_height-section_main_space_height - bar_bottom;
                 //
-                calculator_history_height = calculator_history_min_height - section_main_space_height- bar_bottom;
+                calculator_history_height = calculator_history_min_height - section_main_space_height- bar_bottom - 10;
             }
         },
         init_audio_buffer: function(){ // 预加载音频并保持准备状态
@@ -221,11 +221,11 @@
             const afterCursor = currentExpr.substring(cursorPos);
 
             // 使用innerHTML 插入光标占位符（一个不可选的竖线字符，带闪烁效果）
-            exprEl.innerHTML = beforeCursor + '<span class="cursor-blink">|</span>' + afterCursor;
+            exprEl.innerHTML = beforeCursor + '<span class="cursor-blink" title="Cursor">|</span>' + afterCursor;
 
             // 如果表达式为空，显示0，但光标仍然存在
             if (currentExpr === '') {
-                exprEl.innerHTML = '<span class="cursor-blink">|</span>';
+                exprEl.innerHTML = '<span class="cursor-blink" title="Cursor">|</span>';
             }
 
             if (resultEl) resultEl.innerText = lastResult;
@@ -255,7 +255,7 @@
             //
             _history.forEach((item, index) => {
                 const li = document.createElement('li');
-                li.className = 'history-item click font-text font-blue break';
+                li.className = 'history-item click font-blue break';
                 li.setAttribute('data-expr', item.expr);
                 li.setAttribute('data-value', item.value);
                 //
@@ -857,7 +857,7 @@
             <!-- 历史记录 -->
             <div class="history-section">
                 <div class="history-items-container" id="historyContainer" style="height: {calculator_history_height}px;">
-                    <ul class="history-list" id="historyList"></ul>
+                    <ul class="history-ul" id="historyList"></ul>
                 </div>
             </div>
             <!--计算过程-->
@@ -931,14 +931,14 @@
             <Dialog.Positioner class="fixed inset-0 z-50 flex justify-center items-center font-text select-none">
                 <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-900 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
                     <header class="flex justify-between items-center pywebview-drag-region can-drag">
-                        <Dialog.Title class="font-text">⚠️</Dialog.Title>
+                        <Dialog.Title class="font-text">🔴</Dialog.Title>
                     </header>
                     <Dialog.Description class="font-text select-text">
                         {@html func.get_translate('calculator_clear_history')}
                     </Dialog.Description>
                     <footer class="flex justify-center gap-10 select-none  px-[10px] py-[10px]">
                         <button title="Cancel" class="btn btn-base preset-tonal font-text" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
-                        <button title="Update" type="button" class="btn btn-base preset-filled-primary-500 font-text" onclick={()=>def.btn_clear_history()}>{func.get_translate("clear")}</button>
+                        <button type="button" class="btn btn-base preset-filled-primary-500 font-text" onclick={()=>def.btn_clear_history()}>{func.get_translate("clear")}</button>
                     </footer>
                 </Dialog.Content>
             </Dialog.Positioner>
@@ -958,7 +958,7 @@
                     </Dialog.Description>
                     <footer class="flex justify-center gap-10 select-none  px-[10px] py-[10px]">
                         <button title="Cancel" class="btn btn-base preset-tonal font-text" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
-                        <button title="Update" type="button" class="btn btn-base preset-filled-primary-500 font-text" onclick={()=>def.btn_rewrite()}>{func.get_translate("rewrite")}</button>
+                        <button type="button" class="btn btn-base preset-filled-primary-500 font-text" onclick={()=>def.btn_rewrite()}>{func.get_translate("rewrite")}</button>
                     </footer>
                 </Dialog.Content>
             </Dialog.Positioner>
@@ -979,6 +979,7 @@
 
     .calculator-div {
         font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        font-size: 16px;
         max-width: 520px;
         min-width: 280px;
         width: 100%;
@@ -993,8 +994,8 @@
 
     .display-area {
         display: block;
-        border-radius: 15px;
-        padding: 0 5px;
+        border-radius: 20px;
+        padding: 5px 5px;
         border: 1px solid rgba(180,180,180, 1);
     }
     .history-section {
@@ -1022,21 +1023,21 @@
     .history-items-container::-webkit-scrollbar-thumb:hover {
         background: #7fb8ba;
     }
-    .history-list {
+    .history-ul {
         list-style: none;
         display: flex;
         flex-direction: column;
         gap: 5px;
-        padding-right: 10px;
+        padding-right: 5px;
         padding-bottom: 5px;
         font-weight: 400;
         text-align: left;
-        line-height: 1.3;
+        line-height: 1.2;
         font-size: 16px;
     }
 
     .expression { /*表达式*/
-        font-size: 18px;
+        font-size: 20px;
         line-height: 1.3;
         font-weight: 300;
         text-align: right;
@@ -1056,7 +1057,7 @@
         scroll-margin-bottom: 5px;                  /* 微调，留一点边距 */
     }
     .result { /*结果*/
-        font-size: 18px;
+        font-size: 20px;
         line-height: 1.3;
         font-weight: 600;
         text-align: right;
@@ -1079,7 +1080,7 @@
         gap: 5px 5px;
         box-shadow: none;
         /**/
-        border-radius: 15px;
+        border-radius: 20px;
         margin-top: 7px;
         padding: 5px 5px 8px 5px;
         border: 1px solid rgba(180,180,180, 1);
@@ -1102,7 +1103,7 @@
         -webkit-tap-highlight-color: transparent;
     }
     .btns:active {
-        transform: scale(1.08);
+        transform: scale(1.06);
         transition: transform 0.1s linear;
     }
     .btns:hover {

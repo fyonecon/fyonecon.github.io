@@ -8,6 +8,17 @@
 ```
 https://www.jetbrains.com/webstorm/download/?section=mac
 ```
+### 部署Github或CDN静态网站
+```
+项目可以上传到Github+自动部署：
+使用 /.github/workflows/deploy.yml 配置文件；
+还需要在 Github仓库-设置-pages 里面指定分支。
+
+CDN静态网站文件生命周期：
+html、file、json：max-age=4321
+css、js: max-age=432100 或 max-age=4321000
+
+```
 
 ===================================
 # Svelte应用（默认）
