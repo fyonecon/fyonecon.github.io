@@ -980,11 +980,12 @@
     .calculator-div {
         font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
         font-size: 16px;
+        /* GUI最小宽度：320x600；最大宽度：520x960。不包含GUI Nav栏。*/
         max-width: 520px;
         min-width: 280px;
         width: 100%;
         height: 100%;
-        min-height: 630px;
+        min-height: 600px;
         /**/
         margin-left: auto;
         margin-right: auto;
