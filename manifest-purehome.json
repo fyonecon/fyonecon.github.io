@@ -2,9 +2,10 @@
   "name": "PureHome",
   "short_name": "PureHome",
   "start_url": "./purehome?from=&utm_source=pwa",
+  "scope": "/purehome/",
   "display": "standalone",
-  "background_color": "#fefefe",
-  "description": "",
+  "background_color": "#A0A0A0",
+  "description": "PureHome,替代浏览器主页",
   "icons": [
     {
       "src": "./launcher.png",
