@@ -177,7 +177,7 @@
     <div class="info-div font-text">
         <div class="info-div-title">
             <span class="font-text">Ping 网络 </span>
-            <button type="button" class="btn btn-sm preset-filled-primary-500 font-mini" onclick={()=>def.ping_show()} title="Click">Start</button>
+            <button type="button" class="btn btn-sm preset-filled-primary-500 font-mini click" onclick={()=>def.ping_show()} title="Click">Start</button>
         </div>
         <div class="info-div-content">
             <div class="info-div-content-li break">
@@ -221,7 +221,7 @@
     <div class="info-div font-text">
         <div class="info-div-title">
             <span class="font-text">用户 IP </span>
-            <button type="button" class="btn btn-sm preset-filled-primary-500 font-mini" onclick={()=>def.see_ip_detail()} title="Click">Detail</button>
+            <button type="button" class="btn btn-sm preset-filled-primary-500 font-mini click" onclick={()=>def.see_ip_detail()} title="Click">Detail</button>
         </div>
         <div class="info-div-content">
 <!--            <img src="//ip.im/img" alt="My IP Address" style="min-width: 215px; height: 70px; width: 100%;">-->

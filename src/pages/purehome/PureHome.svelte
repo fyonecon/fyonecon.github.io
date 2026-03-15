@@ -376,8 +376,8 @@
                         {@html func.get_translate('remove_help_2')}
                     </Dialog.Description>
                     <footer class="flex justify-center gap-10 select-none  px-[10px] py-[10px]">
-                        <button title="Cancel" class="btn btn-base preset-tonal font-text" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
-                        <button type="button" class="btn btn-base preset-filled-primary-500 font-text" onclick={()=>def.input_del_history()}>{func.get_translate("clear")}</button>
+                        <button title="Cancel" class="btn btn-base preset-tonal font-text click" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
+                        <button type="button" class="btn btn-base preset-filled-primary-500 font-text click" onclick={()=>def.input_del_history()}>{func.get_translate("clear")}</button>
                     </footer>
                 </Dialog.Content>
             </Dialog.Positioner>

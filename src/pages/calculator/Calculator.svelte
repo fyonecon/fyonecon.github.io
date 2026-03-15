@@ -937,8 +937,8 @@
                         {@html func.get_translate('calculator_clear_history')}
                     </Dialog.Description>
                     <footer class="flex justify-center gap-10 select-none  px-[10px] py-[10px]">
-                        <button title="Cancel" class="btn btn-base preset-tonal font-text" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
-                        <button type="button" class="btn btn-base preset-filled-primary-500 font-text" onclick={()=>def.btn_clear_history()}>{func.get_translate("clear")}</button>
+                        <button title="Cancel" class="btn btn-base preset-tonal font-text click" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
+                        <button type="button" class="btn btn-base preset-filled-primary-500 font-text click" onclick={()=>def.btn_clear_history()}>{func.get_translate("clear")}</button>
                     </footer>
                 </Dialog.Content>
             </Dialog.Positioner>
@@ -957,8 +957,8 @@
                         {@html func.get_translate('calculator_rewrite')}
                     </Dialog.Description>
                     <footer class="flex justify-center gap-10 select-none  px-[10px] py-[10px]">
-                        <button title="Cancel" class="btn btn-base preset-tonal font-text" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
-                        <button type="button" class="btn btn-base preset-filled-primary-500 font-text" onclick={()=>def.btn_rewrite()}>{func.get_translate("rewrite")}</button>
+                        <button title="Cancel" class="btn btn-base preset-tonal font-text click" onclick={()=>def.close_dialog()}>{func.get_translate("btn_cancel")}</button>
+                        <button type="button" class="btn btn-base preset-filled-primary-500 font-text click" onclick={()=>def.btn_rewrite()}>{func.get_translate("rewrite")}</button>
                     </footer>
                 </Dialog.Content>
             </Dialog.Positioner>
@@ -972,9 +972,6 @@
     .calc-box{
         padding: 0 0;
         margin: 0 auto;
-    }
-    * { /* 隐藏默认的触摸高亮 */
-        -webkit-tap-highlight-color: transparent;
     }
 
     .calculator-div {

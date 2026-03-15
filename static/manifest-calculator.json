@@ -2,12 +2,13 @@
   "name": "Calculator",
   "short_name": "Calculator",
   "start_url": "./calculator?from=&utm_source=pwa",
+  "scope": "/calculator/",
   "display": "standalone",
-  "background_color": "#fefefe",
-  "description": "",
+  "background_color": "#A0A0A0",
+  "description": "Calculator,科学计算器",
   "icons": [
     {
-      "src": "./calc-logo.png",
+      "src": "./calc-logo2.png",
       "type": "image/png",
       "sizes": "192x192"
     }
