@@ -58,6 +58,10 @@
                 back_state = true;
                 that.open_url("./calculator");
             }
+            else if (word === "@qr" || word === "@ewm"){
+                back_state = true;
+                that.open_url("./qr");
+            }
             else if (word === "@dumogu" || word === "@dmg"){
                 back_state = true;
                 that.open_url("./dumogu.html");
@@ -70,6 +74,11 @@
                 back_state = true;
                 func.clear_local_data();
                 that.open_url(func.url_path(config.sys.base_route+config.sys.home_route)+"?clear="+func.js_rand(10000, 99999));
+            }
+            //
+            else if (word === "@cos"){
+                back_state = true;
+                that.open_url("https://console.cloud.tencent.com/cos/bucket");
             }
             // 自定义搜索引擎
             else if (word === "@bing"){

@@ -261,7 +261,11 @@ const lang_dict = {
     },
     qr: {
         zh: "二维码",
-        en: "QRCode",
+        en: "QR Code",
+    },
+    make_qr: {
+        zh: "生成二维码",
+        en: "Make QR",
     },
     input_placeholder_add_dir: {
         zh: "输入文件夹路径",
@@ -372,6 +376,14 @@ const lang_dict = {
     save: {
         zh: "保存",
         en: "Save",
+    },
+    textarea_placeholder: {
+        zh: "输入内容 ...",
+        en: "Input content ...",
+    },
+    text_to_qr_btn: {
+        zh: "文本转成二维码",
+        en: "Text to QR",
     },
 
 

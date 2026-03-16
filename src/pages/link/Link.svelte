@@ -81,8 +81,13 @@
             list: [
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("科学计算器"),
+                    title: func.string_to_unicode(func.get_translate("Calculator")),
                     href: func.string_to_unicode("@calculator")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode(func.get_translate("qr")),
+                    href: func.string_to_unicode("@qr")
                 },
                 { //
                     show_lang: "all",
