@@ -1,1 +1,0 @@
-import{l as o,i as u,aa as _,j as t,C as g,Y as i,y as l,n,z as p,o as m}from"./CVM4OsXo.js";function E(d,r){let a=null,y=t;var s;if(t){a=p;for(var e=m(document.head);e!==null&&(e.nodeType!==g||e.data!==d);)e=i(e);if(e===null)l(!1);else{var f=i(e);e.remove(),n(f)}}t||(s=document.head.appendChild(o()));try{u(()=>r(s),_)}finally{y&&(l(!0),n(a))}}export{E as h};
