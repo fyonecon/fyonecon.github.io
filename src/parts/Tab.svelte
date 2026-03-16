@@ -252,7 +252,7 @@
             <div class="liquidGlass-text">
                 <!---->
                 {#each tab_data as item}
-                    <button class="tab-item select-none click {(route === item.route)?'tab-item-active':''}" style="width: {tab_item_width}px;" onclick={()=>def.open_url(item.href)} >
+                    <button class="tab-item select-none {(route === item.route)?'tab-item-active':''}" style="width: {tab_item_width}px;" onclick={()=>def.open_url(item.href)} >
                         <div class="tab-item-icon">{@html item.icon.replace('<svg ', '<svg style="display:inline-block;height:26px;width:26px;" ')}</div>
                         <div class="tab-item-icon font-mini">{@html item.title}</div>
                     </button>

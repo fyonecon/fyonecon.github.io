@@ -453,11 +453,10 @@
         max-width: 420px;
         margin-right: auto;
         margin-left: auto;
-        height: 40px;
         overflow: hidden;
         clear: both;
-        margin-top: 30px;
-        padding: 0 0;
+        margin-top: 20px;
+        padding: 10px 0;
     }
     .search-div-history{
         width: calc(100%);
