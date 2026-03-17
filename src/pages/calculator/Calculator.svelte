@@ -7,6 +7,7 @@
     import config from "../../config";
     import btn_click_base64_mp3 from "../../common/btn_click_base64_mp3";
     import {Dialog, Portal} from "@skeletonlabs/skeleton-svelte";
+    import { copy } from 'svelte-copy';
 
 
     // 本页面参数
@@ -22,10 +23,10 @@
 
     // 播放按键点击mp3声音
     // AudioContext法（主）
-    let audioContext = $state(null);
+    let audioContext: AudioContext | null = $state(null);
     let audioBuffer = $state(null);
     // Audio法（备）
-    let audio = $state(null);
+    let audio: HTMLAudioElement | null = $state(null);
 
     // 从localStorage加载历史记录，最多N条
     const MAX_HISTORY = 666; // [100, 999]
@@ -49,8 +50,8 @@
     // DOM元素引用
     let historyContainer: HTMLElement | null = $state(null);
     let historyList: HTMLElement | null = $state(null);
-    let exprEl: HTMLElement | null = $state(null);
-    let resultEl: HTMLElement | null = $state(null);
+    let exprEl: HTMLElement | null = $state(null); let exprText = $state("");
+    let resultEl: HTMLElement | null = $state(null); let resultText = $state("");
     let errorEl: HTMLElement | null = $state(null);
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
@@ -220,16 +221,20 @@
             const beforeCursor = currentExpr.substring(0, cursorPos);
             const afterCursor = currentExpr.substring(cursorPos);
 
+            const cursor_blank = '<span class="cursor-blink" title="Cursor">|</span>';
+
             // 使用innerHTML 插入光标占位符（一个不可选的竖线字符，带闪烁效果）
-            exprEl.innerHTML = beforeCursor + '<span class="cursor-blink" title="Cursor">|</span>' + afterCursor;
+            exprEl.innerHTML = beforeCursor + cursor_blank + afterCursor;
 
             // 如果表达式为空，显示0，但光标仍然存在
             if (currentExpr === '') {
-                exprEl.innerHTML = '<span class="cursor-blink" title="Cursor">|</span>';
+                exprEl.innerHTML = cursor_blank;
             }
 
-            if (resultEl) resultEl.innerText = lastResult;
-            if (errorEl) errorEl.innerText = lastError;
+            if (currentExpr) {exprText = currentExpr.trim().replaceAll(cursor_blank, "");}
+            if (resultEl) {resultEl.innerText = lastResult; resultText = lastResult.trim();}
+            if (errorEl) {errorEl.innerText = lastError;}
+
         },
         clearError: function() {
             // 不清空表达式，只重置结果和错误
@@ -862,8 +867,20 @@
             </div>
             <!--计算过程-->
             <div class="calc-section">
-                <div class="expression select-text" id="expression">0</div>
-                <div class="result select-text" id="result">0</div>
+                <div class="expression select-text" id="expression"
+                     use:copy={{
+                        text: exprText?exprText:"",
+                        onCopy: ({ text }) => {text?func.notice(func.get_translate("copied"), "", 2000):func.console_log("Copied null");},
+                        onError: ({ error }) => {func.notice(func.get_translate("copied_error"), "", 2000);console.warn(error);}
+                      }}
+                >0</div>
+                <div class="result select-text" id="result"
+                     use:copy={{
+                        text: resultText?resultText:"",
+                        onCopy: ({ text }) => {text?func.notice(func.get_translate("copied"), "", 2000):func.console_log("Copied null");},
+                        onError: ({ error }) => {func.notice(func.get_translate("copied_error"), "", 2000);console.warn(error);}
+                      }}
+                >0</div>
                 <div class="error-message hide" id="errorMessage"></div>
             </div>
         </div>

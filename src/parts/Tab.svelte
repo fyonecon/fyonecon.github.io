@@ -351,19 +351,16 @@
         z-index: 1;
         right: 12px;
         bottom: 85px;
-        border-radius: 5px;
         padding: 1px 1px;
-        background-color: rgba(160,160,160, 0.6);
+        background-color: transparent;
         overflow: hidden;
-        /*width: 20px;*/
-        /*height: 20px;*/
         opacity: 0.9;
     }
     .tab-qr-img{
         width: 100%;
         height: 100%;
         border-radius: 5px;
-        border: none;
+        border: 1px solid rgba(160,160,160, 1);;
         outline: none;
     }
 

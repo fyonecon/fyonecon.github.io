@@ -12,6 +12,7 @@
     let textarea_value = $state("");
     let qr_img_src = $state("");
     let qr_img_show = $state("hide");
+    let textarea_ele: HTMLElement | null = $state(null);
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
     const def = {
@@ -32,6 +33,7 @@
                 func.notice(func.get_translate("null_content"), "", 2000);
                 qr_img_src = "";
                 qr_img_show = "hide";
+                textarea_ele?.focus();
             }
         },
     };
@@ -90,9 +92,11 @@
         <div class="qr-title-tip font-title hide">{func.get_translate("text_to_qr_btn")}</div>
         <div class="qr-edit select-none">
             <textarea
-                    class="textarea-div scroll-y-style select-text border-radius font-title bg-surface-200 dark:bg-surface-800"
+                    class="textarea-div scroll-y-style select-text border-radius font-title bg-surface-100 dark:bg-surface-800"
                     placeholder="{func.get_translate('textarea_placeholder')}"
+                    bind:this={textarea_ele}
                     bind:value={textarea_value}
+                    onmouseenter={(e) => e.currentTarget.focus()}
             ></textarea>
         </div>
         <div class="qr-btn select-none">
@@ -114,14 +118,14 @@
     }
     .textarea-div{
         width: 100%;
-        height: 200px;
+        height: 150px;
         padding: 10px 10px 20px 10px;
         outline: none;
         border: none;
         resize: none;
     }
     .qr-btn{
-        padding: 20px 0;
+        padding: 10px 0;
         text-align: center;
     }
     .qr-show{
@@ -133,6 +137,8 @@
         width: 100%;
         height: auto;
         max-height: 1000px;
+        outline: none;
+        border: 1px solid rgba(160,160,160, 1);
     }
 
 </style>
