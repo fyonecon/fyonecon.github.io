@@ -870,14 +870,14 @@
                 <div class="expression select-text" id="expression"
                      use:copy={{
                         text: exprText?exprText:"",
-                        onCopy: ({ text }) => {text?func.notice(func.get_translate("copied"), "", 2000):func.console_log("Copied null");},
+                        onCopy: ({ text }) => {text.length>=2?func.notice(func.get_translate("copied"), "", 2000):func.console_log("Copied null");},
                         onError: ({ error }) => {func.notice(func.get_translate("copied_error"), "", 2000);console.warn(error);}
                       }}
                 >0</div>
                 <div class="result select-text" id="result"
                      use:copy={{
                         text: resultText?resultText:"",
-                        onCopy: ({ text }) => {text?func.notice(func.get_translate("copied"), "", 2000):func.console_log("Copied null");},
+                        onCopy: ({ text }) => {text.length>=2?func.notice(func.get_translate("copied"), "", 2000):func.console_log("Copied null");},
                         onError: ({ error }) => {func.notice(func.get_translate("copied_error"), "", 2000);console.warn(error);}
                       }}
                 >0</div>
