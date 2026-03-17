@@ -1,0 +1,1 @@
+import{o as u,g as y,ai as o,aj as _,h as t,C as g,X as i,m as l,l as n,n as m,u as p}from"./CiPKMf1m.js";function C(d,r){let a=null,E=t;var s;if(t){a=m;for(var e=p(document.head);e!==null&&(e.nodeType!==g||e.data!==d);)e=i(e);if(e===null)l(!1);else{var f=i(e);e.remove(),n(f)}}t||(s=document.head.appendChild(u()));try{y(()=>r(s),o|_)}finally{E&&(l(!0),n(a))}}export{C as h};

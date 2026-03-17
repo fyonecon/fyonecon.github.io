@@ -1,0 +1,1 @@
+import{a1 as t,$ as S,_ as b,S as h,a2 as k}from"./CiPKMf1m.js";function u(r,i){return r===i||r?.[k]===i}function d(r={},i,f,T){return t(()=>{var a,s;return S(()=>{a=s,s=[],b(()=>{r!==f(...s)&&(i(r,...s),a&&u(f(...a),r)&&i(null,...a))})}),()=>{h(()=>{s&&u(f(...s),r)&&i(null,...s)})}}),r}export{d as b};

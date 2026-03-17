@@ -2,7 +2,7 @@
   "name": "Calculator",
   "short_name": "Calculator",
   "start_url": "./calculator?from=&utm_source=pwa",
-  "scope": "/calculator/",
+  "scope": "./calculator",
   "display": "standalone",
   "background_color": "#A0A0A0",
   "description": "Calculator,科学计算器",
