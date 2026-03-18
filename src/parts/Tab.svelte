@@ -367,7 +367,7 @@
     .tab-item-active{
         /*color: var(--color-blue-500);*/
         /*background-color: rgba(30,144,255, 0.2);*/
-        background-color: rgba(42,126,255, 0.5);
+        background-color: rgba(42,126,255, 0.4);
     }
 
     /**/
