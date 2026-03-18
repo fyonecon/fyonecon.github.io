@@ -9,8 +9,8 @@
     <title>Link</title>
     <meta name="keywords" content="链签, Link" />
     <meta name="description" content="链签 Link" />
-    <link rel="apple-touch-icon" href="./launcher.png" />
-    <link rel="manifest" href="./manifest-purehome.json" />
+<!--    <link rel="apple-touch-icon" href="./launcher.png" />-->
+<!--    <link rel="manifest" href="./manifest-purehome.json" />-->
 </svelte:head>
 
 <section class="section-main scroll-y-style">
