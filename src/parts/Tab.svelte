@@ -335,7 +335,7 @@
     .liquidGlass-text {
         z-index: 3;
         background-color: transparent;
-        margin: 2px -2px;
+        margin: 1px -2px;
     }
 
     /**/
