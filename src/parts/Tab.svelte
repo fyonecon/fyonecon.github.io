@@ -69,7 +69,7 @@
             // 留白边框px
             let item_margin = 2;
             let item_padding = 2;
-            let auto_item_margin = ((item_padding+item_margin)*2 - item_margin*2*(tab_data_len-1)) - 2; // 自适应tab的交叉和
+            let auto_item_margin = ((item_padding+item_margin)*2 - item_margin*2*(tab_data_len-1)); // 自适应tab的交叉和
 
             // tab_item宽度
             if (tab_data_len <= 3){ // tab=[0, 3]
@@ -294,16 +294,16 @@
         margin: 0 auto;
         width: calc(270px);
         z-index: 1;
-        border-radius: 27px;
+        border-radius: 30px;
     }
     .liquidGlass-wrapper {
         position: relative;
         display: flex;
         overflow: hidden;
         /*box-shadow: 0 0 2px rgba(30, 30, 30, 0.8), 0 0 20px rgba(0, 0, 0, 0);*/
-        border: 1px solid rgba(160,160,160, 0.5);
+        border: 1px solid rgba(160,160,160, 0.6);
         transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.2);
-        border-radius: 27px;
+        border-radius: 30px;
         padding: 0 5px;
     }
     .liquidGlass-effect {
@@ -314,14 +314,14 @@
         filter: url(#glass-distortion);
         overflow: hidden;
         isolation: isolate;
-        border-radius: 27px;
+        border-radius: 30px;
     }
     .liquidGlass-tint {
         z-index: 1;
         position: absolute;
         inset: 0;
         background: rgba(160,160,160, 0.1);
-        border-radius: 27px;
+        border-radius: 30px;
     }
     .liquidGlass-shine {
         position: absolute;
@@ -330,12 +330,12 @@
         overflow: hidden;
         /*box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);*/
         border: 1px solid rgba(250,250,250, 0);
-        border-radius: 27px;
+        border-radius: 30px;
     }
     .liquidGlass-text {
         z-index: 3;
         background-color: transparent;
-        margin: 2px -1px;
+        margin: 3px 0;
     }
 
     /**/
@@ -367,7 +367,7 @@
     .tab-item-active{
         /*color: var(--color-blue-500);*/
         /*background-color: rgba(30,144,255, 0.2);*/
-        background-color: rgba(42,126,255, 0.4);
+        background-color: rgba(42,126,255, 0.5);
     }
     .tab-item-icon{
         opacity: 0.9;
