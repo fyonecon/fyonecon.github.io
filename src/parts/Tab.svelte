@@ -335,14 +335,14 @@
     .liquidGlass-text {
         z-index: 3;
         background-color: transparent;
-        margin: 1px 0;
+        margin: 3px 0;
     }
 
     /**/
     .tab-item{
         /*width: 72px; !*80px 72px *!*/
-        margin: 2px -2px;
-        padding: 2px 0;
+        margin: 0 -2px;
+        padding: 3px 0 0 0;
         overflow: hidden;
         text-align: center;
         border: none;
@@ -387,6 +387,12 @@
         border-radius: 5px;
         border: 1px solid rgba(160,160,160, 1);;
         outline: none;
+    }
+
+    code{
+        outline: none;
+        border: none;
+        display: inline-block;
     }
 
 
