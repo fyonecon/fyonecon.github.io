@@ -69,7 +69,7 @@
             // 留白边框px
             let item_margin = 2;
             let item_padding = 2;
-            let auto_item_margin = ((item_padding+item_margin)*2 - item_margin*2*(tab_data_len-1)) - 2; // 自适应tab的交叉和
+            let auto_item_margin = ((item_padding+item_margin)*2 - item_margin*2*(tab_data_len-1)) - 4; // 自适应tab的交叉和
 
             // tab_item宽度
             if (tab_data_len <= 3){ // tab=[0, 3]
@@ -335,7 +335,7 @@
     .liquidGlass-text {
         z-index: 3;
         background-color: transparent;
-        margin: 1px -1px;
+        margin: 2px -2px;
     }
 
     /**/
