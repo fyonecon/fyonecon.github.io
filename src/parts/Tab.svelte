@@ -300,8 +300,8 @@
         position: relative;
         display: flex;
         overflow: hidden;
-        box-shadow: 0 0 2px rgba(30, 30, 30, 0.8), 0 0 20px rgba(0, 0, 0, 0);
-        border: 1px solid rgba(160,160,160, 0);
+        /*box-shadow: 0 0 2px rgba(30, 30, 30, 0.8), 0 0 20px rgba(0, 0, 0, 0);*/
+        border: 1px solid rgba(160,160,160, 0.5);
         transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 2.2);
         border-radius: 27px;
         padding: 0 5px;
@@ -329,7 +329,7 @@
         z-index: 2;
         overflow: hidden;
         /*box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);*/
-        border: 1px solid rgba(250,250,250, 0.6);
+        border: 1px solid rgba(250,250,250, 0);
         border-radius: 27px;
     }
     .liquidGlass-text {
@@ -350,7 +350,7 @@
         float: left;
         border-radius: 25px;
         transition: all 0.1s ease-in;
-        opacity: 0.9;
+        opacity: 1;
         cursor: pointer;
         font-weight: 400;
         /*  移除原始点击效果  */
@@ -359,15 +359,18 @@
         -webkit-tap-highlight-color: transparent;
     }
     .tab-item:hover{
-        opacity: 0.8;
+        opacity: 0.9;
     }
     .tab-item:active{
-        opacity: 0.8;
+        opacity: 1;
     }
     .tab-item-active{
         /*color: var(--color-blue-500);*/
         /*background-color: rgba(30,144,255, 0.2);*/
         background-color: rgba(42,126,255, 0.4);
+    }
+    .tab-item-icon{
+        opacity: 0.9;
     }
 
     /**/
