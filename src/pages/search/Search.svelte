@@ -62,6 +62,10 @@
                 back_state = true;
                 that.open_url("./qr");
             }
+            else if (word === "@divine" || word === "@divination"){
+                back_state = true;
+                that.open_url("./divination");
+            }
             else if (word === "@dumogu" || word === "@dmg"){
                 back_state = true;
                 that.open_url("./dumogu.html");

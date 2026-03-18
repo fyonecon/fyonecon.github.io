@@ -102,6 +102,10 @@ const lang_dict = {
         zh: "计算器",
         en: "Calc",
     },
+    Divination: {
+        zh: "祀测",
+        en: "Divine",
+    },
     //
     url_timeout: {
         zh: "链接过期",
