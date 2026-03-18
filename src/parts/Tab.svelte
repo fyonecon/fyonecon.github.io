@@ -342,13 +342,13 @@
     .tab-item{
         /*width: 72px; !*80px 72px *!*/
         margin: 0 -2px;
-        padding: 3px 0 0 0;
+        padding: 2px 0 0 0;
         overflow: hidden;
         text-align: center;
         border: none;
         outline: none;
         float: left;
-        border-radius: 23px;
+        border-radius: 25px;
         transition: all 0.1s ease-in;
         opacity: 0.9;
         cursor: pointer;
