@@ -358,16 +358,21 @@
         background: transparent;
         -webkit-tap-highlight-color: transparent;
     }
-    .tab-item:hover{
-        opacity: 0.9;
-    }
-    .tab-item:active{
-        opacity: 1;
-    }
+    /*.tab-item:hover{*/
+    /*    opacity: 0.9;*/
+    /*}*/
+    /*.tab-item:active{*/
+    /*    opacity: 1;*/
+    /*}*/
     .tab-item-active{
+        /*效果1*/
         /*color: var(--color-blue-500);*/
         /*background-color: rgba(30,144,255, 0.2);*/
-        background-color: rgba(42,126,255, 0.5);
+        /*效果2*/
+        /*background-color: rgba(42,126,255, 0.4);*/
+        /*效果3*/
+        color: var(--color-blue-500);
+        background-color: rgba(180,180,180, 0.2);
     }
     .tab-item-icon{
         opacity: 0.9;

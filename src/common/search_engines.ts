@@ -62,10 +62,10 @@ const search_engines_dict: SearchEnginesDictType = {
         name: "SVG Image",
         url: "https://icon-sets.iconify.design/?query=",
     },
-    ip_domain: {
-        name: "IP/Domain/CN",
-        url: "https://ipchaxun.com/",
-    },
+    // ip_domain: {
+    //     name: "IP/Domain/CN",
+    //     url: "https://ipchaxun.com/",
+    // },
     whois: {
         name: "Whois",
         url: "https://www.whois.com/whois/",
