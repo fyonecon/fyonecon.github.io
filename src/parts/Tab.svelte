@@ -369,7 +369,7 @@
         /*color: var(--color-blue-500);*/
         /*background-color: rgba(30,144,255, 0.2);*/
         /*效果2*/
-        background-color: rgba(42,126,255, 0.4);
+        background-color: rgba(42,126,255, 0.5);
         /*效果3*/
         /*color: var(--color-blue-500);*/
         /*background-color: rgba(180,180,180, 0.2);*/
