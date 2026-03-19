@@ -80,6 +80,28 @@
         theme_model = mode;
         document.documentElement.setAttribute('data-mode', mode);
 
+        // 确保项目所有js可以运行
+        if (!func.support_min_js()){
+            func.alert_msg(func.get_translate("support_min_js_alert"), "long");
+            func.title("🔴");
+            page_display="hide";
+            setTimeout(function (){
+                func.block_all_script();
+            }, 100);
+            return;
+        }
+
+        // 确保OS版本符合满足最低要求
+        if (!func.support_min_os()){
+            func.alert_msg(func.get_translate("support_min_os_alert"), "long");
+            func.title("🔴");
+            page_display="hide";
+            setTimeout(function (){
+                func.block_all_script();
+            }, 100);
+            return;
+        }
+
         // 系统基础条件检测
         if (!runtime_ok()){ // false
             let screen_w = 0;
@@ -96,20 +118,21 @@
             func.title("⚠️");
             page_display="hide";
             return
-        }else{ // 附加条件检测
-            if (!browser_ok()){ // false
-                func.alert_msg(func.get_translate("runtime_cn_chat_alert"), "long");
-                func.title("😅");
-                page_display="hide";
-                return
-            }else{ // ok
-                page_display="show";
-                //
-                def.watch_404_route(); // 检测路由变化
-            }
         }
 
+        // app浏览器检测
+        if (!browser_ok()){ // false
+            func.alert_msg(func.get_translate("runtime_cn_chat_alert"), "long");
+            func.title("😅");
+            page_display="hide";
+            return
+        }
+
+        // 检测通过时
+        page_display="show";
+        def.watch_404_route(); // 检测路由变化
         //
+
     }
 
     // 标签处于切换显示状态
@@ -156,6 +179,7 @@
             document.documentElement.setAttribute('data-mode', mode);
         });
 
+        if (!func.support_min_js() || !func.support_min_os()){return;}
         if (!runtime_ok() || !browser_ok()){return;} // 系统基础条件检测
 
         // 监测页面标签是否处于显示
