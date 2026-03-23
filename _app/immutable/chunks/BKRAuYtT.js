@@ -1,1 +1,0 @@
-import{g as l,E as m,h as o,i as v,j as y,k as f,l as p,m as i,H as T,n as g}from"./CiPKMf1m.js";import{B as A}from"./Y-fo_Jpf.js";function k(d,_,e){var s;o&&(s=g,v());var r=new A(d);l(()=>{var a=_()??null;if(o){var h=y(s),c=h===T,u=a!==null;if(c!==u){var t=f();p(t),r.anchor=t,i(!1),r.ensure(a,a&&(n=>e(n,a))),i(!0);return}}r.ensure(a,a&&(n=>e(n,a)))},m)}export{k as c};
