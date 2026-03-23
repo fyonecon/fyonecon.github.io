@@ -2,9 +2,10 @@
     import { resolve } from '$app/paths';
     import func from "../../common/func.svelte.js";
     import {afterNavigate} from "$app/navigation";
-    import {onMount} from "svelte";
+    import {onDestroy, onMount} from "svelte";
     import {browser_ok, runtime_ok} from "../../common/middleware.svelte";
     import {browser} from "$app/environment";
+    import {side_tab_data} from "../../stores/side_tab.store.svelte";
 
     
     // 本页面参数
@@ -23,6 +24,9 @@
         func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // 开始
         func.title(func.get_translate("Example"));
+        side_tab_data.tab_value = route;
+        side_tab_data.tab_name = func.get_translate("Example");
+        //
     }
 
     // 标签处于切换显示状态
@@ -64,6 +68,11 @@
         }
     });
 
+    // 处理页面切换或关闭时的事件，比如定时器
+    onDestroy(()=>{
+        //
+    });
+
 
 </script>
 
@@ -84,6 +93,6 @@
 
 <style>
     .example-box{
-        padding: 10px 10px;
+        padding: 20px 15px;
     }
 </style>
