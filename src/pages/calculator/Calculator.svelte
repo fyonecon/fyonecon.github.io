@@ -8,10 +8,10 @@
     import btn_click_base64_mp3 from "../../common/btn_click_base64_mp3";
     import {Dialog, Portal} from "@skeletonlabs/skeleton-svelte";
     import { copy } from 'svelte-copy';
+    import dialog_animate_class from "../../common/dialog_animate";
 
 
     // 本页面参数
-    const animation = 'transition transition-discrete opacity-0 translate-y-[100px] starting:data-[state=open]:opacity-0 starting:data-[state=open]:translate-y-[100px] data-[state=open]:opacity-100 data-[state=open]:translate-y-0';
     let route = $state(func.get_route());
     let rewrite_dialog_is_open = $state(false);
     let clear_history_dialog_is_open = $state(false);
@@ -948,7 +948,7 @@
         <Portal>
             <Dialog.Backdrop class="fixed inset-0 z-50 bg-surface-50-950/80  select-none" />
             <Dialog.Positioner class="fixed inset-0 z-50 flex justify-center items-center font-text select-none">
-                <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-900 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
+                <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-900 w-full max-w-xs p-4 space-y-4 shadow-xl {dialog_animate_class}  px-[10px] py-[10px] border-radius">
                     <header class="flex justify-between items-center pywebview-drag-region can-drag">
                         <Dialog.Title class="font-text">🔴</Dialog.Title>
                     </header>
@@ -968,7 +968,7 @@
         <Portal>
             <Dialog.Backdrop class="fixed inset-0 z-50 bg-surface-50-950/80  select-none" />
             <Dialog.Positioner class="fixed inset-0 z-50 flex justify-center items-center font-text select-none">
-                <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-900 w-full max-w-xs p-4 space-y-4 shadow-xl {animation}  px-[10px] py-[10px] border-radius">
+                <Dialog.Content class="card bg-neutral-100 dark:bg-neutral-900 w-full max-w-xs p-4 space-y-4 shadow-xl {dialog_animate_class}  px-[10px] py-[10px] border-radius">
                     <header class="flex justify-between items-center pywebview-drag-region can-drag">
                         <Dialog.Title class="font-text">⚠️</Dialog.Title>
                     </header>
