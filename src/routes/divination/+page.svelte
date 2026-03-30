@@ -14,8 +14,5 @@
 </svelte:head>
 
 <section class="section-main scroll-y-style">
-<!--<section class="section-main scroll-y-style bg-white dark:bg-surface-950">-->
-<!--<section class="section-main scroll-y-style bg-neutral-100 dark:bg-neutral-900">-->
-<!--<section class="section-main scroll-y-style bg-white dark:bg-black">-->
     <Divination />
 </section>

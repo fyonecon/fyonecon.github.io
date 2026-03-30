@@ -8,7 +8,7 @@
 <svelte:head>
     <title>Datathink.top</title>
     <meta name="keywords" content="" />
-    <meta name="description" content="PureHome，替代浏览器主页；Calculator，科学计算器。" />
+    <meta name="description" content="" />
 </svelte:head>
 
 <section class="section-main scroll-y-style">
