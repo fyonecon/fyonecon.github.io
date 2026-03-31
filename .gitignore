@@ -28,3 +28,14 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# 文件
+.zip
+.rar
+.xlsx
+.docs
+.pdf
+.map
+.db
+.lcl
+.log
