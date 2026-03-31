@@ -201,11 +201,6 @@
             let the_value = input_value_search.trim();
             if (the_value){
                 //
-                if (the_value === "@tabshow" || the_value === "@tab"){ // 展示tab栏
-                    func.set_local_data(config.app.app_class+"home_tab_show", "show"); // hide show
-                    the_value = config.sys.home_route_white_word; // 刷新页面即可
-                }
-                //
                 that.input_history(the_value).then(v=>{
                     func.get_db_data(search_selected_key).then(value => {
                         //
