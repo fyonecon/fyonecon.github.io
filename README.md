@@ -4,6 +4,8 @@
 
 工作流：https://fyonecon.github.io
 
+最低支持ES2023（iOS16.4+，Android14+，Chrome110+，Firefox115+，Mac OS14+）
+
 ### 推荐IDE（webstorm）：
 ```
 https://www.jetbrains.com/webstorm/download/?section=mac
