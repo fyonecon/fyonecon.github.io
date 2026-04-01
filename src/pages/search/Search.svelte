@@ -7,6 +7,7 @@
     import config from "../../config";
     import search_engines_dict from "../../common/search_engines";
     import {browser} from "$app/environment";
+    import { copy } from 'svelte-copy';
 
 
     // 本页面参数
@@ -31,7 +32,7 @@
             browser_search_engine_show = "hide";
             let browser_search_engine_http = (window.location.host.indexOf(".github.io") !== -1)?"https":"http";
             // 白名单跳转
-            if (word === config.sys.home_route_white_word){ // 必要，home页面
+            if (word === config.sys.home_route_white_word ||  word === "@home"){ // 必要，home页面
                 back_state = true;
                 let href = "."+config.sys.home_route+"?cache="+func.js_rand(100000, 9999999)
                 href = href.replaceAll(".?cache=", "./?cache=");
@@ -147,7 +148,7 @@
             let history = func.search_href_param("", "history").trim();
             let url_timeout = func.search_href_param("", "url_timeout").trim();
             // 显示title
-            func.title(func.get_translate("search_opening_page") + " [" + word.slice(0, 30) + " ... ]");
+            func.title(func.get_translate("search_opening_page") + " " + word.slice(0, 30) + " ... ");
             // 插入历史记录
             if (history === "yes" || history === "true" || history === "True" || history === "1"){
                 that.input_history(word);
@@ -158,6 +159,7 @@
                 if (func.url_timeout_decode("search", url_timeout)){
                     // 是url链接就直接打开
                     if (func.is_url(word)){
+                        //
                         show_txt = func.get_translate("search_opening_page") + "  " + def.get_href_domain(word);
                         that.open_url(word);
                     }else{
@@ -165,11 +167,11 @@
                         if (!that.check_white_word(word)){ // 其它关键词
                             if (!search_engines_dict[engine]){engine = "bing";}
                             let href = search_engines_dict[engine].url+encodeURIComponent(word);
+                            //
                             show_txt = func.get_translate("search_opening_page") + "  " + def.get_href_domain(word);
                             that.open_url(href);
                         }else{ // 白名单关键词
                             func.loading_hide();
-                            show_txt = func.get_translate("search_opening_page");
                             func.title(func.get_translate("search_res_show"));
                         }
                     }
@@ -306,7 +308,13 @@
         <br/>
         <h3 class="font-title">可以添加如下链接到浏览器的自定义搜索引擎：</h3>
         <br/>
-        <div class="font-text select-text font-blue break">{browser_search_engine} </div>
+        <div class="font-text select-text font-blue break"
+             use:copy={{
+                        text: browser_search_engine?browser_search_engine:"",
+                        onCopy: ({ text }) => {text.length>=2?func.notice(func.get_translate("copied"), "", 2000):func.console_log("Copied null");},
+                        onError: ({ error }) => {func.notice(func.get_translate("copied_error"), "", 2000);console.warn(error);}
+                      }}
+        >{browser_search_engine} </div>
         <br/>
     </div>
 </div>

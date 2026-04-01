@@ -124,46 +124,56 @@
                     title: func.string_to_unicode("🧲喵磁力"),
                     href: func.string_to_unicode("https://www.miaocili.com/")
                 },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("vivo-安卓商店"),
-                //     href: func.string_to_unicode("https://h5.appstore.vivo.com.cn/#/")
-                // },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("豌豆荚-安卓商店"),
-                //     href: func.string_to_unicode("https://www.wandoujia.com")
-                // },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("vivo-安卓商店"),
+                    href: func.string_to_unicode("https://h5.appstore.vivo.com.cn/#/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("豌豆荚-安卓商店"),
+                    href: func.string_to_unicode("https://www.wandoujia.com")
+                },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("Divxland-Android"),
                     href: func.string_to_unicode("https://cn.divxland.org/apps/")
                 },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("APKPure-安卓市场"),
-                //     href: func.string_to_unicode("https://download.cnet.com/apkpure/3000-2094_4-77459320.html")
-                // },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("Gboard.apk"),
-                //     href: func.string_to_unicode("https://gboard.en.divxland.org/download/")
-                // },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("DevCheck.apk"),
-                //     href: func.string_to_unicode("https://www.ddooo.com/softdown/224201.htm ")
-                // },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("LibCheck.apk"),
-                //     href: func.string_to_unicode("https://www.downkuai.com/android/147630.html")
-                // },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("Firefox.apk"),
-                //     href: func.string_to_unicode("https://firefox.en.divxland.org/download/")
-                // },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("APKPure-安卓市场"),
+                    href: func.string_to_unicode("https://download.cnet.com/apkpure/3000-2094_4-77459320.html")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Gboard.apk"),
+                    href: func.string_to_unicode("https://gboard.en.divxland.org/download/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("DevCheck.apk"),
+                    href: func.string_to_unicode("https://www.ddooo.com/softdown/224201.htm ")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("LibCheck.apk"),
+                    href: func.string_to_unicode("https://www.downkuai.com/android/147630.html")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Firefox.apk"),
+                    href: func.string_to_unicode("https://firefox.en.divxland.org/download/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Firefox Desktop"),
+                    href: func.string_to_unicode("https://www.firefox.com/zh-CN/download/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Chrome Desktop"),
+                    href: func.string_to_unicode("https://www.google.cn/intl/zh-CN/chrome/")
+                },
             ],
         },
         {
@@ -184,21 +194,21 @@
                     title: func.string_to_unicode("CCTV14少儿"),
                     href: func.string_to_unicode("https://tv.cctv.cn/live/cctvchild/")
                 },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("B站-极客湾"),
-                //     href: func.string_to_unicode("https://space.bilibili.com/25876945/")
-                // },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("B站-淘沙博士"),
-                //     href: func.string_to_unicode("https://space.bilibili.com/289706107/")
-                // },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("阮一峰周报"),
-                //     href: func.string_to_unicode("https://ruanyifeng.com/blog")
-                // },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("B站-极客湾"),
+                    href: func.string_to_unicode("https://space.bilibili.com/25876945/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("B站-淘沙博士"),
+                    href: func.string_to_unicode("https://space.bilibili.com/289706107/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("阮一峰周报"),
+                    href: func.string_to_unicode("https://ruanyifeng.com/blog")
+                },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("V2EX.com"),
@@ -219,11 +229,11 @@
                     title: func.string_to_unicode("Reddit"),
                     href: func.string_to_unicode("https://reddit.com")
                 },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("Linux.do"),
-                //     href: func.string_to_unicode("https://linux.do")
-                // },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Linux.do"),
+                    href: func.string_to_unicode("https://linux.do")
+                },
             ],
         },
         {
@@ -239,11 +249,11 @@
                     title: func.string_to_unicode("Grok"),
                     href: func.string_to_unicode("https://grok.com")
                 },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("Gemini"),
-                //     href: func.string_to_unicode("https://gemini.google.com")
-                // },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Gemini"),
+                    href: func.string_to_unicode("https://gemini.google.com")
+                },
             ],
         },
         {
