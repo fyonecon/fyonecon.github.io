@@ -125,7 +125,7 @@
                 if (value === ""){try {value = navigator.isBrave;}catch (e) {}}
                 if (value === ""){try {value = window.braveEthereum;}catch (e) {}}
                 //
-                return value !== "" && value !== undefined;
+                return (value !== "" && value !== undefined) || /brave/i.test(ua);
             };
             //
             return isFirefox || isSamsung || isBrave();
