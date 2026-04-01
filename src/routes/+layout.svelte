@@ -10,7 +10,7 @@
     import Notice from "../parts/Notice.svelte";
     import Alert from "../parts/Alert.svelte";
     import config from "../config";
-    import {browser_ok, runtime_ok} from "../common/middleware.svelte";
+    import {browser_ok, runtime_ok} from "../services/middleware.svelte";
     import {watch_lang_data} from "../stores/watch_lang.store.svelte";
     import {watch_theme_model_data} from "../stores/watch_theme_model.store.svelte";
     import {browser} from "$app/environment";

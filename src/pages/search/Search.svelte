@@ -3,7 +3,7 @@
     import func from "../../common/func.svelte.js";
     import {afterNavigate} from "$app/navigation";
     import {onMount} from "svelte";
-    import {browser_ok, runtime_ok} from "../../common/middleware.svelte";
+    import {browser_ok, runtime_ok} from "../../services/middleware.svelte";
     import config from "../../config";
     import search_engines_dict from "../../common/search_engines";
     import {browser} from "$app/environment";

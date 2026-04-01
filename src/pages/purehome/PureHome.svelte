@@ -5,7 +5,7 @@
     import {onMount} from "svelte";
     import config from "../../config";
     import search_engines_dict from "../../common/search_engines";
-    import {browser_ok, runtime_ok} from "../../common/middleware.svelte";
+    import {browser_ok, runtime_ok} from "../../services/middleware.svelte";
     import {Dialog, Portal} from "@skeletonlabs/skeleton-svelte";
     import {browser} from "$app/environment";
     import {input_enter_data} from "../../stores/input_enter.store.svelte";

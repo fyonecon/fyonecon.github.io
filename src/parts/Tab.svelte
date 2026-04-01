@@ -1,7 +1,7 @@
 <script>
     import func from "../common/func.svelte.js";
     import {afterNavigate} from "$app/navigation";
-    import {browser_ok, runtime_ok} from "../common/middleware.svelte.js";
+    import {browser_ok, runtime_ok} from "../services/middleware.svelte.js";
     import config from "../config.js";
     import {browser} from "$app/environment";
     import {onMount} from "svelte";
