@@ -116,7 +116,7 @@
             const ua = navigator.userAgent.toLowerCase();
             // 判断标准：大厂的可屏蔽广告的浏览器
             const isEdge = (/edg/i.test(ua)) && !(/edge/i.test(ua)) && ((/iphone/i.test(ua))) && !((/ipad/i.test(ua))) && !((/ipod/i.test(ua))); // iOS、desktop
-            const isFirefox = ((/firefox/i.test(ua)) || (/fx/i.test(ua))) && !((/iphone/i.test(ua))) && !((/ipad/i.test(ua))) && !((/ipod/i.test(ua))); // android、desktop
+            const isFirefox = ((/firefox/i.test(ua)) || (/fx/i.test(ua))) && !((/iphone/i.test(ua))) && !((/ipad/i.test(ua))) && !((/ipod/i.test(ua))); // android、hm、desktop
             //
             return isEdge || isFirefox;
         },
