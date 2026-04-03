@@ -114,21 +114,11 @@
         },
         is_ok_browser: function (){
             const ua = navigator.userAgent.toLowerCase();
+            // 判断标准：大厂的可屏蔽广告的浏览器
+            const isEdge = (/edg/i.test(ua)) && !(/edge/i.test(ua)) && ((/iphone/i.test(ua))) && !((/ipad/i.test(ua))) && !((/ipod/i.test(ua))); // iOS、desktop
+            const isFirefox = ((/firefox/i.test(ua)) || (/fx/i.test(ua))) && !((/iphone/i.test(ua))) && !((/ipad/i.test(ua))) && !((/ipod/i.test(ua))); // android、desktop
             //
-            // const isDesktop = (func.is_mobile_screen() === 0);
-            const isFirefox = /firefox/i.test(ua) || /fx/i.test(ua);
-            const isSamsung = /samsung/i.test(ua);
-            const isBrave = function (){
-                let value = "";
-                //
-                if (value === ""){try {value = navigator.Brave.isBrave;}catch (e) {}}
-                if (value === ""){try {value = navigator.isBrave;}catch (e) {}}
-                if (value === ""){try {value = window.braveEthereum;}catch (e) {}}
-                //
-                return (value !== "" && value !== undefined) || /brave/i.test(ua);
-            };
-            //
-            return isFirefox || isSamsung || isBrave();
+            return isEdge || isFirefox;
         },
         show_glass_div: function (){ // 是否隐藏tab区域
             let that = this;
