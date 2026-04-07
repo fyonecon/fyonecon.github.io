@@ -39,3 +39,8 @@ vite.config.ts.timestamp-*
 .db
 .lcl
 .log
+# Cloudflare Types
+/worker-configuration.d.ts
+
+.dev.vars*
+!.dev.vars.example
