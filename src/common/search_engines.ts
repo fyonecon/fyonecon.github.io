@@ -38,6 +38,10 @@ const search_engines_dict: SearchEnginesDictType = {
         name: "中国区Win应用",
         url: "https://apps.microsoft.com/search?hl=zh-CN&query=",
     },
+    android_en: {
+        name: "En APK",
+        url: "https://www.bing.com/?ensearch=0&adlt=strict&q=Malavida APK ",
+    },
     // mac_us: {
     //     name: "Mac App",
     //     url: "https://apps.apple.com/us/mac/search?term=",
