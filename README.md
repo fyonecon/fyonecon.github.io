@@ -1,8 +1,6 @@
-# ViewOnSvelte
+# 1️⃣ViewOnSvelte 开发说明
 
 项目：https://github.com/fyonecon/fyonecon.github.io
-
-工作流：https://fyonecon.github.io
 
 最低支持ES2023（iOS16.4+，Android14+，Chrome110+，Firefox115+，Mac OS14+）
 
@@ -10,7 +8,7 @@
 ```
 https://www.jetbrains.com/webstorm/download/?section=mac
 ```
-### 部署Github或CDN静态网站
+### 部署Github或CDN静态网站：
 ```
 项目可以上传到Github+自动部署：
 使用 /.github/workflows/deploy.yml 配置文件；
@@ -23,7 +21,8 @@ css、js: max-age=432100 或 max-age=4321000
 ```
 
 ===================================
-# Svelte应用（默认）
+
+# 2️⃣Svelte静态网站配置与部署
 
 ### 常用命令：
 在/frontend/view/目录运行：
@@ -49,6 +48,9 @@ npm install
 npm run dev
 
 npm run build
+
+npm run preview
+
 ```
 
 ### Svelte打包静态网站：
@@ -87,8 +89,37 @@ const config = {
 
 export default config;
 ```
+### 将 ./dist/ 文件全部放在你的CDN里面或服务器里面即可。
+
+比如部署在CDN：
+
+绑定域名，域名解析指向CNAME ：
+![缓存配置](./docs/CDN-绑定域名.png)
+
+安全配置，设置CORS和Refer ：
+![缓存配置](./docs/CDN-安全配置.png)
+
+配置缓存，max-age=432100 ：
+![缓存配置](./docs/CDN-COS文件max-age一次性配置.png)
 
 
+===================================
 
-=================================
+# 3️⃣Github部署：
+
+### Github Pages CI/CD：
+配置CI/CD：./.github/workflows/deploy.yml
+
+### Github Pages 自定义域名：
+如下图，将@记录添加IPv4，将www添加对应的CANME。
+https证书 Github Pages会自动办法，域名解析端不需要配置。
+
+域名解析端：
+![解析域名](./docs/github-pages-custom-domain.png)
+
+Github Pages端（settings/pages）
+![绑定域名](./docs/github-pages-custom-domain2.png)
+
+
+===================================
 # 2026-02-02
