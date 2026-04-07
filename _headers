@@ -1,0 +1,35 @@
+# Cloudflare自定义headers参数
+
+# 全局设置：所有 HTML 缓存 20 min
+/*.html
+  Cache-Control: public, max-age=1200, must-revalidate
+
+# JS 文件：缓存 432100
+/*.js
+  Cache-Control: public, max-age=4321000, immutable
+
+# CSS 文件：缓存
+/*.css
+  Cache-Control: public, max-age=4321000
+
+# 图片：缓存
+/*.jpg
+/*.jpeg
+/*.png
+/*.webp
+/*.svg
+  Cache-Control: public, max-age=43210
+
+# 字体：缓存
+/*.woff
+/*.woff2
+/*.ttf
+  Cache-Control: public, max-age=4321000, immutable
+
+# 根目录的 HTML（你的首页）
+/
+  Cache-Control: public, max-age=1200, must-revalidate
+
+# 所有其他资源（默认：缓存 20 min ）
+/*
+  Cache-Control: public, max-age=1200
