@@ -112,7 +112,7 @@ export default config;
 
 ### Github Pages 自定义域名：
 如下图，将@记录添加IPv4，将www添加对应的CANME。
-https证书 Github Pages会自动办法，域名解析端不需要配置。
+https证书 Github Pages会自动颁发（90天 Let's Encrypt），域名解析端不需要配置。
 
 域名解析端：
 ![解析域名](./docs/github-pages-custom-domain.png)
