@@ -3,12 +3,12 @@ name: datathink.top
 
 on:
   push:
-    branches: [main]
+    branches: [main] # 需要CI/CD的仓库分支
 
 env:
   NODE_VERSION: "24"
-  CACHE_MAX_AGE: "432100"  # 100小时
-  BUILD_DIR: "./dist"
+  BUILD_DIR: "./dist" # 静态文件目录
+  CACHE_MAX_AGE: "432100" # s 文件缓存时间。Github Pages里自定义Cache-Control无用，此处仅作为参照。
 
 # 添加权限配置
 permissions:
@@ -51,3 +51,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.BUILD_DIR }}
+          cname: datathink.top   # 👈 关键：自动配置自定义域名
