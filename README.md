@@ -93,32 +93,42 @@ export default config;
 
 比如部署在CDN：
 
-绑定域名，域名解析指向CNAME ：
+绑定域名，域名解析指向 CNAME 的 CDN仓库网址 ：
+
 ![缓存配置](./docs/CDN-绑定域名.png)
 
 安全配置，设置CORS和Refer ：
+
 ![缓存配置](./docs/CDN-安全配置.png)
 
 配置缓存，max-age=432100 ：
+
 ![缓存配置](./docs/CDN-COS文件max-age一次性配置.png)
 
 
 ===================================
 
-# 3️⃣Github部署：
+# 3️⃣Github部署
 
 ### Github Pages CI/CD：
-配置CI/CD：./.github/workflows/deploy.yml
+
+配置CI/CD：
+
+./.github/workflows/deploy.yml
 
 ### Github Pages 自定义域名：
 如下图，将@记录添加IPv4，将www添加对应的CANME。
 https证书 Github Pages会自动颁发（90天 Let's Encrypt），域名解析端不需要配置。
 
 域名解析端：
+
 ![解析域名](./docs/github-pages-custom-domain.png)
 
-Github Pages端（settings/pages）
-![绑定域名](./docs/github-pages-custom-domain2.png)
+Github Pages端（settings/pages），如下图已经成功配置：
+
+![绑定域名](./docs/github-page-OK.png)
+
+⚠️如果中途遇到失败，可以Remove域名重配。
 
 ===================================
 # 4️⃣检查部署是否起效：
