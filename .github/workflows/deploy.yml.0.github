@@ -1,5 +1,5 @@
 # .github/workflows/deploy.yml
-name: datathink.top
+name: Deploy to Github Pages
 
 on:
   push:
