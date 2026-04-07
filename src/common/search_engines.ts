@@ -39,7 +39,7 @@ const search_engines_dict: SearchEnginesDictType = {
         url: "https://apps.microsoft.com/search?hl=zh-CN&query=",
     },
     android_en: {
-        name: "En APK",
+        name: "En APK Search",
         url: "https://www.bing.com/?ensearch=0&adlt=strict&q=Malavida APK ",
     },
     // mac_us: {

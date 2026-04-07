@@ -136,23 +136,13 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("Divxland-Android"),
-                    href: func.string_to_unicode("https://cn.divxland.org/apps/")
-                },
-                { //
-                    show_lang: "all",
                     title: func.string_to_unicode("APKPure-安卓市场"),
                     href: func.string_to_unicode("https://download.cnet.com/apkpure/3000-2094_4-77459320.html")
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("Gboard.apk"),
-                    href: func.string_to_unicode("https://gboard.en.divxland.org/download/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("DevCheck.apk"),
-                    href: func.string_to_unicode("https://www.ddooo.com/softdown/224201.htm ")
+                    title: func.string_to_unicode("APKs Download（Github）"),
+                    href: func.string_to_unicode("https://github.com/fyonecon/clean_hyperos/releases")
                 },
                 { //
                     show_lang: "all",
