@@ -517,24 +517,43 @@ const func = {
             return false;
         }
     },
-    is_mobile_screen: function (){ // -1 非法，0 PC，1 mobile
-        let width = window.screen.width;
-        let height = window.screen.height;
-        let max_px = 1280; // 最大 1280X900 px
-        let min_px = 200;
-        let rate = 40;
-        if (width < min_px || height < min_px){ // 非法
-            return 0; // -1
-        }else{
-            if (Math.abs(width-height) < rate){ // 非法
-                return 0; // -1
+    is_desktop_screen: function(){ // 是桌面像素比。从13英寸触摸ipad pro开始算，以上像素都是Desktop。1280无触摸以上都是Desktop
+        if (browser){
+            const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            let width = window.screen.width;
+            let height = window.screen.height;
+            //
+            let max_px = 2752; // 最大: [2752，++) px
+            let min_px = 1280; // [1280, ++)
+            if (isTouch) {
+                return (width>=max_px || height>=max_px); // 有触摸+宽高>=2752
             }else{
-                if (width>max_px || height>max_px){
-                    return 0; // PC
+                return (!isTouch) && (width>=min_px || height>=min_px); // 无触摸+宽高>=1280
+            }
+        }else {
+            return false;
+        }
+    },
+    is_mobile_screen: function (){ // 是手机像素比。必须有触摸。
+        if (browser){
+            const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            let width = window.screen.width;
+            let height = window.screen.height;
+            //
+            let max_px = 2752; // 最大: (200, 2752) px
+            let min_px = 200;
+            let rate = 40;
+            if (width < min_px || height < min_px){ // 非法
+                return false;
+            }else{
+                if (Math.abs(width-height) < rate){ // 不能是正方形
+                    return false;
                 }else{
-                    return 1; // mobile
+                    return (width < max_px && height < max_px) && isTouch; // 有触摸+最大像素限制
                 }
             }
+        }else{
+            return false;
         }
     },
     is_pwa: function (){ // 综合判断
@@ -543,13 +562,13 @@ const func = {
         const is_mobile_pwa = function (){ // iOS/Android端pwa，不同浏览器不一定
             return window.navigator?.standalone || document.referrer.includes('android-app://');
         };
-        const is_pc_pwa = function (){ // win/mac端pwa，不同浏览器不一定
+        const is_desktop_pwa = function (){ // win/mac端pwa，不同浏览器不一定
             const displayModes = ['fullscreen', 'standalone', 'minimal-ui'];
             return displayModes.some(
                 displayMode => window.matchMedia('(display-mode: ' + displayMode + ')').matches
             );
         };
-        return (is_mobile_pwa() || is_pc_pwa() || that.is_wails() || that.is_gthon());
+        return (is_mobile_pwa() || is_desktop_pwa() || that.is_wails() || that.is_gthon());
     },
     is_ios: function () {
         const ua = navigator.userAgent.toLowerCase();
