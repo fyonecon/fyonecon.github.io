@@ -540,16 +540,71 @@ const func = {
     is_pwa: function (){ // 综合判断
         let that = this;
         //
-        return (that.is_mobile_pwa() || that.is_pc_pwa() || that.is_wails() || that.is_gthon());
+        const is_mobile_pwa = function (){ // iOS/Android端pwa，不同浏览器不一定
+            return window.navigator?.standalone || document.referrer.includes('android-app://');
+        };
+        const is_pc_pwa = function (){ // win/mac端pwa，不同浏览器不一定
+            const displayModes = ['fullscreen', 'standalone', 'minimal-ui'];
+            return displayModes.some(
+                displayMode => window.matchMedia('(display-mode: ' + displayMode + ')').matches
+            );
+        };
+        return (is_mobile_pwa() || is_pc_pwa() || that.is_wails() || that.is_gthon());
     },
-    is_mobile_pwa: function (){ // iOS/Android端pwa，不同浏览器不一定
-        return window.navigator?.standalone || document.referrer.includes('android-app://');
+    is_ios: function () {
+        const ua = navigator.userAgent.toLowerCase();
+        return (/iphone/i.test(ua)) || (/ipad/i.test(ua)) || (/ipod/i.test(ua));
+    } ,
+    is_android: function (){
+        const ua = navigator.userAgent.toLowerCase();
+        return ( (/android/i).test(ua) ) || ( (/hm/i).test(ua) || (/harmony/i).test(ua) );
     },
-    is_pc_pwa: function (){ // win/mac端pwa，不同浏览器不一定
-        const displayModes = ['fullscreen', 'standalone', 'minimal-ui'];
-        return displayModes.some(
-            displayMode => window.matchMedia('(display-mode: ' + displayMode + ')').matches
-        );
+    is_mac: function (){
+        const ua = navigator.userAgent.toLowerCase();
+        return ( (/macintosh/i.test(ua)) || (/mac os x/i.test(ua)) );
+    },
+    is_win: function (){
+        const ua = navigator.userAgent.toLowerCase();
+        return (/windows/i).test(ua);
+    },
+    is_linux: function (){
+        let that = this;
+        const ua = navigator.userAgent.toLowerCase();
+        return ( (/linux/i).test(ua) && !that.is_android );
+    },
+    is_safari: function (){
+        let that = this;
+        const ua = navigator.userAgent.toLowerCase();
+        //
+        const isAppleWebKit = /applewebKit/i.test(ua);
+        // 排除其他浏览器
+        // 国际
+        const isChrome = (/chrome/i.test(ua)) || (/ch/i.test(ua)) || (/google/i.test(ua));
+        const isEdge = (/edg/i.test(ua)) || (/bing/i.test(ua));
+        const isFirefox = (/firefox/i.test(ua)) || (/fx/i.test(ua));
+        const isBrave = (/brave/i.test(ua));
+        const isYandex = (/ya/i.test(ua));
+        const isOpera = (/opera/i.test(ua)) || (/opr/i.test(ua)) || (/opt/i.test(ua));
+        const isSamsung = (/samsung/i.test(ua));
+        const isDuckDuckGo = (/duckDuckGo/i.test(ua)) || (/ddg/i.test(ua));
+        const isMeta = (/facebook/i.test(ua)) || (/ins/i.test(ua)) || (/meta/i.test(ua));
+        // 盲
+        const isAI = (/ai/i.test(ua));
+        const isBuild = (/build/i.test(ua)) || (/com/i.test(ua)) || (/cn/i.test(ua)) || (/dev/i.test(ua));
+        // 国内
+        const isQQ = (/qq/i.test(ua)) || (/qqbrowser/i.test(ua));
+        const isUC = (/uc/i.test(ua));
+        const isSogou = (/sogou/i.test(ua));
+        const isVivaldi = (/vivaldi/i.test(ua));
+        const isQuark = (/quark/i.test(ua));
+        const isBaidu = (/baidu/i.test(ua));
+        const isMaxthon = (/maxthon/i.test(ua));
+        const is360 = (/360/i.test(ua));
+        const isLiebao = (/lb/i.test(ua));
+        const isMeituan = (/meituan/i.test(ua)) || (/mt/i.test(ua));
+        const isDouyin = (/douyin/i.test(ua)) || (/tiktok/i.test(ua)) || (/byte/i.test(ua)) || (/aweme/i.test(ua)) || (/news/i.test(ua)) || (/toutiao/i.test(ua));
+        //
+        return isAppleWebKit && (that.is_ios() || that.is_mac()) && !that.is_android() && !that.is_win() && !that.is_linux() && !(isChrome || isEdge || isFirefox || isBrave || isBrave || isYandex || isOpera || isSamsung || isDuckDuckGo || isMeta || isAI || isBuild || isQQ || isUC || isSogou || isVivaldi || isQuark || isQuark || isBaidu || isMaxthon || is360 || isLiebao || isMeituan || isDouyin);
     },
     html_to_plain_text: function (html) { // string类型的html转换成text
         let that = this;

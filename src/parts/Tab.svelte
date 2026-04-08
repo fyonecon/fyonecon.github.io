@@ -113,12 +113,17 @@
             func.open_url(href);
         },
         is_ok_browser: function (){
-            const ua = navigator.userAgent.toLowerCase();
-            // 判断标准：大厂的可屏蔽广告的浏览器
-            const isEdge = (/edg/i.test(ua)) && !(/edge/i.test(ua)) && ((/iphone/i.test(ua))) && !((/ipad/i.test(ua))) && !((/ipod/i.test(ua))); // iOS、desktop
-            const isFirefox = ((/firefox/i.test(ua)) || (/fx/i.test(ua))) && !((/iphone/i.test(ua))) && !((/ipad/i.test(ua))) && !((/ipod/i.test(ua))); // android、hm、desktop
-            //
-            return isEdge || isFirefox;
+            if (browser){
+                const ua = navigator.userAgent.toLowerCase();
+                //
+                // 判断标准：大厂的可屏蔽广告的浏览器
+                const isEdgeOK = (/edg/i.test(ua)) && !(/edge/i.test(ua)) && !(/edga/i.test(ua)) && func.is_ios(); // iOS
+                const isFirefoxOK = ((/firefox/i.test(ua)) || (/fx/i.test(ua))) && (func.is_android || func.is_mac() || func.is_win() || func.is_linux()); // android、desktop
+                //
+                return isEdgeOK || isFirefoxOK;
+            }else{
+                return false;
+            }
         },
         show_glass_div: function (){ // 是否隐藏tab区域
             let that = this;
@@ -223,7 +228,7 @@
         def.calc_tab_div_width();
         def.show_glass_div();
         def.show_qr_div();
-        if (func.is_pc_pwa() || func.is_mobile_pwa()){
+        if (func.is_pwa()){
             tab_bottom = 20;
         }else{
             tab_bottom = 10;

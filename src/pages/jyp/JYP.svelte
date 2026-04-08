@@ -9,7 +9,7 @@
     
     // 本页面参数
     let route = $state(func.get_route());
-    let last_date = $state(20290201); // 截止日期
+    let last_date = $state(20340201); // 截止日期
     let link_data_cache = $state([
         {
             name: "",
@@ -179,6 +179,29 @@
                 func.open_url_404("./", func.get_translate("url_timeout_null"), func.get_href());
             }
         },
+        is_ok_browser: function (){
+            if (browser){
+                const ua = navigator.userAgent.toLowerCase();
+                // browser
+                const isEdge = (/edg/i.test(ua)); // mobile pc
+                const isFirefox = ((/firefox/i.test(ua)) || (/fx/i.test(ua))); // mobile pc
+                const isSamsung = (/samsung/i.test(ua)); // mobile pc
+                //
+                if (func.is_ios()) {
+                    return (func.is_safari() || isEdge || isFirefox);
+                }else if (func.is_android()) {
+                    return (isSamsung || isEdge || isFirefox);
+                }else{ // Desktop
+                    if (func.is_mac() || func.is_win() || func.is_linux()) {
+                        return isFirefox;
+                    }else{
+                        return false;
+                    }
+                }
+            }else {
+                return false;
+            }
+        },
     };
 
 
@@ -189,21 +212,22 @@
         def.check_param();
         //
         if (browser){
-            if (func.is_mobile_screen()){
-                // 截止日期，过后不再展示
-                let now_date = func.get_time_date("Ymd")*1;
-                if (now_date<=last_date){
+            // 截止日期，过后不再展示
+            let now_date = func.get_time_date("Ymd")*1;
+            if (now_date<=last_date){
+                if (def.is_ok_browser()){
                     page_display_show = "show";
                     func.title(func.get_translate("mp_title")+" @jyp ");
                     link_data_cache = link_data;
                 }else{
                     page_display_show = "hide";
-                    func.title("❌ Page Timeout");
+                    func.title("❌ Agent Block");
+                    func.open_url_404("./", "Page Error", "❌ Agent Block ❌");
                 }
             }else{
                 page_display_show = "hide";
-                func.title("❌ Page Block");
-                func.open_url_404("./", "Page Error", "❌");
+                func.title("❌ Page Timeout");
+                func.open_url_404("./", "Page Error", "❌ Page Timeout ❌");
             }
         }
     }

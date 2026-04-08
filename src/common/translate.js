@@ -288,8 +288,8 @@ const lang_dict = {
         en: "⚠️ Please try \"manually refreshing 🔁 the page\" or \"opening the page using a human browser.\"",
     },
     runtime_cn_chat_alert: {
-        zh: "😊 请不要在「微信、QQ、钉钉、飞书、企业微信」中打开本网站。<br/>请使用外部浏览器打开。",
-        en: "😊 Please do not open this website within \" WeChat(weixin), QQ, DingTalk(dingding), Lark(Feishu), or Enterprise WeChat.\" . <br/>Please open with an external browser.",
+        zh: "😊 请不要在「微信、QQ、钉钉、飞书、支付宝、企业微信」中打开本网站。<br/>请使用外部浏览器打开。",
+        en: "😊 Please do not open this website within \" WeChat(weixin), QQ, DingTalk(dingding), Lark(feishu), AliPay(zhifubao), or Enterprise WeChat.\" . <br/>Please open with an external browser.",
     },
     support_min_js_alert: {
         zh: "🔴 不支持最低js运行时要求，一般2024年之后的发布的操作系统或浏览器内核才符合条件。",
@@ -350,11 +350,11 @@ const lang_dict = {
         zh: '<p>◉ 内容仅供教育学习。</p>' +
             '<p>◉ 谨防网络赌博诈骗。</p>' +
             '<p>◉ 推荐“联通、电信”等网络。</p>' +
-            '<p>◉ 推荐“<i class="select-text">Safari、Chrome、火狐、Edge</i>”等浏览器。</p>',
+            '<p>◉ 白名单浏览器：<i class="select-text">Safari（可屏蔽广告）、Edge（可屏蔽广告）、三星浏览器（可屏蔽广告）、火狐</i>。</p>',
         en: '<p>◉ The content is for educational purposes only.</p>' +
             '<p>◉ Beware of online gambling fraud.</p>' +
             '<p>◉ Recommend networks such as China Unicom and China Telecom.</p>' +
-            '<p>◉ Recommend browsers such as “<i class="select-text">Safari、Chrome、Firefox、Edge</i>”.</p>',
+            '<p>◉ Whitelist browser: <i class="select-text">Safari(Ad-blocking),Edge(Ad-blocking),SamsungBrowser(Ad-blocking),Firefox</i>.</p>',
     },
     mp_so: {
         zh: "查找",
