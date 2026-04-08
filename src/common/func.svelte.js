@@ -556,6 +556,14 @@ const func = {
             return false;
         }
     },
+    is_desktop: function(){ // 金标准综合判断
+        let that = this;
+        return that.is_desktop_screen() && (that.is_mac() || that.is_win() || that.is_linux());
+    },
+    is_mobile: function(){ // 金标准综合判断
+        let that = this;
+        return that.is_mobile_screen() && (that.is_ios() || that.is_android());
+    },
     is_pwa: function (){ // 综合判断
         let that = this;
         //
@@ -579,8 +587,9 @@ const func = {
         return ( (/android/i).test(ua) ) || ( (/hm/i).test(ua) || (/harmony/i).test(ua) );
     },
     is_mac: function (){
+        let that = this;
         const ua = navigator.userAgent.toLowerCase();
-        return ( (/macintosh/i.test(ua)) || (/mac os x/i.test(ua)) );
+        return ( (/macintosh/i.test(ua)) || (/mac os x/i.test(ua)) ) && !that.is_ios();
     },
     is_win: function (){
         const ua = navigator.userAgent.toLowerCase();
@@ -589,7 +598,7 @@ const func = {
     is_linux: function (){
         let that = this;
         const ua = navigator.userAgent.toLowerCase();
-        return ( (/linux/i).test(ua) && !that.is_android );
+        return (/linux/i).test(ua) && !that.is_android;
     },
     is_safari: function (){
         let that = this;
