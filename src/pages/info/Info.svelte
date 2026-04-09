@@ -8,7 +8,6 @@
     import {browser} from "$app/environment";
     import FetchPOST from "../../common/post.svelte";
     import FetchGET from "../../common/get.svelte";
-    import {json} from "@sveltejs/kit";
 
 
     // 本页面参数
@@ -24,6 +23,7 @@
     let test_db_data = $state("...");
     let test_index_html_api = $state("...");
     let test_index_html_info: object[]  = $state([]);
+    let app_uid = $state("");
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
     const def = {
@@ -111,7 +111,9 @@
                 let index = 0;
                 for (let [key, value] of headers) {
                     // console.log(`${key}: ${value}`);
-                    if (index < 5){ // 不需要展示全部
+                    let max_info = 5;
+                    if (func.is_gthon() || func.is_wails()){max_info = 20;}
+                    if (index < max_info){ // 不需要展示全部
                         test_index_html_info.push({
                             key: key,
                             value: value,
@@ -176,6 +178,9 @@
         // 开始
         func.title(func.get_translate("Info"));
         def.test_index_html();
+        func.get_app_uid().then(_app_uid=>{
+            app_uid = _app_uid;
+        });
     }
 
     // 标签处于切换显示状态
@@ -283,7 +288,7 @@
         </div>
         <div class="info-div-content">
             <div class="info-div-content-li break select-text">
-                <span class="info-div-content-li-title ">“ES、OS、Web内核”支持情况 ：</span>
+                <span class="info-div-content-li-title ">“ES、OS、Web内核”支持情况 (仅GUI)：</span>
                 <br>
                 <span class="info-div-content-li-res">{@html "Android10+、iOS/iPad16.4+、macOS14+、HM6+、Windows10(2023 Update+)、Linux(202406 update+)、Chrome110+、Firefox115+、nodeJS20+，Bun0.6+"}</span>
                 <div class="clear"></div>
@@ -387,13 +392,13 @@
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">appVersion ：</span>
                 <br>
-                <span class="info-div-content-li-res">{@html "v"+config.app.app_version}</span>
+                <span class="info-div-content-li-res">{@html "UI v"+config.app.app_version}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">appUID ：</span>
                 <br>
-                <span class="info-div-content-li-res">{@html "-"}</span>
+                <span class="info-div-content-li-res">{@html app_uid?app_uid:"-"}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
