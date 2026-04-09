@@ -1,8 +1,12 @@
-# 1️⃣ViewOnSvelte 开发说明
+# 1️⃣开发说明
 
-项目：https://github.com/fyonecon/fyonecon.github.io
+这是View的Web应用实例，基于Svelte重写，可CI/CD部署，也可以使用静态文件CDN部署，在动态加载js、CSS功能上偶有体验不佳。原始View基于JQ编写，仅支持CDN部署，但是原始View更适合各种浏览器。
 
-最低支持ES2023（iOS16.4+，Android14+，Chrome110+，Firefox115+，Mac OS14+）
+源码：https://github.com/fyonecon/fyonecon.github.io
+
+访问：https://fyonecon.github.io
+
+环境：最低支持ES2023（iOS16.4+，Android14+，Chrome110+，Firefox115+，Mac OS14+）
 
 ### 推荐IDE（webstorm）：
 ```
