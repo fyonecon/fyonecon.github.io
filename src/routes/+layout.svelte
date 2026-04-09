@@ -131,13 +131,13 @@
     }
 
     // 标签处于切换显示状态
-    function page_show(){
+    function page_show(e: any){
         func.console_log("page_show=", route);
         // show
     }
 
     // 标签处于切换隐藏状态
-    function page_hide(){
+    function page_hide(e: any){
         func.console_log("page_hide=", route);
         // hide
     }
@@ -189,17 +189,9 @@
         if (browser){
             document.addEventListener("visibilitychange", (e) => {
                 if (document.hidden) { // onHide
-                    page_show();
+                    page_show(e);
                 } else { // onShow
-                    page_hide();
-                }
-            });
-            window.addEventListener('pageshow', (e) => {
-                if (e.persisted) {  // 来自 bfcache
-                    console.warn("注意：页面可能有bfcache（2s后自动刷新页面）", e);
-                    setTimeout(function (){
-                        window.location.reload();
-                    }, 2000);
+                    page_hide(e);
                 }
             });
         }
