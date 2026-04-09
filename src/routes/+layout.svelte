@@ -187,13 +187,27 @@
 
         // 监测页面标签是否处于显示
         if (browser){
-            document.addEventListener("visibilitychange", () => {
+            document.addEventListener("visibilitychange", (e) => {
                 if (document.hidden) { // onHide
                     page_show();
                 } else { // onShow
                     page_hide();
                 }
             });
+            window.addEventListener('pageshow', (e) => {
+                if (e.persisted) {  // 来自 bfcache
+                    console.warn("注意：页面可能有bfcache（3s后自动刷新页面）", e);
+                    setTimeout(function (){
+                        window.location.reload();
+                    }, 3000);
+                }
+            });
+            window.addEventListener("error", (e) => { // 捕获脚本加载失败（ChunkLoadError）
+                console.warn("注意：页面可能有潜在报错（4s后自动刷新页面）", e);
+                setTimeout(function (){
+                    window.location.reload();
+                }, 4000);
+            }, true);
         }
 
     });
