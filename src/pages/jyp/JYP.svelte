@@ -181,19 +181,14 @@
         },
         is_ok_browser: function (){
             if (browser){
-                const ua = navigator.userAgent.toLowerCase();
-                // browser
-                const isEdge = (/edg/i.test(ua)); // mobile pc
-                const isFirefox = ((/firefox/i.test(ua)) || (/fx/i.test(ua))); // mobile pc
-                const isSamsung = (/samsung/i.test(ua)); // mobile pc
                 //
                 if (func.is_ios()) {
-                    return (func.is_safari() || isEdge || isFirefox);
+                    return (func.is_safari() || func.is_edge() || func.is_firefox());
                 }else if (func.is_android()) {
-                    return (isSamsung || isEdge || isFirefox);
+                    return (func.is_samsung() || func.is_edge() || func.is_firefox());
                 }else{ // Desktop
                     if (func.is_mac() || func.is_win() || func.is_linux()) {
-                        return isFirefox;
+                        return func.is_firefox();
                     }else{
                         return false;
                     }

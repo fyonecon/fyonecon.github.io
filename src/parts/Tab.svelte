@@ -112,15 +112,9 @@
             // console.log([now_route_index, next_index, href])
             func.open_url(href);
         },
-        is_ok_browser: function (){
+        is_show_tab: function (){
             if (browser){
-                const ua = navigator.userAgent.toLowerCase();
-                //
-                // 判断标准：大厂的可屏蔽广告的浏览器
-                const isEdgeOK = (/edg/i.test(ua)) && !(/edge/i.test(ua)) && !(/edga/i.test(ua)) && func.is_ios(); // iOS
-                const isFirefoxOK = ((/firefox/i.test(ua)) || (/fx/i.test(ua))) && (func.is_android || func.is_mac() || func.is_win() || func.is_linux()); // android、desktop
-                //
-                return isEdgeOK || isFirefoxOK;
+                return (func.is_firefox() || func.is_wails() || func.is_gthon());
             }else{
                 return false;
             }
@@ -128,7 +122,7 @@
         show_glass_div: function (){ // 是否隐藏tab区域
             let that = this;
             //
-            if (that.is_ok_browser() && that.route_in_tab_data(route)){
+            if (that.is_show_tab() && that.route_in_tab_data(route)){
                 glass_div_display = "show";
             }else{
                 glass_div_display = "hide";
