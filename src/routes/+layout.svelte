@@ -196,18 +196,12 @@
             });
             window.addEventListener('pageshow', (e) => {
                 if (e.persisted) {  // 来自 bfcache
-                    console.warn("注意：页面可能有bfcache（3s后自动刷新页面）", e);
+                    console.warn("注意：页面可能有bfcache（2s后自动刷新页面）", e);
                     setTimeout(function (){
                         window.location.reload();
-                    }, 3000);
+                    }, 2000);
                 }
             });
-            window.addEventListener("error", (e) => { // 捕获脚本加载失败（ChunkLoadError）
-                console.warn("注意：页面可能有潜在报错（4s后自动刷新页面）", e);
-                setTimeout(function (){
-                    window.location.reload();
-                }, 4000);
-            }, true);
         }
 
     });
