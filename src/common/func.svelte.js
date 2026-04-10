@@ -1067,6 +1067,7 @@ const func = {
             }else{ // web或其它
                 let _app_uid = func.get_local_data(app_uid_key);
                 if (!_app_uid){_app_uid = that.md5(that.make_uid(config.app.app_class));func.set_local_data(app_uid_key, _app_uid);}
+                app_uid_data.app_uid = _app_uid;
                 resolve(_app_uid);
             }
         });

@@ -159,6 +159,8 @@
     // 页面装载完成后，只运行一次。
     // addEventListener专用函数
     onMount(() => {
+        // 设置app_uid
+        func.get_app_uid().then(_app_uid => {});
 
         //
         if (func.is_wails() || func.is_gthon()) { // app
