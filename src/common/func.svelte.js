@@ -288,6 +288,10 @@ const func = {
         let ua = window.navigator.userAgent.toLowerCase();
         return ua.indexOf("lark")!==-1;
     },
+    is_alipay: function (){
+        let ua = window.navigator.userAgent.toLowerCase();
+        return ua.indexOf("ali")!==-1 || ua.indexOf("qianniu")!==-1 || ua.indexOf("taobao")!==-1;
+    },
     make_uid: function (app_class=""){
         let that = this;
         let rand = that.js_rand(10000000000, 999999999999);
@@ -511,7 +515,36 @@ const func = {
             let ext = filename.substring(filename.lastIndexOf("."));
             ext = ext.toLowerCase();
             let white_ext = [
-                ".gif", ".png", ".jpg", ".jpeg", ".webp", ".ico", ".jpg2", ".tiff", ".tif", ".bmp", ".svg",
+                ".gif", ".png", ".jpg", ".jpeg", ".webp", ".ico", ".jpg2", ".tiff", ".tif", ".bmp", ".svg", ".icns",
+            ];
+            return white_ext.includes(ext);
+        }catch (e) {
+            return false;
+        }
+    },
+    is_txt: function(filename){ // 是文档
+        try {
+            let ext = filename.substring(filename.lastIndexOf("."));
+            ext = ext.toLowerCase();
+            let white_ext = [
+                ".txt", ".md", ".log", ".py", ".js", ".ts", ".go", ".json", ".yml", ".toml", ".env", ".gitignore",
+                ".css", ".html", ".htm", ".xml", ".tsx", ".conf", ".php", ".swift", ".dart", ".sh", ".plist", ".lcl",
+                ".rs", ".java", ".c", ".h", ".kt", ".kts", ".jmod", ".mod", ".zig", ".zon",
+                ".bash_profile", ".zshrc", ".spec",
+            ];
+            return white_ext.includes(ext);
+        }catch (e) {
+            return false;
+        }
+    },
+    is_archive: function(filename){ // 是压缩包
+        try {
+            let ext = filename.substring(filename.lastIndexOf("."));
+            ext = ext.toLowerCase();
+            let white_ext = [
+                ".zip", ".7z", ".rar", ".exe", ".apk", ".xapk", ".dmg", ".deb", ".app", ".gz",  ".iso",
+                ".jar", ".war", ".gzip", ".bzip2", ".msi", ".msu", ".img", ".cab", ".ear",
+                ".class", ".so", ".pyc", ".a", ".rlib", ".hpk", ".ipa",
             ];
             return white_ext.includes(ext);
         }catch (e) {
