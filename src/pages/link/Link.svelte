@@ -288,28 +288,23 @@
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("Chrome (官网)"),
-                    href: func.string_to_unicode("https://www.google.cn/intl/zh-CN/chrome/")
+                    href: func.string_to_unicode("https://www.google.cn/intl/zh-CN_ALL/chrome/other-platforms/")
                 },
                 //
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("Chrome Win Amd64"),
+                    title: func.string_to_unicode("Chrome Mac Universal"),
+                    href: func.string_to_unicode("https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Chrome Win AMD64"),
                     href: func.string_to_unicode("https://dl.google.com/chrome/install/ChromeStandaloneSetup64.exe")
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("Chrome Mac Amd64"),
-                    href: func.string_to_unicode("https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Chrome Mac Arm64"),
-                    href: func.string_to_unicode("https://dl.google.com/chrome/mac/universal/stable/CHFA/googlechrome.dmg")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Chrome Ubuntu Amd64"),
-                    href: func.string_to_unicode("https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb")
+                    title: func.string_to_unicode("Chrome Ubuntu AMD64"),
+                    href: func.string_to_unicode("https://www.google.cn/intl/zh-CN/chrome/?standalone=1&platform=linux")
                 },
             ],
         },
