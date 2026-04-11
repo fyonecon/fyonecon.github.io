@@ -285,7 +285,6 @@
     function page_show(){
         func.console_log("page_show=", route);
         // show
-        page_start();
     }
 
     // 标签处于切换隐藏状态
@@ -315,9 +314,9 @@
         if (browser){
             document.addEventListener("visibilitychange", () => {
                 if (document.hidden) { // onHide
-                    page_show();
-                } else { // onShow
                     page_hide();
+                } else { // onShow
+                    page_show();
                 }
             });
         }

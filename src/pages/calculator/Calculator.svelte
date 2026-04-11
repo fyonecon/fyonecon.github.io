@@ -836,9 +836,9 @@
             //
             document.addEventListener("visibilitychange", () => {
                 if (document.hidden) { // onHide
-                    page_show();
-                } else { // onShow
                     page_hide();
+                } else { // onShow
+                    page_show();
                 }
             });
             //

@@ -314,8 +314,8 @@
     // 标签处于切换显示状态
     function page_show(){
         func.console_log("page_show=", route);
-        // show
         func.loading_hide();
+        // show
     }
 
     // 标签处于切换隐藏状态
@@ -343,9 +343,9 @@
         if (browser){
             document.addEventListener("visibilitychange", () => {
                 if (document.hidden) { // onHide
-                    page_show();
-                } else { // onShow
                     page_hide();
+                } else { // onShow
+                    page_show();
                 }
             });
         }
