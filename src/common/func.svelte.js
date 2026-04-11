@@ -1048,6 +1048,7 @@ const func = {
         let that = this;
         //
         let app_uid_key = config.app.app_class+"app_uid";
+        let app_start_time_key = config.app.app_class+"app_start_time";
         //
         return new Promise(resolve => {
             if (that.is_gthon() || that.is_wails()){
@@ -1055,18 +1056,42 @@ const func = {
                     let _app_uid=res.content.data;
                     if (_app_uid){
                         app_uid_data.app_uid = _app_uid;
-                        resolve(_app_uid);
+                        //
+                        func.js_call_py_or_go("get_data", {data_key:app_start_time_key}).then(res=>{
+                            let start_time=res.content.data;
+                            if (!start_time){
+                                start_time = func.string_to_unicode(func.get_time_date("YmdHisW"));
+                                func.js_call_py_or_go("set_data", {data_key:app_start_time_key, data_value:start_time, data_timeout_s:20*365*24*3600}).then(res=>{
+                                    resolve(_app_uid);
+                                });
+                            }else{
+                                resolve(_app_uid);
+                            }
+                        });
                     }else{
                         _app_uid = that.md5(that.make_uid(config.app.app_class));
-                        func.js_call_py_or_go("set_data", {data_key:app_uid_key, data_value:_app_uid, data_timeout_s:10*365*24*3600}).then(res=>{
-                            app_uid_data.app_uid = res.content.data;
-                            resolve(res.content.data);
+                        func.js_call_py_or_go("set_data", {data_key:app_uid_key, data_value:_app_uid, data_timeout_s:20*365*24*3600}).then(res=>{
+                            app_uid_data.app_uid = _app_uid;
+                            //
+                            let start_time = func.get_time_date("YmdHisW");
+                            start_time = func.string_to_unicode(start_time);
+                            func.js_call_py_or_go("set_data", {data_key:app_start_time_key, data_value:start_time, data_timeout_s:20*365*24*3600}).then(res=>{
+                                resolve(_app_uid);
+                            });
                         });
                     }
                 });
             }else{ // web或其它
                 let _app_uid = func.get_local_data(app_uid_key);
-                if (!_app_uid){_app_uid = that.md5(that.make_uid(config.app.app_class));func.set_local_data(app_uid_key, _app_uid);}
+                let _app_start_time = func.get_local_data(app_start_time_key);
+                if (!_app_uid || !_app_start_time){
+                    _app_uid = that.md5(that.make_uid(config.app.app_class));
+                    func.set_local_data(app_uid_key, _app_uid);
+                    //
+                    let start_time = func.get_time_date("YmdHisW");
+                    start_time = func.string_to_unicode(start_time);
+                    func.set_local_data(app_start_time_key, start_time);
+                }
                 app_uid_data.app_uid = _app_uid;
                 resolve(_app_uid);
             }
