@@ -337,6 +337,10 @@ const lang_dict = {
         zh: "文档",
         en: "Docs",
     },
+    link_download: {
+        zh: "下载",
+        en: "Download",
+    },
     //
     mp_title: {
         zh: "教育片",

@@ -73,6 +73,11 @@
                     title: func.string_to_unicode("雪球话题"),
                     href: func.string_to_unicode("https://xueqiu.com/today")
                 },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("系统极客"),
+                    href: func.string_to_unicode("https://www.sysgeek.cn/")
+                },
 
             ],
         },
@@ -124,46 +129,7 @@
                     title: func.string_to_unicode("🧲喵磁力"),
                     href: func.string_to_unicode("https://www.miaocili.com/")
                 },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("vivo-安卓商店"),
-                    href: func.string_to_unicode("https://h5.appstore.vivo.com.cn/#/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("豌豆荚-安卓商店"),
-                    href: func.string_to_unicode("https://www.wandoujia.com")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("APKPure-安卓市场"),
-                    href: func.string_to_unicode("https://download.cnet.com/apkpure/3000-2094_4-77459320.html")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("APKs Download（Github）"),
-                    href: func.string_to_unicode("https://github.com/fyonecon/clean_hyperos/releases")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("LibCheck.apk"),
-                    href: func.string_to_unicode("https://www.downkuai.com/android/147630.html")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Firefox.apk"),
-                    href: func.string_to_unicode("https://firefox.en.divxland.org/download/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Firefox Desktop"),
-                    href: func.string_to_unicode("https://www.firefox.com/zh-CN/download/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Chrome Desktop"),
-                    href: func.string_to_unicode("https://www.google.cn/intl/zh-CN/chrome/")
-                },
+
             ],
         },
         {
@@ -199,11 +165,11 @@
                     title: func.string_to_unicode("阮一峰周报"),
                     href: func.string_to_unicode("https://ruanyifeng.com/blog")
                 },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("V2EX.com"),
-                    href: func.string_to_unicode("https://v2ex.com")
-                },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("V2EX.com"),
+                //     href: func.string_to_unicode("https://v2ex.com")
+                // },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("YouTube"),
@@ -219,11 +185,11 @@
                     title: func.string_to_unicode("Reddit"),
                     href: func.string_to_unicode("https://reddit.com")
                 },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Linux.do"),
-                    href: func.string_to_unicode("https://linux.do")
-                },
+                // { //
+                //     show_lang: "all",
+                //     title: func.string_to_unicode("Linux.do"),
+                //     href: func.string_to_unicode("https://linux.do")
+                // },
             ],
         },
         {
@@ -278,6 +244,72 @@
                     show_lang: "all",
                     title: func.string_to_unicode("菜鸟教程Runoob"),
                     href: func.string_to_unicode("https://www.runoob.com")
+                },
+            ],
+        },
+        {
+            name: func.get_translate("link_download"),
+            list: [
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("vivo-安卓商店"),
+                    href: func.string_to_unicode("https://h5.appstore.vivo.com.cn/#/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("豌豆荚-安卓商店"),
+                    href: func.string_to_unicode("https://www.wandoujia.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("APKPure-安卓市场"),
+                    href: func.string_to_unicode("https://download.cnet.com/apkpure/3000-2094_4-77459320.html")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("APKs Download（Github）"),
+                    href: func.string_to_unicode("https://github.com/fyonecon/clean_hyperos/releases")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("LibCheck.apk"),
+                    href: func.string_to_unicode("https://www.downkuai.com/android/147630.html")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Firefox.apk"),
+                    href: func.string_to_unicode("https://firefox.en.divxland.org/download/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Firefox (官网)"),
+                    href: func.string_to_unicode("https://www.firefox.com/zh-CN/download/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Chrome (官网)"),
+                    href: func.string_to_unicode("https://www.google.cn/intl/zh-CN/chrome/")
+                },
+                //
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Chrome Win Amd64"),
+                    href: func.string_to_unicode("https://dl.google.com/chrome/install/ChromeStandaloneSetup64.exe")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Chrome Mac Amd64"),
+                    href: func.string_to_unicode("https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Chrome Mac Arm64"),
+                    href: func.string_to_unicode("https://dl.google.com/chrome/mac/universal/stable/CHFA/googlechrome.dmg")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Chrome Ubuntu Amd64"),
+                    href: func.string_to_unicode("https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb")
                 },
             ],
         },
