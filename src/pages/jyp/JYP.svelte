@@ -185,9 +185,9 @@
                 if (func.is_ios()) {
                     return (func.is_safari() || func.is_edge());
                 }else if (func.is_android()) {
-                    return (func.is_samsung() || func.is_edge());
+                    return (func.is_samsung() || func.is_edge() || func.is_firefox());
                 }else{ // Desktop
-                    if (func.is_mac() || func.is_win() || func.is_linux()) {
+                    if (func.is_desktop()) {
                         return func.is_firefox();
                     }else{
                         return false;
