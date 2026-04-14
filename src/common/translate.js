@@ -354,11 +354,33 @@ const lang_dict = {
         zh: '<p>◉ 内容仅供教育学习。</p>' +
             '<p>◉ 谨防网络赌博诈骗。</p>' +
             '<p>◉ 推荐“联通、电信”等网络。</p>' +
-            '<p>◉ 白名单浏览器：<i class="select-text"> <a class="a-url font-blue" href="https://apps.apple.com/us/app/adblock-for-safari/id1402042596">Safari（iPhone/iPad）</a>、<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">三星浏览器（Android/HM）</a>、<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge（iPhone/iPad/Android/HM）</a>、<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">火狐（全部）</a> </i>。</p>',
+            '<p>◉ 白名单浏览器：<i class="select-text"> <span class="wtlb">' +
+            '苹果 iPhone/iPad：' +
+            '<a class="a-url font-blue" href="https://apps.apple.com/us/app/adblock-for-safari/id1402042596">Safari（可屏蔽广告）</a>、' +
+            '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge（可屏蔽广告）</a>、' +
+            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">火狐</a>;' +
+            '</br>安卓/鸿蒙：' +
+            '<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">三星浏览器（可屏蔽广告）</a>、' +
+            '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge（可屏蔽广告）</a>、' +
+            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">火狐（可屏蔽广告）</a>;' +
+            '</br>电脑 Win/Mac：' +
+            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">火狐（可屏蔽广告）</a>。' +
+            '</span></i></p>',
         en: '<p>◉ The content is for educational purposes only.</p>' +
             '<p>◉ Beware of online gambling fraud.</p>' +
             '<p>◉ Recommend networks such as China Unicom and China Telecom.</p>' +
-            '<p>◉ Whitelist browser: <i class="select-text"> <a class="a-url font-blue" href="https://apps.apple.com/us/app/adblock-for-safari/id1402042596">Safari (iPhone/iPad)</a>, <a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">SamsungBrowser (Android/HM)</a>, <a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge (iPhone/iPad/Android/HM)</a>,  <a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">Firefox (All)</a> </i>.</p>',
+            '<p>◉ Whitelist browser: <i class="select-text"> <span class="wtlb">' +
+            'Apple iPhone/iPad: ' +
+            '<a class="a-url font-blue" href="https://apps.apple.com/us/app/adblock-for-safari/id1402042596">Safari (Ad-blocking)</a>, ' +
+            '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge(Ad-blocking)</a>, ' +
+            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">Firefox</a>;' +
+            '</br>Android/HM: ' +
+            '<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">SamsungBrowser (Ad-blocking)</a>, ' +
+            '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge (Ad-blocking)</a>, ' +
+            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">Firefox (Ad-blocking)</a>;' +
+            '</br>Desktop Win/Mac: ' +
+            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">Firefox (Ad-blocking)</a>.' +
+            '</span></i></p>',
     },
     mp_so: {
         zh: "查找",

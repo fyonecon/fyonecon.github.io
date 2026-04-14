@@ -68,3 +68,7 @@
     100% { opacity: 1; }
 }
 
+.wtlb{
+    padding: 0 10px;
+    display: block;
+}
