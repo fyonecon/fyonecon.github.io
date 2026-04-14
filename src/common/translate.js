@@ -358,11 +358,9 @@ const lang_dict = {
             '苹果 iPhone/iPad：' +
             '<a class="a-url font-blue" href="https://apps.apple.com/us/app/adblock-for-safari/id1402042596">Safari（可屏蔽广告）</a>、' +
             '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge（可屏蔽广告）</a>、' +
-            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">火狐</a>;' +
             '</br>安卓/鸿蒙：' +
             '<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">三星浏览器（可屏蔽广告）</a>、' +
             '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge（可屏蔽广告）</a>、' +
-            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">火狐（可屏蔽广告）</a>;' +
             '</br>电脑 Win/Mac：' +
             '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">火狐（可屏蔽广告）</a>。' +
             '</span></i></p>',
@@ -373,11 +371,9 @@ const lang_dict = {
             'Apple iPhone/iPad: ' +
             '<a class="a-url font-blue" href="https://apps.apple.com/us/app/adblock-for-safari/id1402042596">Safari (Ad-blocking)</a>, ' +
             '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge(Ad-blocking)</a>, ' +
-            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">Firefox</a>;' +
             '</br>Android/HM: ' +
             '<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">SamsungBrowser (Ad-blocking)</a>, ' +
             '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge (Ad-blocking)</a>, ' +
-            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">Firefox (Ad-blocking)</a>;' +
             '</br>Desktop Win/Mac: ' +
             '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">Firefox (Ad-blocking)</a>.' +
             '</span></i></p>',
