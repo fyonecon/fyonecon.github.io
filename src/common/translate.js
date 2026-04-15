@@ -359,10 +359,10 @@ const lang_dict = {
             '<a class="a-url font-blue" href="https://apps.apple.com/us/app/adblock-for-safari/id1402042596">Safari（可屏蔽广告）</a>、' +
             '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge（可屏蔽广告）</a>、' +
             '</br>安卓/鸿蒙：' +
-            '<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">三星浏览器（可屏蔽广告）</a>、' +
-            '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge（可屏蔽广告）</a>、' +
+            '<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">三星浏览器（国际服可屏蔽广告）</a>、' +
+            '<a class="a-url font-blue" href="https://www.downkuai.com/android/109376.html">火狐浏览器（国际服可屏蔽广告）</a>、' +
             '</br>电脑 Win/Mac：' +
-            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">火狐（可屏蔽广告）</a>。' +
+            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">火狐浏览器（国际服可屏蔽广告）</a>。' +
             '</span></i></p>',
         en: '<p>◉ The content is for educational purposes only.</p>' +
             '<p>◉ Beware of online gambling fraud.</p>' +
@@ -370,12 +370,12 @@ const lang_dict = {
             '<p>◉ Whitelist browser: <i class="select-text"> <span class="wtlb">' +
             'Apple iPhone/iPad: ' +
             '<a class="a-url font-blue" href="https://apps.apple.com/us/app/adblock-for-safari/id1402042596">Safari (Ad-blocking)</a>, ' +
-            '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge(Ad-blocking)</a>, ' +
-            '</br>Android/HM: ' +
-            '<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">SamsungBrowser (Ad-blocking)</a>, ' +
             '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge (Ad-blocking)</a>, ' +
+            '</br>Android/鸿蒙: ' +
+            '<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">SamsungBrowser (International server can block ads)</a>, ' +
+            '<a class="a-url font-blue" href="https://www.downkuai.com/android/109376.html">Firefox (International server can block ads)</a>, ' +
             '</br>Desktop Win/Mac: ' +
-            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">Firefox (Ad-blocking)</a>.' +
+            '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">Firefox (International server can block ads)</a>.' +
             '</span></i></p>',
     },
     mp_so: {
