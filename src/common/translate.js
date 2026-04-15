@@ -371,7 +371,7 @@ const lang_dict = {
             'Apple iPhone/iPad: ' +
             '<a class="a-url font-blue" href="https://apps.apple.com/us/app/adblock-for-safari/id1402042596">Safari (Ad-blocking)</a>, ' +
             '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge (Ad-blocking)</a>, ' +
-            '</br>Android/鸿蒙: ' +
+            '</br>Android/Harmony: ' +
             '<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">SamsungBrowser (International server can block ads)</a>, ' +
             '<a class="a-url font-blue" href="https://www.downkuai.com/android/109376.html">Firefox (International server can block ads)</a>, ' +
             '</br>Desktop Win/Mac: ' +
