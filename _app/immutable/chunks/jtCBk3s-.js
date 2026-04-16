@@ -1,0 +1,1 @@
+import{Q as e}from"./DiWeCFFG.js";var t=e({tab_value:``,tab_name:``});export{t};
