@@ -285,7 +285,6 @@
     function page_show(){
         func.console_log("page_show=", route);
         // show
-        func.loading_hide();
         def.input_history("");
     }
 
