@@ -9,8 +9,8 @@
     <title>Calculator</title>
     <meta name="keywords" content="Calculator,科学计算器" />
     <meta name="description" content="Calculator科学计算器，支持手机与电脑端，可以使用键盘输入表达式。" />
-    <link rel="icon" type="image/png" href="./calc1.png" />
-    <link rel="apple-touch-icon" href="./calc1.png" />
+    <link rel="icon" type="image/png" href="./calc2.png" />
+    <link rel="apple-touch-icon" href="./calc2.png" />
     <link rel="manifest" href="./manifest-calculator.json" />
 </svelte:head>
 

@@ -8,7 +8,7 @@
   "description": "Calculator,科学计算器",
   "icons": [
     {
-      "src": "./calc1.png",
+      "src": "./calc2.png",
       "type": "image/png",
       "sizes": "192x192"
     }
