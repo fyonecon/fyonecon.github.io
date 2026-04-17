@@ -45,7 +45,11 @@
             }
             else if (word === "@link" || word === "@bookmark"){
                 back_state = true;
-                that.open_url("./link");
+                that.open_url("./purehome/link");
+            }
+            else if (word === "@divine" || word === "@divination"){
+                back_state = true;
+                that.open_url("./purehome/divination");
             }
             else if (word === "@jyp" || word === "@JYP" || word === "@Jyp"){
                 back_state = true;
@@ -62,10 +66,6 @@
             else if (word === "@qr" || word === "@ewm"){
                 back_state = true;
                 that.open_url("./qr");
-            }
-            else if (word === "@divine" || word === "@divination"){
-                back_state = true;
-                that.open_url("./divination");
             }
             else if (word === "@dumogu" || word === "@dmg"){
                 back_state = true;

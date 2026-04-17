@@ -1,9 +1,9 @@
 <script lang="ts">
     import { resolve } from '$app/paths';
-    import func from "../../common/func.svelte.js";
+    import func from "../../../common/func.svelte.js";
     import {afterNavigate} from "$app/navigation";
     import {onMount} from "svelte";
-    import {browser_ok, runtime_ok} from "../../services/middleware.svelte";
+    import {browser_ok, runtime_ok} from "../../../services/middleware.svelte";
     import {browser} from "$app/environment";
 
     

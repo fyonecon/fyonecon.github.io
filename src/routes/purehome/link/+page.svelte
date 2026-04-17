@@ -1,7 +1,7 @@
 <script lang="ts">
     import { resolve } from '$app/paths';
-    import func from "../../common/func.svelte.js";
-    import Link from "../../pages/link/Link.svelte";
+    import func from "../../../common/func.svelte.js";
+    import Link from "../../../pages/purehome/link/Link.svelte";
 
 </script>
 
@@ -9,8 +9,8 @@
     <title>Link</title>
     <meta name="keywords" content="链签, Link" />
     <meta name="description" content="链签 Link" />
-<!--    <link rel="apple-touch-icon" href="./launcher.png" />-->
-<!--    <link rel="manifest" href="./manifest-purehome.json" />-->
+    <link rel="apple-touch-icon" href="../ph1.png" />
+    <link rel="manifest" href="../manifest-purehome.json" />
 </svelte:head>
 
 <section class="section-main scroll-y-style">

@@ -8,7 +8,7 @@
   "description": "PureHome,替代浏览器主页",
   "icons": [
     {
-      "src": "./launcher.png",
+      "src": "./ph1.png",
       "type": "image/png",
       "sizes": "192x192"
     }
