@@ -212,7 +212,11 @@
                         //
                         if (!value) {value = "bing";}
                         //
-                        let href = "./search?word="+encodeURIComponent(func.string_to_unicode(the_value))+"&engine="+value+"&url_timeout="+func.url_timeout_encode("search", 2*60*60)+"&ap=ipt";
+                        // 自动判断路由深度
+                        let path_num = (route.split("/").length - 1); if (path_num <= 1){path_num = 1;}
+                        let path_fix = "./" + "../".repeat(path_num - 1);
+                        //
+                        let href = path_fix+"search?word="+encodeURIComponent(func.string_to_unicode(the_value))+"&engine="+value+"&url_timeout="+func.url_timeout_encode("search", 0.5*60*60)+"&ap=ipt";
                         open_url_open_timer = setTimeout(function (){
                             if (browser){
                                 if (func.is_wails() || func.is_gthon()){

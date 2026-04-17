@@ -316,7 +316,11 @@
         open_url: function(_href=""){
             // func.open_url(_href);
             func.loading_show("", 1200);
-            let href = "./search?word="+encodeURIComponent(_href)+"&engine=bing&url_timeout="+func.url_timeout_encode("search", 2*60*60)+"&ap=lks";
+            // 自动判断路由深度
+            let path_num = (route.split("/").length - 1); if (path_num <= 1){path_num = 1;}
+            let path_fix = "./" + "../".repeat(path_num - 1);
+            //
+            let href = path_fix+"search?word="+encodeURIComponent(_href)+"&engine=bing&url_timeout="+func.url_timeout_encode("search", 1.5*60*60)+"&ap=lks";
             if (browser){
                 if (func.is_mobile_screen()){
                     window.open(href, "_self");
