@@ -70,7 +70,7 @@
         route = func.get_route();
 
         //
-        if (func.is_wails() || func.is_gthon()){ // app
+        if (func.is_waigo() || func.is_ginthon()){ // app
             def.auto_set_language_index();
             def.auto_set_theme_model();
         }else{ // web
@@ -163,7 +163,7 @@
         func.get_app_uid().then(_app_uid => {});
 
         //
-        if (func.is_wails() || func.is_gthon()) { // app
+        if (func.is_waigo() || func.is_ginthon()) { // app
             let theme_event = window.matchMedia('(prefers-color-scheme: dark)');
             theme_event.addEventListener('change', function (event){ // 监测主题变化
                 def.auto_set_theme_model();
