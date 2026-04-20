@@ -3,7 +3,7 @@ const config = {
     debug: false, // true、false
     app: {
         app_name: "View",
-        app_class: "View_", // ginthon_sv_ 、waigo_sv_
+        app_class: "View_", // GinthonDemo_sv_ 、WaigoGemo_sv_
         app_version: "1.9.6", // 1.0.0
     },
     sys:{
