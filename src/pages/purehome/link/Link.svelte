@@ -165,11 +165,11 @@
                     title: func.string_to_unicode("阮一峰周报"),
                     href: func.string_to_unicode("https://ruanyifeng.com/blog")
                 },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("V2EX.com"),
-                //     href: func.string_to_unicode("https://v2ex.com")
-                // },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Github"),
+                    href: func.string_to_unicode("https://github.com")
+                },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("YouTube"),
