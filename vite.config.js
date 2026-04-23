@@ -6,7 +6,7 @@ export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
 
 	server: {
-		port: 9770, // 固定端口为 9770
+		port: 9970, // 固定端口为 9770
 		strictPort: true, // 如果端口被占用，不自动选择其他端口
 		host: false // 允许外部访问（可选）
 	}
