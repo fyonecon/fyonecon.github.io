@@ -360,6 +360,7 @@ const lang_dict = {
             '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge（可屏蔽广告）</a>、' +
             '</br>安卓/鸿蒙：' +
             '<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">三星浏览器（国际服可屏蔽广告）</a>、' +
+            '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge（可屏蔽广告）</a>、' +
             '<a class="a-url font-blue" href="https://www.downkuai.com/android/109376.html">火狐浏览器（国际服可屏蔽广告）</a>、' +
             '</br>电脑 Win/Mac：' +
             '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">火狐浏览器（国际服可屏蔽广告）</a>。' +
@@ -373,6 +374,7 @@ const lang_dict = {
             '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge (Ad-blocking)</a>, ' +
             '</br>Android/Harmony: ' +
             '<a class="a-url font-blue" href="https://www.downkuai.com/android/157308.html">SamsungBrowser (International server can block ads)</a>, ' +
+            '<a class="a-url font-blue" href="https://www.microsoft.com/en-us/edge/download">Edge (Ad-blocking)</a>, ' +
             '<a class="a-url font-blue" href="https://www.downkuai.com/android/109376.html">Firefox (International server can block ads)</a>, ' +
             '</br>Desktop Win/Mac: ' +
             '<a class="a-url font-blue" href="https://www.firefox.com/zh-CN/download/">Firefox (International server can block ads)</a>.' +
