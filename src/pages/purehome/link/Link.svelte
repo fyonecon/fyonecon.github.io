@@ -36,7 +36,7 @@
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("太平洋科技"),
-                    href: func.string_to_unicode("https://g.pconline.com.cn/x/news")
+                    href: func.string_to_unicode("https://news.pconline.com.cn/broadcasting/")
                 },
                 { //
                     show_lang: "all",
