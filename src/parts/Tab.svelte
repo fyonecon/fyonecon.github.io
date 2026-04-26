@@ -114,7 +114,7 @@
         },
         is_show_tab: function (){
             if (browser){
-                return ( (func.is_desktop() && func.is_firefox()) || func.is_waigo() || func.is_ginthon() );
+                return ( (func.is_desktop() && func.is_firefox()) || ( func.is_desktop() && func.is_pwa() ) || func.is_waigo() || func.is_ginthon() );
             }else{
                 return false;
             }
@@ -212,7 +212,7 @@
         // 开始
         route = func.get_route();
         //
-        if (func.is_pwa() || func.is_localhost()){
+        if (func.is_localhost()){
             tab_data = [...tab_data_array, ...tab_data_array_test];
         }else{ // init
             tab_data = tab_data_array;
