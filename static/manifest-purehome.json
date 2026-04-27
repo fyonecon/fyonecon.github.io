@@ -4,7 +4,7 @@
   "start_url": "./purehome?from=&utm_source=pwa",
   "scope": "./purehome",
   "display": "standalone",
-  "background_color": "#A0A0A0",
+  "background_color": "#FFFACD",
   "description": "PureHome,替代浏览器主页",
   "icons": [
     {
