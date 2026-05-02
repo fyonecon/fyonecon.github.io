@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<!--        <meta name="robots" content="nofollow">-->
+<!--        <meta name="robots" content=noindex, "nofollow">-->
         <meta name="referrer" content="unsafe-url">
         <meta name="theme-color" content="#FFFACD">
         <style>
@@ -21,10 +21,10 @@
                 width: 30px;
             }
         </style>
-        <link href="./_app/immutable/entry/start.yDvIljUD.js" rel="modulepreload">
-		<link href="./_app/immutable/chunks/CkYm-qFR.js" rel="modulepreload">
+        <link href="./_app/immutable/entry/start.CqO-2qN5.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/dBhaMbaJ.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/DiWeCFFG.js" rel="modulepreload">
-		<link href="./_app/immutable/entry/app.D9I8rVK8.js" rel="modulepreload">
+		<link href="./_app/immutable/entry/app.m3ikwGr8.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/I8rQr1kY.js" rel="modulepreload">
 		
 	</head>
@@ -32,23 +32,53 @@
         <div class="seo-div hide">
 
         </div>
-		<div style="display: contents;">
+		<div id="sveltekit-body" class="hide" style="display: contents;">🚩</div>
+        <textarea id="sveltekit-script" class="hide" rel="nofollow">
 			<script>
 				{
-					__sveltekit_1hdmh9a = {
+					__sveltekit_11koec1 = {
 						base: new URL(".", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("./_app/immutable/entry/start.yDvIljUD.js"),
-						import("./_app/immutable/entry/app.D9I8rVK8.js")
+						import("./_app/immutable/entry/start.CqO-2qN5.js"),
+						import("./_app/immutable/entry/app.m3ikwGr8.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
 				}
 			</script>
-		</div>
+		</textarea>
+        <script>
+            (function () { // 反爬虫
+                const sveltekit_body = document.getElementById("sveltekit-body");
+                const sveltekit_script = document.getElementById("sveltekit-script").value.match(/<script>([\s\S]*?)<\/script>/i);
+                let js = 'console.error("Null sveltekit.body");';
+                if (sveltekit_script) {js = sveltekit_script[1];}
+                const index_func = {
+                    browser_fn_state: function (){
+                        return !( navigator.webdriver || !window.localStorage || !window.indexedDB || (navigator.languages.length<1) || (window.navigator.hardwareConcurrency<2) );
+                    },
+                    screen_state: function (){
+                        let inner_w = window.innerWidth;let inner_h = window.innerHeight;
+                        let screen_w = window.screen.width;let screen_h = window.screen.height;
+                        return !(inner_w < 220 || inner_h < 220 || screen_w < 220 || screen_h < 220);
+                    },
+                };
+                if (index_func.browser_fn_state() && index_func.screen_state()) { // Run
+                    const script = document.createElement("script");
+                    script.textContent = js;
+                    sveltekit_body.classList.remove("hide");
+                    sveltekit_body.innerHTML = "";
+                    sveltekit_body.appendChild(script);
+                }else{ // block
+                    sveltekit_body.classList.remove("hide");
+                    sveltekit_body.innerHTML = `<h2 style="margin-top: 60px; color: orangered; padding: 15px 15px; word-break: break-all; word-wrap: break-word; ">Please manually refresh the page, or change the browser to open the page. 请手动刷新页面，或更换浏览器打开页面。ページを手動で更新するか、ブラウザを交換してページを開いてください。。</h2>`;
+                }
+            })();
+        </script>
+
 	</body>
 </html>
