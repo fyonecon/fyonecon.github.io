@@ -277,6 +277,11 @@
                 },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("谷歌相机.apk"),
+                    href: func.string_to_unicode("https://gcamapk.io/download-gcam-apk/")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("Firefox.apk"),
                     href: func.string_to_unicode("https://firefox.en.divxland.org/download/")
                 },
