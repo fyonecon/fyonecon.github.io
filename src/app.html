@@ -48,7 +48,7 @@
                     screen_state: function (){
                         const inner_w = window.innerWidth;let inner_h = window.innerHeight;
                         const screen_w = window.screen.width;let screen_h = window.screen.height;
-                        return !(inner_w < 200 || inner_h < 200 || screen_w < 200 || screen_h < 200);
+                        return !(inner_w < 200 || inner_h < 200 || screen_w < 200 || screen_h < 200 || screen_w>10240 || screen_h > 10240);
                     },
                     white_domain: function (){
                         let that = this;
