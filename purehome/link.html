@@ -21,10 +21,10 @@
                 width: 30px;
             }
         </style>
-        <link href="../_app/immutable/entry/start.BIH_qcOM.js" rel="modulepreload">
-		<link href="../_app/immutable/chunks/BYVTT4b6.js" rel="modulepreload">
+        <link href="../_app/immutable/entry/start.BEU12HGb.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/bgAn0FhB.js" rel="modulepreload">
 		<link href="../_app/immutable/chunks/DiWeCFFG.js" rel="modulepreload">
-		<link href="../_app/immutable/entry/app.C8AZAzFH.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.BwWEwfwl.js" rel="modulepreload">
 		<link href="../_app/immutable/chunks/I8rQr1kY.js" rel="modulepreload">
 		
 	</head>
@@ -38,15 +38,15 @@
         <textarea id="sveltekit-script" class="hide" rel="nofollow">
 			<script>
 				{
-					__sveltekit_135ef83 = {
+					__sveltekit_1lj056c = {
 						base: new URL("..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../_app/immutable/entry/start.BIH_qcOM.js"),
-						import("../_app/immutable/entry/app.C8AZAzFH.js")
+						import("../_app/immutable/entry/start.BEU12HGb.js"),
+						import("../_app/immutable/entry/app.BwWEwfwl.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
@@ -70,7 +70,7 @@
                     screen_state: function (){
                         const inner_w = window.innerWidth;let inner_h = window.innerHeight;
                         const screen_w = window.screen.width;let screen_h = window.screen.height;
-                        return !(inner_w < 200 || inner_h < 200 || screen_w < 200 || screen_h < 200);
+                        return !(inner_w < 200 || inner_h < 200 || screen_w < 200 || screen_h < 200 || screen_w>10240 || screen_h > 10240);
                     },
                     white_domain: function (){
                         let that = this;
