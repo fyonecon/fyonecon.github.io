@@ -592,7 +592,11 @@
 
             // 重写rewrite
             if (action === 'R'){
-                def.open_rewrite_dialog();
+                if (func.is_waigo() || func.is_ginthon() || func.is_pwa()){ // 直接清除表达式
+                    def.btn_rewrite();
+                }else{ // 弹窗清除表达式
+                    def.open_rewrite_dialog();
+                }
                 return;
             }
 
@@ -1045,8 +1049,9 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
+        padding-top: 12px;
         padding-right: 5px;
-        padding-bottom: 5px;
+        padding-bottom: 12px;
         font-weight: 400;
         text-align: left;
         line-height: 1.2;
