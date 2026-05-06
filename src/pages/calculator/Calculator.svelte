@@ -1051,6 +1051,7 @@
         text-align: left;
         line-height: 1.2;
         font-size: 16px;
+        overflow: hidden;
     }
 
     .expression { /*表达式*/
@@ -1101,6 +1102,7 @@
         margin-top: 7px;
         padding: 5px 5px 8px 5px;
         border: 1px solid rgba(180,180,180, 1);
+        overflow: hidden;
     }
 
     .btns {
