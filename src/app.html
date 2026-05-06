@@ -38,16 +38,27 @@
                 let js = 'console.error("Null sveltekit.body");';
                 if (sveltekit_script) {js = sveltekit_script[1];}
                 const index_func = {
+                    encode_string: function (str) {
+                        const encoder = new TextEncoder();
+                        try {return Array.from(encoder.encode(str)).join(",");}catch (e) {return str;}
+                    },
                     browser_fn_state: function (){
                         return !( navigator.webdriver || !window.localStorage || !window.indexedDB || (navigator.languages.length<1) || (window.navigator.hardwareConcurrency<2) );
                     },
                     screen_state: function (){
-                        let inner_w = window.innerWidth;let inner_h = window.innerHeight;
-                        let screen_w = window.screen.width;let screen_h = window.screen.height;
-                        return !(inner_w < 220 || inner_h < 220 || screen_w < 220 || screen_h < 220);
+                        const inner_w = window.innerWidth;let inner_h = window.innerHeight;
+                        const screen_w = window.screen.width;let screen_h = window.screen.height;
+                        return !(inner_w < 200 || inner_h < 200 || screen_w < 200 || screen_h < 200);
+                    },
+                    white_domain: function (){
+                        let that = this;
+                        let white_domains = ['108,111,99,97,108,104,111,115,116', '100,97,116,97,116,104,105,110,107,46,116,111,112', '102,121,111,110,101,99,111,110,46,103,105,116,104,117,98,46,105,111'];
+                        const now_domain = window.location.hostname;
+                        const the_domain = that.encode_string(now_domain);
+                        return white_domains.includes(the_domain);
                     },
                 };
-                if (index_func.browser_fn_state() && index_func.screen_state()) { // Run
+                if (index_func.browser_fn_state() && index_func.screen_state() && index_func.white_domain()) {
                     const script = document.createElement("script");
                     script.textContent = js;
                     sveltekit_body.classList.remove("hide");
