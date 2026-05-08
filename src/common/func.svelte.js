@@ -992,7 +992,7 @@ const func = {
                     if (!open_state) { // _self 如果浏览器拦截了“用新窗口打开链接”，则降级为在当前页面窗口打开链接.
                         that.console_error("如果浏览器拦截了“用新窗口打开链接”，则降级为在当前页面窗口打开链接.", [url, target]);
                         goto(url, {
-                            replaceState: true, // false新增历史记录，true清除历史记录
+                            replaceState: false, // false新增历史记录，true清除历史记录
                             invalidateAll: true, // true强制重新加载
                             noScroll: true // true回到滚动位置
                         }).then(r => {
