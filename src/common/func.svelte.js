@@ -981,7 +981,7 @@ const func = {
             if (url.length >= 1){
                 if (target === "_self"){
                     goto(url, {
-                        replaceState: true, // false新增历史记录，true清除历史记录
+                        replaceState: false, // false新增历史记录，true清除历史记录
                         invalidateAll: true, // true强制重新加载
                         noScroll: true // true回到滚动位置
                     }).then(r => {
