@@ -37,7 +37,7 @@
                 let href = "."+config.sys.home_route+"?cache="+func.js_rand(100000, 9999999)
                 href = href.replaceAll(".?cache=", "./?cache=");
                 href = href.replaceAll("//", "/");
-                that.open_url(href);
+                func.open_url(href, "_replace");
             }
             else if (word === "@reload" || word === "@fresh" || word === "@refresh"){
                 back_state = true;
@@ -45,45 +45,45 @@
             }
             else if (word === "@link" || word === "@bookmark"){
                 back_state = true;
-                that.open_url("./purehome/link");
+                func.open_url("./purehome/link", "_replace");
             }
             else if (word === "@divine" || word === "@divination"){
                 back_state = true;
-                that.open_url("./purehome/divination");
+                func.open_url("./purehome/divination", "_replace");
             }
             else if (word === "@jyp" || word === "@JYP" || word === "@Jyp"){
                 back_state = true;
-                that.open_url("./jyp?url_timeout="+func.url_timeout_encode("jyp", 2*60*60)+"&ap=ipt");
+                func.open_url("./jyp?url_timeout="+func.url_timeout_encode("jyp", 2*60*60)+"&ap=ipt", "_replace");
             }
             else if (word === "@info"){
                 back_state = true;
-                that.open_url("./info");
+                func.open_url("./info", "_replace");
             }
             else if (word === "@calculator" || word === "@calc"){
                 back_state = true;
-                that.open_url("./calculator");
+                func.open_url("./calculator", "_replace");
             }
             else if (word === "@qr" || word === "@ewm"){
                 back_state = true;
-                that.open_url("./qr");
+                func.open_url("./qr", "_replace");
             }
             else if (word === "@dumogu" || word === "@dmg"){
                 back_state = true;
-                that.open_url("./dumogu.html");
+                func.open_url("./dumogu.html", "_replace");
             }
             else if (word === "@404"){
                 back_state = true;
-                that.open_url("./_404");
+                func.open_url("./_404", "_replace");
             }
             else if (word === "@clear"){ // 只删除配置信息，不删除用户信息
                 back_state = true;
                 func.clear_local_data();
-                that.open_url(func.url_path(config.sys.base_route+config.sys.home_route)+"?clear="+func.js_rand(10000, 99999));
+                func.open_url(func.url_path(config.sys.base_route+config.sys.home_route)+"?clear="+func.js_rand(10000, 99999), "_replace");
             }
             //
             else if (word === "@cos"){
                 back_state = true;
-                that.open_url("https://console.cloud.tencent.com/cos/bucket");
+                func.open_url("https://console.cloud.tencent.com/cos/bucket", "_replace");
             }
             // 自定义搜索引擎
             else if (word === "@bing"){
@@ -130,13 +130,6 @@
                 return "...";
             }
         },
-        open_url: function(href=""){
-            if (browser){
-                window.location.replace(href);
-            }else{
-                func.open_url(href, "_self");
-            }
-        },
         check_param: function(){
             let that = this;
             // 接收的参数
@@ -161,7 +154,7 @@
                     if (func.is_url(word)){
                         //
                         show_txt = func.get_translate("search_opening_page") + "  " + def.get_href_domain(word);
-                        that.open_url(word);
+                        func.open_url(word, "_replace");
                     }else{
                         // word白名单级校验
                         if (!that.check_white_word(word)){ // 其它关键词
@@ -169,7 +162,7 @@
                             let href = search_engines_dict[engine].url+encodeURIComponent(word);
                             //
                             show_txt = func.get_translate("search_opening_page") + "  " + def.get_href_domain(word);
-                            that.open_url(href);
+                            func.open_url(href, "_replace");
                         }else{ // 白名单关键词
                             func.loading_hide();
                             func.title(func.get_translate("search_res_show"));
@@ -183,7 +176,7 @@
                 if (!that.check_white_word(word)){ // 正常打开关键词
                     if (!search_engines_dict[engine]){engine = "bing";}
                     let href = search_engines_dict[engine].url+encodeURIComponent(word);
-                    that.open_url(href);
+                    func.open_url(href, "_replace");
                 }else{
                     func.loading_hide();
                     func.title(func.get_translate("search_res_show"));
