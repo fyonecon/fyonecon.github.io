@@ -1006,7 +1006,7 @@ const func = {
                                 //
                             });
                         }catch(e){
-                            window.location.href = url;
+                            window.location.replace(url);
                         }
                     }
                 }
