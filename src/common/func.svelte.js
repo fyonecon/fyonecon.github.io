@@ -992,17 +992,7 @@ const func = {
                         window.location.href = url;
                     }
                 } else if (target === "_replace"){
-                    try {
-                        goto(url, { // 仅能打开同域链接
-                            replaceState: true, // false新增历史记录，true清除历史记录
-                            invalidateAll: true, // true强制重新加载
-                            noScroll: true // true回到滚动位置
-                        }).then(r => {
-                            //
-                        });
-                    }catch(e){
-                        window.location.replace(url);
-                    }
+                    window.location.replace(url);
                 } else {  // _blank
                     let open_state = window.open(url, target);
                     if (!open_state) { // _self 如果浏览器拦截了“用新窗口打开链接”，则降级为在当前页面窗口打开链接.

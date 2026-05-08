@@ -10,6 +10,7 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <link rel="icon" type="image/png" href="./appicon.png" />
+    <meta name="referrer" content="no-referrer">
 </svelte:head>
 
 <section class="section-main scroll-y-style">
