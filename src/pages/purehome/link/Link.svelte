@@ -15,11 +15,6 @@
             list: [
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("PureHome"),
-                    href: func.string_to_unicode("http://datathink.top/purehome"),
-                },
-                { //
-                    show_lang: "all",
                     title: func.string_to_unicode("虎嗅"),
                     href: func.string_to_unicode("https://www.huxiu.com")
                 },
@@ -78,12 +73,6 @@
                     title: func.string_to_unicode("雪球话题"),
                     href: func.string_to_unicode("https://xueqiu.com/today")
                 },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("系统极客"),
-                    href: func.string_to_unicode("https://www.sysgeek.cn/")
-                },
-
             ],
         },
         {
@@ -91,18 +80,23 @@
             list: [
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode(func.get_translate("Calculator")),
+                    title: func.string_to_unicode("🏠PureHome"),
+                    href: func.string_to_unicode("http://datathink.top/purehome"),
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("🧮"+func.get_translate("Calculator")),
                     href: func.string_to_unicode("@calculator")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("ℹ️Info"),
+                    href: func.string_to_unicode("@info")
                 },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode(func.get_translate("qr")),
                     href: func.string_to_unicode("@qr")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Ping/IP/Agent"),
-                    href: func.string_to_unicode("@info")
                 },
                 { //
                     show_lang: "all",
@@ -207,13 +201,13 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("Grok"),
-                    href: func.string_to_unicode("https://grok.com")
+                    title: func.string_to_unicode("Gemini"),
+                    href: func.string_to_unicode("https://gemini.google.com")
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("Gemini"),
-                    href: func.string_to_unicode("https://gemini.google.com")
+                    title: func.string_to_unicode("Grok"),
+                    href: func.string_to_unicode("https://grok.com")
                 },
             ],
         },
@@ -272,7 +266,7 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("APKs Download（Github）"),
+                    title: func.string_to_unicode("APKs (Github)"),
                     href: func.string_to_unicode("https://github.com/fyonecon/clean_hyperos/releases")
                 },
                 { //
