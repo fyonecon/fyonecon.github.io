@@ -15,6 +15,11 @@
             list: [
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("PureHome"),
+                    href: func.string_to_unicode("http://datathink.top/purehome"),
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("虎嗅"),
                     href: func.string_to_unicode("https://www.huxiu.com")
                 },
