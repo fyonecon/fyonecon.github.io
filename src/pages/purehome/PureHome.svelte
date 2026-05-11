@@ -388,31 +388,26 @@
 
 <style>
     .purehome-box{
-        padding-bottom: 80px;
+        padding-bottom: 100px;
         padding-left: 10px;
         padding-right: 10px;
     }
     @media only screen and (min-width: 200px){
         .purehome-box{
-            padding-top: 10px;
+            padding-top: 20px;
         }
     }
     @media only screen and (min-width: 300px){
         .purehome-box{
-            padding-top: 10px;
+            padding-top: 40px;
         }
     }
     @media only screen and (min-width: 500px){
         .purehome-box{
-            padding-top: 30px;
-        }
-    }
-    @media only screen and (min-width: 600px){
-        .purehome-box{
             padding-top: 50px;
         }
     }
-    @media only screen and (min-width: 800px){
+    @media only screen and (min-width: 600px){
         .purehome-box{
             padding-top: 70px;
         }
@@ -422,19 +417,24 @@
             padding-top: 90px;
         }
     }
-    @media only screen and (min-width: 1200px){
+    @media only screen and (min-width: 800px){
         .purehome-box{
-            padding-top: 120px;
+            padding-top: 110px;
         }
     }
-    @media only screen and (min-width: 1800px){
+    @media only screen and (min-width: 1200px){
         .purehome-box{
             padding-top: 140px;
         }
     }
+    @media only screen and (min-width: 1800px){
+        .purehome-box{
+            padding-top: 170px;
+        }
+    }
     @media only screen and (min-width: 2600px){
         .purehome-box{
-            padding-top: 200px;
+            padding-top: 220px;
         }
     }
 
