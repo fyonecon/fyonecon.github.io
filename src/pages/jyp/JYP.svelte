@@ -191,9 +191,9 @@
             if (browser){
                 //
                 if (func.is_ios()) {
-                    return (func.is_safari() || func.is_edge() || func.is_firefox());
+                    return (func.is_safari() || func.is_edge() || func.is_firefox() || func.is_brave());
                 }else if (func.is_android()) {
-                    return (func.is_samsung() || func.is_edge() || func.is_firefox());
+                    return (func.is_samsung() || func.is_edge() || func.is_firefox() || func.is_brave());
                 }else{ // Desktop
                     if (func.is_desktop()) {
                         return func.is_firefox();
