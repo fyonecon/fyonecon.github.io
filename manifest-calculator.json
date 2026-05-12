@@ -2,13 +2,12 @@
   "short_name": "Calculator",
   "name": "Calculator",
   "description": "Calculator，科学计算器。不收集任何隐私。",
-  "categories": ["Tools", "News"],
+  "categories": ["Tools"],
   "start_url": "./calculator?from=&utm_source=pwa",
   "scope": "./calculator",
   "display": "standalone",
   "orientation": "portrait-primary",
   "lang": "en",
-  "theme_color": "#FFFACD",
   "background_color": "#FFFACD",
   "icons": [
     {
