@@ -115,6 +115,7 @@
         is_show_tab: function (){
             if (browser){
                 return ( (func.is_desktop() && func.is_firefox()) || func.is_pwa() || func.is_waigo() || func.is_ginthon() );
+                // return true;
             }else{
                 return false;
             }
@@ -348,7 +349,7 @@
     .tab-item{
         /*width: 72px; !*80px 72px *!*/
         margin: 0 -2px;
-        padding: 5px 0 1px 0;
+        padding: 4px 0 2px 0;
         overflow: hidden;
         text-align: center;
         border: none;
@@ -382,12 +383,10 @@
     }
     .tab-item-icon{
         opacity: 0.9;
+        margin-bottom: -4px;
     }
     .tab-item-title{
         opacity: 0.9;
-        margin-top: -7px;
-        line-height: 14px !important;
-        height: 14px !important;
     }
 
     /**/

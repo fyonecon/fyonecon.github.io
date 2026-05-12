@@ -6,7 +6,7 @@ on:
     branches: [main] # 需要CI/CD的仓库分支
 
 env:
-  NODE_VERSION: "24"
+  NODE_VERSION: "26"
   BUILD_DIR: "./dist" # 静态文件目录
   CACHE_MAX_AGE: "432100" # s 文件缓存时间。Github Pages里自定义Cache-Control无用，此处仅作为参照。
 
