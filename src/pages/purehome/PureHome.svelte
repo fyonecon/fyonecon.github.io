@@ -176,18 +176,12 @@
             let that = this;
             // 处理Enter
             if (event.key === 'Enter') {
-                if (input_enter_data.input_doing === 1 || input_enter_data.input_doing === 2){ // 输入法输入完成
-                    func.console_log("输入法输入完成=", input_enter_data.input_doing);
-                    input_enter_data.input_doing = -1; // init
+                if (input_enter_data.input_doing === 12){ // 字母数字输入完成
                     that.input_run_search();
-                }else{ // 输入法正在输入
-                    let the_value = input_value_search.trim();
-                    if (!the_value){ // 此处仅做提醒使用，无实际动作
-                        input_enter_data.input_doing = -1;
-                        that.input_run_search();
-                    }
-                    //
-                    func.console_log("输入法正在输入=", input_enter_data.input_doing);
+                } else if (input_enter_data.input_doing === 22){ // 汉字预选词输入完成
+                    that.input_run_search();
+                } else {
+                    console.log("=3=状态不完整=", input_enter_data.input_doing);
                 }
             }
         },
