@@ -276,7 +276,7 @@
                 {#each tab_data as item}
                     <button class="tab-item select-none {(route === item.route)?'tab-item-active':''}" style="width: {tab_item_width}px;" onclick={()=>def.open_url(item.href)} >
                         <div class="tab-item-icon">{@html item.icon.replace('<svg ', '<svg style="display:inline-block;height:26px;width:26px;" ')}</div>
-                        <code class="tab-item-icon font-mini">{@html item.title}</code>
+                        <code class="tab-item-title font-mini">{@html item.title}</code>
                     </button>
                 {/each}
                 <!---->
@@ -348,7 +348,7 @@
     .tab-item{
         /*width: 72px; !*80px 72px *!*/
         margin: 0 -2px;
-        padding: 2px 0 0 0;
+        padding: 5px 0 1px 0;
         overflow: hidden;
         text-align: center;
         border: none;
@@ -382,6 +382,12 @@
     }
     .tab-item-icon{
         opacity: 0.9;
+    }
+    .tab-item-title{
+        opacity: 0.9;
+        margin-top: -7px;
+        line-height: 14px !important;
+        height: 14px !important;
     }
 
     /**/
