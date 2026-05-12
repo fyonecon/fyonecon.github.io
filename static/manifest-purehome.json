@@ -16,5 +16,19 @@
       "type": "image/png",
       "sizes": "265x265"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "PureHome",
+      "url": "./purehome"
+    },
+    {
+      "name": "Create QR",
+      "url": "./qr"
+    },
+    {
+      "name": "Agent Info",
+      "url": "./info"
+    }
   ]
 }
