@@ -166,6 +166,11 @@
                 },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("树洞"),
+                    href: func.string_to_unicode("https://jandan.net/treehole")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("Github"),
                     href: func.string_to_unicode("https://github.com")
                 },

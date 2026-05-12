@@ -181,7 +181,7 @@
                 } else if (input_enter_data.input_doing === 22){ // 汉字预选词输入完成
                     that.input_run_search();
                 } else {
-                    console.log("=3=状态不完整=", input_enter_data.input_doing);
+                    func.console_log("=3=状态不完整=", input_enter_data.input_doing);
                 }
             }
         },
