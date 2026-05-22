@@ -6,6 +6,10 @@
 </script>
 
 <svelte:head>
+<!--    <meta name="robots" content="noindex, nofollow">-->
+<!--    <meta name="referrer" content="unsafe-url">-->
+<!--    <meta name="referrer" content="same-origin">-->
+<!--    <meta name="referrer" content="no-referrer">-->
     <title>{func.get_translate("Example")}</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />

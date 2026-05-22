@@ -8,6 +8,8 @@
 </script>
 
 <svelte:head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="same-origin">
     <title>{func.get_translate("_404")}</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />

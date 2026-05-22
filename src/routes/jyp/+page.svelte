@@ -6,6 +6,8 @@
 </script>
 
 <svelte:head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
     <title>{func.get_translate("JYP")}</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />

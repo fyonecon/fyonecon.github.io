@@ -6,6 +6,7 @@
 </script>
 
 <svelte:head>
+    <meta name="referrer" content="same-origin">
     <title>Datathink.top</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />

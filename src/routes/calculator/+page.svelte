@@ -6,6 +6,7 @@
 </script>
 
 <svelte:head>
+    <meta name="referrer" content="same-origin">
     <title>Calculator</title>
     <meta name="keywords" content="Calculator,科学计算器" />
     <meta name="description" content="Calculator科学计算器，支持手机与电脑端，可以使用键盘输入表达式。" />
