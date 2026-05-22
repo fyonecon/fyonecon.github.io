@@ -6,6 +6,8 @@
 </script>
 
 <svelte:head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
     <title>Link</title>
     <meta name="keywords" content="链签, Link" />
     <meta name="description" content="链签 Link" />

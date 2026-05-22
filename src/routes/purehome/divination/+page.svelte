@@ -6,6 +6,8 @@
 </script>
 
 <svelte:head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
     <title>Divination</title>
     <meta name="keywords" content="" />
     <meta name="description" content="Divination，祀测未来。用现有四维度四数据预测确定的未来。（祀、戎、耕、商）。" />

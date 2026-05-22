@@ -6,6 +6,7 @@
 </script>
 
 <svelte:head>
+    <meta name="referrer" content="no-referrer">
     <title>PureHome</title>
     <meta name="keywords" content="PureHome, PureStartPage, HomePage" />
     <meta name="description" content="PureHome，替代浏览器主页。不收集任何隐私！" />
