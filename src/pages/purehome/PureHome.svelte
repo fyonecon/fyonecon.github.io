@@ -326,12 +326,12 @@
 
 <div class="page-div purehome-box select-none">
     <div class="search-div-input">
-        <select class="search-div-input-select input-border font-text " onchange={(event)=>def.update_select(event)}>
+        <select class="search-div-input-select input-border font-text bg-white dark:bg-surface-950" onchange={(event)=>def.update_select(event)}>
             {#each search_engines_array as option_dict}
                 <option value="{option_dict.value}" selected="{option_dict.selected}">{option_dict.name}</option>
             {/each}
         </select>
-        <input class="search-div-input-input input-border w-full font-title select-text" type="search" maxlength="500" placeholder="{func.get_translate('input_placeholder_search')}"
+        <input class="search-div-input-input input-border w-full font-title select-text bg-white dark:bg-surface-950" type="search" maxlength="500" placeholder="{func.get_translate('input_placeholder_search')}"
                bind:value={input_value_search}
                onkeydown={(e)=>def.input_enter(e)}
                onmouseenter={(e) => e.currentTarget.focus()}
@@ -480,7 +480,6 @@
         appearance: none;
         text-align-last: center;
         outline: none;
-        background-color: transparent;
     }
     .search-div-input-input{
         width: calc(100% - 120px - 0px);
