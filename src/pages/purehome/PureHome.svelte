@@ -480,6 +480,7 @@
         appearance: none;
         text-align-last: center;
         outline: none;
+        background-color: transparent;
     }
     .search-div-input-input{
         width: calc(100% - 120px - 0px);
