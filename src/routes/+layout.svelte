@@ -237,7 +237,7 @@
 
 </script>
 
-<div class="app {page_display} select-none" data-theme_model="{theme_model}" data-language_index="{lang_index}">
+<div class="app {page_display} select-none bg-white dark:bg-surface-950" data-theme_model="{theme_model}" data-language_index="{lang_index}">
     <!-- Route内容 -->
 	<main class="main {page_display} ">{@render children()}</main>
     <!-- 自定义公共组件 -->
