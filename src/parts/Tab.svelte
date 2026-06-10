@@ -114,7 +114,7 @@
         },
         is_show_tab: function (){
             if (browser){
-                return ( (func.is_desktop() && func.is_firefox()) || func.is_pwa() || func.is_waigo() || func.is_ginthon() );
+                return ( func.is_pwa() || func.is_waigo() || func.is_ginthon() );
                 // return true;
             }else{
                 return false;
