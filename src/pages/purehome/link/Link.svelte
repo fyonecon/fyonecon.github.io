@@ -45,6 +45,11 @@
                 },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("TechSpot"),
+                    href: func.string_to_unicode("www.techspot.com/trending/")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("少数派"),
                     href: func.string_to_unicode("https://sspai.com/")
                 },
@@ -324,7 +329,7 @@
     const def = {
         open_url: function(_href=""){
             // func.open_url(_href);
-            func.loading_show("", 1200);
+            func.loading_show("", 1200 as any);
             // 自动判断路由深度
             let path_num = (route.split("/").length - 1); if (path_num <= 1){path_num = 1;}
             let path_fix = "./" + "../".repeat(path_num - 1);
