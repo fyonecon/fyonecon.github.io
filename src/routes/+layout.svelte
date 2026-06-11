@@ -26,6 +26,12 @@
     let page_display = $state("hide");
     let theme_model = $state("");
     let lang_index = $state("");
+    
+    interface ApiBackRes {
+        state: number;
+        msg: string;
+        content?: any;
+    }
 
 
     // 本页面函数
@@ -40,7 +46,8 @@
         },
         auto_set_language_index: function(){ // 自动设置语言
             const lang_key = config.app.app_class+"language_index";
-            func.js_call_py_or_go("get_data", {data_key:lang_key}).then(res=>{
+            func.js_call_py_or_go("get_data", {data_key:lang_key}).then(_res=>{
+                let res = _res as ApiBackRes; // js->ts
                 let lang = res.content.data?res.content.data:func.get_lang();
                 watch_lang_data.lang_index = lang;
                 lang_index = lang; // 监测本地语言
@@ -48,7 +55,8 @@
         },
         auto_set_theme_model: function () { // 自动切换主题
             const theme_model_key = config.app.app_class+"theme_model";
-            func.js_call_py_or_go("get_data", {data_key:theme_model_key}).then(res=>{
+            func.js_call_py_or_go("get_data", {data_key:theme_model_key}).then(_res=>{
+                let res = _res as ApiBackRes; // js->ts
                 let mode=res.content.data;
                 if (!mode) {
                     mode = func.get_theme_model();

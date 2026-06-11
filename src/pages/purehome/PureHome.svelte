@@ -15,12 +15,19 @@
     let route = $state(func.get_route());
     let input_value_search = $state("");
 
+    interface SearchEngine {
+        value?: any;
+        selected?: any;
+        name?: any;
+        url?: any;
+    }
+
     const search_selected_key = config.app.app_class + "search_selected";
     const search_history_key = search_selected_key+"_history";
     const search_history_split = "#@#"+search_history_key+"#@#";
     const search_history_max_len = 200;
 
-    let search_engines_array: object[] = $state([]);
+    let search_engines_array: SearchEngine[] = $state([]);
     let search_history_array: string[] = $state([]);
     let del_input_history_dialog_is_open = $state(false);
     let input_object: any; // input标签dom对象
@@ -247,7 +254,7 @@
         input_del_history: function(){
             let that = this;
             //
-            func.loading_show("", 800);
+            func.loading_show("", 800 as any);
             try {
                 func.del_db_data(search_history_key).then(state=>{
                     del_input_history_dialog_is_open = false;

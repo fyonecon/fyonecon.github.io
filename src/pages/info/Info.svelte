@@ -9,6 +9,10 @@
     import FetchPOST from "../../common/post.svelte";
     import FetchGET from "../../common/get.svelte";
 
+    interface TestIndexHtmlInfo {
+        key: string;
+        value: string;
+    }
 
     // 本页面参数
     let route = $state(func.get_route());
@@ -22,7 +26,7 @@
     let ping_hosts = $state("...");
     let test_db_data = $state("...");
     let test_index_html_api = $state("...");
-    let test_index_html_info: object[]  = $state([]);
+    let test_index_html_info: TestIndexHtmlInfo[]  = $state([]);
     let app_uid = $state("");
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
@@ -51,25 +55,32 @@
             ping_host = loading_img;
             ping_hosts = loading_img;
             //
-            that.ping_url("https://www.google.com").then(msg => {
+            that.ping_url("https://www.google.com").then(_msg => {
+                let msg = _msg as string;
                 ping_google = msg;
             });
-            that.ping_url("https://www.bing.com").then(msg => {
+            that.ping_url("https://www.bing.com").then(_msg => {
+                let msg = _msg as string;
                 ping_bing = msg;
             });
-            that.ping_url("https://www.youtube.com").then(msg => {
+            that.ping_url("https://www.youtube.com").then(_msg => {
+                let msg = _msg as string;
                 ping_youtube = msg;
             });
-            that.ping_url("https://www.ithome.com").then(msg => {
+            that.ping_url("https://www.ithome.com").then(_msg => {
+                let msg = _msg as string;
                 ping_ithome = msg;
             });
-            that.ping_url("https://www.github.com").then(msg => {
+            that.ping_url("https://www.github.com").then(_msg => {
+                let msg = _msg as string;
                 ping_github = msg;
             });
-            that.ping_url("http://"+func.get_host()).then(msg => {
+            that.ping_url("http://"+func.get_host()).then(_msg => {
+                let msg = _msg as string;
                 ping_host = msg;
             });
-            that.ping_url("https://"+func.get_host()).then(msg => {
+            that.ping_url("https://"+func.get_host()).then(_msg => {
+                let msg = _msg as string;
                 ping_hosts = msg;
             });
         },
@@ -311,13 +322,13 @@
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">vCPU (个) ：</span>
                 <br>
-                <span class="info-div-content-li-res">{@html window.navigator.hardwareConcurrency || "-不支持-"}</span>
+                <span class="info-div-content-li-res">{@html navigator.hardwareConcurrency || "-不支持-"}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">
                 <span class="info-div-content-li-title ">RAM (GB) ：</span>
                 <br>
-                <span class="info-div-content-li-res">{@html window.navigator.deviceMemory || "-不支持-"}</span>
+                <span class="info-div-content-li-res">{@html (navigator as any).deviceMemory || "-不支持-"}</span>
                 <div class="clear"></div>
             </div>
             <div class="info-div-content-li break select-text">

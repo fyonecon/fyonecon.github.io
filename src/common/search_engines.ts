@@ -34,14 +34,14 @@ const search_engines_dict: SearchEnginesDictType = {
         name: "中国区安卓应用",
         url: "https://h5.appstore.vivo.com.cn/#/result?keyfrom=2&keyword=",
     },
-    windows_cn: {
-        name: "中国区Win应用",
-        url: "https://apps.microsoft.com/search?hl=zh-CN&query=",
-    },
     android_en: {
         name: "En APK Search",
         url: "https://www.bing.com/?ensearch=0&adlt=strict&q=Malavida APK ",
     },
+    // windows_cn: {
+    //     name: "中国区Win应用",
+    //     url: "https://apps.microsoft.com/search?hl=zh-CN&query=",
+    // },
     // mac_us: {
     //     name: "Mac App",
     //     url: "https://apps.apple.com/us/mac/search?term=",
