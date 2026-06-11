@@ -30,18 +30,18 @@ const search_engines_dict: SearchEnginesDictType = {
         name: "Yandex",
         url: "https://yandex.com/search/?filter=none&text=",
     },
+    photo_images: {
+        name: "Photo Image",
+        url: "https://pixabay.com/zh/photos/",
+    },
     icon_images: {
-        name: "PNG Image",
+        name: "PNG ICON",
         url: "https://www.flaticon.com/search?word=",
     },
     svg_images: {
-        name: "SVG Image",
+        name: "SVG ICON",
         url: "https://icon-sets.iconify.design/?query=",
     },
-    // ip_domain: {
-    //     name: "IP/Domain/CN",
-    //     url: "https://ipchaxun.com/",
-    // },
     whois: {
         name: "Whois",
         url: "https://www.whois.com/whois/",
