@@ -30,34 +30,6 @@ const search_engines_dict: SearchEnginesDictType = {
         name: "Yandex",
         url: "https://yandex.com/search/?filter=none&text=",
     },
-    android_cn: {
-        name: "中国区安卓应用",
-        url: "https://h5.appstore.vivo.com.cn/#/result?keyfrom=2&keyword=",
-    },
-    android_en: {
-        name: "En APK Search",
-        url: "https://www.bing.com/?ensearch=0&adlt=strict&q=Malavida APK ",
-    },
-    // windows_cn: {
-    //     name: "中国区Win应用",
-    //     url: "https://apps.microsoft.com/search?hl=zh-CN&query=",
-    // },
-    // mac_us: {
-    //     name: "Mac App",
-    //     url: "https://apps.apple.com/us/mac/search?term=",
-    // },
-    // mac_cn: {
-    //     name: "中国区Mac应用",
-    //     url: "https://apps.apple.com/cn/mac/search?term=",
-    // },
-    // android_en: {
-    //     name: "EN APK",
-    //     url: "https://en.divxland.org/?s=",
-    // },
-    // android_ru: {
-    //     name: "RU APK",
-    //     url: "https://5play.org/index.php?lang=en&do=search&subaction=search&titleonly=0&story=",
-    // },
     icon_images: {
         name: "PNG Image",
         url: "https://www.flaticon.com/search?word=",
@@ -75,5 +47,33 @@ const search_engines_dict: SearchEnginesDictType = {
         url: "https://www.whois.com/whois/",
     },
     //
+    android_cn: {
+        name: "中国区安卓应用",
+        url: "https://h5.appstore.vivo.com.cn/#/result?keyfrom=2&keyword=",
+    },
+    // android_en: {
+    //     name: "En APK",
+    //     url: "https://www.bing.com/?ensearch=0&adlt=strict&q=Malavida APK ",
+    // },
+    // windows_cn: {
+    //     name: "Win App",
+    //     url: "https://apps.microsoft.com/search?hl=en-US&query=",
+    // },
+    // mac_us: {
+    //     name: "Mac App",
+    //     url: "https://apps.apple.com/us/mac/search?term=",
+    // },
+    // mac_cn: {
+    //     name: "中国区Mac应用",
+    //     url: "https://apps.apple.com/cn/mac/search?term=",
+    // },
+    // android_en: {
+    //     name: "EN APK",
+    //     url: "https://en.divxland.org/?s=",
+    // },
+    // android_ru: {
+    //     name: "RU APK",
+    //     url: "https://5play.org/index.php?lang=en&do=search&subaction=search&titleonly=0&story=",
+    // },
 };
 export default search_engines_dict;
