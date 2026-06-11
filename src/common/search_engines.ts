@@ -30,21 +30,21 @@ const search_engines_dict: SearchEnginesDictType = {
         name: "Yandex",
         url: "https://yandex.com/search/?filter=none&text=",
     },
+    whois: {
+        name: "Whois",
+        url: "https://www.whois.com/whois/",
+    },
     photo_images: {
         name: "Photo Image",
         url: "https://pixabay.com/zh/photos/",
     },
     icon_images: {
-        name: "PNG ICON",
+        name: "PNG ICON Image",
         url: "https://www.flaticon.com/search?word=",
     },
     svg_images: {
-        name: "SVG ICON",
+        name: "SVG ICON Image",
         url: "https://icon-sets.iconify.design/?query=",
-    },
-    whois: {
-        name: "Whois",
-        url: "https://www.whois.com/whois/",
     },
     //
     android_cn: {

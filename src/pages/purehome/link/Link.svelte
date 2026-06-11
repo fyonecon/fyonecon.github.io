@@ -40,28 +40,28 @@
                 },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("少数派"),
+                    href: func.string_to_unicode("https://sspai.com/")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("MacRumors"),
                     href: func.string_to_unicode("https://www.macrumors.com")
                 },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("TechSpot"),
-                    href: func.string_to_unicode("www.techspot.com/trending/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("少数派"),
-                    href: func.string_to_unicode("https://sspai.com/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("搜狐新闻"),
-                    href: func.string_to_unicode("https://sohu.com")
+                    href: func.string_to_unicode("https://www.techspot.com/trending/")
                 },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("CNN"),
                     href: func.string_to_unicode("https://edition.cnn.com/world")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("搜狐新闻"),
+                    href: func.string_to_unicode("https://sohu.com")
                 },
                 { //
                     show_lang: "all",
