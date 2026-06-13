@@ -1,0 +1,1 @@
+import{Z as e}from"./K2HQG9IO.js";var t=e({tab_value:``,tab_name:``});export{t};
