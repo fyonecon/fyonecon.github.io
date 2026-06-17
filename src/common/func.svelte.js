@@ -1022,7 +1022,7 @@ const func = {
                         try {
                             goto(url, { // 仅能打开同域链接
                                 replaceState: true, // false新增历史记录，true清除历史记录
-                                invalidateAll: true, // true强制重新加载
+                                invalidateAll: false, // true强制重新加载
                                 noScroll: true // true回到滚动位置
                             }).then(r => {
                                 //
