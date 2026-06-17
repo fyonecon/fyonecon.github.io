@@ -1000,7 +1000,7 @@ const func = {
         let that = this;
         if (browser){
             if (url.length >= 1){
-                if (target === "_self"){
+                if (target === "_self"){ // 有历史记录的_self
                     try {
                         goto(url, { // 仅能打开同域链接
                             replaceState: false, // false新增历史记录，true清除历史记录
@@ -1012,9 +1012,10 @@ const func = {
                     }catch(e){
                         window.location.href = url;
                     }
-                } else if (target === "_replace"){
+                } else if (target === "_replace"){ // _replace
                     window.location.replace(url);
-                } else {  // _blank
+                } else if (target === "_blank") {  // _blank
+                    // window.open(url, target);
                     let open_state = window.open(url, target);
                     if (!open_state) { // _self 如果浏览器拦截了“用新窗口打开链接”，则降级为在当前页面窗口打开链接.
                         that.console_error("如果浏览器拦截了“用新窗口打开链接”，则降级为在当前页面窗口打开链接.", [url, target]);
@@ -1029,6 +1030,18 @@ const func = {
                         }catch(e){
                             window.location.replace(url);
                         }
+                    }
+                }else { // _switch 无历史记录的_self
+                    try {
+                        goto(url, { // 仅能打开同域链接
+                            replaceState: true, // false新增历史记录，true清除历史记录
+                            invalidateAll: false, // true强制重新加载
+                            noScroll: true // true回到滚动位置
+                        }).then(r => {
+                            //
+                        });
+                    }catch(e){
+                        window.location.replace(url);
                     }
                 }
             }else{

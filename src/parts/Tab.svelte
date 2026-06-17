@@ -57,7 +57,7 @@
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
     const def = {
         open_url: function (href=""){
-            func.open_url(href);
+            func.open_url(href, "_switch");
         },
         order_tab_data_array: function (tab_data_array){ // // 根据order大小，从小到大排序，格式 [{order:1}, {order:4}, {order:2}]
             return [...tab_data_array].sort((a, b) => a.order - b.order);
