@@ -223,7 +223,7 @@
                                 if (func.is_waigo() || func.is_ginthon()){
                                     func.open_url_with_default_browser(href);
                                 }else{
-                                    if (func.is_ios() && func.is_safari()){
+                                    if (func.is_safari()){
                                         func.open_url(href, "_self");
                                     }else{
                                         func.open_url(href, "_blank");

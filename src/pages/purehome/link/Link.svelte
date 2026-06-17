@@ -336,7 +336,7 @@
             //
             let href = path_fix+"search?word="+encodeURIComponent(_href)+"&engine=bing&url_timeout="+func.url_timeout_encode("search", 1.5*60*60)+"&ap=lks";
             if (browser){
-                if (func.is_ios() && func.is_safari()){
+                if (func.is_safari()){
                     func.open_url(href, "_self");
                 }else{
                     func.open_url(href, "_blank");
