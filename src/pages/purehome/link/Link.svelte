@@ -125,8 +125,23 @@
                 },
                 { //
                     show_lang: "all",
+                    title: func.string_to_unicode("Spotify"),
+                    href: func.string_to_unicode("https://open.spotify.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("YouTube Music"),
+                    href: func.string_to_unicode("https://music.youtube.com")
+                },
+                { //
+                    show_lang: "all",
                     title: func.string_to_unicode("YouTube"),
                     href: func.string_to_unicode("https://youtube.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Instagram"),
+                    href: func.string_to_unicode("https://instagram.com")
                 },
                 { //
                     show_lang: "all",
@@ -137,11 +152,6 @@
                     show_lang: "all",
                     title: func.string_to_unicode("Reddit"),
                     href: func.string_to_unicode("https://reddit.com")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Instagram"),
-                    href: func.string_to_unicode("https://instagram.com")
                 },
                 { //
                     show_lang: "all",
