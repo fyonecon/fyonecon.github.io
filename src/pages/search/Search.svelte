@@ -43,6 +43,10 @@
                 back_state = true;
                 func.fresh_page(0);
             }
+            else if (word === "@subpad"){
+                back_state = true;
+                func.open_url("./subpad", "_replace");
+            }
             else if (word === "@link" || word === "@bookmark"){
                 back_state = true;
                 func.open_url("./purehome/link", "_replace");

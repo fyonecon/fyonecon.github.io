@@ -1,0 +1,19 @@
+{
+  "short_name": "SubPad",
+  "name": "SubPad",
+  "description": "SubPad，适用于PWA应用的常用订阅站点集合。",
+  "categories": ["Subscribes"],
+  "start_url": "./subpad?from=&utm_source=pwa",
+  "scope": "./subpad",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "en",
+  "background_color": "#FFFACD",
+  "icons": [
+    {
+      "src": "./subpad2.png",
+      "type": "image/png",
+      "sizes": "265x265"
+    }
+  ]
+}

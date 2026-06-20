@@ -11,6 +11,21 @@
     let route = $state(func.get_route());
     const link_data = [
         {
+            name: "Home",
+            list: [
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("🏠PureHome"),
+                    href: func.string_to_unicode("https://datathink.top/purehome"),
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("🏠Link"),
+                    href: func.string_to_unicode("https://datathink.top/purehome/link"),
+                },
+            ],
+        },
+        {
             name: func.get_translate("link_news"),
             list: [
                 { //
@@ -188,11 +203,6 @@
         {
             name: func.get_translate("link_tools"),
             list: [
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("🏠PureHome"),
-                    href: func.string_to_unicode("http://datathink.top/purehome"),
-                },
                 { //
                     show_lang: "all",
                     title: func.string_to_unicode("🧮"+func.get_translate("Calculator")),
