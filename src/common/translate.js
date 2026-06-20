@@ -86,6 +86,10 @@ const lang_dict = {
         zh: "链签",
         en: "Link",
     },
+    SubPad: {
+        zh: "订阅集合",
+        en: "SubPad",
+    },
     Info: {
         zh: "查看信息",
         en: "Info",

@@ -131,7 +131,7 @@
         func.console_log("page_start=", route);
         func.loading_hide(); // 避免其他页面跳转到本页面时出现loading图
         // 开始
-        func.title(func.get_translate("Link"));
+        func.title(func.get_translate("SubPad"));
     }
 
     // 标签处于切换显示状态
