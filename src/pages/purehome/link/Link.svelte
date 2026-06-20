@@ -78,6 +78,101 @@
                     title: func.string_to_unicode("雪球话题"),
                     href: func.string_to_unicode("https://xueqiu.com/today")
                 },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("CCTV1综合"),
+                    href: func.string_to_unicode("https://tv.cctv.cn/live/cctv1/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("CCTV17农业"),
+                    href: func.string_to_unicode("https://tv.cctv.cn/live/cctv17/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("CCTV14少儿"),
+                    href: func.string_to_unicode("https://tv.cctv.cn/live/cctvchild/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("B站-极客湾"),
+                    href: func.string_to_unicode("https://space.bilibili.com/25876945/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("B站-淘沙博士"),
+                    href: func.string_to_unicode("https://space.bilibili.com/289706107/")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("阮一峰周报"),
+                    href: func.string_to_unicode("https://ruanyifeng.com/blog")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("树洞"),
+                    href: func.string_to_unicode("https://jandan.net/treehole")
+                },
+            ],
+        },
+        {
+            name: func.get_translate("link_subscribe"),
+            list: [
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Github"),
+                    href: func.string_to_unicode("https://github.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("YouTube"),
+                    href: func.string_to_unicode("https://youtube.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("X.com"),
+                    href: func.string_to_unicode("https://x.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Reddit"),
+                    href: func.string_to_unicode("https://reddit.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Instagram"),
+                    href: func.string_to_unicode("https://instagram.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("V2EX"),
+                    href: func.string_to_unicode("https://v2ex.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Linux.do"),
+                    href: func.string_to_unicode("https://linux.do")
+                },
+            ],
+        },
+        {
+            name: "AI",
+            list: [
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("DeepSeek"),
+                    href: func.string_to_unicode("https://chat.deepseek.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Gemini"),
+                    href: func.string_to_unicode("https://gemini.google.com")
+                },
+                { //
+                    show_lang: "all",
+                    title: func.string_to_unicode("Grok"),
+                    href: func.string_to_unicode("https://grok.com")
+                },
             ],
         },
         {
@@ -134,91 +229,6 @@
                     href: func.string_to_unicode("https://www.miaocili.com/")
                 },
 
-            ],
-        },
-        {
-            name: func.get_translate("link_subscribe"),
-            list: [
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("CCTV1综合"),
-                    href: func.string_to_unicode("https://tv.cctv.cn/live/cctv1/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("CCTV17农业"),
-                    href: func.string_to_unicode("https://tv.cctv.cn/live/cctv17/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("CCTV14少儿"),
-                    href: func.string_to_unicode("https://tv.cctv.cn/live/cctvchild/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("B站-极客湾"),
-                    href: func.string_to_unicode("https://space.bilibili.com/25876945/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("B站-淘沙博士"),
-                    href: func.string_to_unicode("https://space.bilibili.com/289706107/")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("阮一峰周报"),
-                    href: func.string_to_unicode("https://ruanyifeng.com/blog")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("树洞"),
-                    href: func.string_to_unicode("https://jandan.net/treehole")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Github"),
-                    href: func.string_to_unicode("https://github.com")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("YouTube"),
-                    href: func.string_to_unicode("https://youtube.com")
-                },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("X.com"),
-                //     href: func.string_to_unicode("https://x.com")
-                // },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Reddit"),
-                    href: func.string_to_unicode("https://reddit.com")
-                },
-                // { //
-                //     show_lang: "all",
-                //     title: func.string_to_unicode("Linux.do"),
-                //     href: func.string_to_unicode("https://linux.do")
-                // },
-            ],
-        },
-        {
-            name: "AI",
-            list: [
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("DeepSeek"),
-                    href: func.string_to_unicode("https://chat.deepseek.com")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Gemini"),
-                    href: func.string_to_unicode("https://gemini.google.com")
-                },
-                { //
-                    show_lang: "all",
-                    title: func.string_to_unicode("Grok"),
-                    href: func.string_to_unicode("https://grok.com")
-                },
             ],
         },
         {
