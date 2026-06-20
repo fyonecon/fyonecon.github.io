@@ -12,6 +12,10 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <link rel="icon" type="image/png" href="./appicon.png" />
+    <!--修复Safari下_blank夹空白页的问题-->
+    {@html '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />'}
+    {@html '<meta http-equiv="Pragma" content="no-cache" />'}
+    {@html '<meta http-equiv="Expires" content="0" />'}
 </svelte:head>
 
 <section class="section-main scroll-y-style">
