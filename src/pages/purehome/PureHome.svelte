@@ -224,8 +224,7 @@
                                     func.open_url_with_default_browser(href);
                                 }else{
                                     if (func.is_safari()){
-                                        let open_state = window.open(href, "_blank");
-                                        if (open_state){func.open_url(href, "_self");}else{}
+                                        func.open_url(href, "_self");
                                     }else{
                                         func.open_url(href, "_blank");
                                     }
