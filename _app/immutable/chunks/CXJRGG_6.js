@@ -1,0 +1,1 @@
+import{Q as e}from"./CVWe39a1.js";var t=e({tab_value:``,tab_name:``});export{t};
