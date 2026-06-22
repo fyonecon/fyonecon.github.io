@@ -31,7 +31,7 @@ const search_engines_dict: SearchEnginesDictType = {
         url: "https://yandex.com/search/?filter=none&text=",
     },
     whois: {
-        name: "Whois",
+        name: "域名Whois",
         url: "https://www.whois.com/whois/",
     },
     photo_images: {
@@ -47,10 +47,10 @@ const search_engines_dict: SearchEnginesDictType = {
         url: "https://icon-sets.iconify.design/?query=",
     },
     //
-    android_cn: {
-        name: "中国区安卓应用",
-        url: "https://h5.appstore.vivo.com.cn/#/result?keyfrom=2&keyword=",
-    },
+    // android_cn: {
+    //     name: "中国区安卓应用",
+    //     url: "https://h5.appstore.vivo.com.cn/#/result?keyfrom=2&keyword=",
+    // },
     // android_en: {
     //     name: "En APK",
     //     url: "https://www.bing.com/?ensearch=0&adlt=strict&q=Malavida APK ",
