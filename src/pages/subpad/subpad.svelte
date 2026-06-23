@@ -20,7 +20,7 @@
                 },
                 { //
                     show_lang: "all",
-                    title: func.string_to_unicode("🏠Link"),
+                    title: func.string_to_unicode("✈️Link"),
                     href: func.string_to_unicode("https://datathink.top/purehome/link"),
                 },
             ],
