@@ -8,12 +8,14 @@ const runtime_func = {
     },
     screen_state: function (){
         if (browser){
-            let inner_w = window.innerWidth;
-            let inner_h = window.innerHeight;
+            // iframe里面为0，所以不需要用此方法
+            // let inner_w = window.innerWidth;
+            // let inner_h = window.innerHeight;
+            //
             let screen_w = window.screen.width;
             let screen_h = window.screen.height;
             //
-            return !(inner_w < 220 || inner_h < 220 || screen_w < 220 || screen_h < 220);
+            return !(screen_w < 220 || screen_h < 220);
         }else{
             return true;
         }
