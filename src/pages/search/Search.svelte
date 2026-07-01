@@ -17,6 +17,7 @@
     let show_txt = $state("🚩");
     let page_show_num = $state(0);
     let page_show_num_timer = $state(0);
+    let nav_info_href = $state("./?from=search");
 
     const search_selected_key = config.app.app_class + "search_selected";
     const search_history_key = search_selected_key+"_history";
@@ -26,6 +27,10 @@
 
     // 本页面函数：Svelte的HTML组件onXXX=中正确调用：={()=>def.xxx()}
     const def = {
+        open_url: function(href="", target="_self") {
+            nav_info_href = href;
+            func.open_url(href, target);
+        },
         check_white_word: function(word = ""){
             let that = this;
             let back_state = false;
@@ -37,7 +42,7 @@
                 let href = "."+config.sys.home_route+"?cache="+func.js_rand(100000, 9999999)
                 href = href.replaceAll(".?cache=", "./?cache=");
                 href = href.replaceAll("//", "/");
-                func.open_url(href, "_replace");
+                that.open_url(href, "_replace");
             }
             else if (word === "@reload" || word === "@fresh" || word === "@refresh"){
                 back_state = true;
@@ -45,49 +50,49 @@
             }
             else if (word === "@subpad"){
                 back_state = true;
-                func.open_url("./subpad", "_replace");
+                that.open_url("./subpad", "_replace");
             }
             else if (word === "@link" || word === "@bookmark"){
                 back_state = true;
-                func.open_url("./purehome/link", "_replace");
+                that.open_url("./purehome/link", "_replace");
             }
             else if (word === "@divine" || word === "@divination"){
                 back_state = true;
-                func.open_url("./purehome/divination", "_replace");
+                that.open_url("./purehome/divination", "_replace");
             }
             else if (word === "@jyp" || word === "@JYP" || word === "@Jyp"){
                 back_state = true;
-                func.open_url("./jyp?url_timeout="+func.url_timeout_encode("jyp", 2*60*60)+"&ap=ipt", "_replace");
+                that.open_url("./jyp?url_timeout="+func.url_timeout_encode("jyp", 2*60*60)+"&ap=ipt", "_replace");
             }
             else if (word === "@info"){
                 back_state = true;
-                func.open_url("./info", "_replace");
+                that.open_url("./info", "_replace");
             }
             else if (word === "@calculator" || word === "@calc"){
                 back_state = true;
-                func.open_url("./calculator", "_replace");
+                that.open_url("./calculator", "_replace");
             }
             else if (word === "@qr" || word === "@ewm"){
                 back_state = true;
-                func.open_url("./qr", "_replace");
+                that.open_url("./qr", "_replace");
             }
             else if (word === "@dumogu" || word === "@dmg"){
                 back_state = true;
-                func.open_url("./dumogu.html", "_replace");
+                that.open_url("./dumogu.html", "_replace");
             }
             else if (word === "@404"){
                 back_state = true;
-                func.open_url("./_404", "_replace");
+                that.open_url("./_404", "_replace");
             }
             else if (word === "@clear"){ // 只删除配置信息，不删除用户信息
                 back_state = true;
                 func.clear_local_data();
-                func.open_url(func.url_path(config.sys.base_route+config.sys.home_route)+"?clear="+func.js_rand(10000, 99999), "_replace");
+                that.open_url(func.url_path(config.sys.base_route+config.sys.home_route)+"?clear="+func.js_rand(10000, 99999), "_replace");
             }
             //
             else if (word === "@cos"){
                 back_state = true;
-                func.open_url("https://console.cloud.tencent.com/cos/bucket", "_replace");
+                that.open_url("https://console.cloud.tencent.com/cos/bucket", "_replace");
             }
             // 自定义搜索引擎
             else if (word === "@bing"){
@@ -158,7 +163,7 @@
                     if (func.is_url(word)){
                         //
                         show_txt = func.get_translate("search_opening_page") + "  " + def.get_href_domain(word);
-                        func.open_url(word, "_replace");
+                        that.open_url(word, "_replace");
                     }else{
                         // word白名单级校验
                         if (!that.check_white_word(word)){ // 其它关键词
@@ -166,7 +171,7 @@
                             let href = search_engines_dict[engine].url+encodeURIComponent(word);
                             //
                             show_txt = func.get_translate("search_opening_page") + "  " + def.get_href_domain(word);
-                            func.open_url(href, "_replace");
+                            that.open_url(href, "_replace");
                         }else{ // 白名单关键词
                             func.loading_hide();
                             func.title(func.get_translate("search_res_show"));
@@ -180,7 +185,7 @@
                 if (!that.check_white_word(word)){ // 正常打开关键词
                     if (!search_engines_dict[engine]){engine = "bing";}
                     let href = search_engines_dict[engine].url+encodeURIComponent(word);
-                    func.open_url(href, "_replace");
+                    that.open_url(href, "_replace");
                 }else{
                     func.loading_hide();
                     func.title(func.get_translate("search_res_show"));
@@ -295,7 +300,7 @@
 </script>
 
 <div class="page-back select-none">
-    <a href="./?from=search" title="Back home">
+    <a href="{nav_info_href}" title="Click" rel="nofollow noreferrer noopener" >
         <div class="font-mini center" style="height: 50px; line-height: 50px; overflow: hidden; padding: 0 20px; opacity: 0.4;">{@html show_txt}</div>
     </a>
 </div>
